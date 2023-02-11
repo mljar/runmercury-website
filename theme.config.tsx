@@ -30,7 +30,7 @@ const config: DocsThemeConfig = {
   project: {
     link: 'https://github.com/mljar/mercury'
   },
-  docsRepositoryBase: 'https://github.com/mljar/runmercury/tree/main',
+  docsRepositoryBase: 'https://github.com/mljar/runmercury-website/tree/main',
   useNextSeoProps() {
     const { asPath } = useRouter()
     if (asPath !== '/') {

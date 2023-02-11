@@ -1,11 +1,26 @@
-
 import { Card, Cards } from '@components/card'
+import webAppIcon from "@components/icons/webapp"
+import reportIcon from "@components/icons/report"
+import dashboardIcon from "@components/icons/dashboard"
+import websiteIcon from "@components/icons/website"
+import presentationIcon from "@components/icons/presentation"
+import restApiIcon from "@components/icons/restapi"
 
 # Mercury Tutorials
 
 Mercury Tutorials to help you get started with Mercury framework.
 
-<Cards num={2}>
+<Cards>
+  <Card icon={webAppIcon} title="Create Web App" href="/tutorials/web-app-python-jupyter-notebook"/>
+  <Card icon={reportIcon} title="Create Report (coming soon)" href="/tutorials/report-python-jupyter-notebook"/>
+  <Card icon={dashboardIcon} title="Create Dashboard" href="/tutorials/dashboard-python-jupyter-notebook"/>
+  <Card icon={websiteIcon} title="Create Website" href="/tutorials/website-python-jupyter-notebook"/>
+  <Card icon={presentationIcon} title="Create Presentation" href="/tutorials/presentation-python-jupyter-notebook"/>
+  <Card icon={restApiIcon} title="REST API (coming soon)" href="/tutorials/rest-api-python-jupyter-notebook"/>  
+</Cards>
+
+
+{/* <Cards num={2}>
   <Card
     image
     arrow
@@ -21,4 +36,4 @@ Mercury Tutorials to help you get started with Mercury framework.
     <>![Web App](/images/static-notebook-app.png)</>
   </Card>
   
-</Cards>
+</Cards> */}

@@ -1,7 +1,7 @@
 {
   "index": {
     "type": "page",
-    "title": "Nextra",
+    "title": "Mercury",
     "display": "hidden",
     "theme": { 
       "layout":"full"
@@ -18,5 +18,9 @@
   "tutorials": {
     "type": "page",
     "title": "Tutorials"
+  },
+  "support": {
+    "type": "page",
+    "title": "Support"
   }
 }
