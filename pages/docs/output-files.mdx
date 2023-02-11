@@ -1,0 +1,50 @@
+import {Screenshot} from 'components/screenshot'
+import notebookPng from "../../public/images/output-files-notebook.png"
+import appGif from "../../public/images/output-files-app.gif"
+
+# Output files 
+
+You can make files created in the notebook available for download with [`OutputDir`](/docs/output-widgets/outputdir). 
+All files saved in this directory will be available for download.
+
+There will be `App` and `Output Files` buttons in the sidebar to switch between App and files views. Please check the animation below.
+
+
+import { Callout } from 'nextra-theme-docs'
+
+<Callout type="info">
+  `App` and `Output Files` buttons will appear in the sidebar only if you use the `OutputDir` class in your notebook. 
+</Callout>
+
+## Example code 
+
+```python
+import os
+import mercury as mr
+
+my_folder = mr.OutputDir()
+
+# you can print the directory path
+# it will be current directory when running in the Jupyter Notebook
+# it will be some temporary directory path when running in Mercury
+print(f"Output directory path: {my_folder.path}")
+
+
+# save example text file in OutputDir
+first_file_name = os.path.join(my_folder.path, "example-file.txt")
+with open(first_file_name, "w") as fout:
+    fout.write("Hello there!")
+
+
+# save one more text file in OutputDir
+second_file_name = os.path.join(my_folder.path, "one-more-file.txt")
+with open(second_file_name, "w") as fout:
+    fout.write("Saving files in OutputDir")
+```
+
+<Screenshot src={notebookPng} alt="Notebook code with output files for download" />
+
+#### App demo 
+
+<Screenshot src={appGif} alt="Mercury App with output files for download" />
+

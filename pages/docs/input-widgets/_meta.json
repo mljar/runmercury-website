@@ -1,0 +1,15 @@
+{
+    "app": "",
+    "button": "",
+    "checkbox": "",
+    "file": "",
+    "note": "",
+    "numeric": "",
+    "select": "",
+    "multiselect": {
+        "title": "MultiSelect"
+    },
+    "slider": "",
+    "text": "",
+    "range": ""
+}

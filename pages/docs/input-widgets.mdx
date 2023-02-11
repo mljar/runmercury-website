@@ -1,0 +1,121 @@
+# Input Widgets
+
+import { Card, Cards } from '@components/card'
+
+Input widgets are components that will appear in the sidebar when running the notebook in Mercury. They can be used to provide user input or trigger action in the notebook.
+
+<Cards>
+  <Card icon={
+    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-app-window" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
+      <path d="M6 8h.01"></path>
+      <path d="M9 8h.01"></path>
+    </svg>
+  } title="App" href="/docs/input-widgets/app"/>
+  
+  <Card icon={
+    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-hand-click" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M8 13v-8.5a1.5 1.5 0 0 1 3 0v7.5"></path>
+      <path d="M11 11.5v-2a1.5 1.5 0 0 1 3 0v2.5"></path>
+      <path d="M14 10.5a1.5 1.5 0 0 1 3 0v1.5"></path>
+      <path d="M17 11.5a1.5 1.5 0 0 1 3 0v4.5a6 6 0 0 1 -6 6h-2h.208a6 6 0 0 1 -5.012 -2.7l-.196 -.3c-.312 -.479 -1.407 -2.388 -3.286 -5.728a1.5 1.5 0 0 1 .536 -2.022a1.867 1.867 0 0 1 2.28 .28l1.47 1.47"></path>
+      <path d="M5 3l-1 -1"></path>
+      <path d="M4 7h-1"></path>
+      <path d="M14 3l1 -1"></path>
+      <path d="M15 6h1"></path>
+    </svg>
+  } title="Button" href="/docs/input-widgets/button"/>
+
+  <Card icon={
+    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M8 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+      <path d="M2 6m0 6a6 6 0 0 1 6 -6h8a6 6 0 0 1 6 6v0a6 6 0 0 1 -6 6h-8a6 6 0 0 1 -6 -6z"></path>
+    </svg>
+  } title="Checkbox" href="/docs/input-widgets/checkbox"/>
+  
+  <Card icon={
+    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-file-upload" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+      <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+      <path d="M12 11v6"></path>
+      <path d="M9.5 13.5l2.5 -2.5l2.5 2.5"></path>
+    </svg>
+
+  } title="File" href="/docs/input-widgets/file"/>
+
+  <Card icon={
+    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-note" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M13 20l7 -7"></path>
+      <path d="M13 20v-6a1 1 0 0 1 1 -1h6v-7a2 2 0 0 0 -2 -2h-12a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7"></path>
+    </svg>
+  } title="Note" href="/docs/input-widgets/note"/>
+  
+  <Card icon={
+    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-sort-0-9" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M11 12h2"></path>
+      <path d="M4 10v4a2 2 0 1 0 4 0v-4a2 2 0 1 0 -4 0z"></path>
+      <path d="M16 15a1 1 0 0 0 1 1h2a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1h-2a1 1 0 0 0 -1 1v2a1 1 0 0 0 1 1h3"></path>
+    </svg>
+  } title="Numeric" href="/docs/input-widgets/numeric"/>
+
+  <Card icon={
+    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-select" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+      <path d="M9 11l3 3l3 -3"></path>
+    </svg>
+  } title="Select" href="/docs/input-widgets/select"/>
+  
+  <Card icon={
+    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-select" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+      <path d="M9 11l3 3l3 -3"></path>
+    </svg>
+  } title="MultiSelect" href="/docs/input-widgets/select"/>
+  
+  <Card icon={
+    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-adjustments-horizontal" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M14 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+      <path d="M4 6l8 0"></path>
+      <path d="M16 6l4 0"></path>
+      <path d="M8 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+      <path d="M4 12l2 0"></path>
+      <path d="M10 12l10 0"></path>
+      <path d="M17 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+      <path d="M4 18l11 0"></path>
+      <path d="M19 18l1 0"></path>
+    </svg>
+  } title="Slider" href="/docs/input-widgets/slider"/>
+  
+  <Card icon={
+    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-space" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M4 10v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1 -1v-3"></path>
+    </svg>
+  } title="Text" href="/docs/input-widgets/text"/>
+  
+  <Card icon={
+    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-adjustments-horizontal" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M14 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+      <path d="M4 6l8 0"></path>
+      <path d="M16 6l4 0"></path>
+      <path d="M8 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+      <path d="M4 12l2 0"></path>
+      <path d="M10 12l10 0"></path>
+      <path d="M17 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+      <path d="M4 18l11 0"></path>
+      <path d="M19 18l1 0"></path>
+    </svg>
+  } title="Range" href="/docs/input-widgets/range"/>
+  
+</Cards>
+

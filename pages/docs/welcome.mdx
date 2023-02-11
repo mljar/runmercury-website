@@ -1,0 +1,23 @@
+# Welcome message
+
+When you open Mercury you will see default `Welcome` header. You can easily modify this message. Please add `welcome.md` file in the same directory as your notebooks. 
+In this file you can write any text with Markdown syntax. Mercury will check if `welcome.md` file exists and will load your custom welcome message.
+
+import {Screenshot} from 'components/screenshot'
+import defaultWelcomePng from "../../public/images/welcome-default.png"
+import customWelcomePng from "../../public/images/welcome-custom.png"
+
+#### Default Welcome
+
+<Screenshot src={defaultWelcomePng} alt="Mercury Site with default welcome message" />
+
+#### Custom Welcome
+
+<Screenshot src={customWelcomePng} alt="Mercury Site with custome welcome message" />
+
+
+import { Callout } from 'nextra-theme-docs'
+
+<Callout type="info">
+  Please remember that the file name should be `welcome.md`. All small letters.
+</Callout>

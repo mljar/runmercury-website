@@ -1,0 +1,759 @@
+---
+title: Mercury – Build Data Web Apps in Jupyter Notebook
+---
+
+import Link from "next/link";
+import cn from "clsx";
+import { useState } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+
+import { Features, Feature } from "@components/features";
+
+import styles from "./index.module.css";
+
+export function File({ name, className, ...props }) {
+  return (
+    <span className={cn(styles.file, className)} {...props}>
+      {name}
+    </span>
+  );
+}
+
+import helloNb from "../public/images/hello-world-notebook.png";
+import helloApp from "../public/images/hello-world-app.gif";
+import sampleApp from "../public/images/hello-world-app.gif";
+
+
+<div className="home-content">
+  <div className="content-container">
+    <center>
+    <h1 className="headline">
+      Build Web Apps <br />in Jupyter Notebook
+    </h1>
+    <p className="subtitle">
+Forget about rewriting notebooks to web frameworks just to share your results.  <br/>
+Turn your Jupyter Notebook into Web App with <i>open-source</i> <b>Mercury</b> framework.
+
+      </p>
+    <p className="subtitle">
+      <Link className={styles.cta} href="/docs">Get started</Link>
+      {" "}
+      <Link style={{paddingLeft: "20px"}} href="/docs/how-does-it-work">Learn more </Link>
+    </p>
+
+</center>
+  </div>
+
+{" "}
+
+<style jsx>{`
+  /*.subtitle2 {
+    color: rgba(51,65,85,1)
+  }*/
+  .content-container {
+    max-width: 90rem;
+    padding-left: max(env(safe-area-inset-left), 1.5rem);
+    padding-right: max(env(safe-area-inset-right), 1.5rem);
+    margin: 0 auto;
+  }
+  .features-container {
+    margin: 8rem 0 0;
+    padding: 4rem 0;
+    border-radius: 30px;
+    background-color: #f3f4f6;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .features-container .content-container {
+    margin-top: -8rem;
+  }
+  :global(.dark) .features-container {
+    background-color: transparent; // #000;
+    border-bottom: 1px solid rgb(38, 38, 38);
+  }
+  .headline {
+    display: inline-block;
+    font-size: 3.125rem;
+    font-size: min(4.375rem, max(8vw, 2.5rem));
+    font-weight: 700;
+    font-feature-settings: initial;
+    letter-spacing: -0.12rem;
+    margin-left: -0.2rem;
+    margin-top: 3.4rem;
+    line-height: 1.1;
+    background-image: linear-gradient(146deg, #000, #757a7d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  :global(.dark) .headline {
+    background-image: linear-gradient(146deg, #fff, #757a7d);
+  }
+  .subtitle {
+    font-size: 1.3rem;
+    font-size: min(1.3rem, max(3.5vw, 1.2rem));
+    font-feature-settings: initial;
+    line-height: 1.6;
+  }
+  .nextjs-link {
+    color: currentColor;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  :global(#docs-card) {
+    color: #fff;
+    text-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  }
+  :global(#docs-card img) {
+    object-fit: cover;
+    object-position: left;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    z-index: 0;
+    user-select: none;
+    pointer-events: none;
+  }
+  :global(#docs-card img:nth-child(2)) {
+    display: none;
+  }
+  :global(.dark #docs-card img:nth-child(2)) {
+    display: initial;
+  }
+  :global(.dark #docs-card img:nth-child(1)) {
+    display: none;
+  }
+  :global(#highlighting-card) {
+    min-height: 300px;
+    background-image: linear-gradient(to top, transparent, #fff 50%),
+      url(/assets/syntax-highlighting.svg);
+    background-size: 634px;
+    background-position: -6px calc(100% + 4px);
+    background-repeat: no-repeat;
+  }
+  :global(.dark #highlighting-card) {
+    background-image: linear-gradient(to top, transparent, #202020 50%),
+      url(/assets/syntax-highlighting.svg);
+  }
+  :global(.feat-darkmode) {
+    min-height: 300px;
+  }
+  :global(.feat-darkmode h3) {
+    font-size: 48px;
+  }
+  :global(#search-card) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  :global(#search-card p) {
+    max-width: 320px;
+  }
+  :global(#search-card video) {
+    position: absolute;
+    right: 0;
+    top: 24px;
+    height: 430px;
+    pointer-events: none;
+    max-width: 60%;
+  }
+  :global(#fs-card) {
+    min-height: 240px;
+  }
+  :global(#fs-card h3) {
+    text-align: left;
+    width: min(300px, 41%);
+    min-width: 155px;
+  }
+  :global(#a11y-card) {
+    background-image: url(/assets/high-contrast.png);
+    background-position: -160px 160px;
+  }
+  @media screen and (max-width: 1300px) {
+    :global(#a11y-card) {
+      background-image: linear-gradient(to bottom, white, transparent),
+        url(/assets/high-contrast.png);
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    :global(#highlighting-card) {
+      aspect-ratio: auto;
+    }
+    :global(.feat-darkmode h3) {
+      font-size: 4vw;
+      font-size: min(48px, max(4vw, 30px));
+    }
+    :global(#search-card video) {
+      aspect-ratio: 787/623;
+      height: auto;
+    }
+    .headline {
+      letter-spacing: -0.08rem;
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    :global(#docs-card) {
+      aspect-ratio: 135/86;
+    }
+    :global(#search-card) {
+      aspect-ratio: 8/3;
+    }
+    :global(#search-card h3) {
+      text-align: left;
+    }
+    :global(#highlighting-card) {
+      background-size: 136%;
+    }
+    :global(#a11y-card) {
+      background-image: url(/assets/high-contrast.png);
+      background-position: center 160px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    :global(#docs-card) {
+      min-height: 348px;
+      width: 100%;
+      aspect-ratio: auto;
+    }
+    :global(#docs-card img) {
+      object-position: -26px 0;
+      width: 250%;
+      max-width: initial;
+    }
+  }
+  @media screen and (max-width: 640px) {
+    :global(#search-card) {
+      aspect-ratio: 2.5/2;
+      justify-content: flex-start;
+      align-items: stretch;
+      min-height: 350px;
+    }
+    :global(#search-card h3) {
+      text-align: center;
+    }
+    :global(#search-card p) {
+      max-width: 100%;
+    }
+    :global(#search-card video) {
+      position: relative;
+      margin: 0.75em -1.75em 0;
+      max-width: calc(100% + 3.5em);
+    }
+    :global(.dark #search-card video) {
+      mix-blend-mode: lighten;
+    }
+  }
+`}</style>
+
+  <div>
+
+  <div className="features-container">
+    
+    <div className="content-container">
+    
+      <Features>
+       <Feature index={0} large centered id="docs-card" style={{
+          background: "rgb(2,0,36)",
+          background: "linear-gradient(149deg, rgba(2,0,36,1) 0%, rgba(38,132,255,1) 42%, rgba(0,212,255,1) 100%)"
+          }}>
+
+          <Image src={helloNb} alt="Notebook with Mercury Widgets" loading="eager" 
+            style={{margin: "0px",borderRadius: "20px", position: "inherit", height: "700px" }} />
+          <Image src={helloNb} alt="Notebook with Mercury Widgets" loading="eager" 
+            style={{margin: "0px",borderRadius: "20px", position: "inherit", height: "700px" }} />
+
+        </Feature>
+
+        <Feature index={1}  centered className="card-with-border">
+          <div className="h-full flex flex-col justify-between">
+            <h3 style={{marginBottom: "40px"}}>Add <span style={{ fontWeight: 300 }}>widgets</span> in your Python notebook</h3>
+
+<center>
+<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-device-desktop-analytics" width="40" height="40" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M3 4m0 1a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1z"></path>
+   <path d="M7 20h10"></path>
+   <path d="M9 16v4"></path>
+   <path d="M15 16v4"></path>
+   <path d="M9 12v-4"></path>
+   <path d="M12 12v-1"></path>
+   <path d="M15 12v-2"></path>
+   <path d="M12 12v-1"></path>
+</svg>
+</center>
+    <p className='text-left mb-8 subtitle subtitle2' style={{marginTop: "0px", marginBottom: "0px"}}>
+      Install <b>Mercury</b> framework:
+    </p>
+
+<div style={{ fontSize: '1.9rem' }} className="leading-8">
+
+```python
+pip install mercury
+```
+
+
+
+</div>
+<center>
+  <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-file-import" width="40" height="40" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+   <path d="M5 13v-8a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2h-5.5m-9.5 -2h7m-3 -3l3 3l-3 3"></path>
+  </svg>
+</center>
+    <p className='text-left mb-8 subtitle subtitle2' style={{marginTop: "0px", marginBottom: "0px"}}>
+    Import <b>Mercury</b> and use widgets during notebook development:  
+    </p>
+
+<div style={{ fontSize: '1.9rem' }} className="leading-8">
+```python
+import mercury as mr
+```
+</div>
+<center>
+<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-hand-click" width="40" height="40" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M8 13v-8.5a1.5 1.5 0 0 1 3 0v7.5"></path>
+   <path d="M11 11.5v-2a1.5 1.5 0 0 1 3 0v2.5"></path>
+   <path d="M14 10.5a1.5 1.5 0 0 1 3 0v1.5"></path>
+   <path d="M17 11.5a1.5 1.5 0 0 1 3 0v4.5a6 6 0 0 1 -6 6h-2h.208a6 6 0 0 1 -5.012 -2.7l-.196 -.3c-.312 -.479 -1.407 -2.388 -3.286 -5.728a1.5 1.5 0 0 1 .536 -2.022a1.867 1.867 0 0 1 2.28 .28l1.47 1.47"></path>
+   <path d="M5 3l-1 -1"></path>
+   <path d="M4 7h-1"></path>
+   <path d="M14 3l1 -1"></path>
+   <path d="M15 6h1"></path>
+</svg>
+</center>
+    <p className='text-left mb-8 subtitle subtitle2' style={{marginTop: "0px"}}>
+        Interact with widgets in the notebook. Use widget values in the code.
+    </p>
+
+
+   <br/>     
+          </div>
+        </Feature>
+
+        <Feature index={2}  centered className="card-with-border">
+          <div className="h-full flex flex-col justify-between">
+            <h3 style={{marginBottom: "40px"}}>Run notebook <br/> as <span style={{ fontWeight: 300 }}>web app</span> </h3>
+
+
+{/* <center>
+<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-app-window" width="40" height="40" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
+   <path d="M6 8h.01"></path>
+   <path d="M9 8h.01"></path>
+</svg>
+  </center> */}
+            <p className='text-left mb-8 subtitle subtitle2' style={{marginBottom: "0px", marginTop: "0px"}}>
+
+            Run notebook as web application with <b>Mercury</b> framework: 
+            
+</p>
+<div style={{ fontSize: "1.9rem" }} className="leading-8">
+``` 
+mercury run 
+```
+</div>
+{/* <center>
+<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-adjustments-horizontal" width="40" height="40" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M14 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+   <path d="M4 6l8 0"></path>
+   <path d="M16 6l4 0"></path>
+   <path d="M8 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+   <path d="M4 12l2 0"></path>
+   <path d="M10 12l10 0"></path>
+   <path d="M17 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+   <path d="M4 18l11 0"></path>
+   <path d="M19 18l1 0"></path>
+</svg>
+</center> */}
+<p className='text-left mb-8 subtitle subtitle2' style={{marginBottom: "0px", marginTop: "0px"}}>
+
+            All input widgets will be available in the sidebar.
+            Cells are recomputed automatically after widget change.
+
+            <br/>
+            <Link href="/docs"> Learn more</Link>
+            </p>
+            <div>
+
+              <div style={{padding: "30px"}}></div>
+
+            </div>
+          </div>
+        </Feature>
+
+        <Feature index={3} large centered id="docs-card" style={{
+          background: "rgb(2,0,36)",
+          background: "linear-gradient(225deg, rgba(2,0,36,1) 0%, rgba(38,132,255,1) 42%, rgba(0,212,255,1) 100%)"
+          }}>
+          <Image src={helloApp} alt="Mercury App" loading="eager" 
+            style={{margin: "0px", borderRadius: "20px", width: "100%", position: "inherit" }}
+          />
+          <Image src={helloApp} alt="Mercury App" loading="eager" 
+            style={{margin: "0px", borderRadius: "20px", width: "100%", position: "inherit" }}
+          />
+          
+        </Feature>
+
+      </Features>
+    </div>
+
+  </div>
+</div>
+
+
+{/* --------------------------- */}
+
+<div className="home-content">
+  <div className="content-container">
+    <center>
+    <h2 className="headline">
+Create with <img src="/images/mercury-black-logo.svg" style={{height: "96px"}} className="inline dark:hidden"></img><img src="/images/mercury-white-logo.svg" style={{height: "96px"}} className="hidden dark:inline"></img>
+    </h2>
+
+
+     <p className="subtitle">
+You can create web apps, presentations, websites, reports, dashboards and REST API from Jupyter Notebook. <br className='sm:block hidden'/> 
+You don't need to know frontend frameworks, HTML, CSS or JavaScript.<br className='sm:block hidden'/> 
+All in pure <b>Python</b>.
+    </p>
+    {/* <p className="subtitle">
+      <Link className={styles.cta} href="/docs">Get started</Link>
+      {" "}
+      <Link style={{paddingLeft: "20px"}} href="/docs">Learn more</Link>
+    </p> */}
+    </center>
+
+
+  </div>
+</div>
+
+  <div className="features-container" style={{background: "rgba(38,132,255,0.25)"}}>
+    
+    <div className="content-container">
+    
+      <Features>
+
+        <Feature index={0}  centered className="card-with-border" href="/tutorials/web-app-python-jupyter-notebook/">
+          <div className="h-full flex flex-col justify-between">
+
+            <center>
+              <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-app-window" width="40" height="40" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
+                <path d="M6 8h.01"></path>
+                <path d="M9 8h.01"></path>
+              </svg>
+            </center>
+
+            <h3 style={{marginTop: "20px"}}>Web Apps</h3>
+            <p className="text-left mb-8 subtitle subtitle2" style={{marginTop: "10px"}}>
+              Create data-rich web applications with interactive widgets.
+            </p>
+          </div>
+        </Feature>
+
+        <Feature index={1}  centered className="card-with-border" href="/tutorials/report-python-jupyter-notebook/">
+          <div className="h-full flex flex-col justify-between">
+
+            <center>
+              <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-report" width="40" height="40" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M8 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h5.697"></path>
+                <path d="M18 14v4h4"></path>
+                <path d="M18 11v-4a2 2 0 0 0 -2 -2h-2"></path>
+                <path d="M8 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path>
+                <path d="M18 18m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+                <path d="M8 11h4"></path>
+                <path d="M8 15h3"></path>
+              </svg>
+            </center>
+
+            <h3 style={{marginTop: "20px"}}>Reports</h3>
+            <p className="text-left mb-8 subtitle subtitle2" style={{marginTop: "10px"}}>
+             Build reports with automatic schedule and PDF export.
+            </p>
+          </div>
+        </Feature>
+
+
+        <Feature index={2}  centered className="card-with-border" href="/tutorials/dashboard-python-jupyter-notebook/">
+          <div className="h-full flex flex-col justify-between">
+
+            <center>
+              <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-layout-dashboard" width="40" height="40" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M4 4h6v8h-6z"></path>
+                <path d="M4 16h6v4h-6z"></path>
+                <path d="M14 12h6v8h-6z"></path>
+                <path d="M14 4h6v4h-6z"></path>
+              </svg>
+            </center>
+
+            <h3 style={{marginTop: "20px"}}>Dashboards</h3>
+            <p className="text-left mb-8 subtitle subtitle2" style={{marginTop: "10px"}}>
+             Share your results and findings with others in interactive dashboards.
+            </p>
+          </div>
+        </Feature>
+
+        <Feature index={3}  centered className="card-with-border" href="/tutorials/website-python-jupyter-notebook/">
+          <div className="h-full flex flex-col justify-between">
+
+            <center>
+              <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-world-www" width="40" height="40" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M19.5 7a9 9 0 0 0 -7.5 -4a8.991 8.991 0 0 0 -7.484 4"></path>
+                <path d="M11.5 3a16.989 16.989 0 0 0 -1.826 4"></path>
+                <path d="M12.5 3a16.989 16.989 0 0 1 1.828 4"></path>
+                <path d="M19.5 17a9 9 0 0 1 -7.5 4a8.991 8.991 0 0 1 -7.484 -4"></path>
+                <path d="M11.5 21a16.989 16.989 0 0 1 -1.826 -4"></path>
+                <path d="M12.5 21a16.989 16.989 0 0 0 1.828 -4"></path>
+                <path d="M2 10l1 4l1.5 -4l1.5 4l1 -4"></path>
+                <path d="M17 10l1 4l1.5 -4l1.5 4l1 -4"></path>
+                <path d="M9.5 10l1 4l1.5 -4l1.5 4l1 -4"></path>
+              </svg>
+            </center>
+
+            <h3 style={{marginTop: "20px"}}>Websites</h3>
+            <p className="text-left mb-8 subtitle subtitle2" style={{marginTop: "10px"}}>
+             Easily turn notebooks into beautiful static websites. 
+            </p>
+          </div>
+        </Feature>
+
+        <Feature index={4}  centered className="card-with-border" href="/tutorials/presentation-python-jupyter-notebook/">
+          <div className="h-full flex flex-col justify-between">
+
+            <center>
+              <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-presentation-analytics" width="40" height="40" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M9 12v-4"></path>
+                <path d="M15 12v-2"></path>
+                <path d="M12 12v-1"></path>
+                <path d="M3 4h18"></path>
+                <path d="M4 4v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-10"></path>
+                <path d="M12 16v4"></path>
+                <path d="M9 20h6"></path>
+              </svg>
+            </center>
+
+            <h3 style={{marginTop: "20px"}}>Presentation</h3>
+            <p className="text-left mb-8 subtitle subtitle2" style={{marginTop: "10px"}}>
+             Interactive slides that are recomputed during the show.
+            </p>
+          </div>
+        </Feature>
+
+        <Feature index={5}  centered className="card-with-border" href="/tutorials/rest-api-python-jupyter-notebook/">
+          <div className="h-full flex flex-col justify-between">
+
+            <center>
+              <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-api" width="40" height="40" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M4 13h5"></path>
+                <path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"></path>
+                <path d="M20 8v8"></path>
+                <path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"></path>
+              </svg>
+            </center>
+
+            <h3 style={{marginTop: "20px"}}>REST API</h3>
+            <p className="text-left mb-8 subtitle subtitle2" style={{marginTop: "10px"}}>
+              Serve REST API endpoints from Python notebook. (coming soon)
+            </p>
+          </div>
+        </Feature>
+
+      </Features>
+    </div>
+
+  </div>
+
+
+
+
+
+{/* --------------------------- */}
+
+<div className="home-content">
+  <div className="content-container">
+    <center>
+    <h2 className="headline">
+    Features
+    </h2>
+
+
+     <p className="subtitle">
+Unique features that will make your work easier and faster.
+    </p>
+    {/* <p className="subtitle">
+      <Link className={styles.cta} href="/docs">Get started</Link>
+      {" "}
+      <Link style={{paddingLeft: "20px"}} href="/docs">Learn more</Link>
+    </p> */}
+    </center>
+
+
+  </div>
+</div>
+
+  <div className="features-container" style={{background: "rgba(239,111,108,0.25)"}}>
+    
+    <div className="content-container">
+    
+      <Features>
+
+        <Feature index={0}  centered className="card-with-border" href="/docs/show-hide-code-notebook/">
+          <div className="h-full flex flex-col justify-between">
+
+            <center>
+              <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-eye-off" width="40" height="40" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M3 3l18 18"></path>
+                <path d="M10.584 10.587a2 2 0 0 0 2.828 2.83"></path>
+                <path d="M9.363 5.365a9.466 9.466 0 0 1 2.637 -.365c4 0 7.333 2.333 10 7c-.778 1.361 -1.612 2.524 -2.503 3.488m-2.14 1.861c-1.631 1.1 -3.415 1.651 -5.357 1.651c-4 0 -7.333 -2.333 -10 -7c1.369 -2.395 2.913 -4.175 4.632 -5.341"></path>
+              </svg>
+            </center>
+
+            <h3 style={{marginTop: "20px"}}>Hide or show code</h3>
+            <p className="text-left mb-8 subtitle subtitle2" style={{marginTop: "10px"}}>
+              You decide if you want to show or hide code in the app.
+            </p>
+          </div>
+        </Feature>
+
+
+        <Feature index={1}  centered className="card-with-border" href="/docs/export-pdf-html/">
+          <div className="h-full flex flex-col justify-between">
+
+            <center>
+              <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-file-analytics" width="40" height="40" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                <path d="M9 17l0 -5"></path>
+                <path d="M12 17l0 -1"></path>
+                <path d="M15 17l0 -3"></path>
+              </svg>
+            </center>
+
+            <h3 style={{marginTop: "20px"}}>Export to PDF or HTML</h3>
+            <p className="text-left mb-8 subtitle subtitle2" style={{marginTop: "10px"}}>
+              Your users can easily export the executed notebook as a PDF or HTML.
+            </p>
+          </div>
+        </Feature>
+
+
+        <Feature index={2}  centered className="card-with-border" href="/docs/authentication/">
+          <div className="h-full flex flex-col justify-between">
+
+            <center>
+              <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-lock-open" width="40" height="40" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M5 11m0 2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z"></path>
+                <path d="M12 16m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                <path d="M8 11v-5a4 4 0 0 1 8 0"></path>
+              </svg>
+            </center>
+
+            <h3 style={{marginTop: "20px"}}>Authentication</h3>
+            <p className="text-left mb-8 subtitle subtitle2" style={{marginTop: "10px"}}>
+              Decide with whom to share your notebooks. (coming soon)
+            </p>
+          </div>
+        </Feature>
+
+        <Feature index={3}  centered className="card-with-border" href="/docs/multiple-notebooks/">
+          <div className="h-full flex flex-col justify-between">
+
+            <center>
+              <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-files" width="40" height="40" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M15 3v4a1 1 0 0 0 1 1h4"></path>
+                <path d="M18 17h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h4l5 5v7a2 2 0 0 1 -2 2z"></path>
+                <path d="M16 17v2a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2"></path>
+              </svg>
+            </center>
+
+            <h3 style={{marginTop: "20px"}}>Multiple apps</h3>
+            <p className="text-left mb-8 subtitle subtitle2" style={{marginTop: "10px"}}>
+              You can share as many notebooks as you want. No limits!
+            </p>
+          </div>
+        </Feature>
+
+        <Feature index={4}  centered className="card-with-border" href="/docs/jupyter-notebook-embedding/">
+          <div className="h-full flex flex-col justify-between">
+
+            <center>
+              <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-browser-plus" width="40" height="40" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M4 4m0 1a1 1 0 0 1 1 -1h14a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-14a1 1 0 0 1 -1 -1z"></path>
+                <path d="M4 8h16"></path>
+                <path d="M8 4v4"></path>
+                <path d="M10 14h4"></path>
+                <path d="M12 12v4"></path>
+              </svg>
+            </center>
+
+            <h3 style={{marginTop: "20px"}}>Embedding</h3>
+            <p className="text-left mb-8 subtitle subtitle2" style={{marginTop: "10px"}}>
+              Run notebook with Mercury and embed it on any website.
+            </p>
+          </div>
+        </Feature>
+
+        <Feature index={5}  centered className="card-with-border" href="/docs/output-files/">
+          <div className="h-full flex flex-col justify-between">
+
+            <center>
+              <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-download" width="40" height="40" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
+                <path d="M7 11l5 5l5 -5"></path>
+                <path d="M12 4l0 12"></path>
+              </svg>
+            </center>
+
+            <h3 style={{marginTop: "20px"}}>Output files</h3>
+            <p className="text-left mb-8 subtitle subtitle2" style={{marginTop: "10px"}}>
+              Produce files in notebook and make them downloadable for users.
+            </p>
+          </div>
+        </Feature>
+
+      </Features>
+    </div>
+
+  </div>
+
+
+  <div className="content-container">
+    <center>
+    <h2 className="headline">
+      Yes, it is open-source!
+    </h2>
+    <p className="subtitle">
+      Mercury is an <i>open-source</i> framework. It is available on <b>AGPL v3</b> license. <br className='sm:block hidden'/>
+      We offer a commercial-friendly license with more features, dedicated support and private forks.
+      </p>
+    <p className="subtitle">
+      <Link className={styles.cta} href="https://github.com/mljar/mercury" target="_blank">Check GitHub repo</Link>
+      {" "}
+      <Link style={{paddingLeft: "20px"}} href="https://mljar.com/pricing" target="_blank">Mercury Pro </Link>
+    </p>
+
+    </center>
+  </div>
+
+
+
+</div>

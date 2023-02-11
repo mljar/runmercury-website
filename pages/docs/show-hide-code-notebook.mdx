@@ -1,0 +1,37 @@
+import {Screenshot} from 'components/screenshot'
+import showHideCodeGif from "../../public/images/show-hide-code-app.gif"
+
+
+# Show or hide code in notebook
+
+You can control if you want to show or hide the code. **By default code is hidden**.
+
+Please use [`App`](/docs/input-widgets/app/) object to show or hide your code. An example code that dsiplays notebook's code in the Mercury App is presented below:
+
+```python
+# import mercury package
+import mercury as mr
+
+# set application properites with App object
+app = mr.App(show_code = True)
+```
+
+## App with show or hide code switch
+
+You can write application with show/hide [`Checkbox`](/docs/input-widgets/checkbox/) to control code visibility in the App. 
+
+#### Example code
+
+```python
+import mercury as mr
+
+# checkbox to control code visibility
+show_code = mr.Checkbox(label="Show code", value=True)
+
+# App object to set `show_code` attribute
+app = mr.App(title="Show or hide code", show_code=show_code.value)
+```
+
+#### App demo 
+
+<Screenshot src={showHideCodeGif} alt="Mercury application with show and hide code checkbox" />

@@ -1,0 +1,19 @@
+# MultiSelect
+
+Adds select widgets with option to select multiple values.
+
+```python
+import mercury as mr
+
+# add select widget
+my_selection = mr.MultiSelect(value=[], choices=[], label="")
+
+# access selected values
+print(f"Selected values are {my_selection.value}")
+```
+
+## Parameters
+
+- **value** (_list of strings_) - initial selection.
+- **choices** (_list of strings_) - available choices in the widget.
+- **label** (_string_) - label near the widget.

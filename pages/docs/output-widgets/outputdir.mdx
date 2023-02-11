@@ -1,0 +1,32 @@
+# OutputDir
+
+Output directory when you can save files for download. All files that are saved in the `OutputDir` are available for download for users.
+
+```python
+import mercury as mr
+
+# get output directory widget
+my_dir = mr.OutputDir()
+
+# print output directory path
+print(f"All files will be saved to {my_dir.path}")
+
+# save example file
+import os
+with open(os.path.join([my_dir.path, "example-file.txt"]), "w") as fout:
+    fout.write("Hello!")
+
+# the file `example-file.txt` will be available for download in the Mercury app.
+```
+
+The `OutputDir` creates temporary directory where files are saved.
+
+You can't save directories in the `OutputDir`, only files.
+
+import { Callout } from 'nextra-theme-docs'
+
+<Callout type="warning">
+There should be only one instance of `OutputDir` in the notebook.
+
+If you will create several instances of `OutputDir` they will point to the same path.
+</Callout>

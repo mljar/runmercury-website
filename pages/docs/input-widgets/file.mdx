@@ -1,0 +1,29 @@
+# File
+
+The `File` class allows to upload and read files in the notebook.
+
+Files can be accessed as binary objects or by reading them from file path (they are temporary stored for reading).
+
+```python
+import mercury as mr
+
+# add file upload widget
+my_file = mr.File(label="File upload", max_file_size="100MB")
+
+# get file path in the code and read its content
+print(f"Let's read content of {my_file.filepath}")
+with open(my_file.filepath, "r") as fin:
+    print(fin.read())
+
+# get file name
+print(f"Thanks for uploading {my_file.filename}")
+
+# get file content in binary format
+binary_content = my_file.value
+```
+
+## Parameters
+
+- **label** (_string_) - label of the file upload widget.
+- **max_file_size** (_string_) - the maximum size of allowed file upload.
+

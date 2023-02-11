@@ -1,0 +1,22 @@
+# Checkbox
+
+The `Checkbox` class adds button in the Mercury sidebar.
+
+
+```python
+import mercury as mr
+
+# add checkbox
+my_flag = mr.Checkbox(value=True, label="")
+
+# read checkbox value
+if my_flag.value:
+    print("Checkbox is ON")
+else:
+    print("Checkbox is OFF")
+```
+
+## Parameters
+
+- **value** (_boolean_) - the value of the checkbox, default is set to `True`.
+- **label** (_string_) - label of the checkbox.

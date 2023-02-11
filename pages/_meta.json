@@ -1,0 +1,22 @@
+{
+  "index": {
+    "type": "page",
+    "title": "Nextra",
+    "display": "hidden",
+    "theme": { 
+      "layout":"full"
+    }
+  },
+  "docs": {
+    "type": "page",
+    "title": "Documentation"
+  },
+  "examples": {
+    "type": "page",
+    "title": "Examples"
+  },
+  "tutorials": {
+    "type": "page",
+    "title": "Tutorials"
+  }
+}

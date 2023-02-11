@@ -1,0 +1,72 @@
+---
+title: How does Mercury work?
+---
+
+# How does Mercury work?
+
+Mercury is an open-source framework for converting Python notebooks into web applications. 
+
+It consists of two parts:
+- **Mercury Widgets** - set of [Input Widgets](/docs/input-widgets) and [Output Widgets](/docs/output-widgets). User can interact with notebook thanks them.  
+- **Mercury Server** - serves notebooks as web applications. It can serve multiple notebooks to multiple users.
+
+## Mercury Apps
+
+Mercury Apps are developed in two steps.
+
+
+<div className="steps-container">
+
+### Notebook development
+
+You need to create a Python notebook in Jupyter Notebook. During development you can use Mercury Widgets. 
+You can interact with them, but only widget value will be updated. You need to **manually run cells below the widget** code to see change.
+
+### Mercury App
+
+Input widgets are displayed in the sidebar. Any widget change triggers automatic cells re-execution. Only cells below widget definition code are re-executed.
+
+You can hide notebook's code, add authentication, produce file for download and many more ... 
+
+</div>
+
+## Mercury Widgets
+
+Mercury Widgets are created based on [`ipywidgets`](https://ipywidgets.readthedocs.io/en/stable/) package. 
+The main difference is automatic re-execution of cells after widget update when notebook is served as Mercury App.
+There is no automatic re-execution when developing notebook in the Jupyter Notebook, after widget change you need to manually execute cells below the widget.
+
+## Mercury Server
+
+Mercury Server is created based on [`Django`](https://www.djangoproject.com/), [`Django Channels`](https://channels.readthedocs.io/en/stable/) and [`React`](https://reactjs.org/).
+It reads your notebooks and serves them as web applications. When a user opens a notebook in the web browser, a WebSocket connection between the browser and Mercury Server is established.
+Mercury Server ensures that there is worker available. Worker is connected to Mercury Server with WebSocket. Mercury Server is a proxy between web browser and worker. 
+Every action from user is forwarded by Mercury Server to the worker. Worker responses are sent to the client browser passing through Mercury Server.
+
+Worker keeps open IPython kernel and knows the code from the notebook. User widgets interactions are executed by the kernel. Results are send as notebook output.
+
+## Mercury vs Voila
+
+[Voila](https://voila.readthedocs.io/en/stable/) is similar framework to Mercury. They both serve notebooks as interactive web apps. 
+
+The main differences:
+- Mercury offers simple re-execution of cells after widget update.
+- Mercury display all input widgets in the sidebar - you have app with ready layout.
+- Mercury provides [OutputDir](/docs/output-widgets/outputdir) for downloading files created in the notebook.
+- You can create [interactive presentations](/tutorials/presentation-python-jupyter-notebook) with Mercury.
+- Mercury has [built-in authentication](/docs/authentication) (coming soon).
+- Mercury provides easy [PDF/HTML notebook export](/docs/export-pdf-html).
+- [Mercury Cloud](/docs/cloud) (coming soon) offers super easy deployemnt - just upload your notebook.
+- You can schedule automatic execution of the notebook (coming soon). It is useful for building automatic reporting systems or dashboards with auto-refresh.
+
+## Mercury vs Streamlit
+
+[Streamlit](https://streamlit.io) is a Python framework for creating web apps.
+
+The main differences:
+- Mercury works with Jupyter Notebooks, Streamlit works with Python scripts. With Mercury you don't need to rewrite your analysis from Jupyter Notebook to Python script.
+- Mercury provides [OutputDir](/docs/output-widgets/outputdir) for downloading files created in the notebook.
+- You can create [interactive presentations](/tutorials/presentation-python-jupyter-notebook) with Mercury.
+- Mercury has [built-in authentication](/docs/authentication) (coming soon).
+- Mercury provides easy [PDF/HTML notebook export](/docs/export-pdf-html).
+- You can schedule automatic execution of the notebook (coming soon).

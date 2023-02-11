@@ -1,0 +1,31 @@
+# Markdown
+
+Display Markdown.
+
+```python
+import mercury as mr
+
+# display Markdown
+mr.Markdown(text="""# Header
+
+Sample **pargraph** below the header.
+""")
+
+# there is a shortcut for Markdown
+mr.Md("It is **Markdown** as well")
+
+# it might be very handy to display variables in the Markdown
+
+variable = 2 + 2
+mr.Md(f"# Result is {variable}")
+```
+
+## Parameters
+
+- **text** (_string_) - text to be displayed as Markdown.
+
+import { Callout } from 'nextra-theme-docs'
+
+<Callout type="info">
+Most of the components in the Mercury frameworks are classes, however `Markdown` is a function. It doesn't return anything, just displays the Markdown text.
+</Callout>

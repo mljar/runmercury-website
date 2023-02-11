@@ -1,0 +1,122 @@
+---
+title: Get started with Mercury framework
+---
+
+import { Card, Cards } from '@components/card'
+import webAppIcon from "@components/icons/webapp"
+import reportIcon from "@components/icons/report"
+import dashboardIcon from "@components/icons/dashboard"
+import websiteIcon from "@components/icons/website"
+import presentationIcon from "@components/icons/presentation"
+import restApiIcon from "@components/icons/restapi"
+
+# Mercury documentation
+
+**Mercury** is an [open-source](https://github.com/mljar/mercury) framework that helps you built web applications from your Jupyter Notebooks.
+
+You can create with Mercury:
+
+<Cards>
+  <Card icon={webAppIcon} title="Web App" href="/tutorials/web-app-python-jupyter-notebook"/>
+  <Card icon={reportIcon} title="Report" href="/tutorials/report-python-jupyter-notebook"/>
+  <Card icon={dashboardIcon} title="Dashboard" href="/tutorials/dashboard-python-jupyter-notebook"/>
+  <Card icon={websiteIcon} title="Website" href="/tutorials/website-python-jupyter-notebook"/>
+  <Card icon={presentationIcon} title="Presentation" href="/tutorials/presentation-python-jupyter-notebook"/>
+  <Card icon={restApiIcon} title="REST API (coming soon)" href="/tutorials/rest-api-python-jupyter-notebook"/>  
+</Cards>
+
+## Mercury modes
+
+Mercury offers set of widgets with simple re-execution of cells in the notebook.
+
+<div className="steps-container">
+
+### Development in Jupyter Notebook 
+
+Mercury comes with set of [Input Widgets](/docs/input-widgets) and [Output Widgets](/docs/output-widgets). 
+You can interact with widgets during notebook development. 
+
+Widgets values will be automatically updated. However, **cells below the widget definition code will not be automatically executed** (you need to run them manually).
+
+### Run notebook as Web App in Mercury 
+
+Serve notebook as web application with Mercury. Any widget update will trigger **automatic re-execution of cells**. Not all cells are re-executed.
+Only cells with widget definition and below are re-executed.
+
+It allows to speed-up computation and cache previous results.
+
+</div>
+## Installation
+
+Please install Mercury with the following command:
+
+```
+pip install mercury
+```
+
+Start Mercury Server: 
+
+```
+mercury run
+``` 
+
+Run Mercury demo:
+
+```
+mercury run demo
+```
+
+Import Mercury Widgets with the following code:
+
+```python
+import mercury as mr
+```
+
+## Run demo notebooks
+
+Mercury comes with built-in demo notebooks. You can play with them by running:
+
+```
+mercury run demo
+```
+
+The above command will create demo notebooks and start development server. Please check the Mercury website at `http://127.0.0.1:8000`.
+
+import { Callout } from 'nextra-theme-docs'
+
+<Callout type="info">
+  You need to have installed `pandas`, `numpy` and `matplotlib` to run demo notebooks.
+</Callout>
+
+## Quick Start
+
+Let's build a very simple web app with Mercury. Please create a new Python notebook with the following three code cells.
+
+<div className="steps-container">
+
+### Import Mercury package
+
+```python
+import mercury as mr
+```
+
+### Add text widget 
+
+```python
+name = mr.Text(label="What is your name?")
+```
+
+### Print widget value
+
+```python
+print(f"Hello {name.value}!")
+```
+</div>
+
+Please run the following command in the same directory as notebook:
+
+```
+mercury run
+```
+
+You should see in the web browser at address `http://127.0.0.1:8000` a Mercury website with your notebook.

@@ -1,0 +1,65 @@
+{
+  "index": "Get started",
+  "installation": "Installation",
+  "how-does-it-work": {
+    "title": "How does it work?"
+  },
+  "-- Widgets": {
+    "type": "separator",
+    "title": "Widgets"
+  },
+  "input-widgets": {
+    "title": "Input Widgets"
+  },
+  "output-widgets": {
+    "title": "Output Widgets"
+  },
+  "custom-widgets": {
+    "title": "Custom Widgets"
+  },
+  "-- Features": {
+    "type": "separator",
+    "title": "Features"
+  },
+  "show-hide-code-notebook": {
+    "title": "Show or hide code"
+  },
+  "export-pdf-html": {
+    "title": "Export to PDF or HTML"
+  },
+  "output-files": {
+    "title": "Output files"
+  },
+  "welcome": {
+    "title": "Welcome message"
+  },
+  "jupyter-notebook-embedding": {
+    "title": "Embedding"
+  },
+  "multiple-notebooks": {
+    "title": "Multiple Notebooks"
+  },
+  "authentication": {
+    "title": "Authentication"
+  },
+  "schedule-jupyter-notebook": {
+    "title": "Schedule notebook"
+  },
+  "commands": "",
+  "-- Deployment": {
+    "type": "separator",
+    "title": "Deployment"
+  },
+  "cloud": {
+    "title": "Mercury Cloud"
+  },
+  "docker": {
+    "title": "Docker"
+  },
+  "hugging-face": {
+    "title": "Hugging Face"
+  },
+  "railway": {
+    "title": "Railway"
+  }
+}

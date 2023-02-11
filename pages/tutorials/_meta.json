@@ -1,0 +1,25 @@
+{
+    "index": "Get started",
+    "-- Tutorials": {
+        "type": "separator",
+        "title": "Tutorials"
+      },
+    "web-app-python-jupyter-notebook": {
+        "title": "Create Web App"
+    },
+    "report-python-jupyter-notebook": {
+        "title": "Create Report"
+    },
+    "dashboard-python-jupyter-notebook": {
+        "title": "Create Dashboard"
+    },
+    "website-python-jupyter-notebook": {
+        "title": "Create Website"
+    },
+    "presentation-python-jupyter-notebook": {
+        "title": "Create Presentation"
+    },
+    "rest-api-python-jupyter-notebook": {
+        "title": "Create REST API"
+    }
+}

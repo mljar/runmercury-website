@@ -1,0 +1,66 @@
+
+import {Screenshot} from 'components/screenshot'
+import notebookPng from "../../public/images/static-notebook-code.png"
+import homeViewPng from "../../public/images/static-notebook-home-view.png"
+import appPng from "../../public/images/static-notebook-app.png"
+
+# Turn Jupyter Notebook into Website in 3 minutes
+
+Would you like to quickly turn your Python notebook into static website? It is very easy with Mercury framework.
+
+You need to do simple 3 steps:
+1. [Install Mercury](/docs/installation) framework.
+2. Add code cell with [`App`](/docs/input-widgets/app/) obejct and set `static_notebook=True` in constructor.
+3. Run notebook in Mercury.
+
+## 1. Install Mercury
+
+You can read more [here](/docs/installation/) about different ways to install Mercury package.
+
+The easiest way is to run:
+
+```
+pip install mercury 
+```
+
+## 2. Set `App` obejct with `static_notebook=True`
+
+Please open the notebook that you would like to convert to a static website. You need to add following code in it:
+
+```python
+import mercury as mr
+
+# configure App properties
+app = mr.App(title="Static notebook", description="Display static notebook", static_notebook=True)
+```
+
+Please set `static_notebook=True` - it will do the magic!
+
+#### Example notebook
+
+<Screenshot src={notebookPng} alt="Python notebook with App static_notebook=True" />
+
+## 3. Run Mercury
+
+The last step is to run Mercury Server. Please run the following command:
+
+```
+mercury run
+```
+
+You should see in the web browser at address `http://127.0.0.1:8000` a website like in the image below:
+
+<Screenshot src={homeViewPng} alt="Mercury Home View with one static notebook" />
+
+In the above screenshot only one notebook is served. Please click in the notebook title and you will see selected notebook website:
+
+<Screenshot src={appPng} alt="Mercury with static notebook" />
+
+You can download notebook as PDF or HTML format.
+
+### Additional notes
+
+- You can share as many notebooks as you want in Mercury (see [docs](/docs/multiple-notebooks/)).
+- You can easily customize [welcome message](/docs/welcome/) in the home view.
+- If you want to [show notebook code](/docs/show-hide-code-notebook), please add `show_code=True` in `App` constructor.
+

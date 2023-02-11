@@ -1,0 +1,24 @@
+# Button
+
+The `Button` class adds button widget. It is displayed below the code cell in the Jupyter Notebook and in the sidebar in the Mercury.
+
+```python
+import mercury as mr
+
+# add button 
+button = mr.Button(label="", style="primary")
+
+# after button clicked this will be true
+# but it will be true only once!
+if button.clicked:
+    print("Button clicked!")
+
+# second read will return false
+if button.clicked:
+    print("It will not be printed!")
+```
+
+## Parameters
+
+- **label** (_string_) - the label on the button.
+- **style** (_string_) - style (color) of the button, default is set to `primary`, available styles are `["primary", "success", "info", "warning", "danger"]`.

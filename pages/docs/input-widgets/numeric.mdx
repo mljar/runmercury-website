@@ -1,0 +1,22 @@
+# Numeric
+
+Adds a Markdown note in the sidebar.
+
+```python
+import mercury as mr
+
+# add numeric widget
+my_number = mr.Numeric(value=0, min=0, max=10, label="", step=1):
+  
+# access widget value
+print(f"Value is {my_number.value}")
+```
+
+## Parameters
+
+- **value** (_float_) - initial value in the widget.
+- **min** (_float_) - minimum allowed value in the widget.
+- **max** (_float_) - maximum allowed value in the widget.
+- **label** (_string_) - description of the widget.
+- **step** (_float_) - value of change after click.
+

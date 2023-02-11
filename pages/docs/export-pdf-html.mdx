@@ -1,0 +1,14 @@
+import {Screenshot} from 'components/screenshot'
+import animation from "../../public/images/export-notebook-pdf.gif"
+
+# Export PDF or HTML
+
+It is possible to export executed notebook to PDF or HTML file. You need to click on `Download` button in the sidebar and select desired format.
+
+<Screenshot src={animation} alt="Export executed notebook to PDF" />
+
+import { Callout } from 'nextra-theme-docs'
+
+<Callout type="info">
+  First time PDF download will trigger `pyppeteer` download and installation if not available in the system.
+</Callout>

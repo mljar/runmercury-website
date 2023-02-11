@@ -1,0 +1,26 @@
+# App
+
+The `App` class controls how the notebook is displayed in the Mercury.
+
+
+```python
+import mercury as mr
+
+# set Application parameters
+app = mr.App(title="",
+        description="",
+        show_code=False,
+        show_prompt=False,
+        continuous_update=True,
+        static_notebook=False)
+```
+
+## Parameters
+
+- **title** (_string_) - title of the application, it will be used in the home view and in sidebar.
+- **description** (_string_) - description of the application, it will be used in the home view.
+- **show_code** (_boolean_) - set to `True` to show code of the notebook, default is set to `False` which means that code is hidden.
+- **show_prompt** (_boolean_) - set to `True` if you want to show notebook prompt in the application, the `show_code` needs to be `True` as well. Default is set to `False`.
+- **continuous_update** (_boolean_) - default is set to `True` which means that notebook is recomputed immediately after widget value change. Please set to `False` if you want to have updates after clicking `Run` button.
+- **static_notebook** (_boolean_) - when set to `True` notebook will not be recomputed on any widget change (notebook is static). Default is `False` which means that app presented in Mercury is interactive.
+

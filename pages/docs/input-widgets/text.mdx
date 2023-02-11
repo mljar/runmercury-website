@@ -1,0 +1,20 @@
+# Text
+
+Adds text widget. It can be a text field (`rows=1`) or text area (`rows>1`). 
+
+```python
+import mercury as mr
+
+# add test widget
+your_text = mr.Text(value="", label="", rows=1)
+
+# use widget value in the code
+print(your_text.value)
+```
+
+## Parameters
+
+- **value** (_string_)- the initial value of the text widget.
+- **label** (_string_)- the label that will appear near the text widget.
+- **rows** (_integer_)- number of rows in the text widget. Default is set to `1`. 
+

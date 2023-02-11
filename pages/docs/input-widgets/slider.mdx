@@ -1,0 +1,22 @@
+# Slider
+
+Adds `Slider` widget.
+
+```python
+import mercury as mr
+
+# add range widget
+your_slider = mr.Slider(value=0, min=0, max=10, label="", step=1):
+    
+# access widget value in the code
+print(f"Your value is {your_slider.value}")
+```
+
+## Parameters
+
+- **value** (_integer_)- the initial value of the widget.
+- **min** (_int_) - minimum allowed value in the widget.
+- **max** (_int_) - maximum allowed value in the widget.
+- **label** (_string_) - the label that will appear near the widget.
+- **step** (_integer_) - value of change, default is set to `1`. 
+
