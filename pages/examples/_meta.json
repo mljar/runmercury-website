@@ -1,5 +1,18 @@
 {
-    "index": "Start",
-    "hello-world": ""
+    "index": "Examples list",
+    "-- Examples": {
+    "type": "separator",
+    "title": "Examples"
+  },
+  "hello-world": "Hello World",
+  "dynamic-widgets": "Dynamic Widgets",
+  "static-website-jupyter-notebook": "Static Notebook",
+  "load-large-dataset-jupyter-notebook": "Load large dataset",
+  "show-hide-code-jupyter-notebook": "Show hide code app",
+  "file-upload-jupyter-notebook": "File upload",
+  "matplotlib-jupyter-notebook": "Matplotlib starter",
+  "plotly-jupyter-notebook": "Plotly starter",
+  "display-pandas-dataframe-jupyter-notebook": "Display Pandas DataFrame",
+  "markdown-python-variables-jupyter-notebook": "Markdown with variables"
 }
   
