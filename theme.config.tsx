@@ -43,7 +43,7 @@ const config: DocsThemeConfig = {
   head: function useHead() {
     const { title } = useConfig()
     const { route } = useRouter()
-    const socialCard = "/images/mercury-og.png"
+    const socialCard = "https://runmercury.com/images/mercury-og.png"
     return (
       <>
         <meta name="msapplication-TileColor" content="#fff" />
