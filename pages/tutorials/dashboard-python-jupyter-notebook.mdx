@@ -28,7 +28,7 @@ mercury
 
 Please make sure that you have installed them.
 
-#### 1. Import packages
+### 1. Import packages
 
 In the frist cell, we will import required packages:
 
@@ -39,7 +39,7 @@ import mercury as mr
 ```
 
 
-#### 2. Setup Mercury App 
+### 2. Setup Mercury App 
 
 In the second cell, we will setup Mercury App properties:
 
@@ -55,7 +55,7 @@ app = mr.App(title="Financial dashboard", description="Dashboard with financial 
     If you would like to show code in your notebook, please set `show_code=True`.
 </Callout>
 
-#### 3. Add title
+### 3. Add title
 
 Please add a Markdown cell with a header:
 
@@ -63,7 +63,7 @@ Please add a Markdown cell with a header:
 # Historic stock price 📈
 ```
 
-#### 4. Add Mercury Select
+### 4. Add Mercury Select
 
 
 In the next cell, we will add a [`Select`](/docs/input-widgets/select/) widget:
@@ -77,7 +77,7 @@ ticker = mr.Select(value="TSLA",
 Please note, that it will display widget in the notebook. You can interact with it. 
 There are no other actions performed in the notebook. Only value of the widget is updated.
 
-#### 5. Load historic stock data 
+### 5. Load historic stock data 
 
 We will load the data with `yfinance` package:
 
@@ -89,7 +89,7 @@ That's all. It is done with 1 line of code.
 
 The value of the widget is obtained with `ticket.value`.
 
-#### 6. Display basic statistics 
+### 6. Display basic statistics 
 
 We will create a Markdown text with Python variables. Let's use [`Md`](/docs/output-widgets/markdown/) from Mercury:
 
@@ -101,7 +101,7 @@ mr.Md(f"""## Basic statistics
 
 The above code will display Markdown text.
 
-#### 7. Add subtitle
+### 7. Add subtitle
 
 Please add a Markdown cell with subtitle:
 
@@ -109,7 +109,7 @@ Please add a Markdown cell with subtitle:
 ## Last days data
 ```
 
-#### 8. Display historic data
+### 8. Display historic data
 
 Let's display the last rows from `history` DataFrame:
 
@@ -117,7 +117,7 @@ Let's display the last rows from `history` DataFrame:
 history.tail()
 ```
 
-#### 9. Add subtitle 
+### 9. Add subtitle 
 
 Please add a Makdown cell:
 
@@ -125,7 +125,7 @@ Please add a Makdown cell:
 ## Candle chart 🕯️
 ```
 
-#### 10. Display candle plot
+### 10. Display candle plot
 
 We will use `mplfinance` to easily create candle plot:
 

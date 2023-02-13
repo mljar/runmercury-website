@@ -38,7 +38,7 @@ mercury
 
 Please make sure that they are installed in your environment.
 
-#### 1. Import packages and App setup
+### 1. Import packages and App setup
 
 The first step is to import packages and setup Mercury [`App`](/docs/input-widgets/app/):
 
@@ -54,7 +54,7 @@ We setup `title` and `description` for `App` object.
 
 Please note that we set `Slide Type` to `Skip`. This cell will not appear in the presentation.
 
-#### 2. Add title
+### 2. Add title
 
 The second cell is a Markdown with title:
 
@@ -64,7 +64,7 @@ The second cell is a Markdown with title:
 
 The `Slide Type` is set to `Slide`. It is our first slide!  
 
-#### 3. Add slide with Markdown
+### 3. Add slide with Markdown
 
 Add new Markdown cell with the following cell. 
 
@@ -80,7 +80,7 @@ Add new Markdown cell with the following cell.
 Please set `Slide Type` to `Slide`. It will be a second slide. I'm using `##` as slide title (`#` will produce too large title in my opinion).
 
 
-#### 4. Add Mercury Widget
+### 4. Add Mercury Widget
 
 Please add code cell with [`Text`](/docs/input-widgets/text/) widget. We will use it, to ask users about their name.
 
@@ -91,7 +91,7 @@ name = mr.Text(label="What is your name?", value="Piotr")
 We set `Slide Type` as `Skip`, so this cell will not appear in the presentation.
 
 
-#### 5. Display name 
+### 5. Display name 
 
 Let's use the `name.value` in the slide. Please add a code cell. 
 We will display a Markdown text with Python variables by using [`Markdown`](/docs/output-widgets/markdown/) function from Mercury package.
@@ -123,7 +123,7 @@ The first five cells of the notebook:
 You can enter your name in the widget during the notebook development. There will be no change in other cells. 
 If you want to update the cell with new widget value, please execute it manually.
 
-#### 6. More widgets 
+### 6. More widgets 
 
 We can add more widgets to the presentation. They will be used to control chart in the next slide.
 
@@ -135,7 +135,7 @@ color = mr.Select(label="Mark color", value="blue", choices=["blue", "green", "r
 We have used [`Slider`](/docs/input-widgets/slider/) and [`Select`](/docs/input-widgets/select/) widgets. They are displayed in the notebook. 
 This cell will not be displayed in the presentation, so set `Slide Type` to `Skip`.
 
-#### 7. Scatter plot
+### 7. Scatter plot
 
 We will add a new code cell. It will have `Slide Type` set to `Slide`.
 
@@ -151,7 +151,7 @@ Screenshot of the notebook with scatter plot:
 
 <Screenshot src={notebookPng2} alt="Notebook code for presentation in Jupyter Notebook" />
 
-#### 8. Final slide
+### 8. Final slide
 
 Please add a last Markdown cell. Its `Slide Type` will be set to `Slide`:
 
