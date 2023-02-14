@@ -1,1 +1,67 @@
+import {Screenshot} from 'components/screenshot'
+import { Callout } from 'nextra-theme-docs'
+import notebookPng from "../../public/images/hello-world-notebook-ola.png"
+import appGif from "../../public/images/hello-world-app-ola.gif"
+
+
 # Hello World!
+
+Let's create a simple web app that asks user for name and display greetings.
+
+During notebook development you can interact with widget. Its value will be updated. 
+However, you need to manually execute cells to see a change.
+
+Cells are automatically re-executed when running notebook as Mercury App. 
+Mercury re-execute cell with widget definition and cells below.
+
+## Required packages
+
+You will need `mercury` package for this example.
+
+## Notebook
+
+Import package:
+```python
+import mercury as mr
+```
+
+Create a [`Text`](/docs/input-widgets/text/) widget:
+```python
+name = mr.Text(value="Piotr", label="What is your name?")
+```
+
+Print widget value:
+```python
+print(f"Hello {name.value}")
+```
+
+<Callout type="info">
+Cell 2 and 3 will be automatically re-executed after widget update when running as Mercury App.
+</Callout>
+
+Please save notebook as `hello-world.ipynb` file. Mercury will set `hello-world` as web app title.
+If you want to set different title please check the [`App`](/docs/input-widgets/app/) class.
+
+The screenshot of code in the Jupyter Notebook:
+
+<Screenshot src={notebookPng} alt="Python notebook with Hello World example" />
+
+
+## Mercury App
+
+Please start Mercury with the following command:
+
+```
+mercury run
+```
+
+Open web browser at address `http://127.0.0.1:8000`, you will see your notebooks. 
+Please select card with your notebook. You can set name value and press `Enter` to see a change.
+
+<Screenshot src={appGif} alt="Mercury App with Hello World example" />
+
+
+
+
+
+
