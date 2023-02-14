@@ -6,6 +6,12 @@ import calculatorIcon from "@components/icons/calculator";
 import websiteIcon from "@components/icons/website";
 import clickIcon from "@components/icons/click";
 import eyeIcon from "@components/icons/eye";
+import uploadIcon from "@components/icons/upload";
+import barChartIcon from "@components/icons/barChart";
+import bubbleChartIcon from "@components/icons/bubbleChart";
+import markdownIcon from "@components/icons/markdown";
+import fileAnalyticsIcon from "@components/icons/fileAnalytics";
+
 
 # Mercury examples
 
@@ -19,18 +25,16 @@ All example notebooks are available in [mercury-examples](https://github.com/mlj
   <Card icon={tableIcon} title="Load large dataset" href="/examples/load-large-dataset-jupyter-notebook/"/>
   <Card icon={clickIcon} title="Load on click" href="/examples/load-on-click/"/>
   <Card icon={eyeIcon} title="Show hide code app" href="/examples/show-hide-code-jupyter-notebook/"/>
-
-{" "}
-<Card title="File upload" href="/examples/file-upload-jupyter-notebook/" />
-<Card
-  title="Matplotlib starter"
-  href="/examples/matplotlib-jupyter-notebook/"
-/>
-<Card title="Plotly starter" href="/examples/plotly-jupyter-notebook/" />
-<Card
-  title="Pandas DataFrame"
-  href="/examples/display-pandas-dataframe-jupyter-notebook/"
-/>
-<Card title="Markdown with variables" href="/examples/markdown-python-variables-jupyter-notebook/" />
+  <Card icon={uploadIcon} title="File upload" href="/examples/file-upload-jupyter-notebook/" />
+  <Card icon={barChartIcon}
+    title="Matplotlib starter"
+    href="/examples/matplotlib-jupyter-notebook/"
+  />
+  <Card icon={bubbleChartIcon} title="Plotly starter" href="/examples/plotly-jupyter-notebook/" />
+  <Card icon={fileAnalyticsIcon}
+    title="Pandas DataFrame"
+    href="/examples/display-pandas-dataframe-jupyter-notebook/"
+  />
+  <Card icon={markdownIcon} title="Markdown with variables" href="/examples/markdown-python-variables-jupyter-notebook/" />
 
 </Cards>
