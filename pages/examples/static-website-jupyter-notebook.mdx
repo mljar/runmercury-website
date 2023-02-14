@@ -1,1 +1,60 @@
+import {Screenshot} from 'components/screenshot'
+import { Callout } from 'nextra-theme-docs'
+import notebookPng from "../../public/images/static-notebook-example.png"
+import appPng from "../../public/images/static-notebook-example-app.png"
+
+
 # Turn notebook to static website
+
+You can turn Python notebooks to static websites. Please create [`App`](/docs/input-wdgets/app/) object with `satic_notebook=True`. 
+This will display your notebook as a static website. What is more, you can control whether to show or hide code.
+
+## Required packages
+
+You need to install `mercury` package to run this example.
+
+## Notebook
+
+Import needed packages:
+
+```python
+import mercury as mr
+```
+
+Setup [`App`](/docs/input-widgets/app/) with `static_notebook=True`:
+
+```python
+app = mr.App(title="Static notebook",
+             description="Display notebook as static website",
+             show_code=True,
+             static_notebook=True)
+```
+
+Other cells with code:
+
+```python
+a = 1
+
+b = 2
+
+print(f"a + b is {a+b}")
+```
+
+The screenshot with code:
+
+<Screenshot src={notebookPng} alt="Python notebook with static option" />
+
+
+## Mercury App
+
+Please start Mercury in the same directory as notebook:
+
+```
+mercury run
+```
+
+When you open a notebook you should see:
+
+<Screenshot src={appPng} alt="Mercury App with static notebook" />
+
+The notebook can be downloaded as PDF or HTML file.
