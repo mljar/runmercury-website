@@ -9,6 +9,7 @@
   "increment-decrement": "Increment and decrement",
   "static-website-jupyter-notebook": "Static notebook",
   "load-large-dataset-jupyter-notebook": "Load large dataset",
+  "load-on-click": "Load on click",
   "show-hide-code-jupyter-notebook": "Show hide code app",
   "file-upload-jupyter-notebook": "File upload",
   "matplotlib-jupyter-notebook": "Matplotlib starter",

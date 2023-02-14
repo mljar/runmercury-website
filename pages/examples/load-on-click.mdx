@@ -1,0 +1,64 @@
+import {Screenshot} from 'components/screenshot'
+import notebookPng from "../../public/images/load-on-click-notebook.png"
+import appGif from "../../public/images/load-on-click-app.gif"
+
+
+# Load on click
+
+We will load dataset on button click in this example. Data is loaded only when button is clicked.
+
+## Required packages
+
+You will need `pandas` and `mercury` packages to run this example.
+
+## Notebook
+
+In the first cell, please import required packages:
+
+```python
+import pandas as pd
+import mercury as mr
+```
+
+Let's add [`Button`](/docs/input-widgets/button/) widget:
+
+```python
+load = mr.Button(label="Load data")
+```
+
+We will define variable to keep reference to dataset:
+
+```python
+df = None
+```
+
+We will load data when button is clicked:
+
+```python
+if load.clicked:
+    df = pd.read_csv("https://raw.githubusercontent.com/pplonski/datasets-for-start/master/adult/data.csv")
+```
+
+We display data in the last cell:
+
+```python
+df.head() if df is not None else print("Data not loaded")
+```
+
+The screenshot of the notebook's code in the Jupyter Notebook:
+
+<Screenshot src={notebookPng} alt="Python notebook with code for loading large dataset" />
+
+
+## Mercury App
+
+Please start Mercury in the same directory as notebook:
+
+```
+mercury run
+```
+
+You will see the app running at `http://127.0.0.1:8000`. Below is an animation with Mercury App.
+
+<Screenshot src={appGif} alt="Mercury App for loading large dataset" />
+

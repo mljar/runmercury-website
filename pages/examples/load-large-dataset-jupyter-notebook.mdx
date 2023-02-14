@@ -1,1 +1,59 @@
+import {Screenshot} from 'components/screenshot'
+import notebookPng from "../../public/images/load-large-dataset-notebook.png"
+import appGif from "../../public/images/load-large-dataset-app.gif"
+
+
 # Load large dataset
+
+We will load (quite) large dataset in this example. The data loading is done before adding Mercury Widgets.
+Thanks to this it will be executed only once. This greatly speedup the cells re-execution after widget update.
+
+## Required packages
+
+You will need `pandas` and `mercury` packages to run this example.
+
+## Notebook
+
+In the first cell, please import required packages:
+
+```python
+import pandas as pd
+import mercury as mr
+```
+
+Load dataset from remote resource, such loading might take a while:
+
+```python
+df = pd.read_csv("https://raw.githubusercontent.com/pplonski/datasets-for-start/master/adult/data.csv")
+```
+
+Let's add a [`Slider`](/docs/input-widgets/slider/) widget to control number of displayed samples:
+
+```python
+samples = mr.Slider(value=10, label="Samples", min=1, max=20)
+```
+
+Display samples:
+
+```python
+df.head(samples.value)
+```
+
+The screenshot of the notebook's code in the Jupyter Notebook:
+
+<Screenshot src={notebookPng} alt="Python notebook with code for loading large dataset" />
+
+## Mercury App
+
+Please start Mercury in the same directory as notebook:
+
+```
+mercury run
+```
+
+You will see the app running at `http://127.0.0.1:8000`. Below is an animation with Mercury App.
+
+<Screenshot src={appGif} alt="Mercury App for loading large dataset" />
+
+Mercury automatically executes cells after widget update. Only cell with widget definition and below are re-executed.
+Because of this re-execution strategy, cells above are not executed. The large dataset is loaded only once.
