@@ -1,1 +1,76 @@
+import {Screenshot} from 'components/screenshot'
+import { Callout } from 'nextra-theme-docs'
+import notebookPng from "../../public/images/dynamic-widgets-notebook.png"
+import appGif from "../../public/images/dynamic-widgets-app.gif"
+
+
 # Dynamic widgets
+
+Mercury allows you to update widgets during app running. Here is an example for dynamic widgets. There are two [`Select`](/docs/input-widgets/select/) widgets. 
+Choices in the second widget depend on selected values in the first one.
+
+## Required packages
+
+You will need to install `mercury` package to run this example.
+
+## Notebook
+
+Let's import required packages:
+
+```python
+import mercury as mr
+```
+
+We will define `list` and `dict` with small and capital letters:
+
+```python
+letters = ["small", "capital"]
+example_letters = {
+    "small": ["a", "b", "c", "d"],
+    "capital": ["A", "B", "C", "D"]
+}
+```
+
+We will choose letter size in the first [`Select`](/docs/input-widgets/select/):
+
+```python
+size = mr.Select(value="small", choices=letters, label="Small or capital?")
+```
+
+We will choose example letter in the second [`Select`](/docs/input-widgets/select/):
+
+```python 
+example = mr.Select(value=example_letters[size.value][0], 
+                    choices=example_letters[size.value], 
+                    label="Select letter")
+```
+
+The last cell with print selected values:
+
+```python 
+print(f"Example {size.value} letter is {example.value}")
+```
+
+The screenshot with code in the Jupyter Notebook:
+
+<Screenshot src={notebookPng} alt="Python notebook with dynamic widgets" />
+
+<Callout type="info">
+Please remember, that widget update doesn't trigger automatic cell re-execution during notebook development in Jupyter Notebook.
+
+Cells are automatically re-executed in Mercury.
+</Callout>
+
+## Mercury App
+
+Please start Mercury in the same directory as notebook:
+
+```
+mercury run 
+```
+
+The Mercury Site is available at `http://127.0.0.1:8000`. Please open notebook with dynamic widgets, you can play with widgets and see the updated output:
+
+<Screenshot src={appGif} alt="Mercury App with dynamic widgets" />
+
+The notebook code is available in [mercury-examples](https://github.com/mljar/mercury-examples) GitHub repository. 

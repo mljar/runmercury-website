@@ -1,13 +1,19 @@
-import { Card, Cards } from '@components/card'
-import worldIcon from "@components/icons/world"
-import tableIcon from "@components/icons/table"
+import { Card, Cards } from '@components/card';
+import worldIcon from "@components/icons/world";
+import tableIcon from "@components/icons/table";
+import selectIcon from "@components/icons/select";
+import calculatorIcon from "@components/icons/calculator";
+import globeIcon from "@components/icons/globe";
 
 # Mercury examples
 
+All example notebooks are available in [mercury-examples](https://github.com/mljar/mercury-examples) GitHub repository. 
+
 <Cards>
   <Card icon={worldIcon} title="Hello World" href="/examples/hello-world/"/>
-  <Card title="Dynamic widgets" href="/examples/dynamic-widgets/"/>
-  <Card title="Share static Notebook" href="/examples/static-website-jupyter-notebook/"/>
+  <Card icon={selectIcon} title="Dynamic widgets" href="/examples/dynamic-widgets/"/>
+  <Card icon={calculatorIcon} title="Increment and decrement" href="/examples/increment-decrement/"/>
+  <Card icon={} title="Share static Notebook" href="/examples/static-website-jupyter-notebook/"/>
   <Card icon={tableIcon} title="Load large dataset" href="/examples/load-large-dataset-jupyter-notebook/"/>
   <Card title="Show hide code app" href="/examples/show-hide-code-jupyter-notebook/"/>
 
