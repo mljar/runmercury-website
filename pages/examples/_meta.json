@@ -11,10 +11,6 @@
   "load-large-dataset-jupyter-notebook": "Load large dataset",
   "load-on-click": "Load on click",
   "show-hide-code-jupyter-notebook": "Show hide code app",
-  "file-upload-jupyter-notebook": "File upload",
-  "matplotlib-jupyter-notebook": "Matplotlib starter",
-  "plotly-jupyter-notebook": "Plotly starter",
-  "display-pandas-dataframe-jupyter-notebook": "Display Pandas DataFrame",
-  "markdown-python-variables-jupyter-notebook": "Markdown with variables"
+  "file-upload-jupyter-notebook": "File upload"
 }
   
