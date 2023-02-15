@@ -1,1 +1,63 @@
+import {Screenshot} from 'components/screenshot'
+import { Callout } from 'nextra-theme-docs'
+import notebookPng from "../../public/images/file-upload-notebook.png"
+import appGif from "../../public/images/file-upload-app.gif"
+
 # File Upload 
+
+Let's upload file to the Python Notebook. 
+
+## Required packages 
+
+You need to install `mercury` package to run this example.
+
+## Notebook
+
+Please import required packages:
+
+```python
+import mercury as mr
+```
+
+Let's add [`File`](/docs/input-widgets/file) upload widget:
+
+```python
+file = mr.File(label="File upload", max_file_size="10MB")
+```
+
+We can print uploaded file name and path (path will be temporary):
+
+```python
+print(f"Uploaded file name: {file.filename}")
+print(f"Uploaded file path: {file.filepath}")
+```
+
+We can read file as normal file:
+
+```python
+if file.filepath is not None:
+    with open(file.filepath, "r") as fin:
+        print(fin.read())
+```
+
+It is important to check if `filepath` is not `None` before reading the file. The `filepath` attribute will be set after file is uploaded.
+
+The screenshot of the notebook's code in the Jupyter Notebook:
+
+<Screenshot src={notebookPng} alt="Python notebook with file upload widget" />
+
+
+## Mercury App
+
+Please start Mercury in the same directory as your notebook:
+
+```
+mercury run
+```
+
+You should see app running at address: `http://127.0.0.1:8000`.
+
+The animation with Mercury App and file upload example:
+
+<Screenshot src={appGif} alt="Mercury App with file upload widget" />
+
