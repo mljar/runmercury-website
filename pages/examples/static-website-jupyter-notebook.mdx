@@ -44,7 +44,6 @@ The screenshot with code:
 
 <Screenshot src={notebookPng} alt="Python notebook with static option" />
 
-
 ## Mercury App
 
 Please start Mercury in the same directory as notebook:
@@ -58,3 +57,12 @@ When you open a notebook you should see:
 <Screenshot src={appPng} alt="Mercury App with static notebook" />
 
 The notebook can be downloaded as PDF or HTML file.
+
+## Additional tips 
+
+- You can hide sidebar by setting `app = mr.App(show_sidebar=False, ... other arguments )`.
+- You can hide `Download` button in the sidebar by setting `app = mr.App(allow_download=False, ... other agruments)`.
+- Mercury App display notebook in full screen mode. You can set `1140px` as width for notebook displayed in Mercury by setting `app = mr.App(full_screen=False, ... other arguments)`.
+
+Please check [`App`](/docs/input-widgets/app/) documentation for details.
+

@@ -12,7 +12,10 @@ app = mr.App(title="",
         show_code=False,
         show_prompt=False,
         continuous_update=True,
-        static_notebook=False)
+        static_notebook=False,
+        show_sidebar=True,
+        full_screen=True,
+        allow_download=True)
 ```
 
 ## Parameters
@@ -23,4 +26,7 @@ app = mr.App(title="",
 - **show_prompt** (_boolean_) - set to `True` if you want to show notebook prompt in the application, the `show_code` needs to be `True` as well. Default is set to `False`.
 - **continuous_update** (_boolean_) - default is set to `True` which means that notebook is recomputed immediately after widget value change. Please set to `False` if you want to have updates after clicking `Run` button.
 - **static_notebook** (_boolean_) - when set to `True` notebook will not be recomputed on any widget change (notebook is static). Default is `False` which means that app presented in Mercury is interactive.
+- **show_sidebar** (_boolean_) - you can hide sidebar when Mercury App is open. User can open sidebar by clicking in the top right blue button with arror. By default sidebar is displayed.
+- **full_screen** (_boolean_) - by default (`True`) notebook is displayed with full width. Please set `False` to limit notebook width to `1140px`.
+- **allow_download** (_boolean_) - by default there is `Download` button available to export results as PDF or HTML file. You can hide `Download` button by setting `allow_download=False`.
 
