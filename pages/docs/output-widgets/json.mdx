@@ -1,0 +1,31 @@
+# JSON
+
+Display JSON in Jupyter Notebooks with interactive collapsible viewer.
+
+```python
+import mercury as mr
+
+# example JSON
+data = {
+    "firstKey": ["a", "b", "c"],
+    "secondKey": [1, 2, 3, 4],
+    "thirdKey": "Hello World!"
+}
+
+# display JSON
+mr.JSON(json_data=data, level=1)
+
+# shorter form
+mr.JSON(data)
+```
+
+## Parameters
+
+- **json_data** (_dict_ or _lit_) - data to be displayed, it should be `dict` but it will work with `list` as well.
+- **level** (_integer_) - how many levels display initially. User can interact with displayed data by clicking `+` and `-` buttons. 
+
+import { Callout } from 'nextra-theme-docs'
+
+<Callout type="info">
+Most of the components in the Mercury frameworks are classes, however `JSON` is a function. 
+</Callout>
