@@ -1,11 +1,12 @@
 import {Screenshot} from 'components/screenshot'
 import { Callout } from 'nextra-theme-docs'
-import notebookPng from "../../public/images/dynamic-widgets-notebook.png"
-import appGif from "../../public/images/dynamic-widgets-app.gif"
+import notebookPng from "../../public/images/display-json-notebook.png"
+import appGif from "../../public/images/display-json-app.gif"
 
 
 # Display JSON with collapsible viewer in Jupyter Notebook
 
+Let's use [`JSON`](/docs/output-widgets/json/) to display JSON data in collapsible viewer in Jupyter Notebook and in Mercury App.
 
 ## Required packages
 
@@ -19,10 +20,41 @@ Let's import required packages:
 import mercury as mr
 ```
 
+Please set [`App`](/docs/input-widgets/app/) properties:
+- `title` - will be used in the sidebar,
+- `static_notebook` - will serve notebook as static website.
+
+```python
+app = mr.App(title="Display notebook", static_notebook=True)
+```
+
+Create example `dict` with data:
+
+```python
+data = {
+    "firstKey": ["a", "b", "c"],
+    "secondKey": [1, 2, 3, 4],
+    "thirdKey": "Hello World!"
+}
+```
+
+Display JSON data:
+
+```python
+mr.JSON(data)
+```
 
 The screenshot with code in the Jupyter Notebook:
 
 <Screenshot src={notebookPng} alt="Python notebook with dynamic widgets" />
+
+You can control at what initial level show your JSON data by setting `level` argument:
+
+```python
+# show data at second level
+mr.JSON(data, level=2)
+```
+
 
 <Callout type="info">
 Please remember, that widget update doesn't trigger automatic cell re-execution during notebook development in Jupyter Notebook.
@@ -38,8 +70,10 @@ Please start Mercury in the same directory as notebook:
 mercury run 
 ```
 
-The Mercury Site is available at `http://127.0.0.1:8000`. Please open notebook with dynamic widgets, you can play with widgets and see the updated output:
+The Mercury Site is available at `http://127.0.0.1:8000`. 
 
-<Screenshot src={appGif} alt="Mercury App with dynamic widgets" />
+Please open notebook with JSON viewer, you can interact with displayed data by clicking `+` and `-` buttons:
+
+<Screenshot src={appGif} alt="Mercury App with JSON viewer" />
 
 The notebook code is available in [mercury-examples](https://github.com/mljar/mercury-examples) GitHub repository. 
