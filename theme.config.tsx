@@ -1,11 +1,20 @@
-import type { DocsThemeConfig} from 'nextra-theme-docs';
-import { useConfig } from 'nextra-theme-docs'
-import { useRouter } from 'next/router'
+import type { DocsThemeConfig } from "nextra-theme-docs";
+import { useConfig } from "nextra-theme-docs";
+import { useRouter } from "next/router";
+import { Footer } from "@components/Footer";
 
 const logo = (
   <span>
-    <img src="/images/mercury-black-logo.svg" style={{height: "33px"}} className="dark:hidden"></img>
-    <img src="/images/mercury-white-logo.svg" style={{height: "33px"}} className="hidden dark:block"></img>
+    <img
+      src="/images/mercury-black-logo.svg"
+      style={{ height: "33px" }}
+      className="dark:hidden"
+    ></img>
+    <img
+      src="/images/mercury-white-logo.svg"
+      style={{ height: "33px" }}
+      className="hidden dark:block"
+    ></img>
     <style jsx>{`
       span {
         padding: 0.5rem 0.5rem 0.5rem 0;
@@ -24,26 +33,26 @@ const logo = (
       }
     `}</style>
   </span>
-)
+);
 
 const config: DocsThemeConfig = {
   project: {
-    link: 'https://github.com/mljar/mercury'
+    link: "https://github.com/mljar/mercury",
   },
-  docsRepositoryBase: 'https://github.com/mljar/runmercury-website/tree/main',
+  docsRepositoryBase: "https://github.com/mljar/runmercury-website/tree/main",
   useNextSeoProps() {
-    const { asPath } = useRouter()
-    if (asPath !== '/') {
+    const { asPath } = useRouter();
+    if (asPath !== "/") {
       return {
-        titleTemplate: '%s – Mercury'
-      }
+        titleTemplate: "%s – Mercury",
+      };
     }
   },
   logo,
   head: function useHead() {
-    const { title } = useConfig()
-    const { route } = useRouter()
-    const socialCard = "https://runmercury.com/images/mercury-og.png"
+    const { title } = useConfig();
+    const { route } = useRouter();
+    const socialCard = "https://runmercury.com/images/mercury-og.png";
     return (
       <>
         <meta name="msapplication-TileColor" content="#fff" />
@@ -65,13 +74,15 @@ const config: DocsThemeConfig = {
         <meta name="twitter:url" content="https://runmercury.com" />
         <meta
           name="og:title"
-          content={title ? title : 'Mercury - build web apps in Jupyter Notebook'}
+          content={
+            title ? title : "Mercury - build web apps in Jupyter Notebook"
+          }
         />
         <meta name="og:image" content={socialCard} />
         <meta name="apple-mobile-web-app-title" content="Mercury" />
         <link rel="icon" href="/favicon/favicon.ico" />
       </>
-    )
+    );
   },
   // banner: {
   //   key: '2.0-release',
@@ -82,44 +93,26 @@ const config: DocsThemeConfig = {
   //   )
   // },
   editLink: {
-    text: 'Edit this page on GitHub →'
+    text: "Edit this page on GitHub →",
   },
   feedback: {
-    content: 'Question? Give us feedback →',
-    labels: 'feedback'
+    content: "Question? Give us feedback →",
+    labels: "feedback",
   },
   sidebar: {
     titleComponent({ title, type }) {
-      if (type === 'separator') {
-        return <span className="cursor-default">{title}</span>
+      if (type === "separator") {
+        return <span className="cursor-default">{title}</span>;
       }
-      return <>{title}</>
+      return <>{title}</>;
     },
     defaultMenuCollapseLevel: 1,
     toggleButton: true,
   },
   footer: {
-    text: (
-      <div className="flex w-full flex-col items-center sm:items-start">
-        <div>
-          <a
-            className="flex items-center gap-1 text-current"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="mljar.com homepage"
-            href="https://mljar.com"
-          >
-            <span>Powered by MLJAR</span>
-            
-          </a>
-        </div>
-        <p className="mt-6 text-xs">
-          © {new Date().getFullYear()} The MLJAR Project.
-        </p>
-      </div>
-    )
+    text: <Footer />,
   },
   //darkMode: false
-}
+};
 
-export default config
+export default config;
