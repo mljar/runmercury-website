@@ -1,0 +1,64 @@
+import {Screenshot} from 'components/screenshot'
+import notebookPng from "../../public/images/stop-execution-notebook.png"
+import appGif from "../../public/images/stop-execution-app.gif"
+
+
+# Stop cell execution in notebook
+
+Sometimes you would like to stop execution of cells. 
+There is a [`Stop`](/docs/output-widgets/stop/) that can be used to stop execution of cells in Jupyter Notebook from Python code.
+
+In this example, you will learn how to use `Stop` function. We will use [`Checkbox`](/docs/input-widgets/checkbox/) widget to call `Stop` function. 
+Cells below  called `Stop()` function will not be executed.
+
+## Required packages
+
+You will need `mercury` package to run this example.
+
+## Notebook
+
+In the first cell, please import required packages:
+
+```python
+import mercury as mr
+```
+
+Add `Checkbox`:
+
+```python
+should_stop = mr.Checkbox(value=False, label="Should we stop?")
+```
+
+Call `Stop()` when `Checkbox` is switched on:
+
+```python
+if should_stop.value:
+    print("We stop execution here!")
+    mr.Stop()
+```
+
+Let's add some code just to see the `Stop` effect:
+
+```python
+print("Some code ...")
+```
+
+The notebook's code in the Jupyter Notebook:
+
+<Screenshot src={notebookPng} alt="Python notebook with code for cells execution stop" />
+
+## Mercury App
+
+Please start Mercury in the same directory as notebook:
+
+```
+mercury run
+```
+
+You will see the app running at `http://127.0.0.1:8000`. Below is an animation with Mercury App:
+
+<Screenshot src={appGif} alt="Mercury App for cells execution stop" />
+
+Mercury automatically executes cells after `Checkbox` update. The `Stop()` functions stops cells execution.
+
+Notebook from this example is available in the [mercury-examples](https://github.com/mljar/mercury-examples) repository.

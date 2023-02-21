@@ -1,6 +1,6 @@
 {
-    "index": "Examples list",
-    "-- Examples": {
+  "index": "Examples list",
+  "-- Examples": {
     "type": "separator",
     "title": "Examples"
   },
@@ -12,6 +12,6 @@
   "load-on-click": "Load on click",
   "show-hide-code-jupyter-notebook": "Show hide code app",
   "file-upload-jupyter-notebook": "File upload",
-  "display-json-jupyter-notebook": "Display JSON"
+  "display-json-jupyter-notebook": "Display JSON",
+  "stop-cell-execution-jupyter-notebook": "Stop cell execution"
 }
-  
