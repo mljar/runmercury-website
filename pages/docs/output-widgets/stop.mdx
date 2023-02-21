@@ -1,6 +1,7 @@
 # Stop
 
-It stops execution of cells. When function `Stop` is called then cells below are not executed. It can be used as function `Stop` or you can raise exception `StopException`.
+It stops execution of cells. When function `Stop()` is called then cells below are not executed. 
+It can be used as function `Stop` or you can raise exception `StopExecution`.
 
 ```python
 import mercury as mr
@@ -9,13 +10,13 @@ import mercury as mr
 mr.Stop()
 
 # or you can raise exception
-raise mr.StopException()
+raise mr.StopExecution()
 ```
 
-The `Stop` function and `StopException` don't leave traceback in the notebook. The exception stops cells execution.
+The `Stop` function and `StopExecution` exception don't leave traceback in the notebook. 
 
 import { Callout } from 'nextra-theme-docs'
 
 <Callout type="info">
-You can use `Stop` in Jupyter Notebook during development. Please click `Run All` to see its effect.
+You can use `Stop()` in Jupyter Notebook during development. Please click `Run All` to see its effect.
 </Callout>
