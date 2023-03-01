@@ -1,3 +1,4 @@
+import {Screenshot} from "components/screenshot"
 import { Card, Cards } from '@components/card'
 import webAppIcon from "@components/icons/webapp"
 import reportIcon from "@components/icons/report"
@@ -5,6 +6,8 @@ import dashboardIcon from "@components/icons/dashboard"
 import websiteIcon from "@components/icons/website"
 import presentationIcon from "@components/icons/presentation"
 import restApiIcon from "@components/icons/restapi"
+import tutorialBanner from "../../public/images/tutorials-banner.jpeg"
+
 
 # Mercury Tutorials
 
@@ -18,6 +21,9 @@ Mercury Tutorials to help you get started with Mercury framework.
   <Card icon={presentationIcon} title="Create Presentation" href="/tutorials/presentation-python-jupyter-notebook"/>
   <Card icon={restApiIcon} title="REST API (coming soon)" href="/tutorials/rest-api-python-jupyter-notebook"/>  
 </Cards>
+
+<Screenshot src={tutorialBanner} width="100%" alt="Inspiration for your projects" full={false}/>  
+
 
 
 {/* <Cards num={2}>

@@ -1,9 +1,61 @@
+import { Callout } from 'nextra-theme-docs'
+import {Screenshot} from 'components/screenshot'
+import adminPanelPng from "../../public/images/mercury-admin-panel.png"
+import apSelectSitePng from "../../public/images/mercury-admin-panel-select-site.png"
+import apSharePrivatePng from "../../public/images/mercury-admin-panel-share-private.png"
+
+
 # Authentication
 
-Authentication was available in Mercury Version 1 for users with commercial license. We decided to add authentication to the open-souce as well. It should be available soon!
+You can share notebooks publicly or with selected users. 
 
-import { Callout } from 'nextra-theme-docs'
+Mercury Site can be shared as:
+- Public Site - all notebooks are available publicly, 
+- Private Site - all notebooks are available only to users with access rights.
 
-<Callout type="warning">
-  Work in progress ...
+When developing locally with Mercury, there is a default Site created. It is public by default.
+There is a default user created with credentials:
+- username: `developer@example.com`
+- password: `developer`
+
+You can edit default sharing parameters in Mercury Admin Panel. 
+
+## Admin Panel
+
+Please create a super-user account:
+
+```
+mercury createsuperuser
+```
+
+Please fill needed fields. You will login with `username` and `password`. 
+
+Navigate to `127.0.0.1:8000/admin` to see the Admin Panel:
+
+<Screenshot src={adminPanelPng} alt="Login to Mercury Admin Panel" />
+
+
+## Edit Site
+
+Please select `Site` unser `ACCOUNTS`, you should see screen like in the screenshot below:
+
+<Screenshot src={apSelectSitePng} alt="Select Site to edit" />
+
+Please click on Site `ID` and you will see Site details. Please change `Share` field and click `SAVE` in the bottom:
+
+<Screenshot src={apSharePrivatePng} alt="Set share to private for Mercury Site" />
+
+Your Mercury Site is private now. Only authenticated users with proper rights will be able to access notebooks.
+
+## Add users
+
+Adding a new user requires three steps:
+
+1. Please create a new user with `username` and `password`(after selecting `Users` in the left side bar).
+2. Please create `Email address` for new user. The address should be `Verfied` and `Primary`.
+3. Please create a `Membership` for new user by selecting a new user and Site.
+
+
+<Callout type="info">
+  Sorry if the whole process looks a little too complicated. We are working on Mercury Cloud service, that will serve UI dashboard for managing users and Sites.
 </Callout>
