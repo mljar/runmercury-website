@@ -3,8 +3,16 @@
     "type": "page",
     "title": "Mercury",
     "display": "hidden",
-    "theme": { 
-      "layout":"full"
+    "theme": {
+      "layout": "full"
+    }
+  },
+  "pricing": {
+    "type": "page",
+    "title": "Pricing",
+    "theme": {
+      "typesetting": "article",
+      "layout": "full"
     }
   },
   "docs": {
