@@ -28,7 +28,18 @@
     "title": "Tutorials"
   },
   "support": {
+    "display": "hidden",
     "type": "page",
     "title": "Support"
+  },
+  "terms-of-service": {
+    "display": "hidden",
+    "type": "page",
+    "title": "Terms of Service"
+  },
+  "privacy-policy": {
+    "display": "hidden",
+    "type": "page",
+    "title": "Privacy Policy"
   }
 }

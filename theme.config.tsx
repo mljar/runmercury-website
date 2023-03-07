@@ -1,7 +1,7 @@
 import type { DocsThemeConfig } from "nextra-theme-docs";
 import { useConfig } from "nextra-theme-docs";
 import { useRouter } from "next/router";
-import { Footer } from "@components/Footer";
+import { Footer } from "components/Footer";
 
 const logo = (
   <span>

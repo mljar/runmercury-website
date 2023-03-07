@@ -37,6 +37,16 @@ const navigation = {
     {
       name: "Examples",
       href: "/examples/",
+    }
+  ],
+  contact: [
+    {
+      name: "Contact us",
+      href: "/support/contact/",
+    },
+    {
+      name: "Support",
+      href: "/support/support/",
     },
     {
       name: "GitHub",
@@ -44,8 +54,8 @@ const navigation = {
     },
   ],
   legal: [
-    { name: "Privacy Policy", href: "https://mljar.com/privacy-policy/" },
-    { name: "Terms of Service", href: "https://mljar.com/terms-of-service/" },
+    { name: "Privacy Policy", href: "/privacy-policy/" },
+    { name: "Terms of Service", href: "/terms-of-service/" },
   ],
 };
 
@@ -68,7 +78,7 @@ export function Footer() {
   return (
     <footer className="" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
-        Footer
+        Mercury
       </h2>
       <div className="py-8 mx-auto max-w-7xl">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
@@ -78,6 +88,18 @@ export function Footer() {
                 <FooterHeader>Mercury</FooterHeader>
                 <ul role="list" className="mt-4 space-y-1.5 list-none ml-0">
                   {navigation.mercury.map((item) => (
+                    <li key={item.name}>
+                      <FooterLink href={item.href}>{item.name}</FooterLink>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div className="mt-12 md:!mt-0">
+                <FooterHeader>Contact</FooterHeader>
+                <ul role="list" className="mt-4 space-y-1.5 list-none ml-0">
+                  {navigation.contact.map((item) => (
                     <li key={item.name}>
                       <FooterLink href={item.href}>{item.name}</FooterLink>
                     </li>
@@ -108,7 +130,7 @@ export function Footer() {
               <a
                 href="https://forms.gle/EjqYi3ttEkZkuKy46"
                 target="_blank"
-                className="px-6 py-3 text-white no-underline bg-blue-500 rounded hover:bg-blue-600 hover:no-underline font-medium"
+                className="px-6 py-3 text-white no-underline bg-primary-600 rounded hover:bg-primary-700 hover:no-underline font-medium"
               >
                 Subscribe
               </a>

@@ -1,6 +1,4 @@
-import nextra from 'nextra'
-
-const withNextra = nextra({
+const withNextra = require('nextra')({
   theme: 'nextra-theme-docs',
   themeConfig: './theme.config.tsx',
   staticImage: true,
@@ -11,7 +9,7 @@ const withNextra = nextra({
   defaultShowCopyCode: true
 })
 
-export default withNextra({
+module.exports = withNextra({
   reactStrictMode: true,
   eslint: {
     // Eslint behaves weirdly in this monorepo.
@@ -20,5 +18,5 @@ export default withNextra({
   images: {
     unoptimized: true,
   },
-  trailingSlash: true,
+  trailingSlash: true
 })
