@@ -1,237 +1,72 @@
-import tickIcon from "components/icons/tick";
+import { useState } from "react";
+
+import CloudPricing from "components/pricing/cloud";
+import SelfHostedPricing from "components/pricing/self";
+
+export function ToggleDeployment() {
+  const [cloud, setCloud] = useState(true);
+  const title = cloud? "Mercury Cloud" : "Self-Hosted"
+return (
+<div className="p-1 m-1">
+    <center>
+        <label className="relative inline-flex items-center cursor-pointer">
+        <input
+        type="checkbox"
+        className="sr-only peer"
+        onChange={(e) => setCloud(!cloud)}
+        checked={cloud}
+        />
+        <div
+                className="w-11 h-6 bg-gray-200 peer-focus:outline-none 
+        peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 
+        rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full 
+        peer-checked:after:border-white after:content-[''] 
+        after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border 
+        after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary-600"
+                ></div>
+        <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Choose Cloud or Self-Hosted</span>
+        </label>
+        <div className="p-4 mb-4 text-3xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+            {cloud && "Mercury Cloud"} {!cloud && "Self-Hosted"}
+        </div>
+
+    </center>
+
+    {cloud && CloudPricing}
+    {!cloud && SelfHostedPricing}
+</div>
+
+);
+}
+
 
 <section className="">
   
-  <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+  <div className="px-4 mx-auto max-w-screen-xl lg:pt-16 lg:px-6">
     <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
       <h1 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Mercury Pricing</h1>
-      <p className="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400 pt-4" >
-        You can self-host Mercury for free - yes, it
-         is <a href="https://github.com/mljar/mercury" target="_blank" className="font-extrabold">open-source</a>.
-        
-        Or you can use our Cloud offering. It is the easiest way to share notebooks online.
-        
-        Setup your Site in seconds with just a few clicks.
+      <p className=" font-light text-gray-500 sm:text-xl dark:text-gray-400 pt-4" >
+        The easiest way to deploy notebooks online is to use Mercury Cloud.
 
+        You can also self-host Mercury.
       </p>
-
-       <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Mercury Cloud will be available soon!</h2>
-       <a href="https://forms.gle/EjqYi3ttEkZkuKy46" target="_blank" 
-                className="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Notify when ready</a>
     </div>
-
   </div>
 
-    <div className="space-y-8 lg:grid lg:grid-cols-4 sm:gap-6 xl:gap-10 lg:space-y-0">
+<ToggleDeployment />
 
-          <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
-              <h3 className="mb-4 text-2xl font-semibold">Starter</h3>
-              <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">Start for free.
-                <br/> No credit card required</p>
-              <div className="flex justify-center items-baseline my-8">
-                <span className="mr-2 text-5xl font-extrabold">$0</span>
-                <span className="text-gray-500 dark:text-gray-400">/month</span>
-              </div>
-
-              <ul role="list" className="mb-8 space-y-4 text-left">
-
-                  <li className="flex items-center space-x-3">
-
-                      {tickIcon}
-                      <span>Setup only <span className="font-semibold">1 Mercury Site</span></span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                      {tickIcon}
-                      <span><span className="font-semibold">Public</span> or <span className="font-semibold">Private</span> notebooks</span>
-                  </li>
-
-                  <li className="flex items-center space-x-3">
-                      {tickIcon}
-                      <span>Invite <span className="font-semibold">unlimited users</span></span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-
-                      {tickIcon}
-                      <span>Upload up to <span className="font-semibold">5 files</span></span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-
-                      {tickIcon}
-                      <span>Max file size <span className="font-semibold">10MB</span></span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-
-                      {tickIcon}
-                      <span><span className="font-semibold">5 hours of</span> worker /monthly</span>
-                  </li>
-              </ul>
-              <a href="https://forms.gle/EjqYi3ttEkZkuKy46" target="_blank" 
-                className="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Notify when ready</a>
-          </div>
-
-
-          <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
-              <h3 className="mb-4 text-2xl font-semibold">Pro</h3>
-              <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">Best option for professionals. Setup multiple Sites </p>
-              <div className="flex justify-center items-baseline my-8">
-                <span className="mr-2 text-5xl font-extrabold">$20</span>
-                <span className="text-gray-500 dark:text-gray-400">/month</span>
-              </div>
-
-              <ul role="list" className="mb-8 space-y-4 text-left">
-
-                  <li className="flex items-center space-x-3">
-
-                      {tickIcon}
-                      <span>Setup up to <span className="font-semibold">3 Mercury Sites</span></span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                      {tickIcon}
-                      <span><span className="font-semibold">Public</span> or <span className="font-semibold">Private</span> notebooks</span>
-                  </li>
-
-                  <li className="flex items-center space-x-3">
-                      {tickIcon}
-                      <span>Invite <span className="font-semibold">unlimited users</span></span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-
-                      {tickIcon}
-                      <span>Upload up to <span className="font-semibold">25 files</span> per Site</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-
-                      {tickIcon}
-                      <span>Max file size <span className="font-semibold">50MB</span></span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-
-                      {tickIcon}
-                      <span><span className="font-semibold">25 hours of</span> worker /monthly</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-
-                      {tickIcon}
-                      <span>Style customization</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-
-                      {tickIcon}
-                      <span>Custom domains</span>
-                  </li>
-              </ul>
-              <a href="https://forms.gle/EjqYi3ttEkZkuKy46" target="_blank" 
-                className="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Notify when ready</a>
-          </div>
-
-            <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
-              <h3 className="mb-4 text-2xl font-semibold">Business</h3>
-              <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">Data teams that need to share more notebooks </p>
-              <div className="flex justify-center items-baseline my-8">
-                <span className="mr-2 text-5xl font-extrabold">$100</span>
-                <span className="text-gray-500 dark:text-gray-400">/month</span>
-              </div>
-
-              <ul role="list" className="mb-8 space-y-4 text-left">
-                  <li className="flex items-center space-x-3">
-
-                      {tickIcon}
-                      <span>Setup up to <span className="font-semibold">5 Mercury Sites</span></span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                      {tickIcon}
-                      <span><span className="font-semibold">Public</span> or <span className="font-semibold">Private</span> notebooks</span>
-                  </li>
-
-                  <li className="flex items-center space-x-3">
-                      {tickIcon}
-                      <span>Invite <span className="font-semibold">unlimited users</span></span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-
-                      {tickIcon}
-                      <span>Upload up to <span className="font-semibold">50 files</span> per Site</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-
-                      {tickIcon}
-                      <span>Max file size <span className="font-semibold">100MB</span></span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-
-                      {tickIcon}
-                      <span><span className="font-semibold">100 hours of</span> worker /monthly</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-
-                      {tickIcon}
-                      <span>Style customization</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-
-                      {tickIcon}
-                      <span>Custom domains</span>
-                  </li>
-              </ul>
-              <a href="https://forms.gle/EjqYi3ttEkZkuKy46" target="_blank" 
-                className="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Notify when ready</a>
-          </div>
-
-          <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
-              <h3 className="mb-4 text-2xl font-semibold">Enterprise</h3>
-              <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">Organizations looking for <span className="font-semibold">self-hosted</span> solution</p>
-              <div className="flex justify-center items-baseline my-8">
-                <span className="mr-2 text-3xl font-extrabold">contact us</span>
-
-              </div>
-
-              <ul role="list" className="mb-8 space-y-4 text-left">
-                  <li className="flex items-center space-x-3">
-
-                      {tickIcon}
-                      <span>Self-hosted solution</span>
-                  </li>
-
-                  <li className="flex items-center space-x-3">
-                      {tickIcon}
-                      <span><span className="font-semibold">Unlimited Sites</span></span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                      {tickIcon}
-                      <span><span className="font-semibold">Unlimited users</span></span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                      {tickIcon}
-                      <span><span className="font-semibold">Unlimited files</span></span>
-                  </li>
-
-                  <li className="flex items-center space-x-3">
-
-                      {tickIcon}
-                      <span>Style customization</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-
-                      {tickIcon}
-                      <span>Custom domains</span>
-                  </li>
-               </ul>
-              <a href="/support/contact/"
-                className="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Contact us</a>
-          </div>
-
-
-
-          </div>
-
+<center className="p-10">
+       <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Mercury Cloud will be available soon!</h2>
+       
+</center>
 </section>
 
 ## Pricing FAQ
 
 #### Self-hosted vs Cloud?
 
-Mercury is an <a href="https://github.com/mljar/mercury" target="_blank" className="font-extrabold">open-source</a> framework. 
-You can host if for free on your own servers. 
+Mercury is an <a href="https://github.com/mljar/mercury" target="_blank" className="font-extrabold">open-source</a> framework.
+You can host if for free on your own servers.
 
 We offer a Mercury Cloud service that host notebooks for you. You can setup Mercury Site in seconds with few clicks.
 

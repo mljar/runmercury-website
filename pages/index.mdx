@@ -26,6 +26,7 @@ import mercuryAppPng from "../public/images/mercury-web-app.png";
 import helloNb from "../public/images/hello-world-notebook.png";
 import helloApp from "../public/images/hello-world-app.gif";
 import sampleApp from "../public/images/hello-world-app.gif";
+import githubIcon from "components/icons/github";
 
 <div className=" " style={{ padding: "30px" }}></div>
 
@@ -42,9 +43,14 @@ import sampleApp from "../public/images/hello-world-app.gif";
           <a href="/docs/"
              className="text-white bg-primary-600 hover:bg-primary-700 
                         focus:ring-4 focus:ring-primary-200 font-medium rounded-lg 
-                        text-xl px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Get started</a>
-
-          <a href="https://github.com/mljar/mercury" className="font-medium text-xl m-5" target="_blank">Star on GitHub </a>
+                        text-xl px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Get started</a> 
+          <span className="m-2"></span>
+          <br className="sm:hidden block"/>
+          <br className="sm:hidden block"/>
+          <a href="https://github.com/mljar/mercury" className="font-medium 
+                  hover:bg-primary-700 hover:text-white bg-primary
+                  text-xl px-5 py-2.5 rounded-lg 
+                  border hover:border-0" target="_blank">{githubIcon} Star on GitHub</a>
     </div>
 
 </div>
@@ -79,8 +85,8 @@ import sampleApp from "../public/images/hello-world-app.gif";
     >
       {" "}
       You don't need to know frontend frameworks,
-      <strike>HTML, CSS or JavaScript</strike>.{" "}
-      <br className="sm:block hidden" />
+      <strike>HTML, CSS or JavaScript</strike>.
+      {" "}
       All in pure <u className="font-extrabold">Python</u> without leaving Jupyter
       Notebook.{" "}
     </p>
@@ -320,10 +326,15 @@ import sampleApp from "../public/images/hello-world-app.gif";
              className="my-4 text-white bg-primary-600 hover:bg-primary-700
                         focus:ring-4 focus:ring-primary-200 font-medium rounded-lg
                         text-xl px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Input Widgets</a>
-      <a href="/docs/output-widgets/"
-             className="my-4 mx-4 text-white bg-primary-600 hover:bg-primary-700
+          <span className="m-2"></span>
+          <br className="sm:hidden block"/>
+          <br className="sm:hidden block"/>
+          <a href="/docs/output-widgets/"
+             className="my-4 text-white bg-primary-600 hover:bg-primary-700
                         focus:ring-4 focus:ring-primary-200 font-medium rounded-lg
                         text-xl px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Output Widgets</a>
+          <br className="sm:hidden block"/>
+          <br className="sm:hidden block"/>
 
     </div>
     <div style={{marginTop: "auto", marginBottom: "auto"}}>
@@ -533,7 +544,7 @@ import sampleApp from "../public/images/hello-world-app.gif";
       width="40"
       height="40"
       viewBox="0 0 24 24"
-      stroke-width="2"
+      strokeWidth="2"
       stroke="#6b7280"
       fill="none"
       strokeLinecap="round"
@@ -619,7 +630,13 @@ import sampleApp from "../public/images/hello-world-app.gif";
                         focus:ring-4 focus:ring-primary-200 font-medium rounded-lg
                         text-xl px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Mercury Pro</a>
 
-          <a href="https://github.com/mljar/mercury" className="font-medium text-xl m-5" target="_blank">GitHub repository</a>
+          <span className="m-2"></span>
+          <br className="sm:hidden block"/>
+          <br className="sm:hidden block"/>
+          <a href="https://github.com/mljar/mercury" className="font-medium 
+                  hover:bg-primary-700 hover:text-white bg-primary
+                  text-xl px-5 py-2.5 rounded-lg 
+                  border hover:border-0" target="_blank">{githubIcon} Star on GitHub</a>
 
   </center>
 </div>
