@@ -127,7 +127,7 @@ export default (
       </p>
       <div className="flex justify-center items-baseline my-8">
         <span className="mr-2 text-5xl font-extrabold">$10,000</span>
-        <span className="text-gray-500 dark:text-gray-400">/month</span>
+        <span className="text-gray-500 dark:text-gray-400">/year</span>
       </div>
 
       <ul role="list" className="mb-8 space-y-4 text-left">
