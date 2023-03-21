@@ -53,13 +53,7 @@
   "cloud": {
     "title": "Mercury Cloud"
   },
-  "docker": {
-    "title": "Docker"
-  },
-  "hugging-face": {
-    "title": "Hugging Face"
-  },
-  "railway": {
-    "title": "Railway"
+  "docker-compose": {
+    "title": "Docker Compose"
   }
 }

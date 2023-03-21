@@ -1,0 +1,80 @@
+# Deploy with docker-compose
+
+You can deploy Mercury Server with `docker-compose` on any VPS machine. In this section, we will show you steps needed to deploy Mercury Server with `docker-compose`. 
+There are two configuration files available:
+- simple deployment with HTTP (port 80),
+- more advanced deployment with HTTP and HTTPS (port 443). 
+
+Both deployments are using `Nginx` as a proxy, and the `PostreSQL` as a database. `Let's Encrypt` service with `certbot` is used for HTTPS deployment. 
+
+## Create notebooks 
+
+The first step is to create notebooks. Please create them in a separate directory or (ideally) in separate GitHub repository. 
+Please make sure that required packages are listed in `requirements.txt` file.
+
+## Clone Mercury repository
+
+Please clone Mercury repository:
+
+```
+git clone git@github.com:mljar/mercury.git
+```
+
+Change the directory and build `docker-compose` containers:
+
+```
+cd mercury
+
+sudo docker-compose build
+```
+
+Before starting container, please create the `.env` file with configuration variables:
+
+- `NOTEBOOKS_PATH` - a path to directory with your notebooks. This variable is required.
+- `ALLOWED_HOSTS` - coma separated list of allowed hosts (domains or IP addresses). This variable is required.
+- if you need access to Admin Panel please define: `DJANGO_SUPERUSER_USERNAME`, `DJANGO_SUPERUSER_PASSWORD`, `DJANGO_SUPERUSER_EMAIL`.
+
+Example `.env` file:
+
+```
+NOTEBOOKS_PATH=./mercury/
+DJANGO_SUPERUSER_USERNAME=piotr
+DJANGO_SUPERUSER_PASSWORD=verysecretpass
+DJANGO_SUPERUSER_EMAIL=piotr@piotr.pl
+ALLOWED_HOSTS=mercury.mljar.com
+SECRET_KEY="x3%q8fs(-q3i(m&=e1g%9xtvcn*q!c%i@v0*ha4@ow2crdkaaa"
+DEBUG=False
+SERVE_STATIC=False
+WELCOME=./mercury/welcome.md
+TIME_ZONE=Europe/Warsaw
+DJANGO_LOG_LEVEL=ERROR
+MERCURY_VERBOSE=0
+ACCOUNT_EMAIL_VERIFICATION=none
+```
+
+Please start `docker-compose`:
+
+```
+sudo docker-compose up
+```
+
+You should be able to see a Mercury Server running in the web browser at address `http://0.0.0.0`.
+
+## HTTPS support
+
+You can enable HTTPS for Mercury Server. You will need a custom domain for this. Please set `A` record in DNS table pointing your server IP address to domain name.
+
+After setting DNS records, please run `setup-https.sh` script from Mercury repository with your domain name:
+
+```
+sudo ./setup-https.sh your-domain-name.com
+```
+
+Please run the above command in the server machine. The above command will issue certificates from `Let's Encrypt` and set files for HTTP challenge to pass verification.
+
+You can also provide your own certificates. Please take a look at `docker/nginx/pro` for configuration.
+
+## Help needed
+
+If you need help with deployment please setup a new issue in the [Mercury repository](https://github.com/mljar/mercury) or [email us](/support/contact/). We are happy to help!
+
