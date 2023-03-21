@@ -144,7 +144,7 @@ export default (
         <li className="flex items-center space-x-3">
           {tickIcon}
           <span>
-            Setup up to <span className="font-semibold">5 Mercury Sites</span>
+            Setup up to <span className="font-semibold">10 Mercury Sites</span>
           </span>
         </li>
         <li className="flex items-center space-x-3">
