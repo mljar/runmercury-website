@@ -7,6 +7,12 @@
       "layout": "full"
     }
   },
+  "login_link": {
+    "title": "Cloud",
+    "type": "page",
+    "href": "https://cloud.runmercury.com",
+    "newWindow": true
+  },
   "pricing": {
     "type": "page",
     "title": "Pricing",
@@ -15,17 +21,38 @@
       "layout": "full"
     }
   },
+  "company": {
+    "title": "Documentation",
+    "type": "menu",
+    "items": {
+      "docs": {
+        "type": "page",
+        "title": "API Docs"
+      },
+      "examples": {
+        "type": "page",
+        "title": "Examples"
+      },
+      "tutorials": {
+        "type": "page",
+        "title": "Tutorials"
+      }
+    }
+  },
   "docs": {
     "type": "page",
-    "title": "Documentation"
+    "title": "API Docs",
+    "display": "hidden"
   },
   "examples": {
     "type": "page",
-    "title": "Examples"
+    "title": "Examples",
+    "display": "hidden"
   },
   "tutorials": {
     "type": "page",
-    "title": "Tutorials"
+    "title": "Tutorials",
+    "display": "hidden"
   },
   "support": {
     "display": "hidden",
