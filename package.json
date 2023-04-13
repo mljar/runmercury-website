@@ -18,6 +18,7 @@
   },
   "homepage": "https://runmercury.com",
   "dependencies": {
+    "cookies-next": "^2.1.1",
     "framer-motion": "^10.2.1",
     "next": "^13.0.6",
     "nextra": "latest",

@@ -5,6 +5,8 @@ import Script from "next/script";
 
 import "../style.css";
 
+import Consent from "./consent";
+
 export default function Nextra({
   Component,
   pageProps,
@@ -25,7 +27,9 @@ export default function Nextra({
                     gtag('config', 'G-718XMSDDTR');
                 `}
       </Script>
+      <Consent />
       <Component {...pageProps} />
+      
     </>
   );
 }
