@@ -1,13 +1,15 @@
+import { Screenshot } from "components/screenshot";
+import exampleAppPng from "../../../public/images/examples/checkbox.png";
+
 # Checkbox
 
 The `Checkbox` class adds button in the Mercury sidebar.
-
 
 ```python
 import mercury as mr
 
 # add checkbox
-my_flag = mr.Checkbox(value=True, label="")
+my_flag = mr.Checkbox(value=True, label="Switch me")
 
 # read checkbox value
 if my_flag.value:
@@ -20,3 +22,42 @@ else:
 
 - **value** (_boolean_) - the value of the checkbox, default is set to `True`.
 - **label** (_string_) - label of the checkbox.
+- **url_key** (_string_) - set this value if you would like to set checkbox value with URL paramters.
+- **disabled** (_boolean_) - disbale widget in the sidebar, default is set to `False`.
+- **hidden** (_boolean_) - hide widget in the sidebar, default is set to `False`.
+
+## Share widget value in URL
+
+Let's create a checkbox with `url_key="flag"`:
+
+```python
+import mercury as mr
+
+# add checkbox
+my_flag = mr.Checkbox(value=True, label="Switch me", url_key="flag")
+
+# read checkbox value
+if my_flag.value:
+    print("Checkbox is ON")
+else:
+    print("Checkbox is OFF")
+```
+
+You can share the widgets values with other users. Please click the `Share` button in the sidebar bottom. It will open a dialog with URL.
+
+The URL will look like:
+
+```
+https://your-server-address.com/app/notebook-name?flag=true
+```
+
+Please note that `?flag=true` is added at the end of URL address.
+
+## Example App
+
+Below is a screenshot with example app. Example app is available at [docs.runmercury.com/app/checkbox](https://docs.runmercury.com/app/checkbox).
+
+<Screenshot src={exampleAppPng} alt="App with checkbox widget" />
+
+
+  

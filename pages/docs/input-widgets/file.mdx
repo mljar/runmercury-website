@@ -1,3 +1,7 @@
+import { Screenshot } from "components/screenshot";
+import exampleAppGif from "../../../public/images/examples/file.gif";
+import notebookPng from "../../../public/images/examples/file-notebook.png";
+
 # File
 
 The `File` class allows to upload and read files in the notebook.
@@ -25,5 +29,13 @@ binary_content = my_file.value
 ## Parameters
 
 - **label** (_string_) - label of the file upload widget.
-- **max_file_size** (_string_) - the maximum size of allowed file upload.
+- **max_file_size** (_string_) - the maximum size of allowed file upload, default is set to "100MB". 
+- **disabled** (_boolean_) - disbale widget in the sidebar, default is set to `False`.
+- **hidden** (_boolean_) - hide widget in the sidebar, default is set to `False`.
 
+
+## Example App
+
+Below is a screenshot with example app. Example app is available at [docs.runmercury.com/app/file](https://docs.runmercury.com/app/file).
+
+<Screenshot src={exampleAppGif} alt="App with File widget" />
