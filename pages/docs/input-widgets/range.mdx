@@ -1,3 +1,9 @@
+import { Screenshot } from "components/screenshot";
+import simpleAppGif from "../../../public/images/examples/range-simple-2.gif";
+import exampleAppGif from "../../../public/images/examples/range.gif";
+import exampleNbPng from "../../../public/images/examples/range-notebook.png";
+import shareGif from "../../../public/images/examples/range-share.gif";
+
 # Range
 
 Adds `Range` widget.
@@ -6,17 +12,66 @@ Adds `Range` widget.
 import mercury as mr
 
 # add range widget
-your_range = mr.Range(value=[0, 1], min=0, max=10, label="", step=1):
+your_range = mr.Range(value=[1, 6], min=0, max=10, label="Your favourite range", step=1)
     
 # access widget value in the code
 print(f"Your range starts at {your_range.value[0]} ends at {your_range.value[1]}")
 ```
 
+<Screenshot src={simpleAppGif} alt="Mercury App with range widget" />
+
+
 ## Parameters
 
 - **value** (_list of two integers_)- the initial value of the range widget.
-- **min** (_int_) - minimum allowed value in the widget.
-- **max** (_int_) - maximum allowed value in the widget.
+- **min** (_int_) - minimum allowed value in the widget, default is set to `0`.
+- **max** (_int_) - maximum allowed value in the widget, default is set to `10`.
 - **label** (_string_)- the label that will appear near the widget.
 - **step** (_integer_)- value of change, default is set to `1`. 
+- **url_key** (_string_) - set this value if you would like to set `Range` value with URL paramters.
+- **disabled** (_boolean_) - disbale widget in the sidebar, default is set to `False`.
+- **hidden** (_boolean_) - hide widget in the sidebar, default is set to `False`.
+
+
+## Share widget value in URL
+
+Let's create the `Range` widget with `url_key="my-range"`:
+
+```python
+import mercury as mr
+
+app = mr.App(title="Range", description="Range widget demo", show_code=True)
+
+# add range widget
+your_range = mr.Range(value=[1, 6], min=0, max=10, label="Your favourite range", 
+                      step=1, url_key="my-range")
+    
+# access widget value in the code
+print(f"Your range starts at {your_range.value[0]} ends at {your_range.value[1]}")
+```
+
+You can share the widgets values with other users. Please click the `Share` button in the sidebar bottom. 
+It will open a dialog with URL.
+
+The URL will look like:
+
+```
+https://your-server-address.com/app/notebook-name?my-range=3,5
+```
+
+Please note that `?my-range=3,5` is added at the end of URL address.
+
+<Screenshot src={shareGif} alt="Share range widget" />
+
+
+## Example App
+
+Below is a screenshot with example app. Example app is available at [docs.runmercury.com/app/range](https://docs.runmercury.com/app/range).
+
+<Screenshot src={exampleAppGif} alt="App with range widget" />
+
+
+
+Notebook's code:
+<Screenshot src={exampleNbPng} alt="Notebook with the range widget" />
 
