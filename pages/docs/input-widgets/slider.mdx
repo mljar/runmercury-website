@@ -1,3 +1,6 @@
+import { Screenshot } from "components/screenshot";
+import exampleAppGif from "../../../public/images/examples/slider.gif";
+
 # Slider
 
 Adds `Slider` widget.
@@ -6,7 +9,7 @@ Adds `Slider` widget.
 import mercury as mr
 
 # add range widget
-your_slider = mr.Slider(value=0, min=0, max=10, label="", step=1):
+your_slider = mr.Slider(value=0, min=0, max=10, label="Your favourite number", step=1)
     
 # access widget value in the code
 print(f"Your value is {your_slider.value}")
@@ -19,4 +22,42 @@ print(f"Your value is {your_slider.value}")
 - **max** (_int_) - maximum allowed value in the widget.
 - **label** (_string_) - the label that will appear near the widget.
 - **step** (_integer_) - value of change, default is set to `1`. 
+- **url_key** (_string_) - set this value if you would like to set `Slider` value with URL paramters.
+- **disabled** (_boolean_) - disbale widget in the sidebar, default is set to `False`.
+- **hidden** (_boolean_) - hide widget in the sidebar, default is set to `False`.
+
+## Share widget value in URL
+
+Let's create the `Slider` widget with `url_key="slider"`:
+
+```python
+import mercury as mr
+
+app = mr.App(title="MultiSelect", description="Demo of MutiSelect widget", show_code=True)
+
+# add widget
+your_slider = mr.Slider(value=0, min=0, max=10, label="Your favourite number", 
+                        step=1, url_key="slider")
+    
+# access widget value in the code
+print(f"Your value is {your_slider.value}")
+```
+
+You can share the widgets values with other users. Please click the `Share` button in the sidebar bottom. 
+It will open a dialog with URL.
+
+The URL will look like:
+
+```
+https://your-server-address.com/app/notebook-name?slider=3
+```
+
+Please note that `?slider=3` is added at the end of URL address.
+
+## Example App
+
+Below is a screenshot with example app. Example app is available at [docs.runmercury.com/app/slider](https://docs.runmercury.com/app/slider).
+
+<Screenshot src={exampleAppGif} alt="App with slider widget" />
+
 

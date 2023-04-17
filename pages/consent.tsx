@@ -26,7 +26,7 @@ function Consent() {
                     consent ? "hidden" : ""
                   }`}
     >
-      <p className="text-xl">
+      <p className="text-md">
         This site uses cookies. If you continue browsing our website, you accept
         these cookies.
       </p>
@@ -34,7 +34,7 @@ function Consent() {
         <a
           className=" 
           hover:bg-primary-700 hover:text-white bg-primary
-          text-xl px-5 py-2.5 rounded-lg 
+          text-md px-5 py-2.5 rounded-lg 
           border mx-2"
           href="/privacy-policy/"
         >
@@ -46,7 +46,7 @@ function Consent() {
           }}
           className="text-white bg-primary-600 hover:bg-primary-700 
           focus:ring-4 focus:ring-primary-200 rounded-lg 
-          text-xl px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900"
+          text-md px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900"
         >
           OK
         </button>

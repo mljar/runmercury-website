@@ -6,7 +6,7 @@ Adds a Markdown note in the sidebar.
 import mercury as mr
 
 # add numeric widget
-my_number = mr.Numeric(value=0, min=0, max=10, label="", step=1)
+my_number = mr.Numeric(value=0, min=0, max=10, label="Your favourite number", step=1)
   
 # access widget value
 print(f"Value is {my_number.value}")
@@ -19,4 +19,7 @@ print(f"Value is {my_number.value}")
 - **max** (_float_) - maximum allowed value in the widget.
 - **label** (_string_) - description of the widget.
 - **step** (_float_) - value of change after click.
+- **url_key** (_string_) - set this value if you would like to set `Numeric` value with URL paramters.
+- **disabled** (_boolean_) - disbale widget in the sidebar, default is set to `False`.
+- **hidden** (_boolean_) - hide widget in the sidebar, default is set to `False`.
 
