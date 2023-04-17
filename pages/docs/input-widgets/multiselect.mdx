@@ -1,5 +1,7 @@
 import { Screenshot } from "components/screenshot";
+import simpleAppGif from "../../../public/images/examples/multiselect-simple.gif";
 import exampleAppGif from "../../../public/images/examples/multiselect.gif";
+import exampleNotebookPng from "../../../public/images/examples/multiselect-notebook.png";
 
 # MultiSelect
 
@@ -7,15 +9,20 @@ Adds select widgets with option to select multiple values.
 
 ```python
 import mercury as mr
-
+```
+```python
 # add select widget
 selected = mr.MultiSelect(label="Please select letters", 
                           value=["a", "b"], 
                           choices=["a", "b", "c", "d", "e"])
-
+```
+```python
 # access selected values
 print(selected.value)
 ```
+
+<Screenshot src={simpleAppGif} alt="Mercury App with multiselect widget created in Jupyter Notebook" />
+
 
 ## Parameters
 
@@ -61,4 +68,7 @@ Please note that `?selected=a,b` is added at the end of URL address.
 Below is a screenshot with example app. Example app is available at [docs.runmercury.com/app/multiselect](https://docs.runmercury.com/app/multiselect).
 
 <Screenshot src={exampleAppGif} alt="App with multiselect widget" />
+
+Notebook's code:
+<Screenshot src={exampleNotebookPng} alt="Jupyter Notebook with multiselect widget" />
 

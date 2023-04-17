@@ -1,5 +1,7 @@
 import { Screenshot } from "components/screenshot";
+import simpleAppGif from "../../../public/images/examples/slider-simple.gif";
 import exampleAppGif from "../../../public/images/examples/slider.gif";
+import exampleNotebookPng from "../../../public/images/examples/slider-notebook.png";
 
 # Slider
 
@@ -9,17 +11,21 @@ Adds `Slider` widget.
 import mercury as mr
 
 # add range widget
-your_slider = mr.Slider(value=0, min=0, max=10, label="Your favourite number", step=1)
-    
+your_slider = mr.Slider(value=5, min=0, max=10, label="Your favourite number", step=1)
+```
+```python
 # access widget value in the code
 print(f"Your value is {your_slider.value}")
 ```
 
+<Screenshot src={simpleAppGif} alt="Mercury App with slider widget created in Jupyter Notebook" />
+
+
 ## Parameters
 
-- **value** (_integer_)- the initial value of the widget.
-- **min** (_int_) - minimum allowed value in the widget.
-- **max** (_int_) - maximum allowed value in the widget.
+- **value** (_integer_)- the initial value of the widget, default is set to `0`.
+- **min** (_int_) - minimum allowed value in the widget, default is set to `0`.
+- **max** (_int_) - maximum allowed value in the widget, default is set to `10`.
 - **label** (_string_) - the label that will appear near the widget.
 - **step** (_integer_) - value of change, default is set to `1`. 
 - **url_key** (_string_) - set this value if you would like to set `Slider` value with URL paramters.
@@ -32,13 +38,19 @@ Let's create the `Slider` widget with `url_key="slider"`:
 
 ```python
 import mercury as mr
-
+```
+```python
+# init app settings
+# set show_code=True
 app = mr.App(title="MultiSelect", description="Demo of MutiSelect widget", show_code=True)
-
+```
+```python
 # add widget
 your_slider = mr.Slider(value=0, min=0, max=10, label="Your favourite number", 
                         step=1, url_key="slider")
     
+```
+```python
 # access widget value in the code
 print(f"Your value is {your_slider.value}")
 ```
@@ -59,5 +71,8 @@ Please note that `?slider=3` is added at the end of URL address.
 Below is a screenshot with example app. Example app is available at [docs.runmercury.com/app/slider](https://docs.runmercury.com/app/slider).
 
 <Screenshot src={exampleAppGif} alt="App with slider widget" />
+
+Notebook's code:
+<Screenshot src={exampleNotebookPng} alt="Notebook with Mercury slider widget" />
 
 

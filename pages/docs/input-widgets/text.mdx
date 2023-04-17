@@ -1,20 +1,79 @@
+import { Screenshot } from "components/screenshot";
+import simpleAppGif from "../../../public/images/examples/text-simple.gif";
+import shareAppGif from "../../../public/images/examples/text-share.gif";
+import exampleAppGif from "../../../public/images/examples/text.gif";
+import exampleNotebookPng from "../../../public/images/examples/text-notebook.png";
+
 # Text
 
-Adds text widget. It can be a text field (`rows=1`) or text area (`rows>1`). 
+Adds a text widget. It can be a text field (`rows=1`) or text area (`rows>1`). 
 
 ```python
 import mercury as mr
 
-# add test widget
-your_text = mr.Text(value="", label="", rows=1)
-
-# use widget value in the code
-print(your_text.value)
+# add text widget
+name = mr.Text(value="Piotr", label="What is your name?", rows=1)
 ```
+```python
+# use widget value in the code
+print(f"Hello {name.value}!")
+```
+
+Running example with Mercury:
+<Screenshot src={simpleAppGif} alt="Mercury App with text widget created in Jupyter Notebook" />
+
 
 ## Parameters
 
 - **value** (_string_)- the initial value of the text widget.
 - **label** (_string_)- the label that will appear near the text widget.
 - **rows** (_integer_)- number of rows in the text widget. Default is set to `1`. 
+- **url_key** (_string_) - set this value if you would like to set `Text` value with URL paramters.
+- **disabled** (_boolean_) - disbale widget in the sidebar, default is set to `False`.
+- **hidden** (_boolean_) - hide widget in the sidebar, default is set to `False`.
+
+
+## Share widget value in URL
+
+Let's create the `Text` widget with `url_key="name"`:
+
+```python
+import mercury as mr
+```
+```python
+# init app settings
+# set show_code=True
+app = mr.App(title="Text", description="Demo of Text widget", show_code=True)
+```
+```python
+# add widget
+name = mr.Text(value="Piotr", label="What is your name?", rows=1, url_key="name")
+```
+```python
+# access widget value in the code
+print(f"Hello {name.value}!")
+```
+
+You can share the widgets values with other users. Please click the `Share` button in the sidebar bottom. 
+It will open a dialog with URL.
+
+The URL will look like:
+
+```
+https://your-server-address.com/app/notebook-name?name=Piotr
+```
+
+Please note that `?name=Piotr` is added at the end of URL address.
+
+<Screenshot src={shareAppGif} alt="Share Mercury App with text widget value set in URL" />
+
+## Example App
+
+Below is a screenshot with an example app. It is available at [docs.runmercury.com/app/text](https://docs.runmercury.com/app/text).
+
+<Screenshot src={exampleAppGif} alt="App with text widget" />
+
+Notebook's code:
+<Screenshot src={exampleNotebookPng} alt="Notebook with Mercury text widget" />
+
 
