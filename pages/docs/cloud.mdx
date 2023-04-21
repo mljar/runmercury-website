@@ -1,5 +1,100 @@
-# Mercury Cloud
+import { Screenshot } from "components/screenshot";
+import signupPng from "../../public/images/deploy-cloud/signup.png";
+import emptySitesPng from "../../public/images/deploy-cloud/empty-sites.png";
+import createSitePng from "../../public/images/deploy-cloud/create-site.png";
+import sitePng from "../../public/images/deploy-cloud/site.png";
+import piotrWebsitePng from "../../public/images/deploy-cloud/piotr-website.png";
+import updateSitePng from "../../public/images/deploy-cloud/update-site.png";
+import emptyFilesPng from "../../public/images/deploy-cloud/empty-files.png";
+import uploadFilesPng from "../../public/images/deploy-cloud/upload-files.png";
+import notebooksPng from "../../public/images/deploy-cloud/piotr-notebooks.png";
 
-We are working on Mercury Cloud service. You will be able to create a website with few clicks. Deployment will be as easy as file upload.
 
-Please check [pricing](/pricing/) website for available plans (yes, there is a free **Starter** plan).
+# Share Notebooks with Mercury Cloud
+
+It's the easiest way to share notebooks online. You will be able to create a website with few clicks. Deployment is as easy as file upload.
+
+There is a generous free plan (called **Starter**) so you don't need credit card to start. Please check [pricing](/pricing/) website for details.
+
+
+## 1. Setup account
+
+Please create a new account at [https://cloud.runmercury.com/register](https://cloud.runmercury.com/register).
+
+<Screenshot src={signupPng} alt="Create a new account at RunMercury.com" />
+
+You should get e-mail with varification link. After e-mail verification please login.
+
+## 2. Create first Site 
+
+You login for the first time. There are no Sites available, like in the screenshot below:
+
+<Screenshot src={emptySitesPng} alt="Empty Sites after first login at RunMercury.com" />
+
+Please click `Add Site` to create first Site. 
+
+<Screenshot src={createSitePng} alt="Create a new Site at RunMercury.com" />
+
+The most important things to select here:
+- `subdomain` and `domain` - they will define your Site URL.
+- `Share` option, you can make your notebooks public or private (available only to invited users).
+
+Click `OK` to add a new Site. You should see the Site information:
+
+<Screenshot src={sitePng} alt="Site information at RunMercury.com" />
+
+You can click on the Site URL addres to open fresh site in separate web tab. In my case it is:
+
+```
+https://piotr-notebooks.runmercury.com
+```
+
+When you navigate to the Site you will get basic view:
+
+<Screenshot src={piotrWebsitePng} alt="Fresh Site at RunMercury.com" />
+
+## 3. Update Site 
+
+Please click `Edit` button to update your Site:
+- you can change your Site `subdomain` and `domain`,
+- you can change welcome message,
+- you can edit Site visibility.
+
+<Screenshot src={updateSitePng} alt="Update Site" />
+
+Click `OK` and you can refresh your Site to see changes.
+
+## 4. Upload notebooks
+
+Please click on `Files` in the top navigation. You should see empty view:
+
+<Screenshot src={emptyFilesPng} alt="Empty files view" />
+
+Click `Upload files` and upload selected notebooks:
+
+<Screenshot src={uploadFilesPng} alt="Upload files" />
+
+You can also upload:
+- `requirements.txt` file with required Python packages,
+- data files that are needed in notebooks.
+
+import { Callout } from 'nextra-theme-docs'
+
+<Callout type="info">
+  If you upload `requirements.txt` file, then required Python packages are installed before your notebook is started.
+</Callout>
+
+
+## 5. Your notebooks are ready!
+
+Please open your Site address and refresh it. You should see your notebooks:
+
+<Screenshot src={notebooksPng} alt="Notebooks app" />
+
+
+<br/>
+<br/>
+
+**Congratulations!**
+
+You notebooks are available to share with others 🎉🎉🎉
