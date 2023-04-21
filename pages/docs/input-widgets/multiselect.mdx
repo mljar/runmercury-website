@@ -5,7 +5,7 @@ import exampleNotebookPng from "../../../public/images/examples/multiselect-note
 
 # MultiSelect
 
-Adds select widgets with option to select multiple values.
+Adds multi-select widget (you can select multiple values).
 
 ```python
 import mercury as mr
@@ -19,10 +19,11 @@ selected = mr.MultiSelect(label="Please select letters",
 ```python
 # access selected values
 print(selected.value)
+# ["a", "b"]
 ```
 
+Running an example code in Mercury:
 <Screenshot src={simpleAppGif} alt="Mercury App with multiselect widget created in Jupyter Notebook" />
-
 
 ## Parameters
 
@@ -32,6 +33,8 @@ print(selected.value)
 - **url_key** (_string_) - set this value if you would like to set `MultiSelect` value with URL paramters.
 - **disabled** (_boolean_) - disbale widget in the sidebar, default is set to `False`.
 - **hidden** (_boolean_) - hide widget in the sidebar, default is set to `False`.
+
+
 
 ## Share widget value in URL
 

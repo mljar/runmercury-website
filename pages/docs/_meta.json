@@ -55,5 +55,8 @@
   },
   "docker-compose": {
     "title": "Docker Compose"
+  },
+  "hugging-face": {
+    "title": "Hugging Face"
   }
 }
