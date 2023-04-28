@@ -1,21 +1,21 @@
+import { Screenshot } from "components/screenshot";
+import chatPng from "../../../public/images/examples/chat-simple.png";
+
 # Chat
 
-Display chat messages.
+Display strings like a chat.
 
 ```python
 import mercury as mr
-
-# cells below are not executed
-mr.Stop()
-
-# or you can raise exception
-raise mr.StopExecution()
+```
+```python
+messages = ["What is your name?", "My name is Piotr", "How are you?", "Fine, thanks!"]
+mr.Chat(messages)
 ```
 
-The `Stop` function and `StopExecution` exception don't leave traceback in the notebook. 
+<Screenshot src={chatPng} alt="Using Chat widget in Jupyter Notebook" />
 
-import { Callout } from 'nextra-theme-docs'
+## Parameters
 
-<Callout type="info">
-You can use `Stop()` in Jupyter Notebook during development. Please click `Run All` to see its effect.
-</Callout>
+ - **messages** (_list of strings_) - a list of strings to be displayed as chat
+ 

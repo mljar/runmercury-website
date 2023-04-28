@@ -22,7 +22,7 @@ function Consent() {
       className={`max-w-screen-lg mx-auto fixed bg-white inset-x-5 p-4 bottom-0
                 rounded-lg  shadow-2xl flex gap-4 flex-wrap
                  md:flex-nowrap text-center md:text-left items-center 
-                  justify-center md:justify-between z-50 shadow-blue-600 ${
+                  justify-center md:justify-between z-50 shadow-blue-600 dark:bg-black ${
                     consent ? "hidden" : ""
                   }`}
     >
