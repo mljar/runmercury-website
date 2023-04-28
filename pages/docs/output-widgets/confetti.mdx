@@ -1,0 +1,53 @@
+import { Screenshot } from "components/screenshot";
+import simpleAppGif from "../../../public/images/examples/confetti.gif";
+import confettiAppGif from "../../../public/images/examples/confetti-app.gif";
+import confettiNotebookPng from "../../../public/images/examples/confetti-notebook.png";
+
+
+# Confetti
+
+Display confetti animation in your notebook.
+
+```python
+import mercury as mr
+```
+```python
+# display confetti
+mr.Confetti()
+```
+
+<Screenshot src={simpleAppGif} alt="Mercury App with Confetti widget" />
+
+## Example app
+
+Example app that ask user to guess some number. If 
+
+```python
+import mercury as mr
+```
+
+```python
+app = mr.App(title="Confetti App", description="App with Confetti widget", show_code=True)
+```
+
+```python
+my_number = mr.Slider(label="Guess some number", value=2, min=0, max=10)
+```
+
+```python
+print(f"You selected {my_number.value}")
+```
+```python
+if my_number.value > 5:
+    mr.Confetti()
+    print("You win!")
+else:
+    print("Try larger number")
+```
+
+You can access application on Mercury Cloud at address [docs.runmercury.com/app/confetti](https://docs.runmercury.com/app/confetti).
+
+<Screenshot src={confettiAppGif} alt="App Confetti from Jupyter Notebook" />
+
+The notebook's code:
+<Screenshot src={confettiNotebookPng} alt="App Confetti Python code in Jupyter Notebook" />

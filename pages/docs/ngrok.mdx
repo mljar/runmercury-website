@@ -1,0 +1,46 @@
+import { Screenshot } from "components/screenshot";
+import ngrokSessionPng from "../../public/images/deploy-ngrok/ngrok-session.png";
+
+
+# Share Mercury local server with ngrok
+
+You can use [ngrok](https://ngrok.com) to share web application. 
+The ngrok allows you to expose local server over the Internet. You need to setup ngrok account and install ngrok agent on your machine.
+
+## Mercury Server with ngrok 
+
+1. Start Mercury Server in the directory with notebooks that you would like to share
+
+```
+mercury run
+```
+
+The Mercury is running local server at `127.0.0.1:8000`. You can set custom IP or port during the start, for example:
+
+```
+mercury run 127.0.0.1:8001
+```
+
+2. Start ngrok agent with the same port number as used by Mercury Server.
+
+```
+ngrok http 8000
+```
+
+3. The ngrok agent will display message about fowarding. Please click in the `Forwarding` link. 
+
+<Screenshot src={ngrokSessionPng} alt="Ngrok session that shares Mercury local server" />
+
+
+4. You can share the `Forwarding` link with others. Please be aware that the link is working as long as:
+- agent is working,
+- and your local server is running. 
+If you shout down your computer, the link will not work. 
+
+If you are looking for more persistent way of deployment, please check [Mercury Cloud](https://cloud.runmercury.com).
+
+## Step-by-Step video
+
+<center>
+<iframe width="100%" height="450px" src="https://www.youtube.com/embed/W_f3g26E_HU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</center>

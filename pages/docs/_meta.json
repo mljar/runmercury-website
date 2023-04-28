@@ -58,5 +58,8 @@
   },
   "hugging-face": {
     "title": "Hugging Face"
+  },
+  "ngrok": {
+    "title": "Ngrok"
   }
 }
