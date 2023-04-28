@@ -14,7 +14,14 @@ yarn next
 ## Deploy
 
 ```
+rm -rf .next/cache
 yarn next build && yarn next export
 aws s3 sync out/ s3://runmercury.com
 ```
+
+Clear all files
+```
+aws s3 rm --recursive s3://runmercury.com
+```
+
 
