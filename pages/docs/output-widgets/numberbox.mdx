@@ -1,0 +1,29 @@
+# NumberBox
+
+It displays numbers in large boxes with title. It can 
+
+```python
+import mercury as mr
+```
+```python
+# display JSON
+mr.JSON(json_data=data, level=1)
+
+# shorter form
+mr.JSON(data)
+```
+
+## Parameters
+
+- **data** (_number_ or _string_ or _list_) - data to be displayed (it has the largest font). It can be _number_ or _string_. It accepts _list_ of `NumberBox`es which will be displayed in the one row.
+- **title** (_string_) - description of the number in the box, it is displayed in the bottom. 
+- **percent_change** (_number_) - it is an _optional_ argument that can show percent change. For positive numbers it is displayed with green color. For negative values it is displayed with red color.
+- **background_color** (_string) - it is an _optional_ argument that sets the background color. Default is set to `white`. 
+- **border_color** (_string_) - it is an _optional_ argument that sets the border color.
+
+It should be a color string or hex (similar as in HTML).
+
+background_color="white",
+        border_color="lightgray",
+        data_color="black",
+        title_color="gray",
