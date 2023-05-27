@@ -28,6 +28,11 @@ import helloApp from "../public/images/hello-world-app.gif";
 import sampleApp from "../public/images/hello-world-app.gif";
 import githubIcon from "components/icons/github";
 
+import matplotlibLogo from "../public/images/logos/matplotlib.svg";
+import plotlyLogo from "../public/images/logos/plotly.png"
+import altairLogo from "../public/images/logos/vega-altair.png"
+
+
 <div className=" " style={{ padding: "30px" }}></div>
 
 <div className="lg:grid lg:grid-cols-2 lg:gap-4">
@@ -357,7 +362,6 @@ import githubIcon from "components/icons/github";
 <div className="" style={{ padding: "20px" }}></div>
 
 <div
-  className="bg-primary-600 dark:bg-gray-800"
   style={{
     padding: "50px",
     marginTop: "50px",
@@ -366,7 +370,7 @@ import githubIcon from "components/icons/github";
   }}
 >
   <center>
-    <h2 className="lg:text-6xl text-4xl font-extrabold text-gray-900 dark: text-white leading-normal">
+    <h2 className="lg:text-6xl text-4xl font-extrabold text-gray-900 dark:text-white leading-normal">
       How does it work?{" "}
     </h2>
   </center>
@@ -485,7 +489,7 @@ import githubIcon from "components/icons/github";
 
 </div>
 
-<div className="" style={{ padding: "100px" }}></div>
+<div className="" style={{ padding: "80px" }}></div>
 
 <div className="">
   <center>
@@ -620,11 +624,78 @@ import githubIcon from "components/icons/github";
 
 </div>
 
+
+
+
+
+<div className="" style={{ padding: "50px" }}></div>
+{/* --------------------------- */}
+
+<div className="" style={{
+  padding: "100px",
+  borderRadius: "30px"
+}}>
+<center>
+    <h2 className=" lg:text-6xl text-4xl font-extrabold text-gray-900 dark:text-white leading-normal">Works great with</h2>
+</center>
+
+<div className="lg:grid lg:grid-cols-4 lg:gap-1 py-4">
+
+  
+
+  <div
+  className="text-gray-900 bg-white rounded-lg xl:p-8 dark:bg-gray-200 dark:text-white"  style={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+    }}
+  >
+    <center>
+      <Image src={matplotlibLogo} alt="Matplotlib" loading="eager" className="align-middle"
+        style={{ maxHeight: "500px", width: "auto" }} />
+    </center>
+  </div>
+  <div
+  className="text-gray-900 bg-white rounded-lg xl:p-8 dark:bg-gray-200 dark:text-white"
+    style={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+    }}
+  >
+  <center>
+    <Image src={plotlyLogo} alt="Plotly" loading="eager" style={{margin: "0px", maxHeight: "500px", width: "auto", margin: "auto" }} />
+  </center>
+  </div>
+
+  <div
+  className="text-gray-900 bg-white rounded-lg xl:p-8 dark:bg-gray-200 dark:text-white"
+    style={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+    }}
+  >
+  <center>
+    <Image src={altairLogo} alt="Altair Viz" loading="eager" style={{margin: "0px", maxHeight: "500px", width: "auto", margin: "auto" }} />
+  </center>
+  </div>
+
+</div>
+
+</div>
+
+
+
+
+
+
 <div className="" style={{ padding: "50px" }}></div>
 {/* --------------------------- */}
 
 <div className="bg-primary-100 dark:bg-gray-800" style={{
-  padding: "100px"
+  padding: "100px",
+  borderRadius: "30px"
 }}>
 <center>
     <h2 className=" lg:text-6xl text-4xl font-extrabold text-gray-900 dark:text-white leading-normal">Deployment</h2>
@@ -633,11 +704,13 @@ import githubIcon from "components/icons/github";
     </center>
 
 <div className="lg:grid lg:grid-cols-2 lg:gap-4">
+
+  
+
   <div
   className="text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white"
     style={{
-      //border: "1px solid #eee",
-      //background: "white",
+      border: "1px solid #eee",
       margin: "30px",
       padding: "30px",
       borderRadius: "30px",
@@ -646,13 +719,14 @@ import githubIcon from "components/icons/github";
       transition: "box-shadow 0.3s ease",
     }}
   >
+    <center>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="40"
       height="40"
       viewBox="0 0 24 24"
       strokeWidth="2"
-      stroke="#6b7280"
+      stroke="currentColor"
       fill="none"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -661,21 +735,22 @@ import githubIcon from "components/icons/github";
       <path d="M6.657 18c-2.572 0 -4.657 -2.007 -4.657 -4.483c0 -2.475 2.085 -4.482 4.657 -4.482c.393 -1.762 1.794 -3.2 3.675 -3.773c1.88 -.572 3.956 -.193 5.444 1c1.488 1.19 2.162 3.007 1.77 4.769h.99c1.913 0 3.464 1.56 3.464 3.486c0 1.927 -1.551 3.487 -3.465 3.487h-11.878"></path>
     </svg>
 
-     <h2 className="my-4 lg:text-4xl text-2xl font-extrabold text-gray-900 leading-normal"> Mercury Cloud</h2>
-          <p className="my-4 mb-8 font-light text-gray-500 text-xl 
-          leading-normal"> Deployment as easy as file upload. Set custom domain and use secure HTTPS connection</p>
+     <h2 className="my-4 lg:text-4xl text-2xl font-extrabold text-gray-900 dark:text-white leading-normal"> Mercury Cloud</h2>
+          <p className="my-4 mb-8 font-light text-gray-500 dark:text-gray-300 text-xl 
+          leading-normal"> Deployment as easy as file upload. Set custom domain and use secure connection.</p>
     
-    <a href="https://forms.gle/EjqYi3ttEkZkuKy46"
+    <a href="https://cloud.runmercury.com"
              target="_blank"
              className="text-white bg-primary-600 hover:bg-primary-700
                         focus:ring-4 focus:ring-primary-200 font-medium rounded-lg
-                         px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Notify when ready</a>
-
+                         px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Sign up</a>
+            
+    </center>
   </div>
   <div
+  className="text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white"
     style={{
       border: "1px solid #eee",
-      background: "white",
       margin: "30px",
       padding: "30px",
       borderRadius: "30px",
@@ -684,13 +759,14 @@ import githubIcon from "components/icons/github";
       transition: "box-shadow 0.3s ease",
     }}
   >
+  <center>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="40"
       height="40"
       viewBox="0 0 24 24"
       strokeWidth="2"
-      stroke="#6b7280"
+      stroke="currentColor"
       fill="none"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -703,8 +779,8 @@ import githubIcon from "components/icons/github";
       <path d="M17 17l-2 2l2 2"></path>
     </svg>
 
-     <h2 className="my-4 lg:text-4xl text-2xl font-extrabold text-gray-900 leading-normal"> Self host</h2>
-          <p className="my-4 mb-8 font-light text-gray-500 text-xl 
+     <h2 className="my-4 lg:text-4xl text-2xl font-extrabold text-gray-900 dark:text-white leading-normal"> Self host</h2>
+          <p className="my-4 mb-8 font-light text-gray-500 dark:text-gray-300 text-xl 
           leading-normal">Configure your own server and deploy notebooks on your own infrastructure.</p>
     
 
@@ -713,6 +789,7 @@ import githubIcon from "components/icons/github";
                         focus:ring-4 focus:ring-primary-200 font-medium rounded-lg
                          px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Read more</a>
 
+  </center>
   </div>
 </div>
 
