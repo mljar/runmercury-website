@@ -1,0 +1,53 @@
+import {Screenshot} from 'components/screenshot'
+import notebookPng from "../../public/images/examples/widgets-in-loop-notebook.png"
+import appGif from "../../public/images/examples/widgets-in-loop.gif"
+
+
+# Create widgets in the loop
+
+It is possible to create widgets in the loop. You need to set unique `url_key` for widgets created in the loop.
+
+## Required packages
+
+You will need `mercury` package to run this example.
+
+## Notebook
+
+In the first cell, please import required packages:
+
+```python
+import mercury as mr
+```
+
+Create widgets in the loop:
+
+```python
+texts = []
+for i in range(5):
+    texts += [mr.Text(label=f"Widget {i}", value=f"{i}", url_key=f"w-{i}")]
+```
+
+Display widgets values:
+
+```python
+for t in texts:
+    print(t.value)
+```
+
+The notebook's code in the Jupyter Notebook:
+
+<Screenshot src={notebookPng} alt="Create widgets in the loop in Python notebook" />
+
+## Mercury App
+
+Please start Mercury in the same directory as notebook:
+
+```
+mercury run
+```
+
+You will see the app running at `http://127.0.0.1:8000`. Below is an animation with Mercury App:
+
+<Screenshot src={appGif} alt="Mercury App with widgets created in the loop" />
+
+Notebook from this example is available in the [mercury-examples](https://github.com/mljar/mercury-examples) repository.
