@@ -1,9 +1,11 @@
 import { Screenshot } from "components/screenshot";
+import exampleAppPng from "../../../public/images/examples/outputdir-example.png";
+import notebookPng from "../../../public/images/examples/outputdir-notebook.png";
 import simpleAppGif from "../../../public/images/examples/outputdir.gif";
 
 # OutputDir
 
-Output directory when you can save files for download. All files that are saved in the `OutputDir` are available for download for users.
+Use `OutputDir` when you would like to save files for download. 
 
 ```python
 import os
@@ -25,8 +27,11 @@ with open(os.path.join(my_dir.path, "example-file.txt"), "w") as fout:
 # the file `example-file.txt` will be available for download in the Mercury app.
 ```
 
-The `OutputDir` creates temporary directory where files are saved.
+When running notebook as web app, there will be an additional view `Output Files`. It will list all files saved in the `OutputDir`.
 
+<Screenshot src={exampleAppPng} alt="Example Mercury App with OutputDir widget and output file" />
+
+The `OutputDir` creates temporary directory where files are saved. 
 You can't save directories in the `OutputDir`, only files.
 
 import { Callout } from 'nextra-theme-docs'
@@ -39,6 +44,8 @@ If you will create several instances of `OutputDir` they will point to the same 
 
 ## Example App
 
+Here is a simple Python notebook that creates two text files in the `OutputDir`. (You can save files in the any format in the `OutputDir`.)
+<Screenshot src={notebookPng} alt="Python notebook with OutputDir" />
 
-Running an example code in Mercury:
-<Screenshot src={simpleAppGif} alt="Mercury App with OutputDir widget" />
+Preview of `Output Files` in the Mercury:
+<Screenshot src={simpleAppGif} alt="Mercury App with OutputDir widget with output files" />
