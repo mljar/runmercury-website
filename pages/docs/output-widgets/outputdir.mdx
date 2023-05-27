@@ -1,20 +1,26 @@
+import { Screenshot } from "components/screenshot";
+import simpleAppGif from "../../../public/images/examples/outputdir.gif";
+
 # OutputDir
 
 Output directory when you can save files for download. All files that are saved in the `OutputDir` are available for download for users.
 
 ```python
+import os
 import mercury as mr
-
+```
+```python
 # get output directory widget
+# all files saved in the OutputDir will be available for download in Mercury
 my_dir = mr.OutputDir()
-
+```
+```python
 # print output directory path
 print(f"All files will be saved to {my_dir.path}")
 
 # save example file
-import os
-with open(os.path.join([my_dir.path, "example-file.txt"]), "w") as fout:
-    fout.write("Hello!")
+with open(os.path.join(my_dir.path, "example-file.txt"), "w") as fout:
+    fout.write("Hello Mercury!")
 
 # the file `example-file.txt` will be available for download in the Mercury app.
 ```
@@ -25,8 +31,14 @@ You can't save directories in the `OutputDir`, only files.
 
 import { Callout } from 'nextra-theme-docs'
 
-<Callout type="warning">
+<Callout type="info">
 There should be only one instance of `OutputDir` in the notebook.
 
 If you will create several instances of `OutputDir` they will point to the same path.
 </Callout>
+
+## Example App
+
+
+Running an example code in Mercury:
+<Screenshot src={simpleAppGif} alt="Mercury App with OutputDir widget" />
