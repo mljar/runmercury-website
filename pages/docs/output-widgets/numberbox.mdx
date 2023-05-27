@@ -6,11 +6,16 @@ It displays numbers in large boxes with title. It can
 import mercury as mr
 ```
 ```python
-# display JSON
-mr.JSON(json_data=data, level=1)
-
-# shorter form
-mr.JSON(data)
+# displays large number
+mr.NumberBox(data=123, title="Large number")
+```
+```python
+# more boxes in one row
+mr.NumberBox([
+    mr.NumberBox(data=123, title="First number"),
+    mr.NumberBox(data=456, title="Second number"),
+    mr.NumberBox(data=789, title="Third number")
+])
 ```
 
 ## Parameters
