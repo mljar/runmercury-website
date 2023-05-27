@@ -5,5 +5,8 @@
     },
     "json": {
         "title": "JSON"
+    },
+    "numberbox": {
+        "title": "NumberBox"
     }
 }
