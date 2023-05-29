@@ -5,9 +5,10 @@ export function Screenshot({ src, alt, full }) {
   return (
     <div
       className={cn(
-        'mt-6 -mb-4 flex justify-center overflow-hidden rounded-xl border dark:border-zinc-800',
+        'mt-2 -mb-4 flex justify-center overflow-hidden rounded-xl border dark:border-zinc-800',
         full ? 'bg-white' : 'bg-zinc-100'
       )}
+      style={{marginBottom: "10px"}}
     >
       <Image
         src={src}
