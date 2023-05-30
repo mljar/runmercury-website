@@ -1,0 +1,157 @@
+
+import {Screenshot} from 'components/screenshot'
+import notebookGif from "../../public/images/examples/altair-notebook.gif"
+import homeViewPng from "../../public/images/examples/altair-dashboard-home-view.png"
+import demoGif from "../../public/images/examples/altair-demo.gif"
+import appGif from "../../public/images/examples/altair-dashboard-python.gif"
+import { Callout } from 'nextra-theme-docs'
+
+
+# Build dashboard with Vega-Altair and Python
+
+The [Vega-Altair](https://altair-viz.github.io/) is a great package for building interactive visualizations. I would like to show you how to use it in Jupyter Notebook.
+What is more, we will publish Python notebook as a web application thanks to the Mercury framework.
+
+Here is a preview of the notebook and the dashboard:
+<Screenshot src={demoGif} alt="Dashboard created in Mercury from Python notebook" />
+
+## Import packages
+
+We will need the following packages:
+
+```
+mercury
+altair
+vega_datasets
+```
+
+- `mercury` will be used to create interactive widgets and publish notebook as web app,
+- `altair` is a plotting package,
+- `vega_datasets` is a package with example datasets.
+
+The import cell code:
+
+```python
+import altair as alt
+from vega_datasets import data
+import mercury as mr
+```
+
+## Setup app properties
+
+In the next cell, we will setup [`App`](/docs/input-widgets/app/) properties:
+
+```python
+app = mr.App(title="Car report 📊", description="Report based on cars dataset")
+```
+
+The `title` and `description` will be used for displaying information about app in the home view (when served with Mercury):
+<Screenshot src={homeViewPng} alt="Home View with many notebooks served with Mercury" />
+
+## Load data
+
+We will use `cars` dataset from `vega_datasets` package:
+
+```python
+cars = data.cars()
+```
+
+## Select samples based on widget selection
+
+Let's add [`MultiSelect`](/docs/input-widgets/multiselect/) widget to choose origin of cars:
+
+```python
+origin = mr.MultiSelect(label="Select origin", value=cars.Origin.unique(), choices=cars.Origin.unique())
+```
+
+We will use selection `.value` to filter Data Frame:
+
+```python
+df = cars[cars.Origin.isin(origin.value)]
+```
+
+## Checkbox to control plots
+
+We will add [`CheckBox`](/docs/input-widgets/checkbox/) to control number of plots:
+
+```python
+show_bars = mr.Checkbox(label="Show bars plot", value=True)
+```
+
+## Display metrics
+
+Metrics about data can be displayed with [`NumberBox`](/docs/output-widgets/numberbox/) widget:
+
+```python 
+mr.NumberBox([
+    mr.NumberBox(data=df.shape[0], title="Total cars"),
+    mr.NumberBox(data=df.Horsepower.max(), title="Max Horse Power"),
+    mr.NumberBox(data=df.Miles_per_Gallon.max(), title="Max MPG"),
+])
+```
+
+## Create Vega-Altair plots
+
+Please use the following code to create plots about `cars` data:
+
+```python
+points = alt.Chart(df).mark_point().encode(
+    x='Horsepower:Q',
+    y='Miles_per_Gallon:Q',
+    color='Origin:N',
+    tooltip=['Name', 'Origin', 'Horsepower', 'Miles_per_Gallon']
+).interactive().properties(
+    width="container"
+)
+
+bars = alt.Chart(df).mark_bar().encode(
+    x='count()',
+    y='Origin:N',
+    color='Origin:N'
+).properties(
+    width="container"
+)
+
+charts = [points]
+if show_bars.value:
+    charts += [bars]
+
+alt.vconcat(
+    *charts
+).configure(autosize="fit-x")
+```
+
+## Display Data Frame samples 
+
+Please call `head()` functtion to display first 20 samples from our data:
+```python
+df.head(20)
+```
+
+Here is full code in the Jupyter Notebook:
+<Screenshot src={notebookGif} alt="Dashboard with Vega-Altair in Jupyter Notebook" />
+
+<Callout type="info">
+Please notice that during notebook development cells are not automatically re-executed after widget update. 
+You need to manually execute cells after widget change in the Jupyter Notebook.
+
+When serving notebook with Mercury, cells are automatically re-executed after widget change.
+</Callout>
+
+## Run as Web App
+
+Please start Mercury Server with the following command:
+
+```
+mercury run
+```
+
+You should see the Web App running at address `http://127.0.0.1:8000`. Below is an example demo:
+<Screenshot src={appGif} alt="Web App in Mercury from Python notebook" />
+
+## Deployment
+
+There are several ways that you can use to deploy apps created in the Mercury. The simplest way is to use [Mercury Cloud](https://cloud.runmercury.com). 
+It is a hosting service, where you can deploy notebooks as web apps with few clicks. The app from the tutorial is available at this address [use-cases.runmercury.com](https://use-cases.runmercury.com/).
+
+There are several options for self-hosting Mercury. Please check [documentation](/docs/) for details.
