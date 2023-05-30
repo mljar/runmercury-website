@@ -1,21 +1,137 @@
-# Create reports with Python
-
-Creating reports is similar to creating dashboard. 
-Please check tutorial on how to [create dashboard with Mercury](/tutorials/dashboard-python-jupyter-notebook/).
-
-Soon we will add features that will allow you to create amazing reporting systems:
-- automatic notebook scheduling,
-- sending executed notebook in PDF or HTML by email,
-- authentication.
-
-Those features were available in Mercury V1. 
-The V2 is much different than V1 (widgets are added with Python code instead YAML). 
-They will be available in V2 soon.
-
-Please subscribe to our [newsletter](https://forms.gle/EjqYi3ttEkZkuKy46) to be notified about it.
-
+import {Screenshot} from 'components/screenshot'
+import notebookGif from "../../public/images/examples/report-notebook.gif"
+import demoGif from "../../public/images/examples/report-demo.gif"
+import reportMsftGif from "../../public/images/examples/report-msft.gif"
 import { Callout } from 'nextra-theme-docs'
 
-<Callout type="warning">
-  Work in progress ...
+
+# Create reports with Python
+
+In this tutorial we are going to create a simple financial report for stock companies. The report will be generated based on ticker and selected time period.
+The report will consist of:
+
+- basic statistics about the company,
+- plot showing the historical prices,
+- Data Frame with latest data.
+
+Here is a preview of the notebook and ready report:
+<Screenshot src={demoGif} alt="Report created in Mercury from Python notebook" />
+
+## Import required packages
+
+
+We need to install the following packages:
+
+```
+mercury
+pandas
+yfinance
+mplfinance
+```
+
+- `mercury` will be used for interactive widgets and for running notebook as web app,
+- `pandas` is for data manipulation,
+- `yfinance` will be used for downloading financial historical data,
+- `mplfinance` is a plotting package for financial data.
+
+The cell code with imports is below:
+
+```python
+from datetime import date, timedelta
+import yfinance as yf
+import mercury as mr
+import pandas as pd
+import mplfinance as mpf
+```
+
+## Add interactive widgets
+
+In the next three cells we will setup web app properties (`title` and `description`) and add interactive widgets.
+
+Please create the [`App`](/docs/input-widgets/app/) object to control app properties:
+
+```python
+app = mr.App(title="Ticker Report", description="Report financial data for selected ticker")
+```
+
+Then let's add [`Text`](/docs/input-widgets/text/) widget for ticker:
+
+```python
+ticker = mr.Text(label="Ticker", value="NVDA")
+```
+
+The [`Slider`](/docs/input-widgets/slider/) widget to control history length:
+
+```python
+weeks = mr.Slider(label="Weeks", value=52, min=4, max=260)
+```
+
+<Callout type="info">
+Please notice that during development of the notebook nothing is happening after widget change. You can interact with widget but to see change in other cells you need to manually execute them,
+
+When notebook is served with `mercury` then cells are automatically re-executed after widget update. Only cells below updated widget are re-executed.
 </Callout>
+
+
+## Load data
+
+Let's create a Data Frame with our data:
+
+```python
+start = date.today() - timedelta(weeks.value*7)
+end = date.today() + timedelta(2)
+df = pd.DataFrame(yf.download(ticker.value, start=start, end=end, progress=False))
+```
+
+## Display metrics
+
+We can use [`NumberBox`](/docs/output-widgets/numberbox/) to display important metrics:
+
+```python
+mr.NumberBox([
+    mr.NumberBox(data=ticker.value),
+    mr.NumberBox(data=df.High.max().round(1), title=f"{weeks.value}-Week High"),
+    mr.NumberBox(data=df.Low.min().round(1), title=f"{weeks.value}-Week Low")
+])
+```
+
+## Display plot 
+
+Ploting financial data with `mplfinance` is very easy:
+
+```python
+plot_type = "candle" if weeks.value < 53 else "line"
+mpf.plot(df, type=plot_type, figratio=(18,10))
+```
+
+Please notice, that we do a candle plot for short periods (less than 1 year) and line plot for longer periods.
+
+## Display Data Frame 
+
+Call `tail(10)` on our Data Frame to display latest 10 samples of data:
+
+```python
+df.tail(10)
+```
+
+Below is our notebook in the Jupyter:
+<Screenshot src={notebookGif} alt="Python notebook used to create report" />
+
+## Run as Web App
+
+In the same directory as notebook file, please start `mercury` server with the below command:
+
+```
+mercury run
+```
+
+It will start local server and publish all notebooks from the current directory as web applications. Please open `http://127.0.0.1:8000` and check your app.
+
+You can change ticker value and control history with slider:
+<Screenshot src={reportMsftGif} alt="Report created from Python notebook" />
+
+## Deployment
+
+The easiest way to deploy notebooks is to use [Mercury Cloud](https://cloud.runmercury.com). Here is the app deployed in the Mercury Cloud: [use-cases.runmercury.com/app/ticker-report](https://use-cases.runmercury.com/app/ticker-report).
+
+There are many options to self-host Mercury. Please check [documentation](/docs/) for more details.

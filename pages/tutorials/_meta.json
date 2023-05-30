@@ -18,8 +18,5 @@
     },
     "presentation-python-jupyter-notebook": {
         "title": "Create Presentation"
-    },
-    "rest-api-python-jupyter-notebook": {
-        "title": "Create REST API"
     }
 }
