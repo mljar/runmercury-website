@@ -7,7 +7,7 @@ import { Callout } from 'nextra-theme-docs'
 
 # Create reports with Python
 
-In this tutorial we are going to create a simple financial report for stock companies. The report will be generated based on ticker and selected time period.
+In this tutorial, we are going to create a simple financial report for stock companies. The report will be generated based on the ticker and selected time period.
 The report will consist of:
 
 - basic statistics about the company,
@@ -29,9 +29,9 @@ yfinance
 mplfinance
 ```
 
-- `mercury` will be used for interactive widgets and for running notebook as web app,
+- `mercury` will be used for interactive widgets and for running notebook as a web app,
 - `pandas` is for data manipulation,
-- `yfinance` will be used for downloading financial historical data,
+- `yfinance` will be used for downloading historical financial data,
 - `mplfinance` is a plotting package for financial data.
 
 The cell code with imports is below:
@@ -46,7 +46,7 @@ import mplfinance as mpf
 
 ## Add interactive widgets
 
-In the next three cells we will setup web app properties (`title` and `description`) and add interactive widgets.
+In the next three cells, we will setup web app properties (`title` and `description`) and add interactive widgets.
 
 Please create the [`App`](/docs/input-widgets/app/) object to control app properties:
 
@@ -67,9 +67,9 @@ weeks = mr.Slider(label="Weeks", value=52, min=4, max=260)
 ```
 
 <Callout type="info">
-Please notice that during development of the notebook nothing is happening after widget change. You can interact with widget but to see change in other cells you need to manually execute them,
+Please notice that during the development of the notebook, nothing happens after the widget change. You can interact with the widget but to see changes in other cells you need to execute them manually,
 
-When notebook is served with `mercury` then cells are automatically re-executed after widget update. Only cells below updated widget are re-executed.
+When the notebook is served with `mercury` then cells are automatically re-executed after the widget update. Only cells below the updated widget are re-executed.
 </Callout>
 
 
@@ -104,11 +104,11 @@ plot_type = "candle" if weeks.value < 53 else "line"
 mpf.plot(df, type=plot_type, figratio=(18,10))
 ```
 
-Please notice, that we do a candle plot for short periods (less than 1 year) and line plot for longer periods.
+Please notice that we do a candle plot for short periods (less than 1 year) and a line plot for longer periods.
 
 ## Display Data Frame 
 
-Call `tail(10)` on our Data Frame to display latest 10 samples of data:
+Call `tail(10)` on our Data Frame to display the latest 10 samples of data:
 
 ```python
 df.tail(10)
@@ -117,17 +117,17 @@ df.tail(10)
 Below is our notebook in the Jupyter:
 <Screenshot src={notebookGif} alt="Python notebook used to create report" />
 
-## Run as Web App
+## Run as a Web App
 
-In the same directory as notebook file, please start `mercury` server with the below command:
+In the same directory as the notebook file, please start the `mercury` server with the below command:
 
 ```
 mercury run
 ```
 
-It will start local server and publish all notebooks from the current directory as web applications. Please open `http://127.0.0.1:8000` and check your app.
+It will start the local server and publish all notebooks from the current directory as web applications. Please open `http://127.0.0.1:8000` and check your app.
 
-You can change ticker value and control history with slider:
+You can change the ticker value and control history with the slider:
 <Screenshot src={reportMsftGif} alt="Report created from Python notebook" />
 
 ## Deployment
