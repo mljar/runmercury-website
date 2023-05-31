@@ -7,10 +7,10 @@ import appGif from "../../public/images/examples/altair-dashboard-python.gif"
 import { Callout } from 'nextra-theme-docs'
 
 
-# Build dashboard with Vega-Altair and Python
+# Build a dashboard with Vega-Altair and Python
 
-The [Vega-Altair](https://altair-viz.github.io/) is a great package for building interactive visualizations. I would like to show you how to use it in Jupyter Notebook.
-What is more, we will publish Python notebook as a web application thanks to the Mercury framework.
+The [Vega-Altair](https://altair-viz.github.io/) is a great package for building interactive visualizations. This tutorial shows how to use it in Jupyter Notebook.
+Moreover, we will publish Python notebook as a web application thanks to the Mercury framework.
 
 Here is a preview of the notebook and the dashboard:
 <Screenshot src={appGif} alt="Dashboard created in Mercury from Python notebook" />
@@ -25,7 +25,7 @@ altair
 vega_datasets
 ```
 
-- `mercury` will be used to create interactive widgets and publish notebook as web app,
+- `mercury` will be used to create interactive widgets and publish the notebook as a web app,
 - `altair` is a plotting package,
 - `vega_datasets` is a package with example datasets.
 
@@ -45,7 +45,7 @@ In the next cell, we will setup [`App`](/docs/input-widgets/app/) properties:
 app = mr.App(title="Car report 📊", description="Report based on cars dataset")
 ```
 
-The `title` and `description` will be used for displaying information about app in the home view (when served with Mercury):
+The `title` and `description` will be used for displaying information about the app in the home view (when served with Mercury):
 <Screenshot src={homeViewPng} alt="Home View with many notebooks served with Mercury" />
 
 ## Load data
@@ -64,7 +64,7 @@ Let's add [`MultiSelect`](/docs/input-widgets/multiselect/) widget to choose ori
 origin = mr.MultiSelect(label="Select origin", value=cars.Origin.unique(), choices=cars.Origin.unique())
 ```
 
-We will use selection `.value` to filter Data Frame:
+We will use selection `.value` to filter the Data Frame:
 
 ```python
 df = cars[cars.Origin.isin(origin.value)]
@@ -123,19 +123,19 @@ alt.vconcat(
 
 ## Display Data Frame samples 
 
-Please call `head()` functtion to display first 20 samples from our data:
+Please call `head()` functtion to display the first 20 samples from our data:
 ```python
 df.head(20)
 ```
 
-Here is full code in the Jupyter Notebook:
+Here is the full code in the Jupyter Notebook:
 <Screenshot src={notebookGif} alt="Dashboard with Vega-Altair in Jupyter Notebook" />
 
 <Callout type="info">
-Please notice that during notebook development cells are not automatically re-executed after widget update. 
-You need to manually execute cells after widget change in the Jupyter Notebook.
+Please notice that during notebook development, cells are not automatically re-executed after widget update. 
+You need to manually execute cells after the widget change in the Jupyter Notebook.
 
-When serving notebook with Mercury, cells are automatically re-executed after widget change.
+When serving the notebook with Mercury, cells are automatically re-executed after the widget change.
 </Callout>
 
 ## Run as Web App
@@ -146,12 +146,12 @@ Please start Mercury Server with the following command:
 mercury run
 ```
 
-You should see the Web App running at address `http://127.0.0.1:8000`. Below is an example demo:
+You should see the Web App running at the address `http://127.0.0.1:8000`. Below is an example demo:
 <Screenshot src={demoGif} alt="Web App in Mercury from Python notebook" />
 
 ## Deployment
 
 There are several ways that you can use to deploy apps created in the Mercury. The simplest way is to use [Mercury Cloud](https://cloud.runmercury.com). 
-It is a hosting service, where you can deploy notebooks as web apps with few clicks. The app from the tutorial is available at this address [use-cases.runmercury.com](https://use-cases.runmercury.com/).
+It is a hosting service where you can deploy notebooks as web apps with a few clicks. The app from the tutorial is available at this address [use-cases.runmercury.com](https://use-cases.runmercury.com/).
 
 There are several options for self-hosting Mercury. Please check [documentation](/docs/) for details.
