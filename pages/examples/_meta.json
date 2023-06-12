@@ -14,5 +14,6 @@
   "file-upload-jupyter-notebook": "File upload",
   "display-json-jupyter-notebook": "Display JSON",
   "stop-cell-execution-jupyter-notebook": "Stop cell execution",
-  "create-widgets-in-loop": "Create widgets in the loop"
+  "create-widgets-in-loop": "Create widgets in the loop",
+  "pivot-table-jupyter-notebook": "Pivot table"
 }

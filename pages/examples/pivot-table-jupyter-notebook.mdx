@@ -1,0 +1,95 @@
+import {Screenshot} from 'components/screenshot'
+import notebookPng from "../../public/images/examples/pivot-table-notebook.png"
+import appPng from "../../public/images/examples/pivot-table-app.png"
+import appGif from "../../public/images/examples/pivot-table.gif"
+
+
+# Pivot Table 
+
+In this example, you will learn how to create a web app that can do pivot table on CSV data uploaded by user. 
+
+We will use custom widget [`pivottablejs`](https://github.com/nicolaskruchten/jupyter_pivottablejs) to create pivot table. It is compatible with Jupyter Notebook/Lab and Mercury.
+
+The dataset will be loaded from CSV file with [`File`](/input-widgets/file/) widget from Mercury.
+The notebook and  and web app are presented in the below animation.
+
+<Screenshot src={appGif} alt="Use pivot table in Jupyter Notebook and Mercury" />
+
+## Required packages
+
+You will need the following packages to run this example:
+
+```
+mercury
+pandas
+pivottablejs
+```
+
+- `mercury` is for file upload widget and for serving notebook as web app,
+- `pandas` is for reading CSV file,
+- `pivottablejs` is for displaying pivot table user interface.
+
+## Notebook
+
+In the first cell, please import required packages:
+
+```python
+import pandas as pd
+import mercury as mr
+from pivottablejs import pivot_ui
+```
+
+Let's setup Mercury app properties:
+
+```python
+app = mr.App(title="Pivot table", 
+             description="Do pivot table on any CSV file")
+```
+
+File upload widget is added with one line of code:
+
+```python
+my_file = mr.File(label="Upload CSV file")
+```
+
+We stop the execution of the notebook until file is uploaded. We use [`Stop`](/output-widgets/stop/) widget to stop execution of the notebook.
+
+```python
+if my_file.filepath is None:
+    mr.Markdown("Please upload CSV file")
+    mr.Stop()
+```
+
+We load the dataset with `pandas` package:
+
+```python
+# load CSV data
+df = pd.read_csv(my_file.filepath)
+```
+
+The pivot table for our DataFrame is displayed with the following code:
+
+```python
+# display pivot table 
+pivot_ui(df, height="800px")
+```
+
+You can analyze your DataFrame with pivot table in the Jupyter Notebook. Here is the screenshot with code in Jupyter Notebook:
+<Screenshot src={notebookPng} alt="Pivot table in Python notebook" />
+
+## Mercury App
+
+You can share your notebook to non-technical users. They will be able to upload their dataset in CSV format and perform analysis with pivot table (you will make them happy!).
+
+Please start Mercury Server in the same directory as notebook:
+
+```
+mercury run
+```
+
+You will see the app running at `http://127.0.0.1:8000`. You will see a home view with your notebook. Please click on its title.
+You should see the web app running. After uploading example CSV file you should see app similar as in the screenshot below:
+
+<Screenshot src={appPng} alt="Web App with Pivot Table created in Jupyter Notebook and served with Mercury" />
+
+Notebook from this example is available in the [mercury-examples](https://github.com/mljar/mercury-examples/tree/main/pivot-table) repository.
