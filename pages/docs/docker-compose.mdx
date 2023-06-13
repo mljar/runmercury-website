@@ -1,55 +1,109 @@
+import {Screenshot} from 'components/screenshot'
+import deployHttpPng from "../../public/images/deploy-docker-compose-http.png"
+import deployHttpsPng from "../../public/images/deploy-docker-compose-https.png"
+
 # Deploy with docker-compose
 
-You can deploy Mercury Server with `docker-compose` on any VPS machine. In this section, we will show you steps needed to deploy Mercury Server with `docker-compose`. 
-There are two configuration files available:
-- simple deployment with HTTP (port 80),
-- more advanced deployment with HTTP and HTTPS (port 443). 
+In this section, we will show you steps needed to deploy Mercury Server with `docker-compose` on VPS machine. 
 
-Both deployments are using `Nginx` as a proxy, and the `PostreSQL` as a database. `Let's Encrypt` service with `certbot` is used for HTTPS deployment. 
+There are two configuration files available for `docker-compose`:
+- simple deployment with HTTP (port 80) ([`docker-compose.yml`](https://github.com/mljar/mercury/blob/main/docker-compose.yml)),
+- more advanced deployment with HTTP and HTTPS (port 443) ([`docker-compose-https.yml`](https://github.com/mljar/mercury/blob/main/docker-compose-https.yml)). 
 
-## Create notebooks 
+Both deployments are using `Nginx` as a proxy, and the `PostreSQL` as a database. The `Let's Encrypt` service with `certbot` is used for HTTPS deployment. 
 
-The first step is to create notebooks. Please create them in a separate directory or (ideally) in separate GitHub repository. 
-Please make sure that required packages are listed in `requirements.txt` file.
+It is a good practice to start with simpler deployment that is using HTTP only. If it will be working OK. Then we can use HTTPS deployment.
+
+## Install `docker` and `docker-compose`
+
+You can skip this step if you have `docker` and `docker-compose` installed.
+
+I'm using Ubuntu as operating system. Below steps to install `docker`:
+
+```bash
+sudo apt-get update
+sudo apt install docker.io -y
+sudo docker --version
+```
+
+If the last command displays the `docker` version, it is installed correctly.
+
+The next step is to install the `docker-compose`:
+
+```bash
+sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+sudo docker-compose version
+```
+
+You are ready to start if you get the `docker-compose` version in the last command.
+
+## Copy notebooks to server
+
+The first step is to copy notebooks to the server. Good approach is to keep notebook in a GitHub repository and just clone it to the server.
+
+I've created a simple repository with two notebooks. It is available in the GitHub at [mljar/mercury-deploy-demo](https://github.com/mljar/mercury-deploy-demo).
+
+Please notice that we have in the repository:
+- `requirements.txt` file with list of needed Python pacakges,
+- `welcome.md` file with custom welcome message.
+
+Please clone the repository to server:
+
+```bash
+git clone https://github.com/mljar/mercury-deploy-demo.git
+```
 
 ## Clone Mercury repository
 
+We will copy Mercury repository and use it to build `docker` containters.
+
 Please clone Mercury repository:
 
-```
-git clone git@github.com:mljar/mercury.git
+```bash
+git clone https://github.com/mljar/mercury.git
 ```
 
-Change the directory and build `docker-compose` containers:
+Please change the working directory:
 
-```
+```bash
 cd mercury
-
-sudo docker-compose build
 ```
 
-Before starting container, please create the `.env` file with configuration variables:
+## Environment variables
 
-- `NOTEBOOKS_PATH` - a path to directory with your notebooks. This variable is required.
-- `ALLOWED_HOSTS` - coma separated list of allowed hosts (domains or IP addresses). This variable is required.
-- if you need access to Admin Panel please define: `DJANGO_SUPERUSER_USERNAME`, `DJANGO_SUPERUSER_PASSWORD`, `DJANGO_SUPERUSER_EMAIL`.
+Before starting containers, please create the `.env` file with configuration variables.
 
-Example `.env` file:
+Below is an example `.env` file:
 
-```
-NOTEBOOKS_PATH=./mercury/
+```bash
+NOTEBOOKS_PATH=../mercury-deploy-demo/
 DJANGO_SUPERUSER_USERNAME=piotr
 DJANGO_SUPERUSER_PASSWORD=verysecretpass
-DJANGO_SUPERUSER_EMAIL=piotr@piotr.pl
+DJANGO_SUPERUSER_EMAIL=piotr@example.com
 ALLOWED_HOSTS=mercury.mljar.com
 SECRET_KEY="x3%q8fs(-q3i(m&=e1g%9xtvcn*q!c%i@v0*ha4@ow2crdkaaa"
 DEBUG=False
 SERVE_STATIC=False
-WELCOME=./mercury/welcome.md
+WELCOME=/app/notebooks/welcome.md
 TIME_ZONE=Europe/Warsaw
 DJANGO_LOG_LEVEL=ERROR
 MERCURY_VERBOSE=0
 ACCOUNT_EMAIL_VERIFICATION=none
+```
+
+The most important variables
+- **`NOTEBOOKS_PATH`** - a path to directory with your notebooks. This variable is required. It can be a relative path.
+- **`ALLOWED_HOSTS`** - coma separated list of allowed hosts (domains or IP addresses). This variable is required.
+- if you need access to Admin Panel please define: `DJANGO_SUPERUSER_USERNAME`, `DJANGO_SUPERUSER_PASSWORD`, `DJANGO_SUPERUSER_EMAIL`.
+
+
+## Build containers with HTTP support only
+
+Build containers with `docker-compose.yml` configuration:
+
+```
+sudo docker-compose build
 ```
 
 Please start `docker-compose`:
@@ -58,21 +112,80 @@ Please start `docker-compose`:
 sudo docker-compose up
 ```
 
-You should be able to see a Mercury Server running in the web browser at address `http://0.0.0.0`.
+You should be able to see a Mercury Server running in the web browser at your IP address. 
 
-## HTTPS support
+Please make sure that you are using **HTTP** protocol, your address should be `http://ip-address` or `http://your-domain.com`.
 
-You can enable HTTPS for Mercury Server. You will need a custom domain for this. Please set `A` record in DNS table pointing your server IP address to domain name.
+
+<Screenshot src={deployHttpPng} alt="Deployment with HTTP support" />
+
+Please notice that you will have information about `not secure` connection near the URL address.
+
+
+## DNS settings
+
+Please create **A** records in the DNS table pointing your domain name to your server IP address.
+
+If you are going to use HTTPS support please create two **A** records:
+- first record pointing your domain (for example `mercury.mljar.com`) to server IP,
+- second record pointing your domain with `www` (for example `www.mercury.mljar.com`) to server IP.
+
+Both records are required when setting up certificates with `Let's Encrypt`.
+
+## Build containers with HTTPS support
 
 After setting DNS records, please run `setup-https.sh` script from Mercury repository with your domain name:
 
-```
+```bash
 sudo ./setup-https.sh your-domain-name.com
 ```
 
-Please run the above command in the server machine. The above command will issue certificates from `Let's Encrypt` and set files for HTTP challenge to pass verification.
+Example:
+```bash
+sudo ./setup-https.sh mercury.mljar.com
+```
+
+Please run the above command in the server machine. 
+The above command will issue certificates from `Let's Encrypt` and set files for HTTP challenge to pass verification.
 
 You can also provide your own certificates. Please take a look at `docker/nginx/pro` for configuration.
+
+<Screenshot src={deployHttpsPng} alt="Deployment with HTTPS support" />
+
+Please notice that you will have information about `secure` connection near the URL address - there should be lock displayed.
+
+
+## Start and stop containers
+
+If you are using containers with HTTP only support:
+
+```bash
+# stop containers
+sudo docker-compose stop 
+
+# start containers
+sudo docker-compose up
+
+# start containers in detached model
+sudo docker-compose up -d 
+```
+
+If you are using HTTPS support:
+
+```bash
+# stop containers
+sudo docker-compose -f docker-compose-https.yml stop 
+
+# start containers
+sudo docker-compose -f docker-compose-https.yml up
+
+# start containers in detached model
+sudo docker-compose -f docker-compose-https.yml up -d 
+```
+
+## Renew certificates
+
+Certificates from `Let's Encrypt` are issued for 90 days. They are automatically renewed by `certbot` container. 
 
 ## Help needed
 
