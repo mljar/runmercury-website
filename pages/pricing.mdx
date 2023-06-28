@@ -8,6 +8,7 @@ export function ToggleDeployment() {
   const title = cloud? "Mercury Cloud" : "Self-Hosted"
 return (
 <div className="pb-1 mb-1">
+    
     <center>
         <label className="relative inline-flex items-center cursor-pointer">
         <input
@@ -34,6 +35,7 @@ return (
 
     {cloud && CloudPricing}
     {!cloud && SelfHostedPricing}
+    
 
 </div>
 
@@ -49,18 +51,16 @@ return (
         The easiest way to deploy notebooks online is to use Mercury Cloud.
       </p>
 
-
-      <div className="flex text-center bg-blue-500 text-white font-bold px-4 py-3 mt-4" role="alert">
-        
-        Mercury Cloud is in alpha version. We are actively working on it! 
-        
-     </div>
     </div>
   </div>
 
 <ToggleDeployment />
 
 </section>
+
+{/*<div className="rounded-lg text-lg text-center bg-primary-600 text-white font-bold px-4 py-4 mt-4">
+  Mercury Cloud is in alpha version. We are actively working on it! 
+</div>*/}
 
 ## Pricing FAQ
 

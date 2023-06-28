@@ -4,7 +4,7 @@ import tickIcon from "../icons/tick";
 export default (
   <div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 lg:px-16">
     <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
-      <h3 className="mb-4 text-2xl font-semibold">Free</h3>
+      <h3 className="mb-4 text-4xl font-semibold">Free</h3>
       <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
         Deploy Mercury and share notebooks on your servers
       </p>
@@ -51,14 +51,14 @@ export default (
       <a
         href="/docs/"
         target="_blank"
-        className="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900"
+        className="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900"
       >
         Check docs
       </a>
     </div>
 
     <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
-      <h3 className="mb-4 text-2xl font-semibold">Commercial</h3>
+      <h3 className="mb-4 text-4xl font-semibold">Commercial</h3>
       <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
         Customize Mercury and serve notebook on your servers
       </p>
@@ -113,14 +113,14 @@ export default (
       
       <a
         href="/support/contact/"
-        className="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900"
+        className="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900"
       >
         Contact us
       </a>
     </div>
 
     <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
-      <h3 className="mb-4 text-2xl font-semibold">Enterprise</h3>
+      <h3 className="mb-4 text-4xl font-semibold">Enterprise</h3>
       <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
         Use multi-server deployment for large organizations
       </p>
@@ -174,7 +174,7 @@ export default (
 
       <a
         href="/support/contact/"
-        className="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900"
+        className="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900"
       >
         Contact us
       </a>
