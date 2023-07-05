@@ -67,7 +67,7 @@ export default (
         Best option for professionals with deadlines 
       </p>
       <div className="flex justify-center items-baseline my-8">
-        <span className="mr-2 text-5xl font-extrabold">$20</span>
+        <span className="mr-2 text-5xl font-extrabold">$49</span>
         <span className="text-gray-500 dark:text-gray-400">/month</span>
       </div>
 
@@ -108,7 +108,7 @@ export default (
         <li className="flex items-center space-x-3">
           {tickIcon}
           <span>
-            <span className="font-semibold">50 hours </span>of worker / monthly
+            <span className="font-semibold">100 hours </span>of worker / monthly
           </span>
         </li>
         <li className="flex items-center space-x-3">
@@ -139,7 +139,7 @@ export default (
         Data teams that need to share more notebooks{" "}
       </p>
       <div className="flex justify-center items-baseline my-8">
-        <span className="mr-2 text-5xl font-extrabold">$100</span>
+        <span className="mr-2 text-5xl font-extrabold">$149</span>
         <span className="text-gray-500 dark:text-gray-400">/month</span>
       </div>
 
