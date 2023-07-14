@@ -42,6 +42,9 @@
   "authentication": {
     "title": "Authentication"
   },
+  "in-mercury": {
+    "title": "Am I in Mercury?"
+  },
   "schedule-jupyter-notebook": {
     "title": "Schedule notebook"
   },

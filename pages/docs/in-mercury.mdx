@@ -1,0 +1,19 @@
+import {Screenshot} from 'components/screenshot'
+import notebookPng from "../../public/images/output-files-notebook.png"
+import appGif from "../../public/images/output-files-app.gif"
+
+# Am I In Mercury?
+
+There is a function `in_mercury()` that returns `True` when executed in the notebook which is served as web app in Mercury Server. It returns `False` when executed during the development of the notebook (in Jupyter Notebook, Jupyter Lab, VS Code, Google Colab, ...).
+
+## Example code 
+
+```python
+import mercury as mr
+
+if mr.in_mercury():
+    print("Web App")
+else:
+    print("Notebook")
+```
+
