@@ -187,6 +187,66 @@ sudo docker-compose -f docker-compose-https.yml up -d
 
 Certificates from `Let's Encrypt` are issued for 90 days. They are automatically renewed by `certbot` container. 
 
+## Deploy on subpath
+
+It is possible to deploy Mercury on subpath, for example: `mydomain.com/subpath`. It can be achived after few changes in the code, described below.
+
+
+<div className="steps-container">
+
+### Update nginx configuration
+
+Comment out code in the `docker/nginx/default.conf:
+
+```
+    # location / {
+    #     root   /usr/share/nginx/html;
+    #     index  index.html index.htm;
+    #     try_files $uri $uri/ /index.html;
+    # }
+```
+
+Add code:
+
+```
+    location = /subpath {
+        root /usr/share/nginx/html;
+        try_files /index.html =404;
+    }
+
+    location ~ ^/subpath(.*) {
+        root /usr/share/nginx/html;
+        try_files $1 $1/ /index.html =404;
+    }
+```
+
+### Update `package.json`
+
+We need to add `homepage` in the `frontend/package.json`:
+
+```
+{
+  "name": "frontend",
+  "homepage":"/subpath", 
+   # ... rest of json ...
+```
+
+### Update `Routes.tsx`
+
+Update `Router` with `basename` argument in the `frontend/src/Routes.tsx`:
+
+```
+   // rest of code ...
+    <Router basename="/subpath">
+   // rest of code ...
+```
+
+### Build docker
+
+Please rebuild the docker after those changes. 
+
+</div>
+
 ## Help needed
 
 If you need help with deployment please setup a new issue in the [Mercury repository](https://github.com/mljar/mercury) or [email us](/support/contact/). We are happy to help!
