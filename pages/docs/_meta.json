@@ -49,12 +49,19 @@
     "title": "Schedule notebook"
   },
   "commands": "",
-  "-- Deployment": {
+  "--mercurycloud": {
     "type": "separator",
-    "title": "Deployment"
+    "title": "Mercury Cloud"
   },
   "cloud": {
-    "title": "Mercury Cloud"
+    "title": "Share Notebooks"
+  },
+  "style": {
+    "title": "Style customization"
+  },
+  "-- Deployment": {
+    "type": "separator",
+    "title": "On Premise Deployment"
   },
   "docker-compose": {
     "title": "Docker Compose"

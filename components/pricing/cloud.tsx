@@ -113,7 +113,7 @@ export default (
         </li>
         <li className="flex items-center space-x-3">
           {tickIcon}
-          <span>Style customization (coming soon)</span>
+          <span><a className="nx-text-white nx-underline nx-decoration-from-font [text-underline-position:from-font]" href="/docs/style/">Style customization </a></span>
         </li>
         <li className="flex items-center space-x-3">
           {tickIcon}
@@ -185,7 +185,7 @@ export default (
         </li>
         <li className="flex items-center space-x-3">
           {tickIcon}
-          <span>Style customization (coming soon)</span>
+          <span><a className="nx-text-white nx-underline nx-decoration-from-font [text-underline-position:from-font]" href="/docs/style/">Style customization </a></span>
         </li>
         <li className="flex items-center space-x-3">
           {tickIcon}
