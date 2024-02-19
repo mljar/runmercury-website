@@ -6,7 +6,7 @@ export default (
     <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
       <h3 className="mb-4 text-4xl font-semibold">Starter</h3>
       <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-        Start for free today! No credit card required 
+        Start for free today! No credit card required
       </p>
       <div className="flex justify-center items-baseline my-8">
         <span className="mr-2 text-5xl font-extrabold">$0</span>
@@ -23,7 +23,7 @@ export default (
         <li className="flex items-center space-x-3">
           {tickIcon}
           <span>
-            <span className="font-semibold">Public</span> notebooks 
+            <span className="font-semibold">Public</span> notebooks
           </span>
         </li>
 
@@ -36,13 +36,13 @@ export default (
         <li className="flex items-center space-x-3">
           {tickIcon}
           <span>
-            Upload up to <span className="font-semibold">10 files</span>
+            Upload up to <span className="font-semibold">2 files</span>
           </span>
         </li>
         <li className="flex items-center space-x-3">
           {tickIcon}
           <span>
-            Max file size <span className="font-semibold">10MB</span>
+            Max file size <span className="font-semibold">5MB</span>
           </span>
         </li>
         <li className="flex items-center space-x-3">
@@ -64,7 +64,7 @@ export default (
     <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
       <h3 className="mb-4 text-4xl font-semibold">Pro</h3>
       <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-        Best option for professionals with deadlines 
+        Best option for professionals with deadlines
       </p>
       <div className="flex justify-center items-baseline my-8">
         <span className="mr-2 text-5xl font-extrabold">$49</span>
