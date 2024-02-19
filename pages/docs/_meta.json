@@ -59,6 +59,9 @@
   "style": {
     "title": "Style customization"
   },
+  "secrets": {
+    "title": "Secrets Management"
+  },
   "-- Deployment": {
     "type": "separator",
     "title": "On Premise Deployment"
