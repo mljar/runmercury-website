@@ -5,7 +5,6 @@ import SelfHostedPricing from "components/pricing/self";
 
 function ToggleDeployment() {
   const [cloud, setCloud] = useState(true);
-  const title = cloud? "Mercury Cloud" : "Self-Hosted"
 
   return (
     <div className="pb-1 mb-1">

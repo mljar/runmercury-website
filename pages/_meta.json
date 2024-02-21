@@ -21,38 +21,20 @@
       "layout": "full"
     }
   },
-  "company": {
+  "docs-menu": {
     "title": "Documentation",
     "type": "menu",
     "items": {
       "docs": {
-        "type": "page",
         "title": "API Docs"
       },
       "examples": {
-        "type": "page",
         "title": "Examples"
       },
       "tutorials": {
-        "type": "page",
         "title": "Tutorials"
       }
     }
-  },
-  "docs": {
-    "type": "page",
-    "title": "API Docs",
-    "display": "hidden"
-  },
-  "examples": {
-    "type": "page",
-    "title": "Examples",
-    "display": "hidden"
-  },
-  "tutorials": {
-    "type": "page",
-    "title": "Tutorials",
-    "display": "hidden"
   },
   "support": {
     "display": "hidden",
