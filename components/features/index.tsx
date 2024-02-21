@@ -14,6 +14,15 @@ export function Feature({
   href,
   index,
   ...props
+}: {
+  large?,
+  centered?,
+  children,
+  lightOnly?,
+  className?,
+  href?,
+  index,
+  props?
 }) {
   return (
     <motion.div
