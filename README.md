@@ -15,7 +15,7 @@ yarn next
 
 ```
 rm -rf .next/cache
-yarn next build && yarn next export
+yarn next build
 aws s3 sync out/ s3://runmercury.com
 ```
 
