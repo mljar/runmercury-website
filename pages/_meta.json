@@ -36,6 +36,21 @@
       }
     }
   },
+  "docs": {
+    "type": "page",
+    "title": "API Docs",
+    "display": "hidden"
+  },
+  "examples": {
+    "type": "page",
+    "title": "Examples",
+    "display": "hidden"
+  },
+  "tutorials": {
+    "type": "page",
+    "title": "Tutorials",
+    "display": "hidden"
+  },
   "support": {
     "display": "hidden",
     "type": "page",
