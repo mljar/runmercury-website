@@ -1,5 +1,8 @@
 {
     "markdown": "",
+    "note": {
+        "title": "Note"
+    },
     "outputdir": {
         "title": "OutputDir"
     },
