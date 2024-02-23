@@ -1,19 +1,56 @@
+import { Screenshot } from "components/screenshot";
+import firstoptionPng from "../../../public/images/select/first-option-code.png";
+import secondoptionPng from "../../../public/images/select/second-option-code.png";
+
 # Select
 
-Adds select widgets with option to select single value.
+Make your Notebook look better! You can add select widgets with option to select a single value, all of this with **Select** *(Mercury Widget)*.
+
+
+
+## 1. How to use Select
+
+**Example code:**
 
 ```python
 import mercury as mr
-
-# add select widget
-my_selection = mr.Select(value="", choices=[], label="")
-
-# access selected values
-print(f"Selected values are {my_selection.value}")
+```
+```python
+my_selection = mr.Select(value = "a", choices = ["a", "b", "c"], label = "Select option")
+```
+```python
+print(f"Selected value is: {my_selection.value}.")
 ```
 
-## Parameters
+**Code explain:**
 
-- **value** (_string_) - initial selection.
-- **choices** (_list of strings_) - available choices in the widget.
-- **label** (_string_) - label near the widget.
+Fist step is importing Mercury. Then create variable *(my_selection in our case)* and asign the `Select` widget to it. There are 3 parameters: 
+
+- **value** *(string)* is a default selection. If value is not present in choices or if value is empty, it sets value to the first element of choices. 
+- **choices** *(list of strings)* is a place where you can set options which user chooses later. It can't be empty!
+- **label** *(string)* is a title of selection widget. 
+
+At the end print your results using `my_selection.value`.
+
+## 2. Example of use
+
+People often use `Select` with `if` construction:
+
+**First option selected:**
+<Screenshot src={firstoptionPng} alt="Code with first option selected" />
+**Second option selected:**
+<Screenshot src={secondoptionPng} alt="Code with second option selected" />
+
+*Code to copy:*
+```python
+import mercury as mr
+```
+```python
+selection = mr.Select(value = "greeting", choices = ["greeting", "farewell"], label = "Select option")
+```
+```python
+if selection.value == "greeting":
+    print("Hello!")
+elif selection.value == "farewell":
+    print("See you later!")
+```
