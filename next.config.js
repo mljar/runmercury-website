@@ -10,6 +10,7 @@ const withNextra = require('nextra')({
 })
 
 module.exports = withNextra({
+  output: 'export',
   reactStrictMode: true,
   eslint: {
     // Eslint behaves weirdly in this monorepo.

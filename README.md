@@ -7,15 +7,14 @@ The documentation was created with [Nextra framework](https://nextra.site).
 ## Local setup
 
 ```
-yarn install
-yarn next
+npm install
+npm run dev
 ```
 
 ## Deploy
 
 ```
-rm -rf .next/cache
-yarn next build && yarn next export
+npm run build
 aws s3 sync out/ s3://runmercury.com
 ```
 
