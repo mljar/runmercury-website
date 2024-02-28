@@ -13,6 +13,7 @@ export function Feature({
   className,
   href,
   index,
+  aria,
   ...props
 }: {
   large?,
@@ -22,6 +23,7 @@ export function Feature({
   className?,
   href?,
   index,
+  aria,
   props?
 }) {
   return (
@@ -41,7 +43,7 @@ export function Feature({
     >
       {children}
       {href ? (
-        <Link className={styles.link} href={href} >
+        <Link className={styles.link} href={href} aria-label={aria} >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="1.5em"
