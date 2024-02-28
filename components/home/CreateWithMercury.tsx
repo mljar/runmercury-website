@@ -16,11 +16,13 @@ export default function CreateWithMercury() {
             src="/images/mercury-black-logo.svg"
             style={{ height: "96px" }}
             className="dark:hidden"
+            alt="Mercury Dark Logo"
           ></img>
           <img
             src="/images/mercury-white-logo.svg"
             style={{ height: "96px" }}
             className="hidden dark:block"
+            alt="Mercury Logo"
           ></img>
         </h2>
         <p

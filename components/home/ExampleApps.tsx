@@ -43,7 +43,7 @@ export default function ExampleApps() {
             transition: "box-shadow 0.3s ease",
           }}
         >
-          <img style={{height: "300px"}} src="images/examples/examples-static-notebook.png"></img>
+          <img style={{height: "300px"}} src="images/examples/examples-static-notebook.png" alt="Example static notebook"></img>
 
                 <p className="my-4 mb-8 font-light text-gray-500 dark:text-gray-300 text-xl
                 leading-normal"> Share notebooks as static websites</p>
@@ -72,7 +72,7 @@ export default function ExampleApps() {
             transition: "box-shadow 0.3s ease",
           }}
         >
-          <img style={{height: "300px"}} src="images/examples/examples-ticker-app.png"></img>
+          <img style={{height: "300px"}} src="images/examples/examples-ticker-app.png" alt="Python Notebook with financial data application"></img>
 
                 <p className="my-4 mb-8 font-light text-gray-500 dark:text-gray-300 text-xl
                 leading-normal">Ticker report created in Python notebook</p>
@@ -103,7 +103,7 @@ export default function ExampleApps() {
             transition: "box-shadow 0.3s ease",
           }}
         >
-          <img style={{height: "300px"}} src="images/examples/examples-altair-dashboard.png"></img>
+          <img style={{height: "300px"}} src="images/examples/examples-altair-dashboard.png" alt="Python Notebook with dashboard created with altair viz"></img>
 
                 <p className="my-4 mb-8 font-light text-gray-500 dark:text-gray-300 text-xl
                 leading-normal">Interactive dashboard built with Altair</p>
