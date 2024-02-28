@@ -13,23 +13,8 @@ export default function Nextra({
 }: AppProps): ReactElement {
   return (
     <>
-      <Script
-        strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=G-718XMSDDTR"
-      ></Script>
-
-      <Script strategy="afterInteractive">
-        {`
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-              
-                    gtag('config', 'G-718XMSDDTR');
-                `}
-      </Script>
       <Consent />
       <Component {...pageProps} />
-      
     </>
   );
 }
