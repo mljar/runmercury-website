@@ -22,13 +22,16 @@ my_selection = mr.Select(value = "a", choices = ["a", "b", "c"], label = "Select
 print(f"Selected value is: {my_selection.value}.")
 ```
 
-**Code explain:**
+**Code explanation:**
 
-Fist step is importing Mercury. Then create variable *(my_selection in our case)* and asign the `Select` widget to it. There are 3 parameters: 
+Fist step is importing Mercury. Then create variable *(my_selection in our case)* and asign the `Select` widget to it. Parameters included: 
 
-- **value** *(string)* is a default selection. If value is not present in choices or if value is empty, it sets value to the first element of choices. 
-- **choices** *(list of strings)* is a place where you can set options which user chooses later. It can't be empty!
-- **label** *(string)* is a title of selection widget. 
+- **value** (_string_) is a default selection. If value is not present in choices or if value is empty, it sets value to the first element of choices. 
+- **choices** (_list of strings_) is a place where you can set options which user chooses later. It can't be empty!
+- **label** (_string_) is a title of selection widget. 
+- **url_key** (_string_) - set this value if you would like to set `Select` value with URL paramters.
+- **disabled** (_boolean_) - disable widget in the sidebar, default is set to `False`.
+- **hidden** (_boolean_) - hide widget in the sidebar, default is set to `False`.
 
 At the end print your results using `my_selection.value`.
 
