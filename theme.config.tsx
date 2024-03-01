@@ -43,6 +43,13 @@ const config: DocsThemeConfig = {
   },
   docsRepositoryBase: "https://github.com/mljar/runmercury-website/tree/main",
   useNextSeoProps() {
+    const { frontMatter } = useConfig();
+    if (frontMatter?.ogTitle) {
+      return {
+        titleTemplate: frontMatter?.ogTitle,
+      };
+    }
+
     const { asPath } = useRouter();
     if (asPath !== "/") {
       return {
@@ -52,9 +59,17 @@ const config: DocsThemeConfig = {
   },
   logo,
   head: function useHead() {
+    const { frontMatter } = useConfig();
     const { title } = useConfig();
     const { route } = useRouter();
-    const socialCard = "https://runmercury.com/images/mercury-og.png";
+    console.log(route);
+    // here :)
+    let socialCard = "https://runmercury.com/images/mercury-og.png";
+    if (frontMatter?.ogImage === "widgets") {
+      socialCard = "https://runmercury.com/images/mercury-og-widgets.png";
+    }
+    console.log(socialCard);
+
     return (
       <>
         <meta name="msapplication-TileColor" content="#fff" />
@@ -63,12 +78,13 @@ const config: DocsThemeConfig = {
         <meta httpEquiv="Content-Language" content="en" />
         <meta
           name="description"
-          content="Build Web Apps from Jupyter Notebook"
+          content={
+            frontMatter.description
+              ? frontMatter.description
+              : "Build Web Apps from Jupyter Notebook"
+          }
         />
-        <meta
-          name="og:description"
-          content="Build Web Apps from Jupyter Notebook"
-        />
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={socialCard} />
         <meta name="twitter:site" content="@RunMercury" />
