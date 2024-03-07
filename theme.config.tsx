@@ -62,13 +62,23 @@ const config: DocsThemeConfig = {
     const { frontMatter } = useConfig();
     const { title } = useConfig();
     const { route } = useRouter();
-    console.log(route);
+    //console.log(route);
     // here :)
-    let socialCard = "https://runmercury.com/images/mercury-og.png";
+    let socialCard;
     if (frontMatter?.ogImage === "widgets") {
-      socialCard = "https://runmercury.com/images/mercury-og-widgets.png";
+      socialCard = "https://runmercury.com/images/og-images/mercury-og-widgets.png";
+    } else if (frontMatter?.ogImage === "features") {
+      socialCard = "https://runmercury.com/images/og-images/mercury-og-features.png";
+    } else if (frontMatter?.ogImage === "cloud") {
+      socialCard = "https://runmercury.com/images/og-images/mercury-og-cloud.png";
+    } else if (frontMatter?.ogImage === "examples") {
+      socialCard = "https://runmercury.com/images/og-images/mercury-og-examples.png";
+    } else if (frontMatter?.ogImage === "tutorials") {
+      socialCard = "https://runmercury.com/images/og-images/mercury-og-tutorials.png";
+    }else {
+      socialCard = "https://runmercury.com/images/og-images/mercury-og-default.png";
     }
-    console.log(socialCard);
+    //console.log(socialCard);
 
     return (
       <>
@@ -80,7 +90,7 @@ const config: DocsThemeConfig = {
           name="description"
           content={
             frontMatter.description
-              ? frontMatter.description
+              ? frontMatter.descriptionz
               : "Build Web Apps from Jupyter Notebook"
           }
         />
