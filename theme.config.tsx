@@ -90,7 +90,7 @@ const config: DocsThemeConfig = {
           name="description"
           content={
             frontMatter.description
-              ? frontMatter.descriptionz
+              ? frontMatter.description
               : "Build Web Apps from Jupyter Notebook"
           }
         />
