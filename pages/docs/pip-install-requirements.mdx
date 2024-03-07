@@ -1,0 +1,62 @@
+---
+ogTitle:
+description:
+ogImage: cloud
+---
+
+import { Screenshot } from "components/screenshot";
+import uploadPng from "../../public/images/pip-install-requirements/files-upload.png";
+
+# Install your packages
+
+**Mercury Cloud** is using separate container for each notebook, which comes with `Python 3.9` and the following libraries preinstalled:
+
+`mercury` `mljar-supervised` `numpy` `pandas` `matplotlib` `seaborn` `altair` `vega_datasets` `plotly` `scikit-learn`
+
+## Install public packages
+
+You can also use other libraries in your notebook. You have to create a `requirements.txt` file with libraries names:
+```
+package_name1
+package_name2
+```
+You can include versions of libraries: 
+```
+package_name1==version1
+package_name2>=version2
+```
+
+## Upload requirements.txt file 
+
+Please upload your `requirements.txt` file just like you do it with your notebook:
+
+<Screenshot src={uploadPng} alt="Upload files to mercury" />
+
+
+**Mercury** will automatically read that file and will install all of your packages before opening the notebook.
+ 
+
+## Install private packages
+
+You can use secrets in the `requirements.txt` file. You can also install packages from private github repositories. Please read about [Secrets Management](/docs/secrets) in our docs for more details.
+
+For example you can install packages from github private repository. 
+
+<div className="steps-container">
+
+### Add `GITHUB_TOKEN` in Secrets
+
+Please read [github docs](https://docs.github.com/en/enterprise-server@3.9/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) to know how to get the github token and then add a new secret - GITHUB_TOKEN in [Secrets](/docs/secrets).
+
+### Include `requirements.txt` file
+
+Lastly, write this line in `requirements.txt` file.
+```
+git+https://${GITHUB_TOKEN}@github.com/user/project.git@{version}
+```
+
+### Upload to Mercury Cloud
+
+Please upload your notebook and `requirements.txt` file to Mercury Cloud.
+</div>
+

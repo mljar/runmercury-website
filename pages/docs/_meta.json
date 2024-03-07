@@ -62,6 +62,9 @@
   "secrets": {
     "title": "Secrets Management"
   },
+  "pip-install-requirements": {
+    "title": "Install your packages"
+  },
   "-- Deployment": {
     "type": "separator",
     "title": "On Premise Deployment"
