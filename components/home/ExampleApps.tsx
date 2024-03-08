@@ -43,7 +43,7 @@ export default function ExampleApps() {
             transition: "box-shadow 0.3s ease",
           }}
         >
-          <img style={{height: "300px"}} src="images/examples/examples-static-notebook.png" alt="Example static notebook"></img>
+          <img src="images/examples/examples-static-notebook.png" alt="Example static notebook"></img>
 
                 <p className="my-4 mb-8 font-light text-gray-500 dark:text-gray-300 text-xl
                 leading-normal"> Share notebooks as static websites</p>
@@ -72,7 +72,7 @@ export default function ExampleApps() {
             transition: "box-shadow 0.3s ease",
           }}
         >
-          <img style={{height: "300px"}} src="images/examples/examples-ticker-app.png" alt="Python Notebook with financial data application"></img>
+          <img src="images/examples/examples-ticker-app.png" alt="Python Notebook with financial data application"></img>
 
                 <p className="my-4 mb-8 font-light text-gray-500 dark:text-gray-300 text-xl
                 leading-normal">Ticker report created in Python notebook</p>
@@ -91,7 +91,7 @@ export default function ExampleApps() {
         
         
         <div
-        className="text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white"
+        className=" text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white"
           style={{
             border: "1px solid #eee",
             margin: "10px",
@@ -103,7 +103,7 @@ export default function ExampleApps() {
             transition: "box-shadow 0.3s ease",
           }}
         >
-          <img style={{height: "300px"}} src="images/examples/examples-altair-dashboard.png" alt="Python Notebook with dashboard created with altair viz"></img>
+          <img src="images/examples/examples-altair-dashboard.png" alt="Python Notebook with dashboard created with altair viz"></img>
 
                 <p className="my-4 mb-8 font-light text-gray-500 dark:text-gray-300 text-xl
                 leading-normal">Interactive dashboard built with Altair</p>
