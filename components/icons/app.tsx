@@ -1,6 +1,7 @@
 export default (
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    className="icon icon-tabler icon-tabler-app-window"
     width="24"
     height="24"
     viewBox="0 0 24 24"
@@ -11,7 +12,8 @@ export default (
     strokeLinejoin="round"
   >
     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-    <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
-    <path d="M9 11l3 3l3 -3"></path>
+    <path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
+    <path d="M6 8h.01"></path>
+    <path d="M9 8h.01"></path>
   </svg>
 );
