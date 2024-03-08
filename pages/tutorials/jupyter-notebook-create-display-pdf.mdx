@@ -1,0 +1,135 @@
+---
+ogTitle: Create and display PDF
+description: How to create and display PDF in Jupyter Notebook using Python and Mercury's widgets. 
+ogImage: tutorials
+---
+
+import { Screenshot } from "components/screenshot";
+import fullcodePng from "../../public/images/tutorials/create-display-pdf/full-code.png";
+import resultPng from "../../public/images/tutorials/create-display-pdf/result.png";
+import sitedashboardPng from "../../public/images/tutorials/create-display-pdf/site-dashboard.png";
+import cloudPng from "../../public/images/tutorials/create-display-pdf/result-cloud.png";
+
+# How to create and display PDF in Jupyter Notebook using Python
+
+## Create a PDF
+
+You will need following pakcages: 
+```
+reportlab
+mercury
+```
+- `reportlab` allows to create a PDF etc.
+- `mercury` is a package for turning notebooks to web apps.
+
+Make sure that you have installed them before start doing anything.
+
+### 1. Import packages
+
+First of all, you have to install required packages:
+
+```python 
+import mercury as mr
+from reportlab.pdfgen import canvas
+```
+
+### 2. Create a file 
+
+Next, you have to create a PDF and name it. 
+
+```python 
+pdf_file = canvas.Canvas("example.pdf")
+```
+
+- `pdf_file` is a variable's name.
+- `Canvas` is a function which allows to create a PDF.
+- `example.pdf` is name which you would like to set to your file.
+
+### 3. Add content
+
+Then, it is time to add some content. You can add text by typing this code:
+
+```python
+pdf_file.setFont("Helvetica", 50)
+pdf_file.drawString(180, 750, "Welcome!")
+```
+
+- `setFont` allows to set font family and size.
+- `drawString` - first two variables are responsible for margins and third one is a place where you have to type text.
+
+### 4. Save file
+
+After filling your file with content, you have to save it. It will create a file in the current directory and save it in your program's memory. Please use this code:
+
+```python
+pdf_file.save()
+```
+
+## Display a PDF
+
+All you have to do is add another cell and put in it this code:
+
+```python
+mr.PDF("example.pdf")
+```
+
+- `PDF` is a Mercury's widget which allows to display PDF files. Check our [PDF](../docs/output-widgets/pdf/) docs to get more information.
+- `example.pdf` is name of file which you want to display
+
+## Result 
+
+After all, your code should look like this: 
+
+<Screenshot src={fullcodePng} alt="Full code." />
+
+*code to copy:*
+
+```python
+import mercury as mr
+from reportlab.pdfgen import canvas
+```
+```python
+pdf_file = canvas.Canvas("example.pdf")
+pdf_file.setFont("Helvetica", 50)
+pdf_file.drawString(180, 750, "Welcome!")
+pdf_file.setFont("Helvetica", 20)
+pdf_file.drawString(40, 700, "This in an example Notebook")
+pdf_file.save()
+```
+```python
+mr.PDF("example.pdf")
+```
+
+**And here is the result:**
+
+<Screenshot src={resultPng} alt="PDF display." />
+
+## Share with other users
+
+**You will need an account on [Mercury Cloud](https://cloud.runmercury.com/).**
+
+If you don't have account, please create it.
+
+<div className="steps-container">
+### Create a site
+
+You have to create site. If you have any problems with it, get more information in our [docs](../docs/cloud).
+
+### Upload files
+
+Then, you need to upload your PDF. Click `Upload files` button on your site dashboard. 
+
+<Screenshot src={sitedashboardPng} alt="From site dashboard to uploadfiles." />
+
+Next, you have to upload 2 files: 
+- **notebook** where you create and display a PDF
+- **requirements.txt** file because you need not built-in package. Check how to create such a file [here](../docs/pip-install-requirements).
+
+### Share your site
+
+After all, it should look like this: 
+
+<Screenshot src={cloudPng} alt="PDF on your Web App." />
+
+Now you can share your site with other users!
+</div>

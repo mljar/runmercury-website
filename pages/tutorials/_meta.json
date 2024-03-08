@@ -4,19 +4,28 @@
         "type": "separator",
         "title": "Tutorials"
       },
-    "web-app-python-jupyter-notebook": {
-        "title": "Create Web App"
-    },
-    "report-python-jupyter-notebook": {
-        "title": "Create Report"
+    "jupyter-notebook-create-display-pdf": {
+        "title": "Create and display PDF"
     },
     "dashboard-python-jupyter-notebook": {
         "title": "Create Dashboard"
     },
+    "presentation-python-jupyter-notebook": {
+        "title": "Create Presentation"
+    },
+    "report-python-jupyter-notebook": {
+        "title": "Create Report"
+    },
+    "web-app-python-jupyter-notebook": {
+        "title": "Create Web App"
+    },
     "website-python-jupyter-notebook": {
         "title": "Create Website"
     },
-    "presentation-python-jupyter-notebook": {
-        "title": "Create Presentation"
+    "vega-altair-dashboard": {
+        "title": "Vega Altair Dashboard"
     }
+
+
+
 }
