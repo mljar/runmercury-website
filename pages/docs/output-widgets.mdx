@@ -8,35 +8,28 @@ ogImage: widgets
 
 import { Card, Cards } from "components/card";
 
-import outputDirIcon from "components/icons/outputDir";
-import markdownIcon from "components/icons/markdown";
-import codeDots from "components/icons/codeDots";
-import handStopIcon from "components/icons/handStop";
 import chatIcon from "components/icons/chat";
 import confettiIcon from "components/icons/confetti";
+import codeDots from "components/icons/codeDots";
+import markdownIcon from "components/icons/markdown";
+import noteIcon from "components/icons/note"
 import squareNumberIcon from "components/icons/squareNumber"
+import outputDirIcon from "components/icons/outputDir";
+import pdfIcon from "components/icons/pdf"
+import handStopIcon from "components/icons/handStop";
 
 
 Output widgets help present notebook results to the user and control execution flow.
 
 <Cards>
-  <Card
-    icon={markdownIcon}
-    title="Markdown"
-    href="/docs/output-widgets/markdown"
-  />
-  <Card icon={
-    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-note" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M13 20l7 -7"></path>
-      <path d="M13 20v-6a1 1 0 0 1 1 -1h6v-7a2 2 0 0 0 -2 -2h-12a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7"></path>
-    </svg>
-  } title="Note" href="/docs/output-widgets/note"/>
-  <Card icon={ outputDirIcon} title="OutputDir" href="/docs/output-widgets/outputdir"/>
-  <Card icon={codeDots} title="JSON" href="/docs/output-widgets/json/" />
-  <Card icon={handStopIcon} title="Stop" href="/docs/output-widgets/stop/" />
   <Card icon={chatIcon} title="Chat" href="/docs/output-widgets/chat/" />
   <Card icon={confettiIcon} title="Confetti" href="/docs/output-widgets/confetti/" />
+  <Card icon={codeDots} title="JSON" href="/docs/output-widgets/json/" />
+  <Card icon={markdownIcon} title="Markdown" href="/docs/output-widgets/markdown"/>
+  <Card icon={noteIcon} title="Note" href="/docs/output-widgets/note"/>
   <Card icon={squareNumberIcon} title="NumberBox" href="/docs/output-widgets/numberbox/" />
+  <Card icon={outputDirIcon} title="OutputDir" href="/docs/output-widgets/outputdir"/>
+  <Card icon={pdfIcon} title="PDF" href="/docs/output-widgets/pdf/" />
+  <Card icon={handStopIcon} title="Stop" href="/docs/output-widgets/stop/" />
 </Cards>
 

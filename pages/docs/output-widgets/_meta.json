@@ -1,15 +1,21 @@
 {
+    "chat": "",
+    "confetti": "",
+    "json": {
+        "title": "JSON"
+    },
     "markdown": "",
     "note": {
         "title": "Note"
     },
+    "numberbox": {
+        "title": "NumberBox"
+    }, 
     "outputdir": {
         "title": "OutputDir"
     },
-    "json": {
-        "title": "JSON"
+    "pdf": {
+        "title": "PDF"
     },
-    "numberbox": {
-        "title": "NumberBox"
-    }
+    "stop": ""
 }

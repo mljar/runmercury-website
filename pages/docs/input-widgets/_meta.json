@@ -3,12 +3,12 @@
     "button": "",
     "checkbox": "",
     "file": "",
-    "numeric": "",
-    "select": "",
     "multiselect": {
         "title": "MultiSelect"
     },
+    "numeric": "",
+    "range": "",
+    "select": "",
     "slider": "",
-    "text": "",
-    "range": ""
+    "text": ""
 }
