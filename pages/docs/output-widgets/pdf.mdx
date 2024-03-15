@@ -1,0 +1,42 @@
+---
+ogTitle: PDF widget for Jupyter Notebooky
+description: Edit and display PDF in your Python notebook and share it with other users.
+ogImage: widgets
+---
+
+import { Screenshot } from "components/screenshot";
+import examplePng from "../../../public/images/pdf/example.png";
+
+# PDF 
+
+You can add and display PDF in your notebook  using `PDF` *(Mercury Widget)*.
+
+**Example code:**
+
+```python
+import mercury as mr
+```
+```python
+mr.PDF(file_path="example.pdf", width="100%", height=800)
+```
+
+**Code explanation:**
+
+First step is importing Mercury package. Then choose PDF which you want to display and create code using `PDF` widget.
+
+## Parameters
+
+- `file_path` *(string)* is name of PDF which you want to display. It's important to have the PDF and the notebook in the same directory.
+- `width` *(value)* sets width of PDF. You don't have to type it every time, default value is **100%**.
+- `height` *(value)* sets height of PDF. This parameter is also unnecessary, default value is **800**.
+
+## Example
+
+<Screenshot src={examplePng} alt="Example from Jupyter Notebook." />
+
+### More resources: 
+
+- Tutorial: [**How to create and display PDF in Jupyter Notebook using Python**](../../tutorials/jupyter-notebook-create-display-pdf)
+- Example: [**Display PDF in Jupyter Notebook**](../../examples/jupyter-notebook-display-pdf)
+
+
