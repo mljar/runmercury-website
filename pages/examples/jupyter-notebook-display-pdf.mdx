@@ -1,0 +1,54 @@
+---
+ogTitle: Display PDF in Jupyter Notebook 
+description: Display PDF in Jupyter Notebook using only Mercury's widget created specially for it.
+ogImage: examples
+---
+
+import { Screenshot } from "components/screenshot";
+import { Callout } from 'nextra-theme-docs'
+import jupytercodePng from "../../public/images/examples/display-pdf-jupyter-code.png"
+import mercuryeffectPng from "../../public/images/examples/mercury-app-effect.png"
+
+# Display PDF in Jupyter Notebook
+
+## Required packages
+
+You will need to install `mercury` package to run this example.
+
+## Notebook
+
+Let's import required packages:
+
+```python 
+import mercury as mr
+```
+ 
+Please choose PDF which you want to display and write following code:
+```python 
+mr.PDF("example.pdf")
+```
+
+<Callout type="info">
+PDF and notebook have to be in the same directory.
+</Callout>
+
+
+The screenshot of the notebook's code in the Jupyter Notebook:
+
+<Screenshot src={jupytercodePng} alt="The notebook's code in the Jupyter Notebook." />
+
+
+## Mercury App 
+
+Please start Mercury in the same directory as your notebook:
+
+```bash
+mercury run
+```
+
+You should see app running at address: `http://127.0.0.1:8000`
+
+Finall effect should look like this:
+ 
+<Screenshot src={mercuryeffectPng} alt="Finall effect in Mercury App." />
+

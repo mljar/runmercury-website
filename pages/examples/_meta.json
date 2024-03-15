@@ -4,18 +4,18 @@
     "type": "separator",
     "title": "Examples"
   },
-  "hello-world": "Hello World",
+  "create-widgets-in-loop": "Create widgets in the loop",
+  "display-json-jupyter-notebook": "Display JSON",
+  "jupyter-notebook-display-pdf": "Display PDF",
   "dynamic-widgets": "Dynamic Widgets",
+  "file-upload-jupyter-notebook": "File upload",
+  "hello-world": "Hello World",
   "increment-decrement": "Increment and decrement",
-  "static-website-jupyter-notebook": "Static notebook",
   "load-large-dataset-jupyter-notebook": "Load large dataset",
   "load-on-click": "Load on click",
-  "show-hide-code-jupyter-notebook": "Show hide code app",
-  "file-upload-jupyter-notebook": "File upload",
-  "display-json-jupyter-notebook": "Display JSON",
-  "stop-cell-execution-jupyter-notebook": "Stop cell execution",
-  "create-widgets-in-loop": "Create widgets in the loop",
   "pivot-table-jupyter-notebook": "Pivot table",
-  "pydeck-jupyter-notebook": "PyDeck"
-  
+  "pydeck-jupyter-notebook": "PyDeck",
+  "show-hide-code-jupyter-notebook": "Show hide code app",
+  "static-website-jupyter-notebook": "Static notebook",
+  "stop-cell-execution-jupyter-notebook": "Stop cell execution" 
 }
