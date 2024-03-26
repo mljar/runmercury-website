@@ -1,0 +1,58 @@
+---
+ogTitle: Table widget for Jupyter Notebook
+description: Create tables with data in your Python notebook and share it with other users.
+ogImage: widgets
+---
+
+import { Screenshot } from "components/screenshot";
+import codePng from "../../../public/images/table/jupyter-notebook-code.png";
+import resultPng from "../../../public/images/table/result.png";
+
+# Table
+
+You can show your data in a better way in the Python notebook using `Table` *(Mercury Widget)*.
+
+**Example code:**
+
+```python
+import mercury as mr
+import pandas as pd
+```
+```python
+# Example DataFrame
+df = pd.DataFrame(
+    {
+        "name": ["Karol", "Szymon", "Piotr", "Ola"],
+        "second name": ["Falkowski", "Niewiński", "Płoński", "Płońska"],
+        "age": [20, 25, 38, 36],
+    }
+)
+```
+```python
+mr.Table(data=df, width="200px", text_align="center")
+```
+
+**Code explanation:**
+
+First step is installing needed packages: 
+- **pandas** to create an example DataFrame
+- **mercury** to use `Mercury Widget`
+
+
+Secondly, choose or create the DataFrame. Lastly, write a function with data and other parameters included.
+
+## Parameters
+
+- `data` *(string)* is a name of DataFrame which you want to show in table. **This is necessary parameter!**
+- `width` *(value)* sets width of columns in table. You enter the value usign **px** and don't have to type it every time *(it sets automatically)*
+- `text_align` *(string)* sets align of text in cells. It could be: **right**, **left** or **center** *(default value is center)*.
+
+## Example 
+
+**Jupyter Notebook code:**
+
+<Screenshot src={codePng} alt="Jupyter Notebook code screenshot." />
+
+**Result:**
+
+<Screenshot src={resultPng} alt="Finall result - table in Jupyter Notebook" />

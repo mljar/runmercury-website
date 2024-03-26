@@ -1,0 +1,62 @@
+---
+ogTitle: Display table in Jupyter Notebook 
+description: Display an interactive table with your data in Jupyter Notebook using Python.
+ogImage: examples
+---
+
+import { Screenshot } from "components/screenshot";
+import codePng from "../../public/images/examples/jupyter-notebook-code-table.png";
+import resultPng from "../../public/images/examples/jupyter-notebook-effect-table.png";
+
+
+# Display an interactive table in Jupyter Notebook 
+
+
+## Required packages
+
+You will need to instal `mercury` and `pandas` packages to run this example.
+
+## Notebook 
+
+Let's import required packages:
+
+```python
+import mercury as mr
+import pandas as pd
+```
+
+Please create an example DataFrame by writing following code:
+
+```python
+df = pd.DataFrame(
+    {
+        "name": ["Karol", "Szymon", "Piotr", "Ola"],
+        "second name": ["Falkowski", "Niewiński", "Płoński", "Płońska"],
+        "age": [20, 25, 38, 36],
+    }
+)
+```
+
+Then, please write this code to display the table:
+
+```python
+mr.Table(df)
+```
+
+The screenshot of the notebook's code in the Jupyter Notebook:
+
+<Screenshot src={codePng} alt="Jupyter Notebook code." />
+
+## Mercury App 
+
+Please start Mercury in the same directory as your notebook:
+
+```bash
+mercury run
+```
+
+You should see app running at address: `http://127.0.0.1:8000`
+
+Finall effect should look like this:
+
+<Screenshot src={resultPng} alt="Finall effect displayed in Mercury." />

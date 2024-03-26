@@ -7,6 +7,7 @@
   "create-widgets-in-loop": "Create widgets in the loop",
   "display-json-jupyter-notebook": "Display JSON",
   "jupyter-notebook-display-pdf": "Display PDF",
+  "jupyter-notebook-display-interactive-table": "Display Table",
   "dynamic-widgets": "Dynamic Widgets",
   "file-upload-jupyter-notebook": "File upload",
   "hello-world": "Hello World",
