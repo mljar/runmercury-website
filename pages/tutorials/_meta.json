@@ -22,10 +22,10 @@
     "website-python-jupyter-notebook": {
         "title": "Create Website"
     },
+    "postgresql-data-into-interactive-table": {
+        "title": "PostgreSQL into table"
+    },
     "vega-altair-dashboard": {
         "title": "Vega Altair Dashboard"
     }
-
-
-
 }

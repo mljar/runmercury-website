@@ -1,0 +1,161 @@
+---
+ogTitle: Read Data from Postgres in Python
+description: Learn how to retrieve data from PostgreSQL and display it as an interactive table in Jupyter Notebook using Python.
+ogImage: tutorials
+---
+
+import { Screenshot } from "components/screenshot";
+import codePng from "../../public/images/tutorials/postgresql-into-table/jupyter-notebook-code.png";
+import resultPng from "../../public/images/tutorials/postgresql-into-table/result-jupyter-notebook.png";
+import sitedashboardPng from "../../public/images/tutorials/postgresql-into-table/site-dashboard.png";
+import cloudPng from"../../public/images/tutorials/postgresql-into-table/result-cloud.png";
+
+
+# Display PostgreSQL data as an interactive table in Jupyter Notebook using Python
+
+## Retrieve data from PostgreSQL
+
+You will need following packages:
+
+```python
+mercury
+pandas
+psycopg2
+dotenv
+os
+```
+- `mercury`  is a package for turning notebooks to web apps.
+- `pandas`  is for data manipulation.
+- `psycopg2`  allows to connect with the database.
+- `dotenv`  is for storing secrets.
+- `os`  allows to do basic system operations.
+
+Make sure that you have installed them before start doing anything.
+
+### 1. Import packages
+
+Firstly, install required packages:
+
+```python
+import mercury as mr
+import pandas as pd
+import psycopg2 as ps
+from dotenv import load_dotenv
+import os
+```
+
+### 2. Connect with database
+
+Then, create a function which allows to connect with database: 
+
+```python
+load_dotenv()
+def db_engine():
+    host = os.environ.get("DB_HOST")
+    port = os.environ.get("DB_POST")
+    user = os.environ.get("DB_USERNAME")
+    password = os.environ.get("DB_PASSWORD")
+    db = os.environ.get("DB_DATABASE")
+    
+    return f"user='{user}' password='{password}' host='{host}' port='{port}' dbname='{db}'"
+```
+
+To keep credentials safe we use **dotenv** method.
+
+You can get more information about in our article: [**3 ways to access credentials in Jupyter Notebook**](https://mljar.com/blog/jupyter-notebook-credentials/)
+
+After that, connect with your database. Use **try** block to detect possible errors.
+
+```python 
+try:
+    conn = ps.connect(db_engine())
+except Exception as e:
+    print(f"problems: {e}")
+```
+
+### 3. Send queries
+
+Now, you have to create a queries using SQL. Here an example query:
+
+```python
+query = "select username, id, email, last_login::date, date_joined::date from auth_user;"
+```
+
+### 4. Get responses
+
+To get responses update **try** block:
+
+```python
+try:
+    conn = ps.connect(db_engine())
+    cur = conn.cursor()
+    cur.execute(query)
+    response = cur.fetchall()
+    cur.close()
+except Exception as e:
+    print(f"problems: {e}")
+```
+
+- `cur = conn.cursor()` creates a cursor that allows your program to move around your database.
+- `cur.execute()`  sends your query.
+- `cur.fetchall()` gets a response for your query.
+- `cur.close()` closes a cursor.
+
+## Turn data into an interactive table
+
+After you got all of needed information from the database, it's time to display them as an interactive table.
+
+Convert your Data into DataFrame using `pandas` :
+
+```python
+df = pd.DataFrame(response, columns=['Username', 'ID', 'Email', 'Last login', 'Data joined',])
+```
+
+It's important to name all of colums, no more, no less.
+
+Next, use **Table** *Mercury Widget* to create an interactive table. Write following code:
+
+```python
+mr.Table(data=df, width="auto")
+```
+
+- `data` is a name of DataFrame which you want to show in table.
+- `width` sets width of columns in table.
+
+## Result
+
+After all, your code should look like this: 
+
+<Screenshot src={codePng} alt="Code from Jupyter Notebook." />
+
+And here is the result: 
+
+<Screenshot src={resultPng} alt="Result in Jupyter Notebook." />
+
+*We blured username and email columns for legal reasons.*
+
+## Share with other users
+
+<div className="steps-container">
+### Create a site
+
+You have to create site. If you have any problems with it, get more information in our [docs](../docs/cloud).
+
+### Upload files
+
+Then, you need to upload your notebook. Click `Upload files` button on your site dashboard. 
+
+<Screenshot src={sitedashboardPng} alt="From site dashboard to uploadfiles." />
+
+Then, choose file which you want to upload and confirm it.
+
+### Share your site
+
+After all, it should look like this: 
+
+<Screenshot src={cloudPng} alt="Result in Mercury Cloud" />
+
+*We blured username and email columns for legal reasons.*
+
+Now you can share your site with other users!
+</div>
