@@ -45,11 +45,15 @@ export default (
             Max file size <span className="font-semibold">5MB</span>
           </span>
         </li>
-        <li className="flex items-center space-x-3">
+        {/* <li className="flex items-center space-x-3">
           {tickIcon}
           <span>
             <span className="font-semibold">5 hours </span>of worker / monthly
           </span>
+        </li> */}
+        <li className="flex items-center space-x-3">
+          {tickIcon}
+          <span><a className="nx-text-white nx-underline nx-decoration-from-font [text-underline-position:from-font]" href="/docs/users-usage-analytics/">Users analytics </a></span>
         </li>
       </ul>
       <a
@@ -105,24 +109,24 @@ export default (
             Max file size <span className="font-semibold">50MB</span>
           </span>
         </li>
-        <li className="flex items-center space-x-3">
+        {/* <li className="flex items-center space-x-3">
           {tickIcon}
           <span>
             <span className="font-semibold">100 hours </span>of worker / monthly
           </span>
-        </li>
+        </li> */}
         <li className="flex items-center space-x-3">
           {tickIcon}
           <span><a className="nx-text-white nx-underline nx-decoration-from-font [text-underline-position:from-font]" href="/docs/style/">Style customization </a></span>
         </li>
         <li className="flex items-center space-x-3">
           {tickIcon}
-          <span>Custom domains (coming soon)</span>
+          <span><a className="nx-text-white nx-underline nx-decoration-from-font [text-underline-position:from-font]" href="/docs/users-usage-analytics/">Users analytics </a></span>
         </li>
         <li className="flex items-center space-x-3">
           {tickIcon}
-          <span>Usage analytics (coming soon)</span>
-        </li>
+          <span>Custom domains (coming soon)</span>
+        </li> 
       </ul>
       <a
         href="https://cloud.runmercury.com/register"
@@ -177,24 +181,25 @@ export default (
             Max file size <span className="font-semibold">100MB</span>
           </span>
         </li>
-        <li className="flex items-center space-x-3">
+        {/* <li className="flex items-center space-x-3">
           {tickIcon}
           <span>
             <span className="font-semibold">250 hours </span>of worker / monthly
           </span>
-        </li>
+        </li> */}
         <li className="flex items-center space-x-3">
           {tickIcon}
           <span><a className="nx-text-white nx-underline nx-decoration-from-font [text-underline-position:from-font]" href="/docs/style/">Style customization </a></span>
         </li>
         <li className="flex items-center space-x-3">
           {tickIcon}
-          <span>Custom domains (coming soon)</span>
+          <span><a className="nx-text-white nx-underline nx-decoration-from-font [text-underline-position:from-font]" href="/docs/users-usage-analytics/">Users analytics </a></span>
         </li>
         <li className="flex items-center space-x-3">
           {tickIcon}
-          <span>Usage analytics (coming soon)</span>
+          <span>Custom domains (coming soon)</span>
         </li>
+        
       </ul>
       <a
         href="https://cloud.runmercury.com/register"
