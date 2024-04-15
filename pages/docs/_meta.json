@@ -1,12 +1,15 @@
 {
   "index": "Get started",
-  "installation": "Installation",
   "how-does-it-work": {
     "title": "How does it work?"
   },
+  "installation": "Installation",
   "-- Widgets": {
     "type": "separator",
     "title": "Widgets"
+  },
+  "custom-widgets": {
+    "title": "Custom Widgets"
   },
   "input-widgets": {
     "title": "Input Widgets"
@@ -14,44 +17,49 @@
   "output-widgets": {
     "title": "Output Widgets"
   },
-  "custom-widgets": {
-    "title": "Custom Widgets"
-  },
   "-- Features": {
     "type": "separator",
     "title": "Features"
   },
-  "show-hide-code-notebook": {
-    "title": "Show or hide code"
-  },
-  "export-pdf-html": {
-    "title": "Export to PDF or HTML"
-  },
-  "output-files": {
-    "title": "Output files"
-  },
-  "welcome": {
-    "title": "Welcome message"
-  },
-  "jupyter-notebook-embedding": {
-    "title": "Embedding"
-  },
-  "multiple-notebooks": {
-    "title": "Multiple Notebooks"
+  "in-mercury": {
+    "title": "Am I in Mercury?"
   },
   "authentication": {
     "title": "Authentication"
   },
-  "in-mercury": {
-    "title": "Am I in Mercury?"
+  "commands": "",
+  "jupyter-notebook-embedding": {
+    "title": "Embedding"
+  },
+  "export-pdf-html": {
+    "title": "Export to PDF or HTML"
+  },
+  "multiple-notebooks": {
+    "title": "Multiple Notebooks"
+  },
+  "output-files": {
+    "title": "Output files"
   },
   "schedule-jupyter-notebook": {
     "title": "Schedule notebook"
   },
-  "commands": "",
+  "show-hide-code-notebook": {
+    "title": "Show or hide code"
+  },
+  "welcome": {
+    "title": "Welcome message"
+  },
+
+ 
   "--mercurycloud": {
     "type": "separator",
     "title": "Mercury Cloud"
+  },
+  "pip-install-requirements": {
+    "title": "Install your packages"
+  },
+  "secrets": {
+    "title": "Secrets Management"
   },
   "cloud": {
     "title": "Share Notebooks"
@@ -59,11 +67,8 @@
   "style": {
     "title": "Style customization"
   },
-  "secrets": {
-    "title": "Secrets Management"
-  },
-  "pip-install-requirements": {
-    "title": "Install your packages"
+  "users-usage-analytics": {
+    "title": "Users Analytics"
   },
   "-- Deployment": {
     "type": "separator",
