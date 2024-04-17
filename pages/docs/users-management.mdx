@@ -1,0 +1,88 @@
+---
+ogTitle: Users Management in Mercury Cloud    
+description: Give permission to EDIT or VIEW your public and private Web Apps for other users on Mercury Cloud!
+ogImage: cloud
+---
+
+import { Screenshot } from "components/screenshot";
+import { Callout } from 'nextra-theme-docs'
+import navbarPng from "../../public/images/users-management/users-navbar.png";
+import choicePng from "../../public/images/users-management/choose-site.png";
+import openinvpanelPng from "../../public/images/users-management/open-invitation-panel.png";
+import invpanelPng from "../../public/images/users-management/invitation-panel.png";
+import confirmPng from "../../public/images/users-management/confirmation.png";
+import listPng from "../../public/images/users-management/users-list.png";
+import deletePng from "../../public/images/users-management/delete-user.png";
+
+
+# Users Management
+
+## View access
+
+If your site has public status, all of users has access to view it. The situation is different when site has private status, then you have to add specific user and give him VIEW permission.
+
+## Edit access
+
+Independently from your site status, nobody has access to edit it until you give them permission. 
+
+## Give permissions
+
+<Callout type="info">
+After you invite users to your site, they got an email with invitation. If they don't have account on Mercury Cloud, they can sign up and then they got access which you gave them.
+</Callout>
+
+<div className="steps-container">
+
+### Sign in Mercury Cloud 
+
+Sign in: [**Mercury Cloud**](https://cloud.runmercury.com/login)
+
+### Open Users panel
+
+You can do it by clicking `Users` in navbar: 
+
+<Screenshot src={navbarPng} alt="Open the Users Management panel." />
+
+### Choose site 
+
+Choose site where you want to give permissions.
+
+<Screenshot src={choicePng} alt="Choice of the site." />
+
+### Invite users
+
+    <div className="steps-container">
+
+    ### Open invitation panel
+    
+    You can do it by clicking `Invite new user` button:
+
+    <Screenshot src={openinvpanelPng} alt="Open invitation panel" />
+
+    ### Enter email and choose permission
+
+    Enter user email and choose which right you want to give him.
+
+    <Screenshot src={invpanelPng} alt="Invitation panel" />
+
+    ### Confirmation
+
+    After you did everything you have to confirm it. Do it by clicking `OK` button:
+
+    <Screenshot src={confirmPng} alt="Confirmation" />
+
+    </div>
+
+### Users Managing view
+
+In Users panel you will see the list with users whom you give any permissions.
+
+<Screenshot src={listPng} alt="List of users." />
+
+### Remove permissions
+
+You can remove any permission you gave earlier. Just click the **trash icon**: 
+
+<Screenshot src={deletePng} alt="Delete users." />
+
+</div>
