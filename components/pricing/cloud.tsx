@@ -1,4 +1,3 @@
-
 import tickIcon from "../icons/tick";
 
 export default (
@@ -53,7 +52,25 @@ export default (
         </li> */}
         <li className="flex items-center space-x-3">
           {tickIcon}
-          <span><a className="nx-text-white nx-underline nx-decoration-from-font [text-underline-position:from-font]" href="/docs/users-usage-analytics/">Users analytics </a></span>
+          <span>
+            <a
+              className="nx-text-white nx-underline nx-decoration-from-font [text-underline-position:from-font]"
+              href="/docs/users-management/"
+            >
+              Users management{" "}
+            </a>
+          </span>
+        </li>
+        <li className="flex items-center space-x-3">
+          {tickIcon}
+          <span>
+            <a
+              className="nx-text-white nx-underline nx-decoration-from-font [text-underline-position:from-font]"
+              href="/docs/users-usage-analytics/"
+            >
+              Users analytics{" "}
+            </a>
+          </span>
         </li>
       </ul>
       <a
@@ -117,16 +134,41 @@ export default (
         </li> */}
         <li className="flex items-center space-x-3">
           {tickIcon}
-          <span><a className="nx-text-white nx-underline nx-decoration-from-font [text-underline-position:from-font]" href="/docs/style/">Style customization </a></span>
+          <span>
+            <a
+              className="nx-text-white nx-underline nx-decoration-from-font [text-underline-position:from-font]"
+              href="/docs/style/"
+            >
+              Style customization{" "}
+            </a>
+          </span>
         </li>
         <li className="flex items-center space-x-3">
           {tickIcon}
-          <span><a className="nx-text-white nx-underline nx-decoration-from-font [text-underline-position:from-font]" href="/docs/users-usage-analytics/">Users analytics </a></span>
+          <span>
+            <a
+              className="nx-text-white nx-underline nx-decoration-from-font [text-underline-position:from-font]"
+              href="/docs/users-management/"
+            >
+              Users management{" "}
+            </a>
+          </span>
+        </li>
+        <li className="flex items-center space-x-3">
+          {tickIcon}
+          <span>
+            <a
+              className="nx-text-white nx-underline nx-decoration-from-font [text-underline-position:from-font]"
+              href="/docs/users-usage-analytics/"
+            >
+              Users analytics{" "}
+            </a>
+          </span>
         </li>
         <li className="flex items-center space-x-3">
           {tickIcon}
           <span>Custom domains (coming soon)</span>
-        </li> 
+        </li>
       </ul>
       <a
         href="https://cloud.runmercury.com/register"
@@ -189,17 +231,41 @@ export default (
         </li> */}
         <li className="flex items-center space-x-3">
           {tickIcon}
-          <span><a className="nx-text-white nx-underline nx-decoration-from-font [text-underline-position:from-font]" href="/docs/style/">Style customization </a></span>
+          <span>
+            <a
+              className="nx-text-white nx-underline nx-decoration-from-font [text-underline-position:from-font]"
+              href="/docs/style/"
+            >
+              Style customization{" "}
+            </a>
+          </span>
         </li>
         <li className="flex items-center space-x-3">
           {tickIcon}
-          <span><a className="nx-text-white nx-underline nx-decoration-from-font [text-underline-position:from-font]" href="/docs/users-usage-analytics/">Users analytics </a></span>
+          <span>
+            <a
+              className="nx-text-white nx-underline nx-decoration-from-font [text-underline-position:from-font]"
+              href="/docs/users-management/"
+            >
+              Users management{" "}
+            </a>
+          </span>
+        </li>
+        <li className="flex items-center space-x-3">
+          {tickIcon}
+          <span>
+            <a
+              className="nx-text-white nx-underline nx-decoration-from-font [text-underline-position:from-font]"
+              href="/docs/users-usage-analytics/"
+            >
+              Users analytics{" "}
+            </a>
+          </span>
         </li>
         <li className="flex items-center space-x-3">
           {tickIcon}
           <span>Custom domains (coming soon)</span>
         </li>
-        
       </ul>
       <a
         href="https://cloud.runmercury.com/register"
