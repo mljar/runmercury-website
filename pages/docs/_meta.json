@@ -70,6 +70,9 @@
   "users-usage-analytics": {
     "title": "Users Analytics"
   },
+  "users-management": {
+    "title": "Users Management"
+  },
   "-- Deployment": {
     "type": "separator",
     "title": "On Premise Deployment"
