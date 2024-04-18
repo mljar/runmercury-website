@@ -21,49 +21,35 @@
       "layout": "full"
     }
   },
-  "docs-menu": {
-    "title": "Documentation",
-    "type": "menu",
-    "items": {
-      "docs": {
-        "title": "API Docs"
-      },
-      "examples": {
-        "title": "Examples"
-      },
-      "tutorials": {
-        "title": "Tutorials"
-      }
-    }
-  },
-  "docs": {
+  "docs":  {
     "type": "page",
-    "title": "API Docs",
-    "display": "hidden"
+    "title": "API Docs"
   },
   "examples": {
     "type": "page",
-    "title": "Examples",
-    "display": "hidden"
+    "title": "Examples"
   },
   "tutorials": {
     "type": "page",
-    "title": "Tutorials",
-    "display": "hidden"
+    "title": "Tutorials"
+  }, 
+  "use": {
+    "type": "page",
+    "title": "Integrations"
   },
   "support": {
-    "display": "hidden",
     "type": "page",
-    "title": "Support"
+    "title": "Support",
+    "display": "hidden"
   },
   "terms-of-service": {
-    "display": "hidden",
-    "type": "page",
-    "title": "Terms of Service"
+    "type": "page", 
+    "title": "Terms of Service",
+    "display": "hidden"
   },
   "privacy-policy": {
-    "display": "hidden",
     "type": "page",
-    "title": "Privacy Policy"
+    "title": "Privacy Policy",
+    "display": "hidden"
   }
 }

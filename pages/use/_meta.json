@@ -1,0 +1,91 @@
+{
+    "index": "Integrations List",
+    "matplotlib": {
+        "type": "separator",
+        "title": "Matplotlib"
+    },
+    "jupyter-notebook-matplotlib-bar-chart": {
+        "title": "Bar Chart"
+    },
+    "jupyter-notebook-matplotlib-histogram-chart": {
+        "title": "Histogram Chart"
+    },
+    "jupyter-notebook-matplotlib-line-chart": {
+        "title": "Line Chart"
+    },
+    "jupyter-notebook-matplotlib-pie-chart": {
+        "title": "Pie Chart"
+    },
+    "jupyter-notebook-matplotlib-scatter-chart": {
+        "title": "Scatter Chart"
+    },
+    "jupyter-notebook-matplotlib-stem-chart": {
+        "title": "Stem Chart"
+    },
+    "plotly": {
+        "type": "separator",
+        "title": "Plotly"
+    },
+    "jupyter-notebook-plotly-bar-chart": {
+        "title": "Bar Chart"
+    },
+    "jupyter-notebook-plotly-histogram-chart": {
+        "title": "Histogram Chart"
+    },
+    "jupyter-notebook-plotly-line-chart": {
+        "title": "Line Chart"
+    },
+    "jupyter-notebook-plotly-pie-chart": {
+        "title": "Pie Chart"
+    },
+    "jupyter-notebook-plotly-scatter-chart": {
+        "title": "Scatter Chart"
+    },
+    "jupyter-notebook-plotly-stem-chart": {
+        "title": "Stem Chart"
+    },
+    "seaborn": {
+        "type": "separator",
+        "title": "Seaborn"
+    },
+    "jupyter-notebook-seaborn-bar-chart": {
+        "title": "Bar Chart"
+    },
+    "jupyter-notebook-seaborn-histogram-chart": {
+        "title": "Histogram Chart"
+    }, 
+    "jupyter-notebook-seaborn-line-chart": {
+        "title": "Line Chart"
+    },
+    "jupyter-notebook-seaborn-pie-chart": {
+        "title": "Pie Chart"
+    },
+    "jupyter-notebook-seaborn-scatter-chart": {
+        "title": "Scatter Chart"
+    },
+    "jupyter-notebook-seaborn-stem-chart": {
+        "title": "Stem Chart"
+    },
+    "vega-altair": {
+        "type": "separator",
+        "title": "Vega-Altair"
+    }, 
+    "jupyter-notebook-vega-altair-bar-chart": {
+        "title":"Bar Chart"
+    },
+    "jupyter-notebook-vega-altair-histogram-chart": {
+        "title":"Histogram Chart"
+    },
+    "jupyter-notebook-vega-altair-line-chart": {
+        "title": "Line Chart"
+    },
+    "jupyter-notebook-vega-altair-pie-chart": {
+        "title": "Pie Chart"
+    },
+    "jupyter-notebook-vega-altair-scatter-chart": {
+        "title":"Scatter Chart"
+    },
+    "jupyter-notebook-vega-altair-stem-chart": {
+        "title":"Stem Chart"
+    }
+}
