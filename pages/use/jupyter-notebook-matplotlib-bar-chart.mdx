@@ -1,14 +1,13 @@
 ---
-ogTitle: 
-description:
+ogTitle: Matplotlib Bar Chart 
+description: How to create a bar chart with numpy and pandas data using the matplotlib package.
 ogImage:
 ---
 
 import { Screenshot } from "components/screenshot";
-import { Callout } from "nextra-theme-docs";
-import mplonlyPng from "../../public/images/integrations/matplotlib/bar-chart/matplotlib-only.png";
-import mplandnpPng from "../../public/images/integrations/matplotlib/bar-chart/matplotlib-numpy.png";
-import mplandpdPng from "../../public/images/integrations/matplotlib/bar-chart/matplotlib-pandas.png";
+import simplechartPng from "../../public/images/integrations/matplotlib/bar-chart/matplotlib-only.png";
+import numpychartPng from "../../public/images/integrations/matplotlib/bar-chart/matplotlib-numpy.png";
+import pandaschartPng from "../../public/images/integrations/matplotlib/bar-chart/matplotlib-pandas.png";
 
 # Matplotlib Bar Chart
 
@@ -43,7 +42,7 @@ plt.bar(x,y)
 plt.show()
 ```
 
-<Screenshot src={mplonlyPng} alt="Only Matplotlib Bar Chart" />
+<Screenshot src={simplechartPng} alt="Simple matplotlib bar chart" />
 
 ## Bar Chart with Numpy Data
 
@@ -63,7 +62,7 @@ plt.bar(x,y)
 plt.show()
 ```
 
-<Screenshot src={mplandnpPng} alt="Matplotlib and Numpy Bar Chart" />
+<Screenshot src={numpychartPng} alt="Matplotlib bar chart with numpy data. " />
 
 ## Bar Chart with Pandas Data
 
@@ -88,11 +87,11 @@ plt.show()
 
 ```
 
-<Screenshot src={mplandpdPng} alt="Matplotlib and Pandas Bar Chart" />
+<Screenshot src={pandaschartPng} alt="Matplotlib bar chart with pandas data." />
 
 ## Interactive Bar Chart
 
-Static charts are boring, what about creating an interactive bar chart? It's possible with `matplotlib` and `mercury` packages. You can modify data range with `mercury` widgets. In this example we used **Slider**:
+Static charts are boring, what about creating an interactive bar chart? It's possible with `matplotlib` and `mercury` packages. You can modify data range with `mercury` widgets. In this example we used [**Slider**](https://runmercury.com/docs/input-widgets/slider/):
 
 ```python
 # import packages
@@ -112,12 +111,12 @@ all_y = [3.5,4.8,5.0,8.1,1.9,3.8,2.9,7.1]
 x = all_x[0:slider.value]
 y = all_y[0:slider.value]
 
-#plot
+# plot
 plt.bar(x,y)
 plt.show()
 ```
 
-Now, you cam turn your Jupyter Notebook into Web App without additional code changes! Here is a video which presents how it will look:
+Now, you can turn your Jupyter Notebook into Web App without additional code changes! Here is a video which presents how it will look:
 
 <video width="100%" autoPlay loop controls preload="none" style={{ borderRadius: "10px" }, {marginTop: "10px"}}>
   <source
