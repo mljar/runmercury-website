@@ -1,0 +1,151 @@
+---
+ogTitle: Matplotlib Line Chart 
+description: How to create a line chart with numpy and pandas data using the matplotlib (Python package) in Jupyter Notebook.
+ogImage:
+---
+
+import { Screenshot } from "components/screenshot";
+import simplechartPng from "../../public/images/integrations/matplotlib/line-chart/matplotlib-only.png";
+import numpychartPng from "../../public/images/integrations/matplotlib/line-chart/matplotlib-numpy.png";
+import pandaschartPng from "../../public/images/integrations/matplotlib/line-chart/matplotlib-pandas.png";
+
+# Matplotlib Line Chart
+
+## Introduction 
+
+`Matplotlib` is a library for making charts, which works very well with Jupyter Notebook. One of them is called a **Line Chart**. We've got a few examples ready to show you, so you can see what they look like and how they work: 
+
+- simple line chart 
+- line chart with `numpy` data
+- line chart with `pandas` data
+- an interactive line chart 
+
+If you need any information about **Matplotlib** check their docs: [**Matplotlib Docs**](https://matplotlib.org/stable/index.html).
+
+All of code examples are availabe as Jupyter Notebooks in our GitHub repositiory:
+
+- [**Matplotlib Line Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/matplotlib/matplotlib-line-chart.ipynb)
+- [**Matplotlib Interactive Line Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/matplotlib/matplotlib-interactive-line-chart.ipynb)
+
+## Line Chart 
+
+Example with using only `matplotlib` package: 
+
+```python
+# import packages 
+import matplotlib.pyplot as plt
+
+# create data
+x = [1, 2, 3, 4, 5]
+y = [1.5, 5.3, 2.1, 6.2, 2.7]
+
+# plot 
+plt.plot(x,y)
+plt.show()
+```
+
+<Screenshot src={simplechartPng} alt="Simple matplotlib line chart." />
+
+## Line Chart with Numpy Data
+
+You can turn `numpy` data into line chart thanks to `matplotlib` library:
+
+```python
+# import packages
+import matplotlib.pyplot as plt
+import numpy as np
+
+# create data 
+x = 1 + np.arange(8)
+y = np.array([4.8, 5.5, 3.5, 6.6, 2.5, 4.6, 1.6, 3.9])
+
+# plot 
+plt.plot(x,y)
+plt.show()
+```
+
+<Screenshot src={numpychartPng} alt="Matplotlib line chart with numpy data." />
+
+## Line Chart with Pandas Data
+
+Display `pandas` data as a line chart created with `matplotlib`:
+
+```python
+# import packages
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# create data 
+df = pd.DataFrame(
+    {
+        'count': [1,2,3,4,5,6,7,8], 
+        'value': [1.5,4.8,3.0,8.1,1.9,3.8,2.2,7.1]
+    }
+)
+
+# plot 
+plt.plot(df['count'], df['value'])
+plt.show()
+```
+
+<Screenshot src={pandaschartPng} alt="Matplotlib line chart with pandas data." />
+
+## Interactive Line Chart
+
+Static charts are boring, what about creating an interactive line chart? It's possible with `matplotlib` and `mercury` packages. You can choose which data you want to display using `mercury` widgets. In this example we used [**Select**](https://runmercury.com/docs/input-widgets/select/):
+
+```python
+# import packages
+import matplotlib.pyplot as plt
+import mercury as mr
+```
+
+```python 
+# mercury widget
+selection = mr.Select(value = "growing", choices = ["growing", "decreasing"], label = "Which trend?")
+```
+
+```python 
+# create data 
+x = [1,2,3,4,5,6,7,8,9,10]
+up_y = [1, 2.2, 3.4, 4.1, 3.9, 4.5, 6.4, 8.4, 8.2, 10]
+down_y = [10,9.1,8.7,6.1,5.2,6,4.9,4,3.1,1]
+
+# plot
+if selection.value == "growing":
+    y = up_y
+elif selection.value == "decreasing":
+    y = down_y
+    
+plt.plot(x,y)
+plt.show()
+```
+
+Now, you can turn your Jupyter Notebook into Web App without additional code changes! Here is a video which presents how it will look:
+
+<video width="100%" autoPlay loop controls preload="none" style={{ borderRadius: "10px" }, {marginTop: "10px"}}>
+  <source
+    src="/images/integrations/matplotlib/line-chart/matplotlib-mercury.mp4"
+    type="video/mp4"
+  />
+</video>
+
+Deploying Web App is very easy that you can do it in 3 steps:
+
+<div className="steps-container">
+
+### Login to Mercury Cloud
+
+If you don't have account, you can create it here: [**Mercury Cloud**](https://cloud.runmercury.com/register).
+
+### Create new site
+
+Create new or use an existing site. 
+
+### Upload your notebook
+
+Upload the notebook with code.
+
+</div>
+
+**Congrats!** You just created your own Web App and you can share your Jupyter Notebooks with nontechnical users. If you need more information about deploying the Web App check [**Mercury Cloud Documentation**](https://runmercury.com/docs/cloud/).
