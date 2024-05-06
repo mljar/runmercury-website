@@ -13,7 +13,6 @@ import pandaschartPng from "../../public/images/integrations/seaborn/bar-chart/s
 
 ## Introduction
 
-
 `Seaborn` is a tool used for creating visual charts, specifically designed to work smoothly with Jupyter Notebook. Among its offerings is the **Bar Chart**, a commonly used visualization method. We've prepared some examples to illustrate how they appear and function for your reference.
 - simple bar chart  
 - bar chart with `numpy` data
@@ -64,7 +63,7 @@ _ = sns.barplot(y)
 
 ## Bar Chart with Pandas Data 
 
-Create a bar chart using `seaborn` with `pandas` data.
+Create a bar chart using `seaborn` with `pandas` data:
 
 ```python 
 # import packages 
@@ -78,7 +77,7 @@ df = pd.DataFrame({'count': [1,2,3,4,5], 'value': [3.4,5.1,6.7,4.3,8.1]})
 _ = sns.barplot(df, x='count',y='value')
 ```
 
-<Screenshot src={pandaschartPng} alt="Matplotlib bar chart with pandas data." />
+<Screenshot src={pandaschartPng} alt="Seaborn bar chart with pandas data." />
 
 ## Interactive Bar Chart
 

@@ -1,7 +1,132 @@
 ---
-ogTitle: 
-description:
+ogTitle: Seaborn Histogram Chart 
+description: How to create a histogram chart with numpy and pandas data using the seaborn (Python package) in Jupyter Notebook.
 ogImage:
 ---
 
+import { Screenshot } from "components/screenshot";
+import simplechartPng from "../../public/images/integrations/seaborn/histogram-chart/seaborn-only.png";
+import numpychartPng from "../../public/images/integrations/seaborn/histogram-chart/seaborn-numpy.png";
+import pandaschartPng from "../../public/images/integrations/seaborn/histogram-chart/seaborn-pandas.png";
+
 # Seaborn Histogram Chart
+
+## Introduction
+
+`Seaborn` is a tool used for creating visual charts, specifically designed to work smoothly with Jupyter Notebook. Among its offerings is the **Histogram Chart**, a commonly used visualization method. We've prepared some examples to illustrate how they appear and function for your reference.
+- simple histogram chart  
+- histogram chart with `numpy` data
+- histogram chart with `pandas` data
+- an interactive histogram chart 
+
+If you need any information about **Seaborn** check their docs: [**Seaborn Docs**](https://seaborn.pydata.org/api.html).
+
+All of code examples are availabe as Jupyter Notebooks in our GitHub repositiory:
+- [**Seaborn Histogram Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/seaborn/seaborn-histogram-chart.ipynb)
+- [**Seaborn Interactive Histogram Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/seaborn/seaborn-interactive-histogram-chart.ipynb)
+
+## Histogram Chart 
+
+Example with just `seaborn`:
+
+```python
+# import packages 
+import seaborn as sns 
+
+# create data 
+x = [0, 43, 45, 7, 23, 14, 27, 42, 29, 31, 17, 20, 47, 40, 41, 25, 3, 8, 8, 49]
+
+# plot 
+_ = sns.histplot(x)
+```
+
+<Screenshot src={simplechartPng} alt="Simple seaborn histogram chart" />
+
+## Histogram Chart with Numpy Data 
+
+Show `numpy` data as histogram chart using `seaborn`:
+
+```python
+# import packages 
+import seaborn as sns 
+import numpy as np 
+
+# create data 
+x = np.array([17, 23, 5, 39, 38, 22, 27, 10, 9, 38, 14, 27, 26, 45, 27, 2, 2, 44, 31, 38])
+
+# plot 
+_ = sns.histplot(x)
+```
+
+<Screenshot src={numpychartPng} alt="Seaborn histogram chart with numpy data. " />
+
+## Histogram Chart with Pandas Data 
+
+Create a histogram chart using `seaborn` with `pandas` data:
+
+```python
+# import packages
+import seaborn as sns
+import pandas as pd 
+
+# create data 
+df = pd.DataFrame({'value': [34, 22, 34, 13, 28, 8, 9, 18, 24, 19, 34, 21, 48, 48, 20, 10, 8, 7, 25, 2]}) 
+
+# plot 
+_ = sns.histplot(df)
+```
+
+<Screenshot src={pandaschartPng} alt="Seaborn histogram chart with pandas data." />
+
+## Interactive Histogram Chart
+
+Static charts are boring. Let's create an interactive histogram chart using `seaborn` and `mercury` packages. You can modify the appearance of the chart conveniently with mercury widgets. In this example we used [**Checkbox**](https://runmercury.com/docs/input-widgets/checkbox/).
+
+```python 
+# import packages 
+import seaborn as sns
+import mercury as mr 
+```
+
+```python 
+# mercury widget 
+checkbox = mr.Checkbox(label="Filling")
+```
+
+```python 
+# create data 
+x = [49, 1, 33, 13, 46, 28, 1, 30, 48, 7, 8, 7, 34, 23, 39, 47, 9, 8, 12, 30]
+fill = True if checkbox.value else False
+
+# plot 
+_ = sns.histplot(x, fill=fill)
+```
+
+Now, you can transform your Jupyter Notebook into a Web App effortlessly! Watch this video to see how it looks.
+
+<video width="100%" autoPlay loop controls preload="none" style={{ borderRadius: "10px" }, {marginTop: "10px"}}>
+  <source
+    src="/images/integrations/seaborn/histogram-chart/seaborn-mercury.mp4"
+    type="video/mp4"
+  />
+</video>
+
+Deploying Web App is very easy that you can do it in 3 steps:
+
+<div className="steps-container">
+
+### Login to Mercury Cloud
+
+If you don't have account, you can create it here: [**Mercury Cloud**](https://cloud.runmercury.com/register).
+
+### Create new site
+
+Create new or use an existing site. 
+
+### Upload your notebook
+
+Upload the notebook with code.
+
+</div>
+
+**Congrats!** You just created your own Web App and you can share your Jupyter Notebooks with nontechnical users. If you need more information about deploying the Web App check [**Mercury Cloud Documentation**](https://runmercury.com/docs/cloud/).
