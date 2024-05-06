@@ -1,7 +1,134 @@
 ---
-ogTitle: 
-description:
+ogTitle: Seaborn Bar Chart 
+description: How to create a bar chart with numpy and pandas data using the seaborn (Python package) in Jupyter Notebook.
 ogImage:
 ---
 
+import { Screenshot } from "components/screenshot";
+import simplechartPng from "../../public/images/integrations/seaborn/bar-chart/seaborn-only.png";
+import numpychartPng from "../../public/images/integrations/seaborn/bar-chart/seaborn-numpy.png";
+import pandaschartPng from "../../public/images/integrations/seaborn/bar-chart/seaborn-pandas.png";
+
 # Seaborn Bar Chart
+
+## Introduction
+
+
+`Seaborn` is a tool used for creating visual charts, specifically designed to work smoothly with Jupyter Notebook. Among its offerings is the **Bar Chart**, a commonly used visualization method. We've prepared some examples to illustrate how they appear and function for your reference.
+- simple bar chart  
+- bar chart with `numpy` data
+- bar chart with `pandas` data
+- an interactive bar chart 
+
+If you need any information about **Seaborn** check their docs: [**Seaborn Docs**](https://seaborn.pydata.org/api.html).
+
+All of code examples are availabe as Jupyter Notebooks in our GitHub repositiory:
+- [**Seaborn Bar Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/seaborn/seaborn-bar-chart.ipynb)
+- [**Seaborn Interactive Bar Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/seaborn/seaborn-interactive-bar-chart.ipynb)
+
+## Bar Chart 
+
+Example with just `seaborn`: 
+
+```python 
+# import packages 
+import seaborn as sns
+
+# create data 
+y = [1.5,3.8,5.7,7.1,2.9]
+
+# plot 
+_ = sns.barplot(y)
+```
+
+<Screenshot src={simplechartPng} alt="Simple seaborn bar chart" />
+
+## Bar Chart with Numpy Data 
+
+
+Show `numpy` data as bar chart using `seaborn`:
+
+```python 
+# import packages 
+import seaborn as sns
+import numpy as np
+
+# create data 
+y = np.array([3.6,5.4,2.1,6.9,1.9])
+
+# plot 
+_ = sns.barplot(y)
+```
+
+<Screenshot src={numpychartPng} alt="Seaborn bar chart with numpy data. " />
+
+## Bar Chart with Pandas Data 
+
+Create a bar chart using `seaborn` with `pandas` data.
+
+```python 
+# import packages 
+import seaborn as sns
+import pandas as pd 
+
+# create data 
+df = pd.DataFrame({'count': [1,2,3,4,5], 'value': [3.4,5.1,6.7,4.3,8.1]})
+
+# plot 
+_ = sns.barplot(df, x='count',y='value')
+```
+
+<Screenshot src={pandaschartPng} alt="Matplotlib bar chart with pandas data." />
+
+## Interactive Bar Chart
+
+Static charts are boring. Let's create an interactive bar chart using `seaborn` and `mercury` packages. You can modify data range conveniently with mercury widgets. In this example we used [**Numeric**](https://runmercury.com/docs/input-widgets/numeric/).
+
+```python
+# import packages 
+import seaborn as sns 
+import mercury as mr 
+```
+
+```python
+# mercury widget
+number = mr.Numeric(value=5, min=4, max=10, label="How many bars?", step=1)
+```
+
+```python 
+# create data 
+all_y = [7, 10, 1, 3, 8, 5, 7, 9, 3, 2]
+y = all_y[0:int(number.value)]
+
+# plot 
+_ = sns.barplot(y)
+```
+
+Now, you can transform your Jupyter Notebook into a Web App effortlessly! Watch this video to see how it looks.
+
+<video width="100%" autoPlay loop controls preload="none" style={{ borderRadius: "10px" }, {marginTop: "10px"}}>
+  <source
+    src="/images/integrations/seaborn/bar-chart/seaborn-mercury.mp4"
+    type="video/mp4"
+  />
+</video>
+
+Deploying Web App is very easy that you can do it in 3 steps:
+
+<div className="steps-container">
+
+### Login to Mercury Cloud
+
+If you don't have account, you can create it here: [**Mercury Cloud**](https://cloud.runmercury.com/register).
+
+### Create new site
+
+Create new or use an existing site. 
+
+### Upload your notebook
+
+Upload the notebook with code.
+
+</div>
+
+**Congrats!** You just created your own Web App and you can share your Jupyter Notebooks with nontechnical users. If you need more information about deploying the Web App check [**Mercury Cloud Documentation**](https://runmercury.com/docs/cloud/).
