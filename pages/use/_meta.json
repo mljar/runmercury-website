@@ -57,14 +57,8 @@
     "jupyter-notebook-seaborn-line-chart": {
         "title": "Line Chart"
     },
-    "jupyter-notebook-seaborn-pie-chart": {
-        "title": "Pie Chart"
-    },
     "jupyter-notebook-seaborn-scatter-chart": {
         "title": "Scatter Chart"
-    },
-    "jupyter-notebook-seaborn-stem-chart": {
-        "title": "Stem Chart"
     },
     "vega-altair": {
         "type": "separator",
