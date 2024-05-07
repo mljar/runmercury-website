@@ -1,7 +1,138 @@
 ---
-ogTitle: 
-description:
+ogTitle: Seaborn Line Chart
+description: How to create a line chart with numpy and pandas data using the seaborn (Python package) in Jupyter Notebook.
 ogImage:
 ---
 
+import { Screenshot } from "components/screenshot";
+import simplechartPng from "../../public/images/integrations/seaborn/line-chart/seaborn-only.png";
+import numpychartPng from "../../public/images/integrations/seaborn/line-chart/seaborn-numpy.png";
+import pandaschartPng from "../../public/images/integrations/seaborn/line-chart/seaborn-pandas.png";
+
 # Seaborn Line Chart 
+
+## Introduction
+
+`Seaborn` is a tool used for creating visual charts, specifically designed to work smoothly with Jupyter Notebook. Among its offerings is the **Line Chart**, a commonly used visualization method. We've prepared some examples to illustrate how they appear and function for your reference.
+- simple line chart  
+- line chart with `numpy` data
+- line chart with `pandas` data
+- an interactive line chart 
+
+If you need any information about **Seaborn** check their docs: [**Seaborn Docs**](https://seaborn.pydata.org/api.html).
+
+All of code examples are availabe as Jupyter Notebooks in our GitHub repositiory:
+- [**Seaborn Line Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/seaborn/seaborn-line-chart.ipynb)
+- [**Seaborn Interactive Line Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/seaborn/seaborn-interactive-line-chart.ipynb)
+
+## Line Chart 
+
+Example with just `seaborn`:
+
+```python 
+# import packages
+import seaborn as sns 
+
+# create data 
+x = [4, 10, 15, 8, 13, 11, 19, 9, 14, 20]
+
+# plot 
+_ = sns.lineplot(x)
+```
+
+<Screenshot src={simplechartPng} alt="Simple seaborn line chart" />
+
+## Line Chart with Numpy Data 
+
+Show `numpy` data as line chart using `seaborn`:
+
+```python 
+# import packages 
+import seaborn as sns 
+import numpy as np 
+
+# create data 
+x = np.array([18, 11, 10, 16, 15, 20, 9, 15, 15, 3])
+
+# plot 
+_ = sns.lineplot(x)
+```
+
+<Screenshot src={numpychartPng} alt="Seaborn line chart with numpy data. " />
+
+## Line Chart with Pandas Data 
+
+Create a line chart using `seaborn` with `pandas` data:
+
+```python
+# import packages 
+import seaborn as sns 
+import pandas as pd 
+
+# create data
+df = pd.DataFrame({'value': [15, 11, 13, 9, 4, 9, 17, 7, 5, 8]})
+
+# plot 
+_ = sns.lineplot(df)
+```
+
+<Screenshot src={pandaschartPng} alt="Seaborn line chart with pandas data." />
+
+## Interactive Line Chart
+
+Static charts are boring. Let's create an interactive line chart using `seaborn` and `mercury` packages. You can choose which data you want to display with mercury widgets. In this example we used [**Select**](https://runmercury.com/docs/input-widgets/select/).
+
+```python 
+# import packages 
+import seaborn as sns 
+import mercury as mr 
+```
+
+```python 
+# mercury widget 
+selection = mr.Select(label="Choose Data:", value="Plot 1", choices=["Plot 1", "Plot 2", "Plot 3"])
+```
+
+```python 
+# create data 
+x1 = [4, 10, 15, 8, 13, 11, 19, 9, 14, 20]
+x2 = [18, 11, 10, 16, 15, 20, 9, 15, 15, 3]
+x3 = [15, 11, 13, 9, 4, 9, 17, 7, 5, 8]
+
+# plot 
+if "Plot 1" in selection.value: 
+    _ = sns.lineplot(x1)
+elif "Plot 2" in selection.value:
+    _ = sns.lineplot(x2)
+elif "Plot 3" in selection.value:
+    _ = sns.lineplot(x3)
+```
+
+Now, you can transform your Jupyter Notebook into a Web App effortlessly! Watch this video to see how it looks.
+
+<video width="100%" autoPlay loop controls preload="none" style={{ borderRadius: "10px" }, {marginTop: "10px"}}>
+  <source
+    src="/images/integrations/seaborn/line-chart/seaborn-mercury.mp4"
+    type="video/mp4"
+  />
+</video>
+
+Deploying Web App is very easy that you can do it in 3 steps:
+
+<div className="steps-container">
+
+### Login to Mercury Cloud
+
+If you don't have account, you can create it here: [**Mercury Cloud**](https://cloud.runmercury.com/register).
+
+### Create new site
+
+Create new or use an existing site. 
+
+### Upload your notebook
+
+Upload the notebook with code.
+
+</div>
+
+**Congrats!** You just created your own Web App and you can share your Jupyter Notebooks with nontechnical users. If you need more information about deploying the Web App check [**Mercury Cloud Documentation**](https://runmercury.com/docs/cloud/).

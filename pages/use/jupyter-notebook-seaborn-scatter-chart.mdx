@@ -1,7 +1,132 @@
 ---
-ogTitle: 
-description:
+ogTitle: Seaborn Scatter Chart 
+description: How to create a scatter chart with numpy and pandas data using the seaborn (Python package) in Jupyter Notebook.
 ogImage:
 ---
 
+import { Screenshot } from "components/screenshot";
+import simplechartPng from "../../public/images/integrations/seaborn/scatter-chart/seaborn-only.png";
+import numpychartPng from "../../public/images/integrations/seaborn/scatter-chart/seaborn-numpy.png";
+import pandaschartPng from "../../public/images/integrations/seaborn/scatter-chart/seaborn-pandas.png";
+
 # Seaborn Scatter Chart
+
+## Introduction
+
+`Seaborn` is a tool used for creating visual charts, specifically designed to work smoothly with Jupyter Notebook. Among its offerings is the **Scatter Chart**, a commonly used visualization method. We've prepared some examples to illustrate how they appear and function for your reference.
+- simple scatter chart  
+- scatter chart with `numpy` data
+- scatter chart with `pandas` data
+- an interactive scatter chart 
+
+If you need any information about **Seaborn** check their docs: [**Seaborn Docs**](https://seaborn.pydata.org/api.html).
+
+All of code examples are availabe as Jupyter Notebooks in our GitHub repositiory:
+- [**Seaborn Scatter Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/seaborn/seaborn-scatter-chart.ipynb)
+- [**Seaborn Interactive Scatter Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/seaborn/seaborn-interactive-scatter-chart.ipynb)
+
+# Scatter Chart 
+
+Example with just `seaborn`:
+
+```python
+# import packages 
+import seaborn as sns
+
+# create data 
+x = [3, 9, 9, 7, 2, 10, 9, 6, 6, 10]
+
+# plot 
+_ = sns.scatterplot(x)
+```
+
+<Screenshot src={simplechartPng} alt="Simple seaborn scatter chart" />
+
+## Scatter Chart with Numpy Data 
+
+Show `numpy` data as scatter chart using `seaborn`:
+
+```python 
+# import packages 
+import seaborn as sns 
+import numpy as np 
+
+# create data 
+x = np.array([3, 9, 7, 4, 3, 1, 10, 7, 10, 6])
+
+# plot 
+_ = sns.scatterplot(x)
+```
+
+<Screenshot src={numpychartPng} alt="Seaborn scatter chart with numpy data. " />
+
+## Scatter Chart with Pandas Data 
+
+Create a scatter chart using `seaborn` with `pandas` data:
+
+```python 
+# import packages 
+import seaborn as sns 
+import pandas as pd 
+
+# create data 
+df = pd.DataFrame({ 'value': [4, 3, 6, 4, 1, 5, 10, 2, 1, 3]})
+
+# plot 
+_ = sns.scatterplot(df)
+```
+
+<Screenshot src={pandaschartPng} alt="Seaborn scatter chart with pandas data." />
+
+## Interactive Scatter Chart 
+
+Static charts are boring. Let's create an interactive scatter chart using `seaborn` and `mercury` packages. You can modify data range conveniently with mercury widgets. In this example we used [**Slider**](https://runmercury.com/docs/input-widgets/slider/).
+
+```python
+# import packages 
+import seaborn as sns 
+import mercury as mr
+```
+
+```python 
+# mercury widget
+slider = mr.Slider(value=10, min=8, max=20, label="How many dots?")
+```
+
+```python
+# create data
+all_x = [22, 6, 17, 13, 10, 3, 17, 21, 22, 22, 9, 11, 10, 12, 16, 16, 4, 6, 14, 9]
+x = all_x[0:slider.value]
+
+# plot 
+_ = sns.scatterplot(x)
+```
+
+Now, you can transform your Jupyter Notebook into a Web App effortlessly! Watch this video to see how it look.
+
+<video width="100%" autoPlay loop controls preload="none" style={{ borderRadius: "10px" }, {marginTop: "10px"}}>
+  <source
+    src="/images/integrations/seaborn/scatter-chart/seaborn-mercury.mp4"
+    type="video/mp4"
+  />
+</video>
+
+Deploying Web App is very easy that you can do it in 3 steps:
+
+<div className="steps-container">
+
+### Login to Mercury Cloud
+
+If you don't have account, you can create it here: [**Mercury Cloud**](https://cloud.runmercury.com/register).
+
+### Create new site
+
+Create new or use an existing site. 
+
+### Upload your notebook
+
+Upload the notebook with code.
+
+</div>
+
+**Congrats!** You just created your own Web App and you can share your Jupyter Notebooks with nontechnical users. If you need more information about deploying the Web App check [**Mercury Cloud Documentation**](https://runmercury.com/docs/cloud/).
