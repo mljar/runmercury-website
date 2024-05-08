@@ -1,7 +1,140 @@
 ---
-ogTitle: 
-description:
+ogTitle: Plotly Pie Chart 
+description:  How to create a pie chart with numpy and pandas data using the plotly (Python package) in Jupyter Notebook.
 ogImage:
 ---
 
+import { Callout } from 'nextra-theme-docs'
+import { Screenshot } from "components/screenshot";
+import simplechartPng from "../../public/images/integrations/plotly/pie-chart/plotly-only.png";
+import numpychartPng from "../../public/images/integrations/plotly/pie-chart/plotly-numpy.png";
+import pandaschartPng from "../../public/images/integrations/plotly/pie-chart/plotly-pandas.png";
+
 # Plotly Pie Chart
+
+`Plotly` is a tool for creating charts, which works with Jupyter Notebook. Among its options is the **Pie Chart**. We've got some examples ready to demonstrate their appearance and functionality, so you can see how they work.
+
+- simple pie chart  
+- pie chart with `numpy` data
+- pie chart with `pandas` data
+- an interactive pie chart 
+
+If you need any information about **Plotly** check their docs: [**Plotly Docs**](https://plotly.com/python/).
+
+<Callout type="info">
+  After plotly installation remember to restart your Jupyter before doing anything.
+</Callout>
+
+All of code examples are availabe as Jupyter Notebooks in our GitHub repositiory:
+- [**Plotly Pie Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/plotly/plotly-pie-chart.ipynb)
+- [**Plotly Interactive Pie Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/plotly/plotly-interactive-pie-chart.ipynb)
+
+## Pie Chart 
+
+Example using only `plotly` package:
+
+```python 
+# import packages 
+import plotly.express as px 
+
+# create data 
+x = [20,25,15,40]
+
+# plot 
+fig = px.pie(values=x)
+fig.show()
+```
+
+<Screenshot src={simplechartPng} alt="Simple plotly pie chart" />
+
+## Pie Chart with Numpy Data
+
+Display `numpy` data as a pie chart using `plotly`:
+
+```python 
+# import packages 
+import plotly.express as px 
+import numpy as np
+
+# create data 
+x = np.array([43,75,89,74,72])
+
+# plot 
+fig = px.pie(values=x)
+fig.show()
+```
+
+<Screenshot src={numpychartPng} alt="Plotly pie chart with numpy data. " />
+
+## Pie Chart with Pandas Data
+
+Make a pie chart with `pandas` data using `plotly`:
+
+```python
+# import packages 
+import plotly.express as px 
+import pandas as pd 
+
+# create data 
+df = pd.DataFrame({'values': [76,54,45,14,72]})
+
+# plot 
+fig = px.pie(values = df['values'])
+fig.show()
+```
+
+<Screenshot src={pandaschartPng} alt="Plotly pie chart with pandas data." />
+
+## Interactive Pie Chart 
+
+Ordinary charts are dull. Let's make an interactive pie chart with `plotly` and `mercury` packages. You can decide if legend will be visible using mercury widgets. In this case, we're using [**Checkbox**](https://runmercury.com/docs/input-widgets/checkbox/).
+
+```python
+# import packages
+import plotly.express as px 
+import mercury as mr
+```
+
+```python
+# mercury widget
+checkbox = mr.Checkbox(label="Legend")
+```
+
+```python
+# create data 
+x = [9,7,8,12]
+names = ["Apples", "Bananas", "Oranges", "Grapes"] if checkbox.value else None
+
+# plot
+fig = px.pie(values=x, names=names)
+fig.show()
+```
+
+Now, you can easily turn your Jupyter Notebook into a Web App! Check out this video to see how it looks.
+
+<video width="100%" autoPlay loop controls preload="none" style={{ borderRadius: "10px" }, {marginTop: "10px"}}>
+  <source
+    src="/images/integrations/plotly/pie-chart/plotly-mercury.mp4"
+    type="video/mp4"
+  />
+</video>
+
+Deploying Web App is very easy that you can do it in 3 steps:
+
+<div className="steps-container">
+
+### Login to Mercury Cloud
+
+If you don't have account, you can create it here: [**Mercury Cloud**](https://cloud.runmercury.com/register).
+
+### Create new site
+
+Create new or use an existing site. 
+
+### Upload your notebook
+
+Upload the notebook with code.
+
+</div>
+
+**Congrats!** You just created your own Web App and you can share your Jupyter Notebooks with nontechnical users. If you need more information about deploying the Web App check [**Mercury Cloud Documentation**](https://runmercury.com/docs/cloud/).
