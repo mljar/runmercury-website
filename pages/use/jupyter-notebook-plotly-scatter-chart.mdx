@@ -1,7 +1,144 @@
 ---
-ogTitle: 
-description:
+ogTitle: Plotly Scatter Chart
+description: How to create a scatter chart with numpy and pandas data using the plotly (Python package) in Jupyter Notebook.
 ogImage:
 ---
 
+import { Callout } from 'nextra-theme-docs'
+import { Screenshot } from "components/screenshot";
+import simplechartPng from "../../public/images/integrations/plotly/scatter-chart/plotly-only.png";
+import numpychartPng from "../../public/images/integrations/plotly/scatter-chart/plotly-numpy.png";
+import pandaschartPng from "../../public/images/integrations/plotly/scatter-chart/plotly-pandas.png";
+
 # Plotly Scatter Chart 
+
+
+
+`Plotly` is a tool for creating charts, which works with Jupyter Notebook. Among its options is the **Scatter Chart**. We've got some examples ready to demonstrate their appearance and functionality, so you can see how they work.
+
+- simple scatter chart  
+- scatter chart with `numpy` data
+- scatter chart with `pandas` data
+- an interactive scatter chart 
+
+If you need any information about **Plotly** check their docs: [**Plotly Docs**](https://plotly.com/python/).
+
+<Callout type="info">
+  After plotly installation remember to restart your Jupyter before doing anything.
+</Callout>
+
+All of code examples are availabe as Jupyter Notebooks in our GitHub repositiory:
+- [**Plotly Scatter Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/plotly/plotly-scatter-chart.ipynb)
+- [**Plotly Interactive Scatter Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/plotly/plotly-interactive-scatter-chart.ipynb)
+
+## Scatter Chart 
+
+Example using only `plotly` package:
+
+```python 
+# import packages 
+import plotly.express as px 
+
+# create data 
+x = [2,4,6,1,5]
+y = [8,5,7,4,6]
+
+# plot 
+fig = px.scatter(x,y)
+fig.show()
+```
+
+<Screenshot src={simplechartPng} alt="Simple plotly scatter chart" />
+
+## Scatter Chart with Numpy Data 
+
+Display `numpy` data as a scatter chart using `plotly`:
+
+```python
+# import package 
+import plotly.express as px
+import numpy as np 
+
+# create data 
+x = np.array([7,5,8,4,3,4])
+y = np.array([4,6,4,7,5,1])
+
+# plot 
+fig = px.scatter(x,y)
+fig.show()
+```
+
+<Screenshot src={numpychartPng} alt="Plotly scatter chart with numpy data. " />
+
+## Scatter Chart with Pandas Data 
+
+Make a scatter chart with `pandas` data using `plotly`:
+
+```python 
+# import packages 
+import plotly.express as px 
+import pandas as pd 
+
+# create data 
+df = pd.DataFrame({'x': [5,7,8,4,6,2]})
+
+# plot 
+fig = px.scatter(df)
+fig.show()
+```
+
+<Screenshot src={pandaschartPng} alt="Plotly scatter chart with pandas data." />
+
+## Interactive Scatter Chart 
+
+Ordinary charts are dull. Let's make an interactive scatter chart with `plotly` and `mercury` packages. You can modify data range using mercury widgets. In this case, we're using [**Range**](https://runmercury.com/docs/input-widgets/range/).
+
+```python
+# import packages 
+import plotly.express as px 
+import mercury as mr 
+```
+
+```python
+# mercury widget
+range = mr.Range(value=[1,6], min=0, max=10, label="Set data range")
+```
+
+```python
+# create data 
+all_x = [7,5,4,8,2,12,5,7,9,11,6]
+x = all_x[range.value[0]:range.value[1]+1]
+
+# plot 
+fig = px.scatter(x)
+fig.show()
+```
+
+Now, you can easily turn your Jupyter Notebook into a Web App! Check out this video to see how it looks.
+
+<video width="100%" autoPlay loop controls preload="none" style={{ borderRadius: "10px" }, {marginTop: "10px"}}>
+  <source
+    src="/images/integrations/plotly/scatter-chart/plotly-mercury.mp4"
+    type="video/mp4"
+  />
+</video>
+
+Deploying Web App is very easy that you can do it in 3 steps:
+
+<div className="steps-container">
+
+### Login to Mercury Cloud
+
+If you don't have account, you can create it here: [**Mercury Cloud**](https://cloud.runmercury.com/register).
+
+### Create new site
+
+Create new or use an existing site. 
+
+### Upload your notebook
+
+Upload the notebook with code.
+
+</div>
+
+**Congrats!** You just created your own Web App and you can share your Jupyter Notebooks with nontechnical users. If you need more information about deploying the Web App check [**Mercury Cloud Documentation**](https://runmercury.com/docs/cloud/).
