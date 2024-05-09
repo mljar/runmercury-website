@@ -1,12 +1,12 @@
 export default function CreateWithMercury() {
   return (
-    <div 
+    <div
       className="bg-primary-50 dark:bg-gray-800"
       style={{
         width: "100%",
         paddingTop: "70px",
         paddingBottom: "70px",
-        borderRadius: "30px"
+        borderRadius: "30px",
       }}
     >
       <center>
@@ -29,14 +29,15 @@ export default function CreateWithMercury() {
           className="mt-4 font-light text-gray-500 text-2xl dark:text-gray-300 
         leading-normal"
         >
-          You don't need to know frontend frameworks, <s>HTML, CSS or JavaScript</s>.
+          You don't need to know frontend frameworks,{" "}
+          <s>HTML, CSS or JavaScript</s>.
         </p>
         <p
           className="mt-4 mb-12 font-light text-gray-500 text-2xl dark:text-gray-300 
         leading-normal"
         >
-          All in pure <u className="font-extrabold">Python</u> without leaving Jupyter
-          Notebook.
+          All in pure <u className="font-extrabold">Python</u> without leaving
+          Jupyter Notebook.
         </p>
 
         <h2 className="my-8 lg:text-6xl text-4xl font-extrabold text-gray-900 dark:text-white leading-normal">
@@ -56,19 +57,33 @@ export default function CreateWithMercury() {
               transition: "box-shadow 0.3s ease",
             }}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
               <path d="M4 12v-3a3 3 0 0 1 3 -3h13m-3 -3l3 3l-3 3"></path>
               <path d="M20 12v3a3 3 0 0 1 -3 3h-13m3 3l-3 -3l3 -3"></path>
             </svg>
 
-            <h2 className="my-4 lg:text-4xl text-2xl font-extrabold text-gray-900 dark:text-white leading-normal"> No callbacks!</h2>
-            <p className="my-4 mb-8 font-light text-gray-500 dark:text-gray-300 text-xl leading-normal"> 
-              Mercury automatically re-executes cells below updated widget.
-              You don't need to write callbacks to handle widget update. 
+            <h2 className="my-4 lg:text-4xl text-2xl font-extrabold text-gray-900 dark:text-white leading-normal">
+              {" "}
+              No callbacks!
+            </h2>
+            <p className="my-4 mb-8 font-light text-gray-500 dark:text-gray-300 text-xl leading-normal">
+              Mercury automatically re-executes cells below updated widget. You
+              don't need to write callbacks to handle widget update.
             </p>
 
-            <a href="/docs/how-does-it-work/"
+            <a
+              href="/docs/how-does-it-work/"
               target="_blank"
               className="text-white bg-primary-600 hover:bg-primary-700
                           focus:ring-4 focus:ring-primary-200 font-medium rounded-lg
@@ -76,7 +91,6 @@ export default function CreateWithMercury() {
             >
               How does it work?
             </a>
-
           </div>
 
           <div
@@ -91,7 +105,17 @@ export default function CreateWithMercury() {
               transition: "box-shadow 0.3s ease",
             }}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
               <path d="M4 4m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path>
               <path d="M4 13m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path>
@@ -99,20 +123,28 @@ export default function CreateWithMercury() {
               <path d="M14 15m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path>
             </svg>
 
-            <h2 className="my-4 lg:text-4xl text-2xl font-extrabold text-gray-900 dark:text-white leading-normal">Don't worry about layout</h2>
-                  <p className="my-4 mb-8 font-light text-gray-500 dark:text-gray-300 text-xl
-                  leading-normal">Widgets are in the sidebar and outputs will appear in the same order as in the notebook.</p>
+            <h2 className="my-4 lg:text-4xl text-2xl font-extrabold text-gray-900 dark:text-white leading-normal">
+              Don't worry about layout
+            </h2>
+            <p
+              className="my-4 mb-8 font-light text-gray-500 dark:text-gray-300 text-xl
+                  leading-normal"
+            >
+              Widgets are in the sidebar and outputs will appear in the same
+              order as in the notebook.
+            </p>
 
-
-            <a href="/docs/"
-                    className="text-white bg-primary-600 hover:bg-primary-700
+            <a
+              href="/docs/"
+              className="text-white bg-primary-600 hover:bg-primary-700
                                 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg
-                                px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Check docs</a>
-
+                                px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900"
+            >
+              Check docs
+            </a>
           </div>
         </div>
-
       </center>
     </div>
-  )
+  );
 }
