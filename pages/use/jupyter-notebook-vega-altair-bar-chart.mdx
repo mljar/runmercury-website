@@ -1,7 +1,142 @@
 ---
-ogTitle: 
-description:
+ogTitle: Vega-Altair Bar Chart 
+description: How to create a bar chart with numpy and pandas data using the vega-altair (Python package) in Jupyter Notebook.
 ogImage:
 ---
 
+import { Screenshot } from "components/screenshot";
+import simplechartPng from "../../public/images/integrations/vega-altair/bar-chart/vega-altair-only.png";
+import pandaschartPng from "../../public/images/integrations/vega-altair/bar-chart/vega-altair-pandas.png";
+
 # Vega-Altair Bar Chart
+
+## Introduction
+
+`Vega-Altair` package is a powerful tool for data visualization, particularly within Jupyter Notebooks. It has a wide range of charts and plots to explore and one of them is **Bar Chart**. We've prepared several examples to demonstrate how Vega-Altair works:
+
+- simple bar chart  
+- bar chart with `pandas` data
+- an interactive bar chart 
+
+If you need any information about **Vega-Altair** check their docs: [**Vega-Altair Docs**](https://altair-viz.github.io/).
+
+All of code examples are availabe as Jupyter Notebooks in our GitHub repositiory:
+- [**Vega-Altair Bar Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/vega-altair/vega-altair-bar-chart.ipynb)
+- [**Vega-Altair Interactive Bar Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/vega-altair/vega-altair-interacive-bar-chart.ipynb)
+
+## Bar Chart 
+
+Visualization with only `vega-altair` package:
+
+```python 
+# import packages 
+import altair as alt 
+
+# create data 
+data = alt.Data(values=[{'x': 'A', 'y': 5},
+                        {'x': 'B', 'y': 10},
+                        {'x': 'C', 'y': 6},
+                        {'x': 'D', 'y': 8},
+                        {'x': 'E', 'y': 3},
+                        {'x': 'F', 'y': 7},
+                        {'x': 'G', 'y': 9},
+                        {'x': 'H', 'y': 2},
+                        {'x': 'I', 'y': 4}])
+
+# plot 
+alt.Chart(data).mark_bar().encode(
+    x = 'x:N',
+    y = 'y:Q'
+).properties(
+    width=500
+)
+```
+
+<Screenshot src={simplechartPng} alt="Simple vega-altair bar chart" />
+
+## Bar Chart with Pandas Data 
+
+Using `vega-altair`, create a bar chart with `pandas` data:
+
+```python
+# import packages 
+import altair as alt
+import pandas as pd
+
+# create data 
+df = pd.DataFrame({
+    'x': ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'],
+    'y': [14, 9, 15, 8, 1, 14, 10, 9, 9]
+})
+
+# plot 
+alt.Chart(df).mark_bar().encode(
+    x='x',
+    y='y'
+).properties(
+    width=500
+)
+```
+
+<Screenshot src={pandaschartPng} alt="Vega-altair bar chart with pandas data." />
+
+## Interactive Bar Chart
+
+Regular charts are not very exciting. What about creating an interactive bar chart with `vega-altair` and `mercury` packages? You can set chart title using mercury widgets. In this example we used [**Text**](https://runmercury.com/docs/input-widgets/text/).
+
+```python
+# import packages 
+import altair as alt 
+import mercury as mr 
+import pandas as pd
+```
+
+```python
+# mercury widget 
+text = mr.Text(value="", label="Set chart title:")
+```
+
+```python
+# create data
+df = pd.DataFrame({
+    'x': ['A','B','C','D','E','F','G','H','I','J','K'],
+    'y': [4, 6, 11, 13, 7, 10, 24, 19, 12, 8, 17]
+})
+
+# plot 
+alt.Chart(df,title=text.value).mark_bar().encode(
+    x='x',
+    y='y'
+).properties(
+        width=500
+    )
+```
+
+Now, you can easily convert your Jupyter Notebook into a Web App! Watch the video to see what it will look like.
+
+<video width="100%" autoPlay loop controls preload="none" style={{ borderRadius: "10px" }, {marginTop: "10px"}}>
+  <source
+    src="/images/integrations/vega-altair/bar-chart/vega-altair-mercury.mp4"
+    type="video/mp4"
+  />
+</video>
+
+Deploying Web App is very easy that you can do it in 3 steps:
+
+<div className="steps-container">
+
+### Login to Mercury Cloud
+
+If you don't have account, you can create it here: [**Mercury Cloud**](https://cloud.runmercury.com/register).
+
+### Create new site
+
+Create new or use an existing site. 
+
+### Upload your notebook
+
+Upload the notebook with code.
+
+</div>
+
+**Congrats!** You just created your own Web App and you can share your Jupyter Notebooks with nontechnical users. If you need more information about deploying the Web App check [**Mercury Cloud Documentation**](https://runmercury.com/docs/cloud/).
