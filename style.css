@@ -92,6 +92,7 @@ code.text-\[\.9em\] {
   --shiki-token-punctuation: #2a2a2a !important;
   --shiki-token-comment: #666666 !important;
   --shiki-token-string-expression: #146126 !important;
+  --shiki-token-constant: #005ab4 !important;
 }
  
 .dark {
@@ -99,4 +100,5 @@ code.text-\[\.9em\] {
   --shiki-token-punctuation: #ffffff !important;
   --shiki-token-comment: #aaa !important;
   --shiki-token-string-expression: #70d16e !important;
+  --shiki-token-constant: #79bcff !important;
 }
