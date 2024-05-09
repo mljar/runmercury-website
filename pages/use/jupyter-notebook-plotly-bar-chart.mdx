@@ -1,7 +1,147 @@
 ---
-ogTitle: 
-description:
+ogTitle: Plotly Bar Chart 
+description: How to create a bar chart with numpy and pandas data using the plotly (Python package) in Jupyter Notebook.
 ogImage:
 ---
 
+import { Callout } from 'nextra-theme-docs'
+import { Screenshot } from "components/screenshot";
+import simplechartPng from "../../public/images/integrations/plotly/bar-chart/plotly-only.png";
+import numpychartPng from "../../public/images/integrations/plotly/bar-chart/plotly-numpy.png";
+import pandaschartPng from "../../public/images/integrations/plotly/bar-chart/plotly-pandas.png";
+
+
 # Plotly Bar Chart
+
+`Plotly` is a tool for creating charts, which works with Jupyter Notebook. Among its options is the **Bar Chart**. We've got some examples ready to demonstrate their appearance and functionality, so you can see how they work.
+
+- simple bar chart  
+- bar chart with `numpy` data
+- bar chart with `pandas` data
+- an interactive bar chart 
+
+If you need any information about **Plotly** check their docs: [**Plotly Docs**](https://plotly.com/python/).
+
+<Callout type="info">
+  After plotly installation remember to restart your Jupyter before doing anything.
+</Callout>
+
+All of code examples are availabe as Jupyter Notebooks in our GitHub repositiory:
+- [**Plotly Bar Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/plotly/plotly-bar-chart.ipynb)
+- [**Plotly Interactive Bar Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/plotly/plotly-interactive-bar-chart.ipynb)
+
+## Bar Chart 
+
+Example using only `plotly` package:
+
+```python 
+# import packages 
+import plotly.express as px
+
+# create data 
+x = [3, 13, 1, 12, 19, 7, 16, 13, 10, 1]
+
+# plot 
+fig = px.bar(x)
+fig.show()
+```
+
+<Screenshot src={simplechartPng} alt="Simple plotly bar chart" />
+
+## Bar Chart with Numpy Data
+
+Display `numpy` data as a bar chart using `plotly`:
+
+```python
+# import packages
+import plotly.express as px
+import numpy as np 
+
+# create data 
+x = np.array([20, 14, 9, 11, 19, 7, 5, 17, 16, 20])
+
+# plot 
+fig = px.bar(x)
+fig.show()
+```
+
+<Screenshot src={numpychartPng} alt="Plotly bar chart with numpy data. " />
+
+## Bar Chart with Pandas Data 
+
+Make a bar chart with `pandas` data using `plotly`:
+
+```python 
+# import packages 
+import plotly.express as px 
+import pandas as pd 
+
+# create data 
+df = pd.DataFrame({'value': [18, 13, 12, 2, 20, 12, 5, 4, 16, 17]})
+
+# plot 
+fig = px.bar(df)
+fig.show()
+```
+
+<Screenshot src={pandaschartPng} alt="Plotly bar chart with pandas data." />
+
+## Interactive Bar Chart
+
+Ordinary charts are dull. Let's make an interactive bar chart with `plotly` and `mercury` packages. You can choose which data you want to display using mercury widgets. In this case, we're using [**Select**](https://runmercury.com/docs/input-widgets/select/).
+
+```python 
+# import packages 
+import plotly.express as px
+import mercury as mr
+```
+
+```python 
+# mercury widget 
+select = mr.Select(value="growing", choices=["growing","decreasing","random"], label="Choose data:")
+```
+
+```python 
+# create data 
+grow = [1,2,3,4,5,6,7,8,9,10,11,12]
+decr = [12,11,10,9,8,7,6,5,4,3,2,1]
+rand = [9,20,18,13,5,11,8,5,11,1,11,13]
+
+# plot 
+if select.value == "growing":
+    fig = px.bar(grow)
+elif select.value == "decreasing":
+    fig = px.bar(decr)
+elif select.value == "random":
+    fig = px.bar(rand)
+fig.show()
+```
+
+Now, you can easily turn your Jupyter Notebook into a Web App! Check out this video to see how it looks.
+
+<video width="100%" autoPlay loop controls preload="none" style={{ borderRadius: "10px" }, {marginTop: "10px"}}>
+  <source
+    src="/images/integrations/plotly/bar-chart/plotly-mercury.mp4"
+    type="video/mp4"
+  />
+</video>
+
+Deploying Web App is very easy that you can do it in 3 steps:
+
+<div className="steps-container">
+
+### Login to Mercury Cloud
+
+If you don't have account, you can create it here: [**Mercury Cloud**](https://cloud.runmercury.com/register).
+
+### Create new site
+
+Create new or use an existing site. 
+
+### Upload your notebook
+
+Upload the notebook with code.
+
+</div>
+
+**Congrats!** You just created your own Web App and you can share your Jupyter Notebooks with nontechnical users. If you need more information about deploying the Web App check [**Mercury Cloud Documentation**](https://runmercury.com/docs/cloud/).

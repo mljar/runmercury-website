@@ -41,9 +41,6 @@
     "jupyter-notebook-plotly-scatter-chart": {
         "title": "Scatter Chart"
     },
-    "jupyter-notebook-plotly-stem-chart": {
-        "title": "Stem Chart"
-    },
     "seaborn": {
         "type": "separator",
         "title": "Seaborn"

@@ -1,7 +1,140 @@
 ---
-ogTitle: 
-description:
+ogTitle: Plotly Histogram Chart
+description: How to create a histogram chart with numpy and pandas data using the plotly (Python package) in Jupyter Notebook.
 ogImage:
 ---
 
+import { Callout } from 'nextra-theme-docs'
+import { Screenshot } from "components/screenshot";
+import simplechartPng from "../../public/images/integrations/plotly/histogram-chart/plotly-only.png";
+import numpychartPng from "../../public/images/integrations/plotly/histogram-chart/plotly-numpy.png";
+import pandaschartPng from "../../public/images/integrations/plotly/histogram-chart/plotly-pandas.png";
+
 # Plotly Histogram Chart
+
+`Plotly` is a tool for creating charts, which works with Jupyter Notebook. Among its options is the **Histogram Chart**. We've got some examples ready to demonstrate their appearance and functionality, so you can see how they work.
+
+- simple histogram chart  
+- histogram chart with `numpy` data
+- histogram chart with `pandas` data
+- an interactive histogram chart 
+
+If you need any information about **Plotly** check their docs: [**Plotly Docs**](https://plotly.com/python/).
+
+<Callout type="info">
+  After plotly installation remember to restart your Jupyter before doing anything.
+</Callout>
+
+All of code examples are availabe as Jupyter Notebooks in our GitHub repositiory:
+- [**Plotly Histogram Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/plotly/plotly-histogram-chart.ipynb)
+- [**Plotly Interactive Histogram Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/plotly/plotly-interactive-histogram-chart.ipynb)
+
+# Histogram Chart 
+
+Example using only `plotly` package:
+
+```python 
+# import packages
+import plotly.express as px
+
+# create data 
+x = [9,38,12,36,31,7,41,18,28,33,27,44,37,43,19,55,59,61]
+
+# plot 
+fig = px.histogram(x)
+fig.show()
+```
+
+<Screenshot src={simplechartPng} alt="Simple plotly histogram chart" />
+
+## Histogram Chart with Numpy Data 
+
+Display `numpy` data as a histogram chart using `plotly`:
+
+```python 
+# import packages 
+import plotly.express as px 
+import numpy as np 
+
+# create data 
+x = np.array([21, 22, 1, 42, 13, 4, 17, 26, 5, 19, 16, 39, 3, 24, 35, 18, 10, 36])
+
+# plot 
+fig = px.histogram(x)
+fig.show()
+```
+
+<Screenshot src={numpychartPng} alt="Plotly histogram chart with numpy data. " />
+
+## Histogram Chart with Pandas Data 
+
+Make a histogram chart with `pandas` data using `plotly`:
+
+```python 
+# import packages 
+import plotly.express as px
+import pandas as pd 
+
+# create data 
+df = pd.DataFrame({'value': [35,17,39,44,24,2,11,14,45,6,11,48,22,18,42,39,18,12]})
+
+# plot 
+fig = px.histogram(df)
+fig.show()
+```
+
+<Screenshot src={pandaschartPng} alt="Plotly histogram chart with pandas data." />
+
+## Interactive Histogram Chart 
+
+Ordinary charts are dull. Let's make an interactive histogram chart with `plotly` and `mercury` packages. You can modify gaps between bars using mercury widgets. In this case, we're using [**Slider**](https://runmercury.com/docs/input-widgets/slider/).
+
+```python
+# import packages 
+import plotly.express as px 
+import mercury as mr 
+```
+
+```python 
+# mercury widget 
+slider = mr.Slider(value=0.0, min=0.0, max=0.6, step=0.1, label="Set bar gaps")
+```
+
+```python
+# create data 
+x = [9,38,12,36,31,7,41,18,28,33,27,44,37,43,19,55,59,61]
+
+# plot 
+fig = px.histogram(x)
+fig.update_layout(bargap=slider.value)
+fig.show()
+```
+
+Now, you can easily turn your Jupyter Notebook into a Web App! Check out this video to see how it looks.
+
+<video width="100%" autoPlay loop controls preload="none" style={{ borderRadius: "10px" }, {marginTop: "10px"}}>
+  <source
+    src="/images/integrations/plotly/histogram-chart/plotly-mercury.mp4"
+    type="video/mp4"
+  />
+</video>
+
+Deploying Web App is very easy that you can do it in 3 steps:
+
+<div className="steps-container">
+
+### Login to Mercury Cloud
+
+If you don't have account, you can create it here: [**Mercury Cloud**](https://cloud.runmercury.com/register).
+
+### Create new site
+
+Create new or use an existing site. 
+
+### Upload your notebook
+
+Upload the notebook with code.
+
+</div>
+
+**Congrats!** You just created your own Web App and you can share your Jupyter Notebooks with nontechnical users. If you need more information about deploying the Web App check [**Mercury Cloud Documentation**](https://runmercury.com/docs/cloud/).
