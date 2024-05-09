@@ -1,7 +1,131 @@
 ---
-ogTitle: 
-description:
+ogTitle: Vega-Altair Pie Chart
+description: How to create a pie chart with pandas data using the vega-altair (Python package) in Jupyter Notebook.
 ogImage:
 ---
 
+import { Screenshot } from "components/screenshot";
+import simplechartPng from "../../public/images/integrations/vega-altair/pie-chart/vega-altair-only.png";
+import pandaschartPng from "../../public/images/integrations/vega-altair/pie-chart/vega-altair-pandas.png";
+
 # Vega-Altair Pie Chart
+
+## Introduction
+
+`Vega-Altair` package is a powerful tool for data visualization, particularly within Jupyter Notebooks. It has a wide range of charts and plots to explore and one of them is **Pie Chart**. We've prepared several examples to demonstrate how Vega-Altair works:
+
+- simple pie chart  
+- pie chart with `pandas` data
+- an interactive pie chart 
+
+If you need any information about **Vega-Altair** check their docs: [**Vega-Altair Docs**](https://altair-viz.github.io/).
+
+All of code examples are availabe as Jupyter Notebooks in our GitHub repositiory:
+- [**Vega-Altair Pie Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/vega-altair/vega-altair-pie-chart.ipynb)
+- [**Vega-Altair Interactive Pie Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/vega-altair/vega-altair-interactive-pie-chart.ipynb)
+
+## Pie Chart 
+
+Visualization with only `vega-altair` package:
+
+```python 
+# import packages 
+import altair as alt 
+
+# create data 
+data = alt.Data(values=[{'name': 'A', 'value': 7},
+                        {'name': 'B', 'value': 9},
+                        {'name': 'C', 'value': 3},
+                        {'name': 'D', 'value': 5},
+                       ])
+# plot 
+alt.Chart(data).mark_arc().encode(
+    theta="value:Q",
+    color="name:N"
+)
+```
+
+<Screenshot src={simplechartPng} alt="Simple vega-altair pie chart" />
+
+## Pie Chart with Pandas Data
+
+Using `vega-altair`, create a pie chart with `pandas` data:
+
+```python 
+# import packages 
+import altair as alt 
+import pandas as pd 
+
+# create data 
+df = pd.DataFrame({
+    'name': ['Apples','Bananas','Oranges','Grapes'],
+    'count': [10,6,8,2]
+})
+
+# plot 
+alt.Chart(df).mark_arc().encode(
+    theta='count',
+    color='name'
+)
+```
+
+<Screenshot src={pandaschartPng} alt="Vega-altair pie chart with pandas data." />
+
+## Interactive Pie Chart 
+
+Regular charts are not very exciting. What about creating an interactive pie chart with `vega-altair` and `mercury` packages? You can create donut chart with changing size hole using mercury widgets. In this example we used [**Slider**](https://runmercury.com/docs/input-widgets/slider/).
+
+```python
+# import packages 
+import altair as alt 
+import mercury as mr 
+import pandas as pd 
+```
+
+```python 
+# mercury widget 
+slider = mr.Slider(value=0, min=0, max=100, step=10, label="How big the hole should be?")
+```
+
+```python
+# create data 
+df = pd.DataFrame({
+    'name': ['Apples','Bananas','Oranges','Grapes','Dragon Fruits'],
+    'count': [5,6,6,8,10]
+})
+
+# plot
+alt.Chart(df).mark_arc(innerRadius=slider.value).encode(
+    theta='count',
+    color='name'
+)
+```
+
+Now, you can easily convert your Jupyter Notebook into a Web App! Watch the video to see what it will look like.
+
+<video width="100%" autoPlay loop controls preload="none" style={{ borderRadius: "10px" }, {marginTop: "10px"}}>
+  <source
+    src="/images/integrations/vega-altair/pie-chart/vega-altair-mercury.mp4"
+    type="video/mp4"
+  />
+</video>
+
+Deploying Web App is very easy that you can do it in 3 steps:
+
+<div className="steps-container">
+
+### Login to Mercury Cloud
+
+If you don't have account, you can create it here: [**Mercury Cloud**](https://cloud.runmercury.com/register).
+
+### Create new site
+
+Create new or use an existing site. 
+
+### Upload your notebook
+
+Upload the notebook with code.
+
+</div>
+
+**Congrats!** You just created your own Web App and you can share your Jupyter Notebooks with nontechnical users. If you need more information about deploying the Web App check [**Mercury Cloud Documentation**](https://runmercury.com/docs/cloud/).
