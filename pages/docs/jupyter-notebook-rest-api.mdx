@@ -1,18 +1,226 @@
 ---
 ogTitle: Execute notebook with REST API
-description: You can call notebook execution with REST API and return JSON response from notebook
+description: You can execute Jupyter notebook with REST API and return JSON response. This page describes on how to use Python notebook as REST API endpoint. It shows how to pass parameters to notebooks with REST API. It provides steps for calling notebook and fetching the final response. It is using long-polling for request processing. Python forever!
 ogImage: features
 ---
 
 import {Screenshot} from 'components/screenshot'
+import { Callout } from 'nextra-theme-docs'
+
+import notebookPng from "../../public/images/notebook-rest-api-greetings.png";
+import webAppPng from "../../public/images/notebook-rest-api-web-app.png";
+import createRequestPng from "../../public/images/notebook-rest-api-create-request.png";
+import taskIdPng from "../../public/images/notebook-rest-api-task-id.png";
+import resposePng from "../../public/images/notebook-rest-api-get-result.png";
 
 import openapiPng from "../../public/images/mercury-openapi.png";
 
-
 # Execute notebook with REST API
 
+Each notebook available in the Mercury can be executed with REST API. You can pass parameters to notebook when executing it with REST API.  Notebook can return JSON as response for REST API request. Mercury is using long polling mechanism for executing notebooks.
 
-The `OpenAPI` schema for each Mercury site is available in the footer. Please open it to check available endpoints. The schema is automatically generated for each site.
+## Example notebook
+
+Let's use example notebook to show step by step how to use notebooks with REST API. It is simple notebook that has [**Text**](/docs/input-widgets/text/) input and returns [**APIResponse**](/docs/output-widgets/apiresponse/). The notebook constructs greetings string based on provided name.
+
+```python
+# import mercury package
+import mercury as mr
+```
+```python
+# create App object, we set title and description, they will be used in OpenAPI schema
+app = mr.App(title="Greetings notebook", description="Returns greetings for provided name")
+```
+```python
+# we add inpute widget, please set url_key
+name = mr.Text(label="What is your name?", value="Piotr", url_key="name")
+```
+```python
+# do some python processing :)
+msg = f"Hello {name.value}, how are you?"
+```
+```python
+# return response from notebook
+response = mr.APIResponse({"msg": msg})
+```
+
+This is view of notebook in Jupyter Notebook:
+<Screenshot src={notebookPng} alt="Example notebook for REST API" />
+
+<Callout>
+Please remember to set **url_key** for widget, if you would like to use it as input parameter in REST API request.
+</Callout>
+
+We can serve this notebook as web application with Mercury, start a server by running command:
+
+```
+mercury run 
+```
+
+Here is an application view:
+
+<Screenshot src={webAppPng} alt="Example notebook for REST API served as web application with Mercury" />
+
+## Execute notebook 
+
+Notebook can be executed with REST API. Please open the following address:
+
+```
+<server-address>/api/v1/1/run/<notebook-name>
+```
+
+In our case, it will be:
+
+```
+http://127.0.0.1:8000/api/v1/1/run/greetings
+```
+
+Please provide input in **Content** window. In our case, I will send `name` parameter:
+
+```
+{"name": "Aleksandra"}
+```
+
+<Screenshot src={createRequestPng} alt="Create REST API request to execute notebook" />
+
+We should get the `task_id` in the response:
+
+<Screenshot src={taskIdPng} alt="Get task id REST API" />
+
+We will use this `task_id` to query the result. The address will be:
+
+```
+<server-address>/api/v1/get/<task-id>
+```
+
+In our case, it will be:
+
+```
+http://127.0.0.1:8000/api/v1/get/dc177b53d66b43cf80250fd00012b410
+```
+
+It the request is processed, we got the response:
+
+<Screenshot src={resposePng} alt="Response from notebook executed with REST API" />
+
+In case, that request is still processed, we will get `HTTP 202` in the response.
+
+## OpenAPI schema for notebooks
+
+The `OpenAPI` schema for each Mercury site is available in the footer. Please open it to check available endpoints. Each notebook is a separate endpoint.  
+
+The schema is automatically generated for each site.
 
 <Screenshot src={openapiPng} alt="OpenAPI schema is available in site footer" />
 
+The OpenAPI for our example notebook:
+
+```
+{
+  "openapi":"3.0",
+  "info":{
+    "description":"Execute Python notebook and get JSON response",
+    "title":"Mercury OpenAPI",
+    "version":"1.0.0"
+  },
+  "servers":[
+    {
+      "url":"http://127.0.0.1:8000"
+    }
+  ],
+  "paths":{
+    "/api/v1/1/run/greetings":{
+      "post":{
+        "operationId":"Execute notebook greetings",
+        "description":"Returns greetings for provided name",
+        "parameters":[
+          {
+            "name":"name",
+            "in":"body",
+            "description":"What is your name?",
+            "required":false,
+            "schema":{
+              "type":"string"
+            }
+          }
+        ],
+        "responses":{
+          "201":{
+            "description":"Request accepted for preprocessing, please check the processing state of the request using task_id",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type":"object",
+                  "properties":{
+                    "task_id":{
+                      "type":"string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/get/{task_id}":{
+      "get":{
+        "operationId":"Get state and result of processed request",
+        "description":"Use this endpoint to check if request processing state and result",
+        "parameters":[
+          {
+            "name":"task_id",
+            "in":"path",
+            "description":"task_id of your request",
+            "required":true,
+            "schema":{
+              "type":"string"
+            }
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"Request processing completed successfully",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type":"object",
+                  "properties":{
+                    "state":{
+                      "type":"string"
+                    },
+                    "message":{
+                      "type":"string"
+                    },
+                    "result":{
+                      "type":"string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "202":{
+            "description":"Request is still processing, please retry in 3 seconds",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type":"object",
+                  "properties":{
+                    "state":{
+                      "type":"string"
+                    },
+                    "message":{
+                      "type":"string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
