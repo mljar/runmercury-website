@@ -80,14 +80,14 @@ export default function HowDoesItWork() {
             <p className="my-8 mb-4 font-light text-gray-500 text-2xl dark:text-gray-400
                 leading-normal"> Check available widgets in docs</p>
             <a href="/docs/input-widgets/"
-                  className="my-4 text-white bg-primary-600 hover:bg-primary-700
+                  className="my-4 text-white bg-blue-600 hover:bg-blue-700  
                               focus:ring-4 focus:ring-primary-200 font-medium rounded-lg
                               text-xl px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Input Widgets</a>
                 <span className="m-2"></span>
                 <br className="sm:hidden block"/>
                 <br className="sm:hidden block"/>
                 <a href="/docs/output-widgets/"
-                  className="my-4 text-white bg-primary-600 hover:bg-primary-700
+                  className="my-4 text-white bg-blue-600 hover:bg-blue-700  
                               focus:ring-4 focus:ring-primary-200 font-medium rounded-lg
                               text-xl px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Output Widgets</a>
                 <br className="sm:hidden block"/>

@@ -49,7 +49,7 @@ export default function Deployment() {
 
         <a href="https://cloud.runmercury.com"
                 target="_blank"
-                className="text-white bg-primary-600 hover:bg-primary-700
+                className="text-white bg-blue-600 hover:bg-blue-700  
                             focus:ring-4 focus:ring-primary-200 font-medium rounded-lg
                             px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Sign up</a>
 
@@ -94,7 +94,7 @@ export default function Deployment() {
 
 
         <a href="/docs/"
-                className="text-white bg-primary-600 hover:bg-primary-700
+                className="text-white bg-blue-600 hover:bg-blue-700  
                             focus:ring-4 focus:ring-primary-200 font-medium rounded-lg
                             px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Deployment docs</a>
 

@@ -82,6 +82,7 @@ const config: DocsThemeConfig = {
 
     return (
       <>
+        <meta charSet="utf-8" />
         <meta name="msapplication-TileColor" content="#fff" />
         <meta name="theme-color" content="#fff" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -91,7 +92,7 @@ const config: DocsThemeConfig = {
           content={
             frontMatter.description
               ? frontMatter.description
-              : "Build Web Apps from Jupyter Notebook"
+              : "You can convert Jupyter notebooks to web applications with Mercury framework. Just create Python notebook and serve it as interactive web app in Mercury. What is more, Mercury provides interactive widgets that can be used in Jupyter Notebook. Deployment of notebooks is simplified with Mercury Cloud service."
           }
         />
 
@@ -103,12 +104,13 @@ const config: DocsThemeConfig = {
         <meta
           name="og:title"
           content={
-            title ? title : "Mercury - build web apps in Jupyter Notebook"
+            title ? title : "Build web applications in Jupyter Notebook and Mercury"
           }
         />
         <meta name="og:image" content={socialCard} />
         <meta name="apple-mobile-web-app-title" content="Mercury" />
         <link rel="icon" href="/favicon/favicon.ico" />
+        <link rel="manifest" href="/manifest.json" />
       </>
     );
   },

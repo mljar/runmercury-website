@@ -2,11 +2,11 @@ import { Features, Feature } from "components/features";
 
 export default function YouCanBuild() {
   return (
-    <>
+    <div className="mx-auto max-w-7xl ">
       <div className="">
         <center>
           <h2 className="my-8 lg:text-6xl text-4xl font-extrabold text-gray-900 dark:text-white leading-normal">
-            You can build
+            What you can build?
           </h2>
         </center>
       </div>
@@ -25,33 +25,37 @@ export default function YouCanBuild() {
               aria="Read more on how to create data-rich web apps with Python"
             >
               <div className="h-full flex flex-col justify-between">
-                <center>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="icon icon-tabler icon-tabler-app-window"
-                    width="40"
-                    height="40"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
-                    <path d="M6 8h.01"></path>
-                    <path d="M9 8h.01"></path>
-                  </svg>
-                </center>
-
-                <h3 style={{ marginTop: "20px" }}>Web Apps</h3>
+                <a
+                  href="/tutorials/web-app-python-jupyter-notebook/"
+                  className="hover:underline"
+                >
+                  <h3 style={{ marginTop: "20px" }}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="inline mb-1"
+                      width="40"
+                      height="40"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2"
+                      stroke="currentColor"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
+                      <path d="M6 8h.01"></path>
+                      <path d="M9 8h.01"></path>
+                    </svg>{" "}
+                    Web Apps
+                  </h3>
+                </a>
                 <p
                   className="mb-8 font-light text-gray-700 lg:text-2xl text-xl dark:text-gray-400
                   leading-normal"
                   style={{ marginTop: "10px" }}
                 >
-                  Create data-rich web applications with interactive widgets
+                  Create data-rich web apps with interactive widgets
                 </p>
               </div>
             </Feature>
@@ -64,35 +68,38 @@ export default function YouCanBuild() {
               aria="Read more on how to create reports in Python Notebook"
             >
               <div className="h-full flex flex-col justify-between">
-                <center>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="icon icon-tabler icon-tabler-report"
-                    width="40"
-                    height="40"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M8 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h5.697"></path>
-                    <path d="M18 14v4h4"></path>
-                    <path d="M18 11v-4a2 2 0 0 0 -2 -2h-2"></path>
-                    <path d="M8 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path>
-                    <path d="M18 18m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
-                    <path d="M8 11h4"></path>
-                    <path d="M8 15h3"></path>
-                  </svg>
-                </center>
-
-                <h3 style={{ marginTop: "20px" }}>Reports</h3>
+                <a
+                  href="/tutorials/report-python-jupyter-notebook/"
+                  className="hover:underline"
+                >
+                  <h3 style={{ marginTop: "20px" }}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="inline mb-1"
+                      width="40"
+                      height="40"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2"
+                      stroke="currentColor"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M8 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h5.697"></path>
+                      <path d="M18 14v4h4"></path>
+                      <path d="M18 11v-4a2 2 0 0 0 -2 -2h-2"></path>
+                      <path d="M8 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path>
+                      <path d="M18 18m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+                      <path d="M8 11h4"></path>
+                      <path d="M8 15h3"></path>
+                    </svg>{" "}
+                    Reports
+                  </h3>
+                </a>
                 <p
                   className="mb-8 font-light text-gray-700 lg:text-2xl text-xl dark:text-gray-400
                   leading-normal"
-                  style={{ marginTop: "10px" }}
                 >
                   Build reports with automatic schedule and PDF export
                 </p>
@@ -107,34 +114,38 @@ export default function YouCanBuild() {
               aria="Read more on how to share your results from Jupyter Notebook as interactive dashboard"
             >
               <div className="h-full flex flex-col justify-between">
-                <center>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="icon icon-tabler icon-tabler-layout-dashboard"
-                    width="40"
-                    height="40"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M4 4h6v8h-6z"></path>
-                    <path d="M4 16h6v4h-6z"></path>
-                    <path d="M14 12h6v8h-6z"></path>
-                    <path d="M14 4h6v4h-6z"></path>
-                  </svg>
-                </center>
-
-                <h3 style={{ marginTop: "20px" }}>Dashboards</h3>
+                <a
+                  href="/tutorials/dashboard-python-jupyter-notebook/"
+                  className="hover:underline"
+                >
+                  <h3 style={{ marginTop: "20px" }}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="inline mb-1"
+                      width="40"
+                      height="40"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2"
+                      stroke="currentColor"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M4 4h6v8h-6z"></path>
+                      <path d="M4 16h6v4h-6z"></path>
+                      <path d="M14 12h6v8h-6z"></path>
+                      <path d="M14 4h6v4h-6z"></path>
+                    </svg>{" "}
+                    Dashboards
+                  </h3>
+                </a>
                 <p
                   className="mb-8 font-light text-gray-700 lg:text-2xl text-xl dark:text-gray-400
                   leading-normal"
                   style={{ marginTop: "10px" }}
                 >
-                  Share your results with others in interactive dashboards
+                  Visualize your results in interactive dashboards
                 </p>
               </div>
             </Feature>
@@ -147,10 +158,13 @@ export default function YouCanBuild() {
               aria="Read more on how to easily turn Python notebooks into static websites"
             >
               <div className="h-full flex flex-col justify-between">
-                <center>
-                  <svg
+                <a
+                  href="/tutorials/website-python-jupyter-notebook/"
+                  className="hover:underline"
+                >
+                <h3 style={{ marginTop: "20px" }}><svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="icon icon-tabler icon-tabler-world-www"
+                    className="inline mb-1"
                     width="40"
                     height="40"
                     viewBox="0 0 24 24"
@@ -170,10 +184,8 @@ export default function YouCanBuild() {
                     <path d="M2 10l1 4l1.5 -4l1.5 4l1 -4"></path>
                     <path d="M17 10l1 4l1.5 -4l1.5 4l1 -4"></path>
                     <path d="M9.5 10l1 4l1.5 -4l1.5 4l1 -4"></path>
-                  </svg>
-                </center>
-
-                <h3 style={{ marginTop: "20px" }}>Websites</h3>
+                  </svg>{" "}Websites</h3>
+                </a>
                 <p
                   className="mb-8 font-light text-gray-700 lg:text-2xl text-xl dark:text-gray-400
                   leading-normal"
@@ -192,10 +204,15 @@ export default function YouCanBuild() {
               aria="Read more on how to create interactive slides from Jupyter Notebook"
             >
               <div className="h-full flex flex-col justify-between">
-                <center>
-                  <svg
+                
+                <a
+              href="/tutorials/presentation-python-jupyter-notebook/"
+                  className="hover:underline"
+                >
+                <h3 style={{ marginTop: "20px" }}>
+                <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="icon icon-tabler icon-tabler-presentation-analytics"
+                    className="inline mb-1"
                     width="40"
                     height="40"
                     viewBox="0 0 24 24"
@@ -214,9 +231,9 @@ export default function YouCanBuild() {
                     <path d="M12 16v4"></path>
                     <path d="M9 20h6"></path>
                   </svg>
-                </center>
-
-                <h3 style={{ marginTop: "20px" }}>Presentations</h3>
+                  {" "}
+                  Presentations</h3>
+                </a>
                 <p
                   className="mb-8 font-light text-gray-700 lg:text-2xl text-xl dark:text-gray-400
                   leading-normal"
@@ -264,6 +281,6 @@ export default function YouCanBuild() {
       </div>
 
       <div className="" style={{ padding: "50px" }}></div>
-    </>
+    </div>
   );
 }

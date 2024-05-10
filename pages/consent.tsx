@@ -33,7 +33,7 @@ function Consent() {
       <div className="flex align-middle justify-between">
         <a
           className=" 
-          hover:bg-primary-700 hover:text-white bg-primary
+          hover:bg-blue-600   hover:text-white bg-primary
           text-md px-5 py-2.5 rounded-lg 
           border mx-2"
           href="/privacy-policy/"
@@ -44,7 +44,7 @@ function Consent() {
           onClick={() => {
             acceptCookie();
           }}
-          className="text-white bg-primary-600 hover:bg-primary-700 
+          className="text-white bg-blue-600 hover:bg-blue-700   
           focus:ring-4 focus:ring-primary-200 rounded-lg 
           text-md px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900"
         >

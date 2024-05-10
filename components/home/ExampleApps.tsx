@@ -23,7 +23,7 @@ export default function ExampleApps() {
           </p>
               <a href="/examples/"
                   target="_blank"
-                  className="text-white bg-primary-600 hover:bg-primary-700
+                  className="text-white bg-blue-600 hover:bg-blue-700  
                               focus:ring-4 focus:ring-primary-200 font-medium rounded-lg
                               px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">More examples</a>
 
@@ -49,11 +49,11 @@ export default function ExampleApps() {
                 leading-normal"> Share notebooks as static websites</p>
 
         <a href="https://use-cases.runmercury.com/app/static-notebook-2" target="_blank" 
-                  className="text-white bg-primary-600 hover:bg-primary-700
+                  className="text-white bg-blue-600 hover:bg-blue-700  
                               focus:ring-4 focus:ring-primary-200 font-medium rounded-lg
                               px-5 py-2.5 text-center dark:text-white mx-4  dark:focus:ring-primary-900">Live app</a>
           <a href="https://github.com/mljar/mercury-examples/blob/main/static-notebook-2.ipynb" target="_blank" 
-                  className="hover:bg-primary-700 hover:text-white bg-primary
+                  className="hover:bg-blue-600   hover:text-white bg-primary
                         px-5 py-2.5 rounded-lg 
                         border hover:border-0">Check code</a>
 
@@ -79,11 +79,11 @@ export default function ExampleApps() {
 
           
           <a href="https://use-cases.runmercury.com/app/ticker-report" target="_blank" 
-                  className="text-white bg-primary-600 hover:bg-primary-700
+                  className="text-white bg-blue-600 hover:bg-blue-700  
                               focus:ring-4 focus:ring-primary-200 font-medium rounded-lg
                               px-5 py-2.5 text-center dark:text-white mx-4  dark:focus:ring-primary-900">Live app</a>
           <a href="https://github.com/mljar/mercury-examples/blob/main/use-cases/ticker-app/ticker-report.ipynb" target="_blank" 
-                  className="hover:bg-primary-700 hover:text-white bg-primary
+                  className="hover:bg-blue-600   hover:text-white bg-primary
                         px-5 py-2.5 rounded-lg 
                         border hover:border-0">Check code</a>
 
@@ -110,11 +110,11 @@ export default function ExampleApps() {
 
 
           <a href="https://use-cases.runmercury.com/app/report" target="_blank" 
-                  className="text-white bg-primary-600 hover:bg-primary-700
+                  className="text-white bg-blue-600 hover:bg-blue-700  
                               focus:ring-4 focus:ring-primary-200 font-medium rounded-lg
                               px-5 py-2.5 text-center dark:text-white mx-4  dark:focus:ring-primary-900">Live app</a>
           <a href="https://github.com/mljar/mercury-examples/blob/main/use-cases/report/report.ipynb" target="_blank" 
-                  className="hover:bg-primary-700 hover:text-white bg-primary
+                  className="hover:bg-blue-600   hover:text-white bg-primary
                         px-5 py-2.5 rounded-lg 
                         border hover:border-0">Check code</a>
 
