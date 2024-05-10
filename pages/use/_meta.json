@@ -75,8 +75,5 @@
     },
     "jupyter-notebook-vega-altair-scatter-chart": {
         "title":"Scatter Chart"
-    },
-    "jupyter-notebook-vega-altair-stem-chart": {
-        "title":"Stem Chart"
     }
 }

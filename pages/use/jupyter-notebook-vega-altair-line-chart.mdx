@@ -1,7 +1,145 @@
 ---
-ogTitle: 
-description:
+ogTitle: Vega-Altair Line Chart 
+description:  How to create a line chart with pandas data using the vega-altair (Python package) in Jupyter Notebook.
 ogImage:
 ---
 
+import { Screenshot } from "components/screenshot";
+import simplechartPng from "../../public/images/integrations/vega-altair/line-chart/vega-altair-only.png";
+import pandaschartPng from "../../public/images/integrations/vega-altair/line-chart/vega-altair-pandas.png";
+
 # Vega-Altair Line Chart
+
+## Introduction
+
+`Vega-Altair` package is a powerful tool for data visualization, particularly within Jupyter Notebooks. It has a wide range of charts and plots to explore and one of them is **Line Chart**. We've prepared several examples to demonstrate how Vega-Altair works:
+
+- simple line chart  
+- line chart with `pandas` data
+- an interactive line chart 
+
+If you need any information about **Vega-Altair** check their docs: [**Vega-Altair Docs**](https://altair-viz.github.io/).
+
+All of code examples are availabe as Jupyter Notebooks in our GitHub repositiory:
+- [**Vega-Altair Line Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/vega-altair/vega-altair-line-chart.ipynb)
+- [**Vega-Altair Interactive Line Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/vega-altair/vega-altair-interactive-line-chart.ipynb)
+
+## Line Chart 
+
+Visualization with only `vega-altair` package:
+
+```python 
+# import packages
+import altair as alt 
+
+# create data 
+data = alt.Data(values=[{'x': 1, 'y': 5},
+                        {'x': 2, 'y': 10},
+                        {'x': 3, 'y': 6},
+                        {'x': 4, 'y': 8},
+                        {'x': 5, 'y': 3},
+                        {'x': 6, 'y': 7},
+                        {'x': 7, 'y': 9},
+                        {'x': 8, 'y': 2},
+                        {'x': 9, 'y': 4}])
+
+# plot 
+alt.Chart(data).mark_line().encode(
+    x = 'x:N',
+    y = 'y:Q'
+).properties(
+    width=500
+)
+```
+
+<Screenshot src={simplechartPng} alt="Simple vega-altair line chart" />
+
+## Line Chart with Pandas Data
+
+Using `vega-altair`, create a line chart with `pandas` data:
+
+```python 
+# import packages 
+import altair as alt 
+import pandas as pd 
+
+# create data 
+df = pd.DataFrame({
+    'x': [1,2,3,4,5,6,7,8,9,10],
+    'y': [6,20,9,5,20,2,10,5,14,1]
+})
+
+# plot 
+alt.Chart(df).mark_line().encode(
+    x = 'x',
+    y = 'y'
+).properties(
+    width=500
+)
+```
+
+<Screenshot src={pandaschartPng} alt="Vega-altair line chart with pandas data." />
+
+## Interactive Line Chart 
+
+Regular charts are not very exciting. What about creating an interactive line chart with `vega-altair` and `mercury` packages? You can decide if point will be visible using mercury widgets. In this example we used [**Checkbox**](https://runmercury.com/docs/input-widgets/checkbox/).
+
+```python 
+# import packages
+import altair as alt 
+import mercury as mr 
+import pandas as pd 
+```
+
+```python 
+# mercury widget
+checkbox= mr.Checkbox(label="Points")
+```
+
+```python 
+# create data 
+df = pd.DataFrame({
+    'x': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+    'y': [9,22,7,4,17,10,28,15,20,26,27,16,28,27,11,12,25,29,27,9]
+})
+point=alt.OverlayMarkDef(color="red") if checkbox.value else False
+
+# plot 
+alt.Chart(df).mark_line(
+    point=point
+).encode(
+    x='x',
+    y='y'
+).properties(
+    width=500
+)
+```
+
+Now, you can easily convert your Jupyter Notebook into a Web App! Watch the video to see what it will look like.
+
+<video width="100%" autoPlay loop controls preload="none" style={{ borderRadius: "10px" }, {marginTop: "10px"}}>
+  <source
+    src="/images/integrations/vega-altair/line-chart/vega-altair-mercury.mp4"
+    type="video/mp4"
+  />
+</video>
+
+Deploying Web App is very easy that you can do it in 3 steps:
+
+<div className="steps-container">
+
+### Login to Mercury Cloud
+
+If you don't have account, you can create it here: [**Mercury Cloud**](https://cloud.runmercury.com/register).
+
+### Create new site
+
+Create new or use an existing site. 
+
+### Upload your notebook
+
+Upload the notebook with code.
+
+</div>
+
+**Congrats!** You just created your own Web App and you can share your Jupyter Notebooks with nontechnical users. If you need more information about deploying the Web App check [**Mercury Cloud Documentation**](https://runmercury.com/docs/cloud/).

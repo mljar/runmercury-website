@@ -1,7 +1,132 @@
 ---
-ogTitle: 
-description:
+ogTitle: Vega-Altair Histogram Chart 
+description: How to create a histogram chart with pandas data using the vega-altair (Python package) in Jupyter Notebook.
 ogImage:
 ---
 
+import { Screenshot } from "components/screenshot";
+import simplechartPng from "../../public/images/integrations/vega-altair/histogram-chart/vega-altair-only.png";
+import pandaschartPng from "../../public/images/integrations/vega-altair/histogram-chart/vega-altair-pandas.png";
+
 # Vega-Altair Histogram Chart
+
+## Introduction
+
+`Vega-Altair` package is a powerful tool for data visualization, particularly within Jupyter Notebooks. It has a wide range of charts and plots to explore and one of them is **Histogram Chart**. We've prepared several examples to demonstrate how Vega-Altair works:
+
+- simple histogram chart  
+- histogram chart with `pandas` data
+- an interactive histogram chart 
+
+If you need any information about **Vega-Altair** check their docs: [**Vega-Altair Docs**](https://altair-viz.github.io/).
+
+All of code examples are availabe as Jupyter Notebooks in our GitHub repositiory:
+- [**Vega-Altair Histogram Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/vega-altair/vega-altair-histogram-chart.ipynb)
+- [**Vega-Altair Interactive Histogram Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/vega-altair/vega-altair-interactive-histogram-chart.ipynb)
+
+## Histogram Chart 
+
+Visualization with only `vega-altair` package:
+
+```python 
+# import packages 
+import altair as alt 
+from vega_datasets import data
+
+# creating data
+cars = data.cars()
+
+# plot 
+alt.Chart(cars).mark_bar().encode(
+    alt.X('Horsepower:Q', bin=True),
+    y='count()'
+).properties(
+    width=500
+)
+```
+
+<Screenshot src={simplechartPng} alt="Simple vega-altair histogram chart" />
+
+## Histogram Chart with Pandas Data
+
+Using `vega-altair`, create a histogram chart with `pandas` data:
+
+```python
+# import packages 
+import altair as alt 
+import pandas as pd
+
+# create data 
+df = pd.DataFrame({
+    'number': [2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40],
+    'count': [4, 8, 11, 13, 16, 17, 18, 19, 21, 22, 24, 25, 26, 28, 30, 33, 34, 36, 37, 38]
+})
+
+# plot 
+alt.Chart(df).mark_bar().encode(
+    alt.X('number', bin=True),
+    y = 'count'
+).properties(
+    width = 500
+)
+```
+
+<Screenshot src={pandaschartPng} alt="Vega-altair histogram chart with pandas data." />
+
+## Interactive Histogram Chart
+
+Regular charts are not very exciting. What about creating an interactive histogram chart with `vega-altair` and `mercury` packages? You can set chart color using mercury widgets. In this example we used [**Select**](https://runmercury.com/docs/input-widgets/select/).
+
+```python 
+# import packages 
+import altair as alt 
+from vega_datasets import data 
+import mercury as mr 
+```
+
+```python
+# mercury widget 
+select = mr.Select(value='blue', choices=['blue','red','green'], label="Choose chart color:")
+```
+
+```python 
+# create data 
+cars = data.cars()
+
+# plot 
+alt.Chart(cars).mark_bar(color=select.value).encode(
+    alt.X('Horsepower:Q', bin=True),
+    y='count()'
+).properties(
+    width=500
+)
+```
+
+Now, you can easily convert your Jupyter Notebook into a Web App! Watch the video to see what it will look like.
+
+<video width="100%" autoPlay loop controls preload="none" style={{ borderRadius: "10px" }, {marginTop: "10px"}}>
+  <source
+    src="/images/integrations/vega-altair/histogram-chart/vega-altair-mercury.mp4"
+    type="video/mp4"
+  />
+</video>
+
+Deploying Web App is very easy that you can do it in 3 steps:
+
+<div className="steps-container">
+
+### Login to Mercury Cloud
+
+If you don't have account, you can create it here: [**Mercury Cloud**](https://cloud.runmercury.com/register).
+
+### Create new site
+
+Create new or use an existing site. 
+
+### Upload your notebook
+
+Upload the notebook with code.
+
+</div>
+
+**Congrats!** You just created your own Web App and you can share your Jupyter Notebooks with nontechnical users. If you need more information about deploying the Web App check [**Mercury Cloud Documentation**](https://runmercury.com/docs/cloud/).

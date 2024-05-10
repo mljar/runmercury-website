@@ -1,7 +1,143 @@
 ---
-ogTitle: 
-description:
+ogTitle: Vega-Altair Scatter Chart 
+description: How to create a scatter chart with pandas data using the vega-altair (Python package) in Jupyter Notebook.
 ogImage:
 ---
 
+import { Screenshot } from "components/screenshot";
+import simplechartPng from "../../public/images/integrations/vega-altair/scatter-chart/vega-altair-only.png";
+import pandaschartPng from "../../public/images/integrations/vega-altair/scatter-chart/vega-altair-pandas.png";
+
 # Vega-Altair Scatter Chart
+
+## Introduction
+
+`Vega-Altair` package is a powerful tool for data visualization, particularly within Jupyter Notebooks. It has a wide range of charts and plots to explore and one of them is **Scatter Chart**. We've prepared several examples to demonstrate how Vega-Altair works:
+
+- simple scatter chart  
+- scatter chart with `pandas` data
+- an interactive scatter chart 
+
+If you need any information about **Vega-Altair** check their docs: [**Vega-Altair Docs**](https://altair-viz.github.io/).
+
+All of code examples are availabe as Jupyter Notebooks in our GitHub repositiory:
+- [**Vega-Altair Scatter Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/vega-altair/vega-altair-scatter-chart.ipynb)
+- [**Vega-Altair Interactive Scatter Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/vega-altair/vega-altair-interactive-scatter-chart.ipynb)
+
+## Scatter Chart 
+
+Visualization with only `vega-altair` package:
+
+```python 
+# import packages 
+import altair as alt 
+
+# create data  
+data = alt.Data(values=[{'x': 1, 'y': 8},
+                        {'x': 9, 'y': 1},
+                        {'x': 4, 'y': 9},
+                        {'x': 3, 'y': 6},
+                        {'x': 6, 'y': 2},
+                        {'x': 5, 'y': 7},
+                        {'x': 7, 'y': 4},
+                        {'x': 2, 'y': 8},
+                        {'x': 8, 'y': 3}])
+
+# plot 
+alt.Chart(data).mark_point().encode(
+    x='x:Q',
+    y='y:Q'
+)
+```
+
+<Screenshot src={simplechartPng} alt="Simple vega-altair scatter chart" />
+
+## Scatter Chart with Pandas Data 
+
+Using `vega-altair`, create a scatter chart with `pandas` data:
+
+```python 
+# import packages 
+import altair as alt 
+import pandas as pd 
+
+# create data 
+df = pd.DataFrame({
+    'x': [20,6,12,13,13,3,15,12,18,8],
+    'y': [2,15,19,17,7,2,9,3,15,16]
+})
+
+# plot 
+alt.Chart(df).mark_point().encode(
+    x='x',
+    y='y'
+)
+```
+
+<Screenshot src={pandaschartPng} alt="Vega-altair scatter chart with pandas data." />
+
+## Interactive Scatter Chart 
+
+Regular charts are not very exciting. What about creating an interactive scatter chart with `vega-altair` and `mercury` packages? You can decide if tooltip will be visible using mercury widgets. In this example we used [**Checkbox**](https://runmercury.com/docs/input-widgets/checkbox/).
+
+```python 
+# import packages 
+import altair as alt 
+import mercury as mr 
+import pandas as pd 
+```
+
+```python 
+# mercury widget
+checkbox = mr.Checkbox(label="Tooltip")
+```
+
+```python
+# create data 
+df = pd.DataFrame({
+    'x': [12,4,20,10,10,4,17,17,5,2],
+    'y': [2,3,18,12,20,16,10,11,2,13]
+})
+
+
+# plot 
+chart = alt.Chart(df).mark_point().encode(
+    x='x',
+    y='y',
+    tooltip=['x','y']
+).interactive()
+chart2 = alt.Chart(df).mark_point().encode(
+    x='x',
+    y='y'
+)
+chart if checkbox.value else chart2
+```
+
+Now, you can easily convert your Jupyter Notebook into a Web App! Watch the video to see what it will look like.
+
+<video width="100%" autoPlay loop controls preload="none" style={{ borderRadius: "10px" }, {marginTop: "10px"}}>
+  <source
+    src="/images/integrations/vega-altair/scatter-chart/vega-altair-mercury.mp4"
+    type="video/mp4"
+  />
+</video>
+
+Deploying Web App is very easy that you can do it in 3 steps:
+
+<div className="steps-container">
+
+### Login to Mercury Cloud
+
+If you don't have account, you can create it here: [**Mercury Cloud**](https://cloud.runmercury.com/register).
+
+### Create new site
+
+Create new or use an existing site. 
+
+### Upload your notebook
+
+Upload the notebook with code.
+
+</div>
+
+**Congrats!** You just created your own Web App and you can share your Jupyter Notebooks with nontechnical users. If you need more information about deploying the Web App check [**Mercury Cloud Documentation**](https://runmercury.com/docs/cloud/).
