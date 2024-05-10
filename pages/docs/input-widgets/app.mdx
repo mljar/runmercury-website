@@ -22,6 +22,7 @@ app = mr.App(title="",
         show_sidebar=True,
         full_screen=True,
         allow_download=True,
+        allow_share=True,
         stop_on_error=False
 )
 ```
@@ -37,5 +38,6 @@ app = mr.App(title="",
 - **show_sidebar** (_boolean_) - you can hide sidebar when Mercury App is open. User can open sidebar by clicking in the top right blue button with arror. By default sidebar is displayed.
 - **full_screen** (_boolean_) - by default (`True`) notebook is displayed with full width. Please set `False` to limit notebook width to `1140px`.
 - **allow_download** (_boolean_) - by default there is `Download` button available to export results as PDF or HTML file. You can hide `Download` button by setting `allow_download=False`.
+- **allow_share** (_boolean_) - by default there is `Share` button availabe to export results as a URL. You can hide `Share` button by setting `allow_share=False`.
 - **stop_on_error** (_boolean_) - by default (`False`) notebook will execute all cells even with errors. When set to `True` notebook will stop execution when error occured in the cell.
 
