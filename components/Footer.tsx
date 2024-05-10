@@ -5,7 +5,7 @@ import { getPagesUnderRoute } from "nextra/context";
 
 function FooterLink({ href, children }: { href: string; children: ReactNode }) {
   const classes =
-    "text-sm text-gray-500 no-underline betterhover:hover:text-gray-700 betterhover:hover:dark:text-white transition";
+    "text-sm text-gray-700 dark:text-gray-100 no-underline hover:underline transition";
   if (href.startsWith("http")) {
     return (
       <a href={href} className={classes}>
@@ -21,7 +21,7 @@ function FooterLink({ href, children }: { href: string; children: ReactNode }) {
 }
 
 function FooterHeader({ children }: { children: ReactNode }) {
-  return <h3 className="text-sm text-gray-900 dark:text-white">{children}</h3>;
+  return <h3 className="text-sm text-gray-900 dark:text-white font-semibold">{children}</h3>;
 }
 
 const navigation = {
@@ -122,7 +122,7 @@ export function Footer() {
           </div>
           <div className="mt-12 xl:!mt-0">
             <FooterHeader>Subscribe to our newsletter</FooterHeader>
-            <p className="mt-4 text-sm text-gray-600 dark:text-gray-500">
+            <p className="mt-4 text-sm text-gray-700 dark:text-gray-100">
               Join the Mercury newsletter and stay updated on new releases,
               features, and tutorials.
             </p>
@@ -130,7 +130,7 @@ export function Footer() {
               <a
                 href="https://forms.gle/EjqYi3ttEkZkuKy46"
                 target="_blank"
-                className="px-6 py-3 text-white no-underline bg-primary-600 rounded hover:bg-primary-700 hover:no-underline font-medium"
+                className="px-6 py-3 text-white no-underline bg-primary-700 rounded hover:bg-primary-800 hover:no-underline font-medium"
               >
                 Subscribe
               </a>
@@ -146,7 +146,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 href="https://mljar.com"
               >
-                <p className="mt-4 text-xs text-gray-500 ">
+                <p className="mt-4 text-xs text-gray-700 dark:text-gray-100">
                   &copy; {new Date().getFullYear()} MLJAR Sp. z o.o. All rights
                   reserved.
                 </p>

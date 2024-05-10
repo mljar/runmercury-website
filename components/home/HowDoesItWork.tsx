@@ -60,9 +60,9 @@ export default function HowDoesItWork() {
 
             <div className="text-2xl
             leading-8">
-            ```python
+            <pre className="border rounded-lg p-2">
             pip install mercury
-            ```
+            </pre>
             </div>
 
             <p className="my-4 mb-2 font-light text-gray-500 text-2xl dark:text-gray-400
@@ -70,11 +70,11 @@ export default function HowDoesItWork() {
 
             <div className="text-2xl
             leading-8">
-            ```python
+            <pre className="border rounded-lg p-2">
             import mercury as mr
-
-            text_input = mr.Text(label="What is your name?")
-            ```
+            <br/>
+            text_input = mr.Text(label="Your name?")
+            </pre>
             </div>
 
             <p className="my-8 mb-4 font-light text-gray-500 text-2xl dark:text-gray-400
@@ -116,9 +116,9 @@ export default function HowDoesItWork() {
 
             <div className="text-2xl
             leading-8">
-            ```python
+            <pre className="border rounded-lg p-2">
             mercury run
-            ```
+            </pre>
             </div>
 
             <p className="my-4 mb-2 font-light text-gray-500 text-2xl dark:text-gray-400

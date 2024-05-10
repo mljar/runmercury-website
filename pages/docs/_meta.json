@@ -43,14 +43,15 @@
   "schedule-jupyter-notebook": {
     "title": "Schedule notebook"
   },
+  "jupyter-notebook-rest-api": {
+    "title": "Notebook REST API"
+  },
   "show-hide-code-notebook": {
     "title": "Show or hide code"
   },
   "welcome": {
     "title": "Welcome message"
   },
-
- 
   "--mercurycloud": {
     "type": "separator",
     "title": "Mercury Cloud"
@@ -79,9 +80,6 @@
   },
   "docker-compose": {
     "title": "Docker Compose"
-  },
-  "hugging-face": {
-    "title": "Hugging Face"
   },
   "ngrok": {
     "title": "Ngrok"

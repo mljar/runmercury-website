@@ -17,6 +17,9 @@
     "pdf": {
         "title": "PDF"
     },
+    "apiresponse": {
+        "title": "APIResponse"
+    },
     "stop": "",
     "table": ""
 }
