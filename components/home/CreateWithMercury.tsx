@@ -42,7 +42,7 @@ export default function CreateWithMercury() {
   return (
     <div className="mx-auto max-w-7xl ">
       <div
-        className="bg-primary-50 dark:bg-gray-800 rounded-xl"
+        className="bg-primary-50 dark:bg-gray-800 rounded-2xl"
         style={{
           width: "100%",
           paddingTop: "40px",

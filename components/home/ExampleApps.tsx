@@ -1,6 +1,6 @@
 export default function ExampleApps() {
   return (
-    <>
+    <div className="mx-auto max-w-7xl ">
       <div 
         className="bg-primary-50 dark:bg-gray-800"
         style={{
@@ -12,18 +12,18 @@ export default function ExampleApps() {
       >
         <center>
           <h2 className=" lg:text-6xl text-4xl font-extrabold text-gray-900 dark:text-white leading-normal">
-            Example Apps
+            Web Apps created with Mercury
           </h2>
           <p
             className="my-4 mb-8 font-light text-gray-500 text-2xl dark:text-gray-300 
           leading-normal"
             style={{ paddingBottom: "20px", paddingTop: "40px", margin: "0px" }}
           >
-            Check example Apps created in Python notebook with Mercury
+            Check example web applications created in Python notebook with Mercury
           </p>
               <a href="/examples/"
                   target="_blank"
-                  className="text-white bg-blue-600 hover:bg-blue-700  
+                  className="text-white text-xl bg-blue-600 hover:bg-blue-700  
                               focus:ring-4 focus:ring-primary-200 font-medium rounded-lg
                               px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">More examples</a>
 
@@ -126,6 +126,6 @@ export default function ExampleApps() {
       </div>
 
       <div className="" style={{ padding: "20px" }}></div>
-    </>
+    </div>
   )
 }

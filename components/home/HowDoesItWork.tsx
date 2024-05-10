@@ -5,7 +5,7 @@ import mercuryAppPng from "public/images/mercury-web-app.png";
 
 export default function HowDoesItWork() {
   return (
-    <>
+    <div className="mx-auto max-w-7xl">
       <div
         style={{
           padding: "50px",
@@ -135,6 +135,6 @@ export default function HowDoesItWork() {
       </div>
 
       <div className="" style={{ padding: "80px" }}></div>
-    </>
+    </div>
   )
 }
