@@ -75,5 +75,12 @@
     },
     "jupyter-notebook-vega-altair-scatter-chart": {
         "title":"Scatter Chart"
+    },
+    "gpt-builder": {
+        "type": "separator",
+        "title": "GPT builder"
+    },
+    "gpt-builder-action": {
+        "title":"Create Action"
     }
 }

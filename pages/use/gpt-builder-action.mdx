@@ -1,0 +1,137 @@
+---
+ogTitle: ChatGPT builder create Action with Python 
+description: This article describes how to create custom action in Python for GPT builder. Actions are created in Python and make available as REST API with Mercury framework. It can be easily used in GPT builder to create new GPT chats. 
+ogImage:
+---
+
+import { Screenshot } from "components/screenshot";
+import whatTimePng from "../../public/images/integrations/gpt-builder/action/what-time-is-it.png";
+import notebookPng from "../../public/images/integrations/gpt-builder/action/notebook.png";
+import webAppPng from "../../public/images/integrations/gpt-builder/action/notebook-web-app.png";
+import createSitePng from "../../public/images/integrations/gpt-builder/action/create-site.png";
+import newSitePng from "../../public/images/integrations/gpt-builder/action/new-site.png";
+import notebookUploadedPng from "../../public/images/integrations/gpt-builder/action/notebook-uploaded.png";
+import gptBuilderPng from "../../public/images/integrations/gpt-builder/action/gpt-builder.png";
+import openAPILinkPng from "../../public/images/integrations/gpt-builder/action/openapi-link.png";
+import openAPISchemaPng from "../../public/images/integrations/gpt-builder/action/openapi-schema.png";
+import gptBuilderOpenAPIPng from "../../public/images/integrations/gpt-builder/action/gpt-builder-open-api.png";
+import timeAwareChatGPTPng from "../../public/images/integrations/gpt-builder/action/time-aware-chatgpt.png";
+import confirmRequestPng from "../../public/images/integrations/gpt-builder/action/confirm-request.png";
+
+
+# ChatGPT builder create Action with Python 
+
+OpenAI introduced option to customize ChatGPT. You can build your own ChatGPT with your:
+- custom instructions,
+- conversation starters,
+- aware of your uploaded files,
+- additional capabilities as web browsing, image generation and code interpreter,
+- and **Actions**.
+
+What are **Actions**? Actions are requests that GPT can send to other services by using REST API. It means that GPT can send request to the service and get response. This means that you can provide additional data to your ChatGPT or you can give to it power to interact with world. For example ChatGPT can interact with Smart Home REST API or send emails for you.
+
+Let's create custom action in Python that will return current UTC time when asked. ChatGPT will be time aware with this action. By default, ChatGPT is not aware of the current time, please check the example conversation below:
+
+<Screenshot src={whatTimePng} alt="Ask ChatGPT for time" />
+
+We will use following tools to create custom action in Python:
+- [Jupyter Lab](https://github.com/jupyter/jupyter/) for creating Python notebook,
+- [Mercury framework](https://github.com/mljar/mercury/) to return JSON response from notebook and for serving notebook as web application,
+- [Mercury Cloud](/pricing/) for deploying notebook online.
+
+## Python notebook
+
+The Python notebook with import required packages: `mercury` and `datetime`. The `datetime` is default Python package (no need to install), to install mercury please run:
+
+```
+pip install mercury
+```
+
+Let's import required packages:
+
+```python 
+import mercury as mr
+from datetime import datetime
+```
+
+We need to define [**App**](/docs/input-widgets/app/) object. It will specify the title and description that will be used in OpenAPI schema.
+
+```python 
+app = mr.App(title="Current UTC time", description="This notebook displays current time in UTC")
+```
+
+The [**APIResponse**](/docs/output-widgets/apiresponse/)
+```python
+response = mr.APIResponse({"utc_time_now": str(datetime.utcnow())})
+```
+
+The full notebook looks like in the image below:
+
+<Screenshot src={notebookPng} alt="Python notebook that returns current UTC time" />
+
+That's the end of coding. We can check locally how this notebook is working in Mercury, by starting command in the same directory where our notebook is:
+
+```
+mercury run
+```
+
+It should display notebook as web application at address `127.0.0.1:8000`:
+
+<Screenshot src={webAppPng} alt="Python notebook served as web application" />
+
+## Deploy notebook
+
+The notebook will be deployed with [Mercury Cloud](/pricing/) because it is the easiest way to put notebook online with unique domain address. 
+
+<div className="steps-container">
+
+### Login to Mercury Cloud
+
+If you don't have account, you can create it here: [**Mercury Cloud**](https://cloud.runmercury.com/register).
+
+### Create new site
+
+Create a new site is as simple as filling the below form:
+
+<Screenshot src={createSitePng} alt="Create new site in Mercury Cloud to serve notebooks" />
+
+You should get the similar view after clicking `OK`. The website is available at `https://what-time-is-it.runmercury.com`
+
+<Screenshot src={newSitePng} alt="New site in Mercury Cloud" />
+
+### Upload your notebook
+
+Please click `Upload files` to upload your notebook.
+
+<Screenshot src={notebookUploadedPng} alt="Notebook uploaded in Mercury Cloud" />
+
+</div>
+
+## Configure GPT builder
+
+We are ready to configure GPT. Please open GPT editor and click `Create new action` button:
+
+<Screenshot src={gptBuilderPng} alt="GPT builder" />
+
+You will see form to define new actions. You need to provide the OpenAPI schema for actions. It is **automatically generated** for your notebooks in Mercury, please open your website with notebook in Mercury Cloud, and click `OpenAPI` link in the footer:
+
+<Screenshot src={openAPILinkPng} alt="Mercury generates OpenAPI schema" />
+
+You should see OpenAPI schema for your notebooks. Please copy it.
+<Screenshot src={openAPISchemaPng} alt="OpenAPI schema for notebooks" />
+
+Please pase the schema in the GPT builder:
+<Screenshot src={gptBuilderOpenAPIPng} alt="OpenAPI schema in GPT builder" />
+
+After pasting OpenAPI schema you should see available actions.
+
+You can just ask Chat GPT for the time.
+<Screenshot src={confirmRequestPng} alt="Confirm GPT request" />
+
+Please confirm the request to the service. The full action will have request sent and long polling to receive final response:
+<Screenshot src={timeAwareChatGPTPng} alt="Time aware GPT " />
+
+## Summary
+
+You can easily create custom action in Python and use it in GPT builder. Thanks to Mercury, you can deploy notebook as web app and execute them with REST API. Combination of Python and Mercury makes them perfect for providing additional functions for ChatGPT.
+
