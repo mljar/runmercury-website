@@ -17,7 +17,7 @@ import openapiPng from "../../public/images/mercury-openapi.png";
 
 # Execute notebook with REST API
 
-Each notebook available in the Mercury can be executed with REST API. You can pass parameters to notebook when executing it with REST API.  Notebook can return JSON as response for REST API request. Mercury is using long polling mechanism for executing notebooks.
+Each notebook available in the Mercury can be executed with REST API. You can pass parameters to notebook when executing it with REST API.  Notebook can return JSON as response for REST API request. Mercury is using long polling mechanism for executing notebooks. It means that user submits the request to compute notebook, as the response she gets the `task_id`. Then, user checks computing status of the notebook by sending `task_id`. After notebook successful computation, the [**APIResponse**](/docs/output-widgets/apiresponse/) is included in the response.
 
 ## Example notebook
 

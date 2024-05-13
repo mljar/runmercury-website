@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import mercuryHq from "public/images/mercury-hq.jpg";
+import mercuryHq from "public/images/mercury-hq.png";
 
 const GithubIcon = () => (
   <svg
