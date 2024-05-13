@@ -82,5 +82,8 @@
     },
     "gpt-builder-action": {
         "title":"Create Action"
+    },
+    "gpt-builder-action-send-email": {
+        "title":"Send email"
     }
 }
