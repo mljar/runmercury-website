@@ -85,5 +85,8 @@
     },
     "gpt-builder-action-send-email": {
         "title":"Send email"
+    },
+    "gpt-action-query-database": {
+        "title":"Query database"
     }
 }

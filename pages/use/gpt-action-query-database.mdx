@@ -1,0 +1,30 @@
+---
+ogTitle: ChatGPT builder create Action with Python 
+description: This article describes how to create custom action in Python for GPT builder. Actions are created in Python and make available as REST API with Mercury framework. It can be easily used in GPT builder to create new GPT chats. 
+ogImage:
+---
+
+import { Screenshot } from "components/screenshot";
+import whatTimePng from "../../public/images/integrations/gpt-builder/action/what-time-is-it.png";
+
+
+# ChatGPT Action to query database
+
+OpenAI introduced option to customize ChatGPT. You can build your own ChatGPT with your:
+- custom instructions,
+- conversation starters,
+- aware of your uploaded files,
+- additional capabilities as web browsing, image generation and code interpreter,
+- and **Actions**.
+
+What are **Actions**? Actions are requests that GPT can send to other services by using REST API. It means that GPT can send request to the service and get response. This means that you can provide additional data to your ChatGPT or you can give to it power to interact with world. For example ChatGPT can interact with Smart Home REST API or send emails for you.
+
+Let's create custom action in Python that will return current UTC time when asked. ChatGPT will be time aware with this action. By default, ChatGPT is not aware of the current time, please check the example conversation below:
+
+<Screenshot src={whatTimePng} alt="Ask ChatGPT for time" />
+
+We will use following tools to create custom action in Python:
+- [Jupyter Lab](https://github.com/jupyter/jupyter/) for creating Python notebook,
+- [Mercury framework](https://github.com/mljar/mercury/) to return JSON response from notebook and for serving notebook as web application,
+- [Mercury Cloud](/pricing/) for deploying notebook online.
+
