@@ -88,5 +88,8 @@
     },
     "gpt-action-query-database": {
         "title":"Query database"
+    },
+    "gpt-builder-sheets": {
+        "title":"Google Sheets"
     }
 }
