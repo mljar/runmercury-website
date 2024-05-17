@@ -64,6 +64,9 @@
         "type": "separator",
         "title": "Vega-Altair"
     }, 
+    "jupyter-notebook-vega-altair-area-chart": {
+        "title":"Area Chart"
+    },
     "jupyter-notebook-vega-altair-bar-chart": {
         "title":"Bar Chart"
     },

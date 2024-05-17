@@ -1,0 +1,149 @@
+---
+ogTitle: Vega-Altair Area Chart 
+description: How to create an area chart with pandas data using the vega-altair (Python package) in Jupyter Notebook.
+ogImage:
+---
+
+import { Screenshot } from "components/screenshot";
+import simplechartPng from "../../public/images/integrations/vega-altair/area-chart/vega-altair-only.png";
+import pandaschartPng from "../../public/images/integrations/vega-altair/area-chart/vega-altair-pandas.png";
+
+# Vega-Altair Area Chart
+
+## Introduction
+
+`Vega-Altair` package is a powerful tool for data visualization, particularly within Jupyter Notebooks. It has a wide range of charts and plots to explore and one of them is **Area Chart**. We've prepared several examples to demonstrate how Vega-Altair works:
+
+- simple area chart  
+- area chart with `pandas` data
+- an interactive area chart 
+
+If you need any information about **Vega-Altair** check their docs: [**Vega-Altair Docs**](https://altair-viz.github.io/).
+
+All of code examples are availabe as Jupyter Notebooks in our GitHub repositiory:
+- [**Vega-Altair Area Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/vega-altair/vega-altair-area-chart.ipynb)
+- [**Vega-Altair Interactive Area Chart**](https://github.com/mljar/mercury-integrations/blob/main/visualizations/vega-altair/vega-altair-interactive-area-chart.ipynb)
+
+## Area Chart 
+
+Visualization with only `vega-altair` package:
+
+```python
+# import packages 
+import altair as alt 
+from vega_datasets import data
+
+# create data 
+src = data.stocks()
+source = data.cars()
+
+# plot 
+alt.Chart(src).mark_area().encode(
+   x='date:T',
+   y='price:Q',
+   color='symbol:N'
+)
+```
+
+<Screenshot src={simplechartPng} alt="Simple vega-altair area chart." />
+
+## Area Chart with Pandas Data
+
+Using `vega-altair`, create an area chart with `pandas` data:
+
+```python 
+# import packages 
+import altair as alt 
+import pandas as pd 
+
+# create data 
+data = {
+    'Month': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    'Sales_A': [150, 200, 300, 400, 250, 500, 600, 700, 800, 900, 950, 1100],
+    'Sales_B': [100, 150, 250, 350, 300, 450, 500, 600, 650, 700, 750, 900],
+    'Sales_C': [80, 120, 200, 300, 250, 400, 450, 500, 550, 600, 700, 800]
+}
+_df = pd.DataFrame(data)
+df = _df.melt(id_vars=['Month'], 
+              value_vars=['Sales_A', 'Sales_B', 'Sales_C'], 
+              var_name='Category', 
+              value_name='Sales')
+
+# plot 
+alt.Chart(df).mark_area().encode(
+    x='Month:N',
+    y='Sales:Q',
+    color='Category:N'
+).properties(
+    width=300
+)
+```
+
+<Screenshot src={pandaschartPng} alt="Vega-altair area chart with pandas data." />
+
+## Interactive Area Chart
+
+Regular charts are not very exciting. What about creating an interactive area chart with `vega-altair` and `mercury` packages? You can modify form of chart presentation using mercury widgets. In this example we used [**Select**](https://runmercury.com/docs/input-widgets/select/).
+
+```python
+# import packages 
+import altair as alt 
+from vega_datasets import data 
+import mercury as mr 
+```
+
+```python 
+# mercury widget 
+select = mr.Select(value="together", choices=["together", "separately"], label="Choose form of chart presentation:")
+```
+
+```python
+# create data 
+src = data.stocks()
+
+# plot
+if select.value == "together":
+    chart = alt.Chart(src).transform_filter(alt.datum.symbol != "GOOG").mark_area().encode(
+       x='date:T',
+       y='price:Q',
+       color='symbol:N'
+    )
+elif select.value == "separately":
+    chart = alt.Chart(src).transform_filter(alt.datum.symbol != "GOOG").mark_area().encode(
+        x="date:T",
+        y="price:Q",
+        color="symbol:N",
+        row=alt.Row("symbol:N").sort(["MSFT", "AAPL", "IBM", "AMZN"]),
+    ).properties(height=50, width=400)
+
+chart
+```
+
+ow, you can easily convert your Jupyter Notebook into a Web App! Watch the video to see what it will look like.
+
+<video width="100%" autoPlay loop controls preload="none" style={{ borderRadius: "10px" ,marginTop: "10px"}}>
+  <source
+    src="/images/integrations/vega-altair/area-chart/vega-altair-mercury.mp4"
+    type="video/mp4"
+  />
+</video>
+
+Deploying Web App is very easy that you can do it in 3 steps:
+
+<div className="steps-container">
+
+### Login to Mercury Cloud
+
+If you don't have account, you can create it here: [**Mercury Cloud**](https://cloud.runmercury.com/register).
+
+### Create new site
+
+Create new or use an existing site. 
+
+### Upload your notebook
+
+Upload the notebook with code.
+
+</div>
+
+**Congrats!** You just created your own Web App and you can share your Jupyter Notebooks with nontechnical users. If you need more information about deploying the Web App check [**Mercury Cloud Documentation**](https://runmercury.com/docs/cloud/).
