@@ -7,6 +7,9 @@
     "jupyter-notebook-matplotlib-bar-chart": {
         "title": "Bar Chart"
     },
+    "jupyter-notebook-matplotlib-hexbin-chart": {
+        "title": "Hexbin Chart"
+    },
     "jupyter-notebook-matplotlib-histogram-chart": {
         "title": "Histogram Chart"
     },
