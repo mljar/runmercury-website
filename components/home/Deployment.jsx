@@ -10,7 +10,7 @@ export default function Deployment() {
       borderRadius: "30px"
     }}>
       <center>
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white leading-normal">Very easy deployment</h2>
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white leading-normal">One click deployment</h2>
         <p className="my-4 font-light text-gray-500 text-2xl dark:text-gray-400 
         leading-normal" style={{ paddingBottom: "20px", paddingTop: "20px", margin: "0px" }}> Sharing notebooks with Mercury is very easy. <br /> The easiest way is to use Mercury Cloud or you can setup your own server. </p>
       </center>

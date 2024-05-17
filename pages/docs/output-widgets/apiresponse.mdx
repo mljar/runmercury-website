@@ -1,6 +1,6 @@
 ---
 ogTitle: Execute notebook with REST API and return JSON response
-description: Jupyter notebook can be executed with REST API and it returns JSON as response
+description: Jupyter notebook can be executed with REST API and it returns JSON as response. This page describe how to use APIResponse class to return JSON from Python notebook, so you can use notebooks as REST API.
 ogImage: widgets
 ---
 
@@ -19,7 +19,7 @@ import mercury as mr
 ```python
 # return JSON response
 response = mr.APIResponse({"message": "Hello from Mercury!", 
-                           "description": "You can execute notebook with REST API return JSON as response"})
+                           "description": "Execute notebook with REST API return JSON as response"})
 ```
 
 In the notebook the `APIResponse` is displayed as JSON:

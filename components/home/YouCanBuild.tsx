@@ -162,29 +162,32 @@ export default function YouCanBuild() {
                   href="/tutorials/website-python-jupyter-notebook/"
                   className="hover:underline"
                 >
-                <h3 style={{ marginTop: "20px" }}><svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="inline mb-1"
-                    width="40"
-                    height="40"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M19.5 7a9 9 0 0 0 -7.5 -4a8.991 8.991 0 0 0 -7.484 4"></path>
-                    <path d="M11.5 3a16.989 16.989 0 0 0 -1.826 4"></path>
-                    <path d="M12.5 3a16.989 16.989 0 0 1 1.828 4"></path>
-                    <path d="M19.5 17a9 9 0 0 1 -7.5 4a8.991 8.991 0 0 1 -7.484 -4"></path>
-                    <path d="M11.5 21a16.989 16.989 0 0 1 -1.826 -4"></path>
-                    <path d="M12.5 21a16.989 16.989 0 0 0 1.828 -4"></path>
-                    <path d="M2 10l1 4l1.5 -4l1.5 4l1 -4"></path>
-                    <path d="M17 10l1 4l1.5 -4l1.5 4l1 -4"></path>
-                    <path d="M9.5 10l1 4l1.5 -4l1.5 4l1 -4"></path>
-                  </svg>{" "}Websites</h3>
+                  <h3 style={{ marginTop: "20px" }}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="inline mb-1"
+                      width="40"
+                      height="40"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2"
+                      stroke="currentColor"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M19.5 7a9 9 0 0 0 -7.5 -4a8.991 8.991 0 0 0 -7.484 4"></path>
+                      <path d="M11.5 3a16.989 16.989 0 0 0 -1.826 4"></path>
+                      <path d="M12.5 3a16.989 16.989 0 0 1 1.828 4"></path>
+                      <path d="M19.5 17a9 9 0 0 1 -7.5 4a8.991 8.991 0 0 1 -7.484 -4"></path>
+                      <path d="M11.5 21a16.989 16.989 0 0 1 -1.826 -4"></path>
+                      <path d="M12.5 21a16.989 16.989 0 0 0 1.828 -4"></path>
+                      <path d="M2 10l1 4l1.5 -4l1.5 4l1 -4"></path>
+                      <path d="M17 10l1 4l1.5 -4l1.5 4l1 -4"></path>
+                      <path d="M9.5 10l1 4l1.5 -4l1.5 4l1 -4"></path>
+                    </svg>{" "}
+                    Websites
+                  </h3>
                 </a>
                 <p
                   className="mb-8 font-light text-gray-700 lg:text-2xl text-xl dark:text-gray-400
@@ -204,35 +207,34 @@ export default function YouCanBuild() {
               aria="Read more on how to create interactive slides from Jupyter Notebook"
             >
               <div className="h-full flex flex-col justify-between">
-                
                 <a
-              href="/tutorials/presentation-python-jupyter-notebook/"
+                  href="/tutorials/presentation-python-jupyter-notebook/"
                   className="hover:underline"
                 >
-                <h3 style={{ marginTop: "20px" }}>
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="inline mb-1"
-                    width="40"
-                    height="40"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M9 12v-4"></path>
-                    <path d="M15 12v-2"></path>
-                    <path d="M12 12v-1"></path>
-                    <path d="M3 4h18"></path>
-                    <path d="M4 4v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-10"></path>
-                    <path d="M12 16v4"></path>
-                    <path d="M9 20h6"></path>
-                  </svg>
-                  {" "}
-                  Presentations</h3>
+                  <h3 style={{ marginTop: "20px" }}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="inline mb-1"
+                      width="40"
+                      height="40"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2"
+                      stroke="currentColor"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M9 12v-4"></path>
+                      <path d="M15 12v-2"></path>
+                      <path d="M12 12v-1"></path>
+                      <path d="M3 4h18"></path>
+                      <path d="M4 4v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-10"></path>
+                      <path d="M12 16v4"></path>
+                      <path d="M9 20h6"></path>
+                    </svg>{" "}
+                    Presentations
+                  </h3>
                 </a>
                 <p
                   className="mb-8 font-light text-gray-700 lg:text-2xl text-xl dark:text-gray-400
@@ -248,33 +250,45 @@ export default function YouCanBuild() {
               index={5}
               centered
               className="card-with-border"
-              href="/tutorials/"
+              href="/docs/jupyter-notebook-rest-api/"
               aria="Read more about web apps that you can build with Mercury in Jupyter Notebook"
             >
               <div className="h-full flex flex-col justify-between">
-                <center>
-                  <h3
-                    className="my-8 lg:text-6xl text-4xl font-extrabold text-gray-900 dark:text-white leading-normal"
-                    style={{
-                      margin: "0",
-                      position: "absolute",
-                      top: "50%",
-                      msTransform: "translateY(-50%)",
-                      transform: "translateY(-50%)",
-                    }}
-                  >
-                    {" "}
-                    Your next Web App!
-                  </h3>
-                </center>
+                <a
+                  href="/docs/jupyter-notebook-rest-api/"
+                  className="hover:underline"
+                >
+                  <h3 style={{ marginTop: "20px" }}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="inline mb-1"
+                      width="40"
+                      height="40"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2"
+                      stroke="currentColor"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M4 13h5" />
+                      <path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3" />
+                      <path d="M20 8v8" />
+                      <path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5" />{" "}
+                    </svg>{" "}
+                    REST API
+                  </h3> 
+                
+                </a>
                 <p
                   className="mb-8 font-light text-gray-700 lg:text-2xl text-xl dark:text-gray-400
                   leading-normal"
                   style={{ marginTop: "10px" }}
                 >
-                  {" "}
+                  Execute notebooks with REST API and return JSON response
                 </p>
-              </div>
+              </div> 
             </Feature>
           </Features>
         </div>

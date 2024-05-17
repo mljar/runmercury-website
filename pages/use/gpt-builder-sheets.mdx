@@ -1,0 +1,172 @@
+---
+ogTitle: Integrate Google Sheets and ChatGPT
+description: Integrate Google Sheets and ChatGPT. In this article, we are using Python notebook and Mercury framework. The notebook is served as REST API endpoint. ChatGPT can list all values from the sheet or update selected cell. 
+ogImage:
+---
+
+import { Screenshot } from "components/screenshot";
+import notebookPng from "../../public/images/integrations/gpt-builder/sheets/notebook.png";
+import accountApiKeyPng from "../../public/images/integrations/gpt-builder/sheets/account-api-key.png";
+import allCellsUpdatedPng from "../../public/images/integrations/gpt-builder/sheets/all-cells-updated.png";
+import amazingPng from "../../public/images/integrations/gpt-builder/sheets/amazing.png";
+import answersPng from "../../public/images/integrations/gpt-builder/sheets/answers.png";
+import confirmRequestPng from "../../public/images/integrations/gpt-builder/sheets/confirm-request.png";
+import gptBuilderConfigurePng from "../../public/images/integrations/gpt-builder/sheets/gpt-builder-configure.png";
+import openAPISchemaPng from "../../public/images/integrations/gpt-builder/sheets/openapi-schema.png";
+import openAPIPng from "../../public/images/integrations/gpt-builder/sheets/openapi.png";
+import privateSitePng from "../../public/images/integrations/gpt-builder/sheets/private-site.png";
+import sheetDataListedPng from "../../public/images/integrations/gpt-builder/sheets/sheet-data-listed.png";
+import sheetsQuestionsPng from "../../public/images/integrations/gpt-builder/sheets/sheets-questions.png";
+import updateCellsPng from "../../public/images/integrations/gpt-builder/sheets/update-cells.png";
+import updatedSheetPng from "../../public/images/integrations/gpt-builder/sheets/updated-sheet.png";
+import uploadedFilesPng from "../../public/images/integrations/gpt-builder/sheets/uploaded-files.png";
+import authenticationPng from "../../public/images/integrations/gpt-builder/query-database/authentication.png";
+
+# Use Google Sheets in custom ChatGPT 
+
+Google Sheets can be integrated with custom ChatGPT. You can provide Sheets read and write functionality for ChatGPT. We will use Python notebook to create custom code that will list all values from sheet and allow to update selected cell. The notebook will be served as REST API endpoint, which will be available as **GPT Action**. The OpenAPI schema for notebook and serving is handled by [Mercury framework](https://github.com/mljar/mercury). The notebooks is deployed online with [Mercury Cloud](/pricing/).
+
+## Python notebook
+
+Let's create a Python notebook for accessing Google Sheets. We need to install [`gspread`](https://github.com/burnash/gspread) package to make Sheets integration simple and [`mercury`](/) for running notebook as web application:
+
+```bash
+# install package gspread
+pip install python-dotenv
+
+# install widgets framework
+pip install mercury 
+```
+
+Let's import required modules in the first cell:
+
+```python
+import gspread
+import mercury as mr
+```
+
+We need to provide Sheets credentials to authorize access:
+
+```python
+gc = gspread.service_account("sheets-credentials.json")
+```
+
+I kept JSON with credentials in `sheets-credentials.json` file. Please read article on [how to connect Python with Google Sheets service](https://mljar.com/blog/authenticate-python-google-sheets-service-account-json-credentials/).
+
+Here is a sheet that will be used in this example:
+
+<Screenshot src={sheetsQuestionsPng} alt="Sheets used in GPT integrations" />
+
+We can access worksheet by providing a title:
+```python
+sh = gc.open("chat-gpt-builder")
+```
+
+We will allow to actions on the sheet:
+- `list` action to display all values,
+- `update` to update one cell value.
+
+Let's add widget to control the action:
+```python 
+action = mr.Select(label="Select action", value="list", choices=["list", "update"], url_key="action")
+```
+
+We need two more widgets to select updated cell in **A1** notation and provide new value:
+
+```python 
+update_cell = mr.Text(label="Update cell in A1 notation", value="", url_key="cell")
+```
+```python 
+cell_value = mr.Text(label="Cell value", value="", url_key="new_value")
+```
+
+In the case of list action, we will return [**APIResponse**](/docs/output-widgets/apiresponse/) with all values from sheet listed:
+```python
+if action.value == "list":
+    list_of_dicts = sh.sheet1.get_all_records()
+    data = [{**l, "Answer_cell": f"B{i+2}"} for i, l in enumerate(list_of_dicts)]
+    response = mr.APIResponse({"sheet_data": data})
+```
+
+Please note, that we added `Answer_cell` with its index, this will help ChatGPT navigate through the sheet.
+
+This it the update response:
+```python
+if action.value == "update":
+    try:
+        sh_response = sh.sheet1.update_acell(update_cell.value, cell_value.value)
+        response = mr.APIResponse({"message": "Cell updated"})
+    except Exception as e:
+        response = mr.APIResponse({"error": str(e)})
+```
+
+The full code in the notebook, please notice that sheet data is returned as dictionary:
+<Screenshot src={notebookPng} alt="Full code to query database in the notebook" />
+
+## Deploy notebook online 
+
+The notebook code is ready. We need to put it online, the easiet way is to use [Mercury Cloud](/pricing/). We get notebook running under custom domain address in few clicks.
+
+<div className="steps-container">
+
+### Login to Mercury Cloud
+
+If you don't have account, you can create it here: [**Mercury Cloud**](https://cloud.runmercury.com/register).
+
+### Create new site
+
+Please create a new site. Remember, to set site as **PRIVATE** otherwise, anyone with link to your site will be able to query your database.
+
+<Screenshot src={privateSitePng} alt="Private Site in Mercury Cloud" />
+
+### Upload file with notebook
+
+Please upload your notebook file, credentials JSON and `requirements.txt` file with all required packages listed.
+
+<Screenshot src={uploadedFilesPng} alt="Uploaded files to make ChatGPT integration with Google Sheets in Mercury Cloud" />
+
+</div>
+
+
+## Configure ChatGPT builder 
+
+Next step is to configure new action in ChatGPT builder. Mercury will generate OpenAPI schema for you based on provided notebook. Please find OpenAPI link in the site footer.
+<Screenshot src={openAPIPng} alt="Site in Mercury with OpenAPI link in the footer" />
+
+Please copy the full OpenAPI schema.
+<Screenshot src={openAPISchemaPng} alt="OpenAPI schema for provided notebooks" />
+
+Please add a new action in GPT builder and provide copied schema:
+<Screenshot src={gptBuilderConfigurePng} alt="Configure ChatGPT with OpenAPI schema from Mercury" />
+
+You will see that available actions will popup. The last configuration step is to provide API Key to authorize ChatGPT to execute notebooks.
+
+You can find Mercury API Key in accounts view:
+<Screenshot src={accountApiKeyPng} alt="Mercury API Key" />
+
+Please copy key and in ChatGPT configuration provide in Authentication dialog:
+<Screenshot src={authenticationPng} alt="Mercury API Key in ChatGPT authentication" />
+
+## Chat with your Sheets
+
+Let's ask ChatGPT to list all questions from sheet. You will be asked to confirm the request:
+<Screenshot src={confirmRequestPng} alt="ChatGPT confirm request to access sheets" />
+
+We will get the response:
+<Screenshot src={sheetDataListedPng} alt="Mercury API Key in ChatGPT authentication" />
+
+OK, questions are listed, let ChatGPT to provide answers and update the sheet:
+
+<Screenshot src={answersPng} alt="ChatGPT provides answers" />
+
+ChatGPT iterate over all answers and updated the sheet:
+<Screenshot src={updateCellsPng} alt="Mercury API Key in ChatGPT authentication" />
+
+Let's check the sheet, all answers are there!
+<Screenshot src={updatedSheetPng} alt="Mercury API Key in ChatGPT authentication" />
+
+## Summary
+
+Integration of ChatGPT with Google Sheets is very powerful. You can use Python and Mercury to customize it as you want. The sheet data is provided to the ChatGPT as JSON with cell index in A1 notation to each row. Based on this, ChatGPT can update selected cell. The Pyhton notebook is served online with [Mercury Cloud](/pricing/). This integration is truly amazing!
+
+<Screenshot src={amazingPng} alt="ChatGPT integration with Google Sheets and Mercury is amazing" />

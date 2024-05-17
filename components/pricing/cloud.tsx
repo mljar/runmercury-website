@@ -165,10 +165,10 @@ export default (
             </a>
           </span>
         </li>
-        <li className="flex items-center space-x-3">
+        {/* <li className="flex items-center space-x-3">
           {tickIcon}
           <span>Custom domains (coming soon)</span>
-        </li>
+        </li> */}
       </ul>
       <a
         href="https://cloud.runmercury.com/register"
@@ -262,10 +262,10 @@ export default (
             </a>
           </span>
         </li>
-        <li className="flex items-center space-x-3">
+        {/* <li className="flex items-center space-x-3">
           {tickIcon}
           <span>Custom domains (coming soon)</span>
-        </li>
+        </li> */}
       </ul>
       <a
         href="https://cloud.runmercury.com/register"

@@ -78,5 +78,21 @@
     },
     "jupyter-notebook-vega-altair-scatter-chart": {
         "title":"Scatter Chart"
+    },
+    "gpt-builder": {
+        "type": "separator",
+        "title": "GPT builder"
+    },
+    "gpt-builder-action": {
+        "title":"Create Action"
+    },
+    "gpt-builder-action-send-email": {
+        "title":"Send email"
+    },
+    "gpt-action-query-database": {
+        "title":"Query database"
+    },
+    "gpt-builder-sheets": {
+        "title":"Google Sheets"
     }
 }

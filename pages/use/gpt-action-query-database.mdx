@@ -1,0 +1,167 @@
+---
+ogTitle: ChatGPT builder create Action to query database
+description: This article describes how to create custom action in Python for GPT builder. Action will query database with SQL. The notebook will return the Markdown table with SQL query result in the response. 
+ogImage:
+---
+
+import { Screenshot } from "components/screenshot";
+import notebookPng from "../../public/images/integrations/gpt-builder/query-database/notebook.png";
+import privateSitePng from "../../public/images/integrations/gpt-builder/query-database/private-site.png";
+import apiKeyPng from "../../public/images/integrations/gpt-builder/query-database/api-key.png";
+import confirmRequestPng from "../../public/images/integrations/gpt-builder/query-database/confirm-request.png";
+import secretsPng from "../../public/images/integrations/gpt-builder/query-database/secrets.png";
+import selectUsersPng from "../../public/images/integrations/gpt-builder/query-database/select-users.png";
+import usersLastWeekPng from "../../public/images/integrations/gpt-builder/query-database/users-last-week.png";
+import editActionsPng from "../../public/images/integrations/gpt-builder/query-database/edit-actions.png";
+import authenticationPng from "../../public/images/integrations/gpt-builder/query-database/authentication.png";
+
+# ChatGPT Action to query database
+
+In this article, we will show how to integrate ChatGPT with Postgres database. We will create Python notebook in [Jupyter Lab](https://github.com/jupyter/jupyter/). It will have [**Text**](/docs/input-widgets/text/) widget in which we can pass SQL query. The notebook will execute query in the database and displays the response as [**Markdown**](/docs/output-widgets/markdown/) table. The notebook will be deployed as PRIVATE site with [Mercury Cloud](/pricing/) service. The ChatGPT will talk with notebook using API Key from Mercury Cloud.
+
+## Python code
+
+We need to install few packages to make this integration works:
+
+```bash
+# install package for loading secrets from .env
+pip install python-dotenv
+
+# install postgres connector
+pip install psycopg2-binary
+
+# install widgets framework
+pip install mercury 
+
+# install packages to display results as Markdown table
+pip install pandas tabulate
+```
+
+Let's import required Python modules in the first code cell:
+
+```python
+import os
+import psycopg2
+import pandas as pd
+from psycopg2.extras import RealDictCursor
+from dotenv import load_dotenv
+import mercury as mr
+```
+
+We keep database credentials in the `.env` file. We need to load them. Please read more about [how to store secrets in Jupyter notebook](https://mljar.com/blog/jupyter-notebook-credentials/).
+
+```python
+_ = load_dotenv()
+```
+
+Let's define a function with database connection details:
+
+```python 
+def db_engine():
+    host = os.environ.get("DB_HOST")
+    port = os.environ.get("DB_PORT")
+    user = os.environ.get("DB_USERNAME")
+    password = os.environ.get("DB_PASSWORD")
+    db = os.environ.get("DB_DATABASE")
+    return f"user='{user}' password='{password}' host='{host}' port='{port}' dbname='{db}'"
+```
+
+The widget where we can write SQL query:
+
+```python 
+sql = mr.Text(label="SQL query", value="select 1", sanitize=False, url_key="query")
+```
+
+Please notice, that we set **url_key** in the constructor, it will be used in the OpenAPI schema as parameter name.
+
+Execute SQL query in Postgres database adn fetch results:
+
+```python 
+try:
+    with  psycopg2.connect(db_engine()) as conn:
+        with  conn.cursor(cursor_factory=RealDictCursor) as cur:
+            cur.execute(sql.value)             
+            rows = cur.fetchall()
+except (Exception, psycopg2.DatabaseError) as error:
+    print(error)  
+```
+
+Get results to Markdown table:
+
+```python 
+md = pd.DataFrame(rows).to_markdown()
+```
+
+Display as Markdown in the notebook:
+
+```python
+mr.Md(md)
+```
+
+Set result in [**APIResponse**](/docs/output-widgets/apiresponse/):
+
+```python 
+response = mr.APIResponse({"result": md})
+```
+
+The full Python code in the notebook:
+<Screenshot src={notebookPng} alt="Full code to query database in the notebook" />
+
+## Deploy notebook 
+
+We need to make our notebook available online. Thanks to [Mercury framework](https://github.com/mljar/mercury) the notebook can be served as web appliction without any changes in the notebook code. Mercury is open-source solution, and can be self-hosted. However, the easiest way is to deploy notebook online is to use our hosted service called [Mercury Cloud](/pricing/). Below are described steps to deploy notebook: 
+
+<div className="steps-container">
+
+### Login to Mercury Cloud
+
+If you don't have account, you can create it here: [**Mercury Cloud**](https://cloud.runmercury.com/register).
+
+### Create new site
+
+Please create a new site. Remember, to set site as **PRIVATE** otherwise, anyone with link to your site will be able to query your database.
+
+<Screenshot src={privateSitePng} alt="Private Site in Mercury Cloud" />
+
+### Upload file with notebook
+
+Please upload your notebook file and `requirements.txt` file with all required packages listed.
+
+### Provide connections secrets
+
+Please add database credentials as [secrets in Mercury Cloud](/docs/secrets/).
+
+<Screenshot src={secretsPng} alt="Credentials secrets in Mercury Cloud" />
+
+</div>
+
+## Configure ChatGPT builder
+
+The Mercury automatically generates OpenAPI schema, please find it by clicking the OpenAPI link in your site footer. The schema should be pasted in the GPT builder as new Action:
+
+<Screenshot src={editActionsPng} alt="Configure actions in ChatGPT builder" />
+
+Please also set Authentication. Please set it to `API Key` and type to `Bearer`:
+
+<Screenshot src={authenticationPng} alt="Authentication actions in ChatGPT builder" />
+
+Your API Key for Mercury Cloud you can find in `https://cloud.runmercury.com/account`:
+
+<Screenshot src={apiKeyPng} alt="Mercury Cloud Api Key" />
+
+OK, we are ready to send some queries to our Postgres database:
+<Screenshot src={confirmRequestPng} alt="Confirm request to database in ChatGPT" />
+
+The Mercury is using long polling for executing notebooks, which means that you send request to process the notebook, get the `task_id` as response, and then query the server with `task_id` till you get the final response. Below is the example with 3 requests to get the final response:
+
+<Screenshot src={selectUsersPng} alt="Select users from database table in ChatGPT" />
+
+OK, let's try to run some more difficult query:
+
+<Screenshot src={usersLastWeekPng} alt="Select last week users from database table in ChatGPT" />
+
+## Summary
+
+You can build custom ChatGPT that will query your database. You can use Mercury framework for build interactive notebook and serve it online. The [Mercury Cloud](/pricing/) provides you the easiest way to put your notebook online. In this article, we created a **read-only** user in database, so ChatGPT can only query database to show results, it can't update database. What is more, it is good to provide description of available tables, otherwise ChatGPT will try to guess table name, which can cause halucinations.
+
+Good luck!

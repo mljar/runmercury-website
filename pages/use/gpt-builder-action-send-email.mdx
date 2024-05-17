@@ -1,0 +1,160 @@
+---
+ogTitle: Custom action to send email from ChatGPT
+description: This article describes how to create custom action in Python for sending emails from ChatGPT.
+ogImage:
+---
+
+import { Screenshot } from "components/screenshot";
+import { Callout } from 'nextra-theme-docs';
+import notebookPng from "../../public/images/integrations/gpt-builder/email/notebook.png";
+import createSitePng from "../../public/images/integrations/gpt-builder/email/create-site.png";
+import gptBuilderPng from "../../public/images/integrations/gpt-builder/email/gpt-builder-add-actions.png";
+import setAuthPng from "../../public/images/integrations/gpt-builder/email/set-auth.png";
+import emailSentPng from "../../public/images/integrations/gpt-builder/email/email-sent.png";
+import gmailPng from "../../public/images/integrations/gpt-builder/email/gmail.png";
+
+
+# Custom action to send email from ChatGPT
+
+Let's create custom action in GPT builder that will send emails using gmail account. We will use following tools:
+
+- Python and Jupyter Lab to create notebook,
+- [Mercury](https://github.com/mljar/mercury) framework to serve notebook as REST API,
+- [Mercury Cloud](/pricing/) to deploy notebook online.
+
+The outline of this article:
+1. Create Python notebook.
+2. Deploy notebook in Mercury Cloud.
+3. Add action in GPT builder.
+
+This integration is advanced. It will use parameters to send email to whom, subject and body to the notebook. This notebook will be **PRIVATE** in the Mercury Cloud and ChatGPT will access it with API Key. Please check the [article on how to create simple action for GPT in Python](/use/gpt-builder-action/) for starter level.
+
+## Create Python notebook
+
+The Python notebook will use `os`, `smtplib` and `email` packages which are Python built-ins. You need to install [`mercury`](https://github.com/mljar/mercury) as additional package:
+
+```
+pip install mercury
+```
+
+The first cell will import required modules:
+
+```python
+import os
+import smtplib
+from email.message import EmailMessage w
+import mercury as mr
+```
+
+In the next cell, please load credentials:
+
+```python
+user = os.environ.get("EMAIL_ADDRESS")
+password = os.environ.get("EMAIL_PASSWORD")
+smtp_address = os.environ.get("SMTP_ADDRESS", "smtp.gmail.com")
+smtp_port = int(os.environ.get("SMTP_PORT", 465))
+```
+
+Please check the article on [how to manage credentials in Jupyter notebook](https://mljar.com/blog/jupyter-notebook-credentials/) for more informations. 
+
+<Callout type="info">
+I'm using gmail account in this example. The password is an app password. Please check [Google docs on how to generate app password](https://support.google.com/mail/answer/185833?hl=en).
+</Callout>
+
+Let's configure web app title and description properties, they will be used in OpenAPI schema:
+```python
+app = mr.App(title="Send email", description="Send email, please provide to whom address, subject and message body")
+```
+
+Let's add widgets with email to whom, subject and body:
+```python
+to_whom = mr.Text(label="To whom send", value="", url_key="to_whom")
+```
+```python
+subject = mr.Text(label="Email subject", url_key="subject")
+```
+```python
+body = mr.Text(label="Email body", rows=5, url_key="body")
+```
+
+Please note that all widgets have **url_key** set. It will be used as paramter name in the OpenAPI schema (which is automatically generated).
+
+Let's construct `EmailMessage` object:
+
+```python
+msg = EmailMessage()
+msg['To'] = to_whom.value
+msg['From'] = user
+msg['Subject'] = subject.value
+msg.set_content(body.value)
+```
+
+Send email with `smtplib`:
+
+```python
+# send email
+if to_whom.value != "":
+    with smtplib.SMTP_SSL(smtp_address, smtp_port) as smtp:
+        smtp.login(user, password)
+        smtp.send_message(msg)
+```
+
+The final step is to create [**APIResponse**](/docs/output-widgets/apiresponse/):
+
+```python
+response = mr.APIResponse({"message": "Email sent successfully"})
+```
+
+The full notebook:
+<Screenshot src={notebookPng} alt="Notebook for sending email" />
+
+
+## Deploy notebook
+
+Let's deploy notebook online with [Mercury Cloud](/pricing/). 
+
+<div className="steps-container">
+
+### Login to Mercury Cloud
+
+If you don't have account, you can create it here: [**Mercury Cloud**](https://cloud.runmercury.com/register).
+
+### Create new site
+
+Please create a new site. Remember, to set site as **PRIVATE** otherwise, anyone with link to your site will be able sent emails from your account.
+
+<Screenshot src={createSitePng} alt="Create Site in Mercury Cloud" />
+
+### Upload file with notebook
+
+Please upload your notebook file.
+
+### Provide secrets
+
+Please add email credentials as [secrets in Mercury Cloud](/docs/secrets/).
+
+</div>
+
+## Configure GPT builder
+
+Please open GPT builder. You need to provide the OpenAPI schema there. Mercury Cloud automatically generates OpenAPI schema for you, please open OpenAPI schema by accessing your site and clicking link in the footer.
+
+<Screenshot src={gptBuilderPng} alt="Configure GPT builder with OpenAPI schema" />
+
+In `cloud.runmercury.com` please click on your username, and navigate to `Account`. You will get API Key there. Please provide this API Key in GPT builder in Authentication field. Please select autnetication type `Api Key` and `Auth Type` as `Bearer`:
+
+<Screenshot src={setAuthPng} alt="Add authentication to your notebook" />
+
+Ok, we are ready to test the endpoint, let's ask ChatGPT to write some email:
+
+<Screenshot src={emailSentPng} alt="Email sent from ChatGPT" />
+
+Please note, that Mercury is using long polling for executing notebooks. In the case, of email sending there is no need to wait for the reponse. Wehn notebook will be executed, the email will be in the inbox:
+
+<Screenshot src={gmailPng} alt="Gmail view of emial from ChatGPT" />
+
+Yes, I was using the same email to send and receive email ;)
+
+## Summary
+
+You can create any custom action for ChatGPT with Python and Mercury. The process requires preparing Python notebook. Deployment of the notebook online with Mercury Cloud. Then, you provide OpenAPI schema in ChatGPT builder. The Mercury is able to automatically generate OpenAPI schema based on notebooks code. If your notebooks are sensitive, then please set site as **PRIVATE** and access notebooks with **API Key** to make them secure.
