@@ -7,6 +7,9 @@
     "jupyter-notebook-matplotlib-bar-chart": {
         "title": "Bar Chart"
     },
+    "jupyter-notebook-matplotlib-hexbin-chart": {
+        "title": "Hexbin Chart"
+    },
     "jupyter-notebook-matplotlib-histogram-chart": {
         "title": "Histogram Chart"
     },
@@ -61,6 +64,9 @@
         "type": "separator",
         "title": "Vega-Altair"
     }, 
+    "jupyter-notebook-vega-altair-area-chart": {
+        "title":"Area Chart"
+    },
     "jupyter-notebook-vega-altair-bar-chart": {
         "title":"Bar Chart"
     },
