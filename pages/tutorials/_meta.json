@@ -1,14 +1,11 @@
 {
     "index": "Tutorials List",
-    "-- Tutorials": {
+    "Tutorials": {
         "type": "separator",
         "title": "Tutorials"
       },
     "jupyter-notebook-create-display-pdf": {
         "title": "Create and display PDF"
-    },
-    "dashboard-python-jupyter-notebook": {
-        "title": "Create Dashboard"
     },
     "presentation-python-jupyter-notebook": {
         "title": "Create Presentation"
@@ -25,7 +22,15 @@
     "postgresql-data-into-interactive-table": {
         "title": "PostgreSQL into table"
     },
+    "Dashboard Tutorials": {
+        "type": "separator",
+        "title": "Dashboard Tutorials"
+      },
+      "dashboard-python-jupyter-notebook": {
+        "title": "Create Dashboard"
+    },
     "vega-altair-dashboard": {
         "title": "Vega Altair Dashboard"
-    }
+    },
+    "matplotlib-dashboard": {}
 }
