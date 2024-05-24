@@ -75,6 +75,8 @@ const config: DocsThemeConfig = {
       socialCard = "https://runmercury.com/images/og-images/mercury-og-examples.png";
     } else if (frontMatter?.ogImage === "tutorials") {
       socialCard = "https://runmercury.com/images/og-images/mercury-og-tutorials.png";
+    } else if (frontMatter?.ogImage === "integrations") {
+      socialCard = "https://runmercury.com/images/og-images/mercury-og-integrations.png";
     }else {
       socialCard = "https://runmercury.com/images/og-images/mercury-og-default.png";
     }

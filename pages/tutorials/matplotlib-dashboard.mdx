@@ -1,0 +1,227 @@
+---
+ogTitle: How to create dashboard using Matplotlib in Jupyter Notebook
+description: How to create an interactive dashboard with Python using matplotlib and mercury packages in Jupyter Notebook. 
+ogImage: tutorials
+---
+
+# How to create dashboard using Matplotlib in Jupyter Notebook
+
+We prepared an example dashboard - **Cryptocurrency Comparison** - which was created using `matplotlib` and `mercury` Python packages. In this article you will learn:
+
+- how to load csv files to your Jupyter Notebook,
+- how to modify DataFrames,
+- how to use Select, Markdown and NumberBox `mercury` widgets,
+- how to create charts using `matplotlib`,
+- how to turn your notebook into Web App.
+
+Enjoy reading :)
+
+## Import required packages
+
+You will need following packages: 
+
+```python 
+matplotlib
+pandas 
+mercury
+```
+
+- `matplotlib` for creating charts and graphs to visualize data.
+- `pandas`  is for data manipulation.
+- `mercury` will be used for interactive widgets and for running notebook as a web app.
+
+Make sure that you have installed them before start doing anything.
+
+The cell code with imports :
+
+```python 
+import matplotlib.pyplot as plt 
+import pandas as pd 
+import mercury as mr 
+```
+
+## Data Preparation 
+
+### Get Data
+
+In this example, we used Cryptocurrency Prices as *csv files*, which were downloaded from [this website](https://coinmarketcap.com/).
+
+After downloading, you have to load data to your Jupyter Notebook. You can use **read.csv** from `pandas`:
+
+```python
+dfBTC = pd.read_csv('data_BTC.csv', sep=";")
+dfETH = pd.read_csv('data_ETH.csv', sep=";")
+dfSOL = pd.read_csv('data_SOL.csv', sep=";")
+dfBNB = pd.read_csv('data_BNB.csv', sep=";")
+``` 
+
+### Modify Data 
+
+You will need to divide the **timestamp** column into **date** and **time** columns, because only date is needed. Write following code: 
+
+```python 
+dfBTC[['date', 'time']] = dfBTC['timestamp'].str.split('T', expand=True)
+dfETH[['date', 'time']] = dfETH['timestamp'].str.split('T', expand=True)
+dfSOL[['date', 'time']] = dfSOL['timestamp'].str.split('T', expand=True)
+dfBNB[['date', 'time']] = dfBNB['timestamp'].str.split('T', expand=True)
+```
+
+## Create Dashboard
+
+### Add interactive widgets
+
+Now, create widgets that allow to choose what cryptocurrencies user want to compare.
+
+Please add 2 [**Select**](/docs/input-widgets/select/) widgets by writing two following cells code: 
+
+```python
+select1 = mr.Select(
+                label="Choose first cryptocurrency: ",
+                value = 'Bitcoin', 
+                choices=['Bitcoin', 'Ether', 'BNB', 'Solana']
+                )
+```
+
+```python
+choices = ['Bitcoin', 'Ether', 'BNB', 'Solana']
+if select1.value in choices:
+    choices.remove(select1.value)
+
+select2 = mr.Select(
+                label="Choose second cryptocurrency: ", 
+                choices=choices
+                )
+```
+
+### Set relevant data 
+
+Add extra variables to make coding easier. Using conditional statements create **df1** and **df2** which will be DataFrames containing the first and second cryptocurrencies data:
+
+```python
+if select1.value == 'Bitcoin':
+    df1=dfBTC
+elif select1.value == 'Ether':
+    df1=dfETH
+elif select1.value == 'BNB':
+    df1=dfBNB
+elif select1.value == 'Solana':
+    df1=dfSOL
+
+if select2.value == 'Bitcoin':
+    df2=dfBTC
+elif select2.value == 'Ether':
+    df2=dfETH
+elif select2.value == 'BNB':
+    df2=dfBNB
+elif select2.value == 'Solana':
+    df2=dfSOL
+```
+
+Then, find the highest value of each cryptocurrency. Create **highest1** and **highest2**: 
+
+```python 
+highest1 = df1['high'][0]
+for price in df1['high']: 
+    if price > highest1: 
+        highest1 = price
+
+highest2 = df2['high'][0]
+for price in df2['high']:
+    if price > highest2:
+        highest2 = price
+```
+
+```python
+highest1 = round(highest1,2)
+highest2 = round(highest2,2)
+```
+
+### Set heading
+
+Use [**Markdown**](/docs/output-widgets/markdown/) widget to create the heading:
+
+```python
+mr.Markdown(text="# **Cryptocurrency Comparison in time period from 2024-04-24 to 2024-05-22**")
+```
+
+### Create boxes with numbers 
+
+You will need to add a subheading:
+
+```python
+mr.Markdown(text="## The highest price in the time interval:")
+```
+
+Then, please add boxes with numbers. You can use [**NumbeBox**](/docs/output-widgets/numberbox/) widget: 
+
+```python 
+mr.NumberBox([
+    mr.NumberBox(data=f"{highest1}$", title=f"{select1.value}"),
+    mr.NumberBox(data=f"{highest2}$", title=f"{select2.value}"),
+])
+```
+
+### Create charts
+
+Please add another subheading, write this piece of code: 
+
+```python
+mr.Markdown(text=f"## High and Volume charts: {select1.value}(left) vs {select2.value}(right)")
+```
+
+After that, create charts: 
+
+```python
+fig, ax = plt.subplots(2, 2)
+fig.set_figwidth(13)
+fig.set_figheight(9)
+ax[0, 0].plot(df1['date'],df1['high'])
+ax[0, 1].plot(df2['date'],df2['high'])
+ax[1, 0].bar(df1["date"],df1["volume"])
+ax[1, 1].bar(df2["date"],df2["volume"])
+ax[0, 0].set_xticklabels([])
+ax[0, 1].set_xticklabels([])
+ax[1, 0].set_xticks(df1['date'])
+ax[1, 0].set_xticklabels(df1['date'], rotation=90)
+ax[1, 1].set_xticks(df2['date'])
+ax[1, 1].set_xticklabels(df2['date'], rotation=90)
+
+plt.show()
+```
+
+If something is unclear, check [**Matplotlib Docs**](https://matplotlib.org/stable/index.html).
+
+## Create Web App
+
+Deploying Web App is very easy that you can do it in 3 steps:
+
+<div className="steps-container">
+
+### Login to Mercury Cloud
+
+If you don't have account, you can create it here: [**Mercury Cloud**](https://cloud.runmercury.com/register).
+
+### Create new site
+
+Create new or use an existing site. 
+
+### Upload your notebook
+
+Upload the notebook with code.
+
+</div>
+
+**Congrats!** You just created your own Web App and you can share your Jupyter Notebooks with nontechnical users. If you need more information about deploying the Web App check [**Mercury Cloud Documentation**](https://runmercury.com/docs/cloud/).
+
+## Final Effect
+
+Here is a teaser of Web App: 
+
+<video width="100%" autoPlay loop controls preload="none" style={{ borderRadius: "10px" ,marginTop: "10px"}}>
+  <source
+    src="/images/tutorials/dashboards/matplotlib-dashboard.mp4"
+    type="video/mp4"
+  />
+</video>
+
+You can check this example as a Web App right here: [**Matplotlib Dashboard**](https://dashboards.runmercury.com/app/matplotlib-dashboard)
