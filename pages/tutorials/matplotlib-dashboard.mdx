@@ -120,20 +120,8 @@ elif select2.value == 'Solana':
 Then, find the highest value of each cryptocurrency. Create **highest1** and **highest2**: 
 
 ```python 
-highest1 = df1['high'][0]
-for price in df1['high']: 
-    if price > highest1: 
-        highest1 = price
-
-highest2 = df2['high'][0]
-for price in df2['high']:
-    if price > highest2:
-        highest2 = price
-```
-
-```python
-highest1 = round(highest1,2)
-highest2 = round(highest2,2)
+highest1 = round(df1['high'].max(), 2)
+highest2 = round(df2['high'].max(), 2)
 ```
 
 ### Set heading
