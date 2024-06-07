@@ -25,12 +25,15 @@
     "Dashboard Tutorials": {
         "type": "separator",
         "title": "Dashboard Tutorials"
-      },
+    },
       "dashboard-python-jupyter-notebook": {
         "title": "Create Dashboard"
     },
+    "excel-sheet-into-python-dashboard": {
+        "title": "Excel Sheet into Dashboard"
+    },
+    "matplotlib-dashboard": {},
     "vega-altair-dashboard": {
         "title": "Vega Altair Dashboard"
-    },
-    "matplotlib-dashboard": {}
+    }
 }

@@ -1,0 +1,157 @@
+---
+ogTitle: Turn excel sheet into Python dashboard
+description: How to create an interactive dashboard with Python using data from an Excel sheet in Jupyter Notebook. 
+ogImage: tutorials
+---
+
+import {Screenshot} from 'components/screenshot';
+import excelSheet from "../../public/images/tutorials/dashboards/excel-dashboard/excel-sheet.png";
+
+# Turn excel sheet into Python dashboard
+
+We created a simple Python dashboard using data from an Excel sheet and `pandas`, `mercury` and `altair` packages. 
+In this article you will learn:
+
+- how to load excel sheets to your Jupyter Notebook,
+- how to use Markdown, NumberBox, Range and Table `mercury` widgets,
+- how to create charts using `vega-altair`,
+- how to turn your notebook into Web App.
+
+
+## Import required packages
+
+You will need following packages: 
+
+```python
+pandas 
+mercury
+altair
+```
+
+- `pandas`  is  for data manipulation and analysis.
+- `mercury` will be used for interactive widgets and for running notebook as a web app.
+- `altair` for creating declarative statistical visualizations.
+
+Make sure that you have installed them before start doing anything.
+
+The cell code with imports :
+
+```python
+import pandas as pd 
+import mercury as mr 
+import altair as alt
+```
+
+## Get Data 
+
+In this case, we used an example excel sheet:
+
+<Screenshot src={excelSheet} alt="Example excel sheet." />
+
+You need to load the data from an Excel file into a DataFrame. This will allow to manipulate and analyze the data easily.
+
+```python 
+df = pd.read_excel('example.xlsx')
+```
+
+## Create Dashboard
+
+### Set heading 
+Please set a heading for the dashboard using the [**Markdown**](/docs/output-widgets/markdown/) widget:
+
+```python
+mr.Markdown(text="# **Employee Hours Log**")
+```
+
+### Create boxes with numbers
+
+To provide a quick overview of the **Salary** and **Wage** data, please create two sets of [**NumbeBox**](/docs/output-widgets/numberbox/) widgets. The first set will show the lowest, highest, and average salaries, and the second set will show the same statistics for wages:
+
+```python 
+mr.NumberBox([
+    mr.NumberBox(data=f"{df['Salary'].min()}$", title="Lowest salary"),
+    mr.NumberBox(data=f"{df['Salary'].max()}$", title="Highest salary"),
+    mr.NumberBox(data=f"{round(df['Salary'].mean())}$", title="Average salary")
+])
+```
+
+```python 
+mr.NumberBox([
+    mr.NumberBox(data=f"{df['Wage'].min()}$", title="Lowest wage"),
+    mr.NumberBox(data=f"{df['Wage'].max()}$", title="Highest wage"),
+    mr.NumberBox(data=f"{round(df['Wage'].mean())}$", title="Average wage")
+])
+```
+
+### Add interactive widget
+
+To allow users to filter the data based on age range, you need to include an interactive [**Range**](/docs/input-widgets/range/) widget. This will let users select an age range and dynamically update the visualizations based on their selection.
+
+```python 
+range = mr.Range(value=[18, 30], min=18, max=30, label="Choose age range", step=1)
+```
+
+### Create Chart 
+
+Please create a chart which shows age dependence on payments. You will need `altair` package: 
+ 
+Now, please create a chart to show the relationship between age and wage. You can use `altair` package:
+
+```python
+alt.Chart(df).mark_point(
+    filled=True,
+    size=100,
+    color='red'
+).encode(
+    x=alt.X('Age', scale=alt.Scale(domain=[range.value[0],range.value[1]])),  
+    y=alt.Y('Wage', scale=alt.Scale(domain=[df['Wage'].min()-1,df['Wage'].max()+1])),
+    tooltip=['Age','Wage']
+).interactive().properties(
+    width='container'
+)
+```
+
+If something is unclear, check [**Altair Docs**](https://altair-viz.github.io/).
+
+### Create Table 
+
+Then, please create a table to display the entire dataset. You can use [**Table**](/docs/output-widgets/table/) widget: 
+
+```python
+mr.Table(df, width='200px')
+```
+
+## Create a Web App
+
+Deploying Web App is very easy that you can do it in 3 steps:
+
+<div className="steps-container">
+
+### Login to Mercury Cloud
+
+If you don't have account, you can create it here: [**Mercury Cloud**](https://cloud.runmercury.com/register).
+
+### Create new site
+
+Create new or use an existing site. 
+
+### Upload your notebook
+
+Upload the notebook with code.
+
+</div>
+
+**Congrats!** You just created your own Web App and you can share your Jupyter Notebooks with nontechnical users. If you need more information about deploying the Web App check [**Mercury Cloud Documentation**](https://runmercury.com/docs/cloud/).
+
+## Final Effect 
+
+Here is a teaser of Web App:
+
+<video width="100%" autoPlay loop controls preload="none" style={{ borderRadius: "10px" ,marginTop: "10px"}}>
+  <source
+    src="/images/tutorials/dashboards/excel-dashboard/excel-dashboard.mp4"
+    type="video/mp4"
+  />
+</video>
+
+You can check this example as a Web App right here: [**Dashboard with Excel Data**](https://dashboards.runmercury.com/app/excel-into-dashboard).
